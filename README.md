@@ -4,4 +4,3 @@ List of contributors:
 Iman Bajalan
 Angelo Centeno
 Savitha Muthuramalingam
-Sonali Rathod
