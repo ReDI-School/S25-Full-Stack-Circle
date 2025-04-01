@@ -7,7 +7,6 @@ Savitha Muthuramalingam
 Sonali Rathod
 
 Marline John
-
 Maha Farah
 
 Suleman Ahmed Khan
