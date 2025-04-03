@@ -71,3 +71,31 @@ table {
     margin: 0 auto; /* Center the content horizontally */
   }
 }
+
+/* login component */
+.login-container {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 0.5rem;
+  border: #333 solid 2px;
+  align-items: center;
+  min-height: 450px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.login-form {
+  text-align: left;
+  margin-bottom:10px;
+}
+.login-form input{
+  border: 2px solid #333;
+}
+.continue-button {
+  background-color: red;
+  color: #fff;
+  border-radius: 0.5rem;
+  margin: 5px;
+  min-height:25px;
+  min-width:100px;
+}
