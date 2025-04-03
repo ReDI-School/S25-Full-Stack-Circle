@@ -1,0 +1,11 @@
+.image-card {
+  width: 100%;
+}
+
+.image {
+  background-color: grey;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
