@@ -13,3 +13,4 @@ function ImageDetailPage() {
 }
 
 export default ImageDetailPage;
+//update
