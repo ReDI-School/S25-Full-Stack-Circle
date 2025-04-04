@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ExplorePage() {
+function Explorepage() {
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold mb-4">Explore Page</h1>
@@ -17,4 +17,4 @@ function ExplorePage() {
   );
 }
 
-export default ExplorePage;
+export default Explorepage;
