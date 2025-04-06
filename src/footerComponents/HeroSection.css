@@ -1,0 +1,34 @@
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-image {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .hero-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgb(14, 158, 96);
+  }
+  
+  .footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #777;
+  }
+  
