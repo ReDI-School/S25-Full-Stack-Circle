@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import FeaturedBoards from "../components/ExploreFeaturedBoard/FeaturedBoards";
 
 function Explorepage() {
   return (
@@ -13,7 +14,8 @@ function Explorepage() {
           Go to Image Detail
         </Link>
       </nav>
-    </div>
+      <FeaturedBoards />
+    </div> 
   );
 }
 
