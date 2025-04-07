@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BrowseByCategory } from "../components/ExplorePage/BrowseByCategory";
 
 function Explorepage() {
   return (
@@ -12,6 +13,7 @@ function Explorepage() {
         <Link to="/detail" className="bg-gray-200 px-4 py-2 rounded">
           Go to Image Detail
         </Link>
+        <BrowseByCategory />
       </nav>
     </div>
   );
