@@ -5,6 +5,7 @@ import ExplorePage from "./pages/Explorepage";
 import ImageDetailPage from "./pages/ImageDetailPage";
 import Header from "./components/Header/Header";
 import LoginModal from "./components/Modal/LoginModal";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
