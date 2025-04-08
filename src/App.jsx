@@ -4,11 +4,13 @@ import Homepage from "./pages/Homepage";
 import ExplorePage from "./pages/Explorepage";
 import ImageDetailPage from "./pages/ImageDetailPage";
 import Header from "./components/Header/Header";
+import LoginModal from "./components/Modal/LoginModal";
 
 function App() {
   return (
     <Router>
       <Header />
+      <LoginModal />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/explore" element={<ExplorePage />} />

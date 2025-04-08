@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "/images/pinterest-seeklogo.svg";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -14,8 +14,11 @@ import {
   SearchBarWrapper,
   IconWrapper,
 } from "./HeaderStyles";
+import LoginModal from "../Modal/LoginModal";
 
 const Header = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <Wrapper>
       <LogoWrapper>
@@ -41,7 +44,9 @@ const Header = () => {
         </SearchBarWrapper>
       </SearchWrapper>
       <LoginButton>
-        <a href="/">Log in</a>
+        <a onClick={() => setIsModalOpen(true)} style={{ cursor: "pointer" }}>
+          Log in
+        </a>
       </LoginButton>
       <SignupButton>
         <a href="/">Sign up</a>
@@ -51,6 +56,8 @@ const Header = () => {
           <KeyboardArrowDownIcon />
         </IconButton>
       </IconWrapper>
+
+      <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </Wrapper>
   );
 };
