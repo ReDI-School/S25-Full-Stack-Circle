@@ -1,6 +1,6 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import "./ImageCard.css";
+import ExpandIcon from "@mui/icons-material/Expand";
 
 function ImageCard() {
   return (
@@ -13,7 +13,11 @@ function ImageCard() {
             alt=""
           />
           <div className="button">
-            <button>View larger </button>
+            <button>
+              View larger
+              {/* <ExpandIcon /> */}
+            </button>
+
             <button>Explore</button>
           </div>
         </div>
