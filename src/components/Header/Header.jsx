@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import logo from "/images/pinterest-seeklogo.svg";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Modal from "../Modal";
+
 
 import { IconButton } from "@mui/material";
 import {
@@ -16,7 +18,12 @@ import {
 } from "./HeaderStyles";
 
 const Header = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
   return (
+    <>
     <Wrapper>
       <LogoWrapper>
         <IconButton>
@@ -40,11 +47,11 @@ const Header = () => {
           </form>
         </SearchBarWrapper>
       </SearchWrapper>
-      <LoginButton>
-        <a href="/">Log in</a>
+      <LoginButton  onClick={handleOpenModal}>
+       Log in
       </LoginButton>
-      <SignupButton>
-        <a href="/">Sign up</a>
+      <SignupButton onClick={handleOpenModal}>
+         Sign up
       </SignupButton>
       <IconWrapper>
         <IconButton>
@@ -52,6 +59,9 @@ const Header = () => {
         </IconButton>
       </IconWrapper>
     </Wrapper>
+    {showModal && <Modal onClose={handleCloseModal} />}
+    </>
+
   );
 };
 
