@@ -23,7 +23,7 @@ const recommendations = [
     id: 4,
     image: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
     text: "Item 4",
-    link: "#",
+    link: "google.com",
   },
 ];
 
