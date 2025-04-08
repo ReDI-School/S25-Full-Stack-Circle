@@ -1,4 +1,5 @@
 import logo from '/images/pinterest-seeklogo.svg';
+import GoogleButton from 'react-google-button';
 const Login = () => {
     return (
         <div className="login-container">
@@ -21,6 +22,9 @@ const Login = () => {
                     className="input-dob" required />
                 </div>
                 <button type="button" className="continue-button">Continue</button>
+                <GoogleButton
+                    onClick={() => { console.log('Google button clicked') }}
+                />
             </form>
         </div>
     )
