@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ShopItem from './ImageDetailPage/ShopItem';
 
 function ImageDetailPage() {
   return (
@@ -8,6 +9,10 @@ function ImageDetailPage() {
       <Link to="/explore" className="bg-gray-200 px-4 py-2 rounded">
         Back to Explore
       </Link>
+      {/* Show the ShopItem component here */}
+      <div className="mt-6">
+        <ShopItem />
+      </div>
     </div>
   );
 }
