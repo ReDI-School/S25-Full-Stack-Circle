@@ -1,17 +1,33 @@
 .breadcrumb {
     display: flex;
     align-items: center;
+    justify-content: center; /* center it horizontally */
     font-size: 14px;
-    color: #444;
+    font-weight: 500;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+    color: #111;
   }
   
-  .breadcrumb a {
+  .breadcrumb-link {
+    color: #111;
     text-decoration: none;
-    color: #0073e6;
   }
   
-  .breadcrumb a:hover {
+  .breadcrumb-link:hover {
     text-decoration: underline;
   }
+  
+  .breadcrumb-separator {
+    color: #999;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .breadcrumb-current {
+    background-color: #eee;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  
