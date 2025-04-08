@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ShopItem from './ShopItem';
+import ShopItem from './ImageDetailPage/ShopItem';
 
 function ImageDetailPage() {
   return (
