@@ -20,7 +20,7 @@ const ExplorePage_Best_Of_Pinterest_Section = () => {
     ]
   return (
     <div>
-        <h1 style={{ textAlign: "center", marginBottom: "20px", fontSize: "36px" }}>
+        <h1 style={{ margin: "20px 20px", fontSize: "36px" }}>
             Explore the Best of Pinterest
         </h1>
         <div style={{ display: "flex", justifyContent: "space-around" }}>
