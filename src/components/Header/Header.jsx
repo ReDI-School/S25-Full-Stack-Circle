@@ -1,19 +1,19 @@
 import React from "react";
-import logo from "/images/pinterest-seeklogo.svg";
+import { Link } from "react-router-dom";
+import { IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-
-import { IconButton } from "@mui/material";
 import {
   Wrapper,
   LogoWrapper,
   ExploreButton,
-  LoginButton,
-  SignupButton,
   SearchWrapper,
   SearchBarWrapper,
+  LoginButton,
+  SignupButton,
   IconWrapper,
 } from "./HeaderStyles";
+import logo from "/images/pinterest-seeklogo.svg"; // Corrected the syntax error
 
 const Header = () => {
   return (
@@ -24,7 +24,7 @@ const Header = () => {
         </IconButton>
       </LogoWrapper>
       <ExploreButton>
-        <a href="/">Explore</a>
+        <Link to="/explore">Explore</Link>
       </ExploreButton>
       <SearchWrapper>
         <SearchBarWrapper>
@@ -41,10 +41,10 @@ const Header = () => {
         </SearchBarWrapper>
       </SearchWrapper>
       <LoginButton>
-        <a href="/">Log in</a>
+        <Link to="/login">Log in</Link>
       </LoginButton>
       <SignupButton>
-        <a href="/">Sign up</a>
+        <Link to="/signup">Sign up</Link>
       </SignupButton>
       <IconWrapper>
         <IconButton>
