@@ -9,11 +9,14 @@ import {
   ExploreButton,
   SearchWrapper,
   SearchBarWrapper,
+  AboutButton,
+  BusinessButton,
+  PressButton,
   LoginButton,
   SignupButton,
   IconWrapper,
 } from "./HeaderStyles";
-import logo from "/images/pinterest-seeklogo.svg"; // Corrected the syntax error
+import logo from "/images/pinterest-seeklogo.svg";
 
 const Header = () => {
   return (
@@ -40,6 +43,15 @@ const Header = () => {
           </form>
         </SearchBarWrapper>
       </SearchWrapper>
+      <AboutButton>
+        <Link to="/">About</Link>
+      </AboutButton>
+      <BusinessButton>
+        <Link to="/">Business</Link>
+      </BusinessButton>
+      <PressButton>
+        <Link to="/">Press</Link>
+      </PressButton>
       <LoginButton>
         <Link to="/login">Log in</Link>
       </LoginButton>
