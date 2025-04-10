@@ -23,30 +23,49 @@ const Button = styled.div`
   padding: 16px 16px;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
+  border-radius: 16px;
   cursor: pointer;
   white-space: nowrap;
+  margin: 0 10px 0 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+  text-size-adjust: 100%;
 `;
 
 export const ExploreButton = styled(Button)`
-  background-color: hsl(0, 0%, 7%);
-  margin: 0 10px 0 10px;
-
-  a {
-    text-decoration: none;
-    color: hsl(0, 100%, 100%);
-    font-weight: 700;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 100%, 100%);
+  & > a {
+    color: hsl(0, 0%, 7%);
+  }
+  &:hover {
+    background-color: rgb(241, 241, 241);
   }
 `;
+
+export const PressButton = styled(Button)`
+  & > a {
+    color: hsl(0, 0%, 7%);
+  }
+`;
+
+export const BusinessButton = styled(Button)`
+  & > a {
+    color: hsl(0, 0%, 7%);
+  }
+`;
+
+export const AboutButton = styled(Button)`
+  & > a {
+    color: hsl(0, 0%, 7%);
+  }
+`;
+
 export const LoginButton = styled(Button)`
   background-color: rgb(241, 241, 241);
-  margin: 0 10px 0 10px;
-
-  a {
-    text-decoration: none;
-    color: hsl(330, 2%, 19%);
-    font-weight: 700;
-  }
+  color: hsl(330, 2%, 19%);
+  font-weight: 700;
 
   &:hover {
     background-color: hsl(0, 0%, 91%);
@@ -55,12 +74,7 @@ export const LoginButton = styled(Button)`
 
 export const SignupButton = styled(Button)`
   background-color: hsl(351, 100%, 45%);
-
-  a {
-    text-decoration: none;
-    color: white;
-    font-weight: 700;
-  }
+  color: white;
 
   &:hover {
     background-color: hsl(352, 86%, 40%);
@@ -72,7 +86,7 @@ export const SearchWrapper = styled.div`
 `;
 
 export const SearchBarWrapper = styled.div`
-  background-color: #efefef;
+  background-color: rgb(241, 241, 241);
   display: flex;
   height: 48px;
   width: 100%;

@@ -1,19 +1,22 @@
 import React from "react";
-import logo from "/images/pinterest-seeklogo.svg";
+import { Link } from "react-router-dom";
+import { IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-
-import { IconButton } from "@mui/material";
 import {
   Wrapper,
   LogoWrapper,
   ExploreButton,
-  LoginButton,
-  SignupButton,
   SearchWrapper,
   SearchBarWrapper,
+  AboutButton,
+  BusinessButton,
+  PressButton,
+  LoginButton,
+  SignupButton,
   IconWrapper,
 } from "./HeaderStyles";
+import logo from "/images/pinterest-seeklogo.svg";
 import ReusableModal from "../Modal/ReusableModal";
 import useModal from "../Modal/useModal";
 import LoginForm from "../Modal/LoginForm";
@@ -30,7 +33,7 @@ const Header = () => {
         </IconButton>
       </LogoWrapper>
       <ExploreButton>
-        <a href="/">Explore</a>
+        <Link to="/explore">Explore</Link>
       </ExploreButton>
       <SearchWrapper>
         <SearchBarWrapper>
@@ -46,6 +49,15 @@ const Header = () => {
           </form>
         </SearchBarWrapper>
       </SearchWrapper>
+      <AboutButton>
+        <Link to="/">About</Link>
+      </AboutButton>
+      <BusinessButton>
+        <Link to="/">Business</Link>
+      </BusinessButton>
+      <PressButton>
+        <Link to="/">Press</Link>
+      </PressButton>
 
       <LoginButton onClick={() => openModal("login")}>Login</LoginButton>
 
