@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ExplorePage_Best_Of_Pinterest_Section from "../components/ExplorePage_Best_Of_Pinterest_Section"
+import ExplorePage_Best_Of_Pinterest_Section from "../components/ExplorePage_Section1/ExplorePage_Best_Of_Pinterest_Section"
 
 function Explorepage() {
   return (

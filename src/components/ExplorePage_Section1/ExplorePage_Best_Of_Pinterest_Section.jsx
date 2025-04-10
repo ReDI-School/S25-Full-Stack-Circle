@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ExplorePage_Best_Of_Pinterest_Section = () => {
     const cards = [
@@ -25,6 +26,11 @@ const ExplorePage_Best_Of_Pinterest_Section = () => {
         </h1>
         <div style={{ display: "flex", justifyContent: "space-around" }}>
             { cards.map((card,index)=>(
+                <Link
+                to={`/card/${index}`} 
+                key={index}
+                style={{ textDecoration: "none", color: "inherit" }}
+                >
                 <div key={index} style={{
                 position: "relative", 
                 width: "450px",
@@ -55,6 +61,7 @@ const ExplorePage_Best_Of_Pinterest_Section = () => {
                     <h2 style={{ margin: "5px 0 0" }}>{card.subtitle}</h2>
                     </div>
                 </div>
+                </Link>
             ))}
         </div>
     </div>
