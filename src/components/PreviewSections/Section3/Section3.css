@@ -1,0 +1,19 @@
+.preview-section-3{
+    background-color: rgb(255,226,235);
+    display: flex;
+    height: 100vh;
+}
+.section3-images{
+    flex:1;
+    background: url(../../../assets/preview-section/girl-make-up.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding:0 0 10vh 2.2vw;
+}
+
+.section3-text{
+    flex:1;
+}
