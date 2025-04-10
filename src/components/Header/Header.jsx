@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "/images/pinterest-seeklogo.svg";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -14,10 +14,13 @@ import {
   SearchBarWrapper,
   IconWrapper,
 } from "./HeaderStyles";
-import LoginModal from "../Modal/LoginModal";
+import ReusableModal from "../Modal/ReusableModal";
+import useModal from "../Modal/useModal";
+import LoginForm from "../Modal/LoginForm";
+import SignupForm from "../Modal/SignupForm";
 
 const Header = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isOpen, modalType, openModal, closeModal } = useModal();
 
   return (
     <Wrapper>
@@ -43,21 +46,21 @@ const Header = () => {
           </form>
         </SearchBarWrapper>
       </SearchWrapper>
-      <LoginButton>
-        <a onClick={() => setIsModalOpen(true)} style={{ cursor: "pointer" }}>
-          Log in
-        </a>
-      </LoginButton>
-      <SignupButton>
-        <a href="/">Sign up</a>
-      </SignupButton>
+
+      <LoginButton onClick={() => openModal("login")}>Login</LoginButton>
+
+      <SignupButton onClick={() => openModal("signup")}>Sign up</SignupButton>
+
       <IconWrapper>
         <IconButton>
           <KeyboardArrowDownIcon />
         </IconButton>
       </IconWrapper>
 
-      <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ReusableModal isOpen={isOpen} onClose={closeModal}>
+        {modalType === "login" && <LoginForm />}
+        {modalType === "signup" && <SignupForm />}
+      </ReusableModal>
     </Wrapper>
   );
 };

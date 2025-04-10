@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+export const Btn = styled.button`
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #19cba9;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 25px;
+  cursor: pointer;
+`;
+
 // overlay
 // Modal overlay
 export const Overlay = styled.div`
@@ -82,6 +93,13 @@ export const Title = styled.h1`
   color: #333;
 `;
 
+export const Subtitle = styled.p`
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 32px;
+`;
+
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -105,6 +123,7 @@ export const IconWrapper = styled.div`
 
 export const InputLabel = styled.label`
   display: block;
+  margin-left: 12px;
   margin-bottom: 6px;
   font-size: 14px;
   font-weight: 500;
@@ -126,7 +145,7 @@ export const Input = styled.input`
   }
 `;
 
-export const LoginButton = styled.button`
+export const LoginButton2 = styled.button`
   width: 80%;
   background-color: #e60023;
   color: white;
