@@ -1,4 +1,4 @@
-import logo from '/images/pinterest-seeklogo.svg';
+import logo from '/images/pinterest.png';
 import GoogleButton from 'react-google-button';
 const Login = () => {
     return (
