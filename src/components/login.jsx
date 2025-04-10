@@ -1,10 +1,15 @@
-import logo from '/images/pinterest-seeklogo.svg';
+import logo from '/images/pinterest_p.png';
 import GoogleButton from 'react-google-button';
 const Login = () => {
     return (
-        <div className="login-container">
-            <img src={logo} className="App-logo" alt="logo"/>
+        <div className="home-login">
+        <div className="signup-text">
+            <h2>Sign up to get your ideas</h2>
+        </div>
+        <div className="login-container" >
+            <img src={logo} className="App-logo" alt="logo" height="150" width="130"/>
             <h2 className="form-title">Welcome to Pinterest</h2>
+            <h4>Find new ideas to try</h4>
             <form action="#" className="login-form">
                 <div className="input-wrapper">
                     <label htmlFor="input-email">Email address</label> <br/>
@@ -26,6 +31,7 @@ const Login = () => {
                     onClick={() => { console.log('Google button clicked') }}
                 />
             </form>
+        </div>
         </div>
     )
 }

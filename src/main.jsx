@@ -4,9 +4,5 @@ import './index.css'
 import App from './App.jsx'
 import Homepage from './pages/Homepage.jsx'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-    <Homepage />
-  </StrictMode>,
-)
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);
