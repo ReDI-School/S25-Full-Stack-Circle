@@ -8,7 +8,6 @@ function Explorepage() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-xl font-bold mb-4">Explore Page</h1>
-      <ExplorePage_Best_Of_Pinterest_Section />
       <nav className="space-x-2 mt-4">
         <Link
           to="/"
@@ -24,9 +23,9 @@ function Explorepage() {
         >
           Go to Image Detail
         </Link>
+        <ExplorePage_Best_Of_Pinterest_Section />
         <BrowseByCategory />
       </nav>
-      <ExplorePage_Best_Of_Pinterest_Section />
     </div>
   );
 }
