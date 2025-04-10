@@ -15,7 +15,7 @@
   border-radius: 32px 0 0 32px;
 }
 /* positioning the buttons at the bottom on the image */
-.button {
+.buttons-div {
   display: flex;
   row-gap: 15px;
   flex-direction: column;
@@ -24,8 +24,12 @@
   right: 12px;
 }
 /* styling the buttons */
-button {
+.button {
   background-color: rgb(255, 255, 255, 0.8);
   border-radius: 16px;
   padding: 16px;
+  display: flex;
+  justify-content: center;
 }
+
+ x
