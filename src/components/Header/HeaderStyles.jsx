@@ -29,12 +29,41 @@ const Button = styled.div`
 `;
 
 export const ExploreButton = styled(Button)`
-  background-color: hsl(0, 0%, 7%);
   margin: 0 10px 0 10px;
 
   a {
     text-decoration: none;
-    color: hsl(0, 100%, 100%);
+    color:  hsl(0, 0%, 7%);
+    font-weight: 700;
+  }
+`;
+
+export const PressButton = styled(Button)`
+  margin: 0 10px 0 10px;
+
+  a {
+    text-decoration: none;
+    color:  hsl(0, 0%, 7%);
+    font-weight: 700;
+  }
+`;
+
+export const BusinessButton = styled(Button)`
+  margin: 0 10px 0 10px;
+
+  a {
+    text-decoration: none;
+    color:  hsl(0, 0%, 7%);
+    font-weight: 700;
+  }
+`;
+
+export const AboutButton = styled(Button)`
+  margin: 0 10px 0 10px;
+
+  a {
+    text-decoration: none;
+    color:  hsl(0, 0%, 7%);
     font-weight: 700;
   }
 `;
