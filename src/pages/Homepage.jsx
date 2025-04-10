@@ -1,11 +1,6 @@
 import React from "react";
 import Login from "../components/login";
 
-function Homepage() {
-  return <div>Homepage
-    <Login></Login>
-  </div>;
-
 import { Link } from "react-router-dom";
 
 function Homepage() {
@@ -16,6 +11,7 @@ function Homepage() {
         <Link to="/explore" className="bg-gray-200 px-4 py-2 rounded">
           Go to Explore
         </Link>
+        <Login></Login>
       </nav>
     </div>
   );
