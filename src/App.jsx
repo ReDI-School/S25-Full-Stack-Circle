@@ -4,7 +4,7 @@ import Homepage from "./pages/Homepage";
 import ExplorePage from "./pages/Explorepage";
 import ImageDetailPage from "./pages/ImageDetailPage";
 import Header from "./components/Header/Header";
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/navbar";
 
 function App() {
   return (
