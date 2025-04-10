@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ExplorePage_Best_Of_Pinterest_Section from "../components/ExplorePage_Section1/ExplorePage_Best_Of_Pinterest_Section"
 import { BrowseByCategory } from "../components/ExplorePage/BrowseByCategory";
 
+
 function Explorepage() {
   return (
     <div className="container mx-auto p-4">
