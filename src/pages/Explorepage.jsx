@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ExplorePage_Best_Of_Pinterest_Section from "../components/ExplorePage_Best_Of_Pinterest_Section";
+import ExplorePage_Best_Of_Pinterest_Section from "../components/ExplorePage_Section1/ExplorePage_Best_Of_Pinterest_Section"
 import { BrowseByCategory } from "../components/ExplorePage/BrowseByCategory";
+
 
 function Explorepage() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-xl font-bold mb-4">Explore Page</h1>
-      <ExplorePage_Best_Of_Pinterest_Section />
       <nav className="space-x-2 mt-4">
         <Link
           to="/"
@@ -23,6 +23,7 @@ function Explorepage() {
         >
           Go to Image Detail
         </Link>
+        <ExplorePage_Best_Of_Pinterest_Section />
         <BrowseByCategory />
       </nav>
     </div>
