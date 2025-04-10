@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CommentSection from "../components/CommentSection";
 import ShopItem from './ImageDetailPage/ShopItem';
 import Breadcrumb from './ImageDetailPage/Breadcrumb'; //
+
 
 function ImageDetailPage() {
   return (
@@ -16,10 +18,13 @@ function ImageDetailPage() {
         Back to Explore
       </Link>
 
+      <CommentSection />
+          
       {/* ShopItem component*/}
       <div className="mt-6">
         <ShopItem />
       </div>
+
     </div>
   );
 }
