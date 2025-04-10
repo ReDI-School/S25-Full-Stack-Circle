@@ -6,6 +6,7 @@ import ImageDetailPage from "./pages/ImageDetailPage";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/navbar";
 
+
 function App() {
   return (
     <Router>
