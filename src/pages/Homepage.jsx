@@ -1,4 +1,6 @@
 import React from "react";
+import Login from "../components/login";
+
 import { Link } from "react-router-dom";
 
 function Homepage() {
@@ -10,6 +12,7 @@ function Homepage() {
           Go to Explore
         </Link>
       </nav>
+      <Login></Login>
     </div>
   );
 }
