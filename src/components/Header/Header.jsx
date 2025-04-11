@@ -17,8 +17,14 @@ import {
   IconWrapper,
 } from "./HeaderStyles";
 import logo from "/images/pinterest-seeklogo.svg";
+import Modal from "../Modal/Modal";
+import useModal from "../Modal/hooks/useModal";
+import Login from "../Forms/Login/Login";
+import SignUp from "../Forms/SignUp/SignUp";
 
 const Header = () => {
+  const { isOpen, modalType, openModal, closeModal } = useModal();
+
   return (
     <Wrapper>
       <LogoWrapper>
@@ -52,17 +58,21 @@ const Header = () => {
       <PressButton>
         <Link to="/">Press</Link>
       </PressButton>
-      <LoginButton>
-        <Link to="/login">Log in</Link>
-      </LoginButton>
-      <SignupButton>
-        <Link to="/signup">Sign up</Link>
-      </SignupButton>
+
+      <LoginButton onClick={() => openModal("login")}>Login</LoginButton>
+
+      <SignupButton onClick={() => openModal("signup")}>Sign up</SignupButton>
+
       <IconWrapper>
         <IconButton>
           <KeyboardArrowDownIcon />
         </IconButton>
       </IconWrapper>
+
+      <Modal isOpen={isOpen} onClose={closeModal}>
+        {modalType === "login" && <Login />}
+        {modalType === "signup" && <SignUp />}
+      </Modal>
     </Wrapper>
   );
 };
