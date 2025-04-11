@@ -17,10 +17,10 @@ import {
   IconWrapper,
 } from "./HeaderStyles";
 import logo from "/images/pinterest-seeklogo.svg";
-import ReusableModal from "../Modal/ReusableModal";
-import useModal from "../Modal/useModal";
-import LoginForm from "../Modal/LoginForm";
-import SignupForm from "../Modal/SignupForm";
+import Modal from "../Modal/Modal";
+import useModal from "../Modal/hooks/useModal";
+import Login from "../Forms/Login/Login";
+import SignUp from "../Forms/SignUp/SignUp";
 
 const Header = () => {
   const { isOpen, modalType, openModal, closeModal } = useModal();
@@ -69,10 +69,10 @@ const Header = () => {
         </IconButton>
       </IconWrapper>
 
-      <ReusableModal isOpen={isOpen} onClose={closeModal}>
-        {modalType === "login" && <LoginForm />}
-        {modalType === "signup" && <SignupForm />}
-      </ReusableModal>
+      <Modal isOpen={isOpen} onClose={closeModal}>
+        {modalType === "login" && <Login />}
+        {modalType === "signup" && <SignUp />}
+      </Modal>
     </Wrapper>
   );
 };
