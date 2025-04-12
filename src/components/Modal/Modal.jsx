@@ -1,6 +1,7 @@
 import React from "react";
 import { IoMdClose } from "react-icons/io";
 import classes from "./Modal.module.css";
+import pinterestLogo from "/images/pinterest-3.svg";
 
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
@@ -12,7 +13,7 @@ const Modal = ({ isOpen, onClose, children }) => {
       >
         <div className={classes["modal-header"]}>
           <div className={classes.logo}>
-            <img src="/images/pinterest-3.svg" alt="Pinterest Logo" />
+            <img src={pinterestLogo} alt="Pinterest Logo" />
           </div>
 
           <button className={classes["close-button"]} onClick={onClose}>

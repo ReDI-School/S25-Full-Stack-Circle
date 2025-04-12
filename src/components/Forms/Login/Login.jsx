@@ -3,6 +3,8 @@ import { CiMail } from "react-icons/ci";
 import { CiLock } from "react-icons/ci";
 import { FaChevronDown } from "react-icons/fa";
 import classes from "./Login.module.css";
+import googleLogo from "/images/google-new.svg";
+import facebookLogo from "/images/facebook-2020-2-1.svg";
 
 const Login = () => {
   return (
@@ -40,17 +42,14 @@ const Login = () => {
 
       <button className={`${classes["social-button"]} ${classes.button}`}>
         <div className={classes["social-icon"]}>
-          {/* to access an image that is stored in the public folder, you don't need to use the import statement like you would for assets in the src directory. 
-          you can reference the image directly using a relative path starting from the public folder. 
-          If you were to import the image using the relative path (like import googleLogo from "../../../public/images/google-new.svg";), React won't treat it correctly, and it might not work because the public folder is outside the build system's scope, which expects assets inside src*/}
-          <img src="/images/google-new.svg" alt="Google Logo" />
+          <img src={googleLogo} alt="Google Logo" />
         </div>
         Continue with Google
       </button>
 
       <button className={`${classes["social-button"]} ${classes.button}`}>
         <div className={classes["social-icon"]}>
-          <img src="/images/facebook-2020-2-1.svg" alt="Facebook Logo" />
+          <img src={facebookLogo} alt="Facebook Logo" />
         </div>
         Continue with Facebook
       </button>
