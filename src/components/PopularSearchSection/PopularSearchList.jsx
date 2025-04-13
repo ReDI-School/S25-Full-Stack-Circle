@@ -1,13 +1,12 @@
-import React from "react";
 import PopularSearchBtn from "./PopularSearchBtn";
-
-function PopularSearchList({ title, popularSearch }) {
-  console.log("list=== ", popularSearch);
+import { mockData } from "../../assets/data.js";
+import styles from "./popularSearch.module.css";
+function PopularSearchList() {
   return (
     <div>
-      <h2 style={titleStyle}>{title}</h2>
-      <ul style={listStyle}>
-        {popularSearch?.map((idea, idx) => {
+      <h2 className={styles.titleStyle}>Search popular ideas</h2>
+      <ul className={styles.listStyle}>
+        {mockData.popularSearch?.map((idea, idx) => {
           return <PopularSearchBtn key={idea + idx} idea={idea} />;
         })}
       </ul>
@@ -15,15 +14,4 @@ function PopularSearchList({ title, popularSearch }) {
   );
 }
 
-const titleStyle = {
-  margin: "64px 0 16px 0",
-  color: "#111111",
-  fontSize: "28px",
-  fontWeight: "semibold",
-};
-
-const listStyle = {
-  display: "flex",
-  flexWrap: "wrap",
-};
 export default PopularSearchList;
