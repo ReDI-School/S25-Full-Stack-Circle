@@ -128,6 +128,7 @@ Compose for reusability: CSS Modules support composition, allowing you to inheri
 ```jsx
 import styles from './MyComponent.module.css';
 <button className={styles.primaryButton}>Click</button>
+```
 
 ## 6. Global Styles
 Use sparingly: Minimize the use of global styles.  CSS Modules are designed to promote local scoping.
@@ -140,3 +141,12 @@ Use sparingly: Minimize the use of global styles.  CSS Modules are designed to p
   margin: 0;
   padding: 0;
 }
+
+## 7. Folder-per-Component
+Structure: For better organization, especially in larger projects, consider using a folder-per-component structure.  This means placing the component's JavaScript/TypeScript file and its CSS Module in a dedicated folder.
+
+src/
+└── components/
+    └── ProductCard/
+        ├── ProductCard.jsx
+        └── ProductCard.module.css
