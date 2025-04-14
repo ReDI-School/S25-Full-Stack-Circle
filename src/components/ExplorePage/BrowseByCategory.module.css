@@ -1,5 +1,5 @@
 /* Main container */
-.title-container {
+.titleContainer {
     margin-bottom: 16px;
     margin-left: 20px;
 }
@@ -11,7 +11,7 @@
 }
 
 /* Grid layout */
-.category-grid-container {
+.categoryGridContainer {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 16px;
@@ -20,7 +20,7 @@
 }
 
 /* Category card styling */
-.category-card {
+.categoryCard {
     position: relative;
     height: 160px;
     border-radius: 10px;
@@ -30,23 +30,23 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.category-card:hover {
+.categoryCard:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.category-image {
+.categoryImage {
     width: 100%;
     height: 100%;
 }
 
-.category-image img {
+.categoryImage img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.category-title {
+.categoryTitle {
     position: absolute;
     top: 0;
     width: 100%;
@@ -57,7 +57,7 @@
     padding: 12px;
 }
 
-.category-title h3 {
+.categoryTitle h3 {
     color: white;
     font-weight: 500;
     font-size: 14px;
@@ -66,7 +66,7 @@
 }
 
 /* See more button */
-.see-more-button {
+.seeMoreButton {
     display: block;
     width: fit-content;
     margin: 0 auto;
@@ -81,11 +81,11 @@
     transition: background-color 0.2s ease;
 }
 
-.see-more-button:hover {
+.seeMoreButton:hover {
     background-color: #e0e0e0;
 }
 
-.see-more-button:focus {
+.seeMoreButton:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
