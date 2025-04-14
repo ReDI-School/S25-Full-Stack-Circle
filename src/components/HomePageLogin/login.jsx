@@ -1,7 +1,6 @@
 import logo from '/images/pinterest_p.png';
 import styles from '../HomePageLogin/login.module.css';
 import GoogleButton from 'react-google-button';
-import { Margin } from '@mui/icons-material';
 const Login = () => {
     return (
         <div className={styles.login}>
@@ -29,11 +28,11 @@ const Login = () => {
                     className="input-dob" required />
                 </div>
                 <div className={styles.buttons}>
-                <button type="button" className={styles.continue}>Continue</button>
-                <h4>OR</h4>
-                <GoogleButton type="light" label="Continue with Google" 
-                    onClick={() => { console.log('Google button clicked') }}
-                />
+                    <button type="button" className={styles.continue}>Continue</button>
+                    <h4>OR</h4>
+                    <GoogleButton type="light" label="Continue with Google" 
+                        onClick={() => { console.log('Google button clicked') }}
+                    />                
                 </div>
             </form>            
         </div>

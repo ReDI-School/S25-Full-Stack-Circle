@@ -61,5 +61,9 @@ img {
 
   .buttons {
     text-align: center;
-    margin: 0 auto;
+    margin: 5 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center horizontally */
+    align-items: center;
   }
