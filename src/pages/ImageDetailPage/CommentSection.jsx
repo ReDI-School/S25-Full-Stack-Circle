@@ -10,7 +10,7 @@ function CommentSection() {
 	const handleAddComment = (e) => {
 		e.preventDefault();
 		if (newComment.trim()) {
-			setComments([...comments, newComment]);
+			setComments([newComment, ...comments]); // Add new comments at the beginning
 			setNewComment("");
 		}
 	};
@@ -28,7 +28,7 @@ function CommentSection() {
 
 	return (
 		<div className={styles.container}>
-			{comments.length > 0 ? (
+			{comments.length > 0 && (
 				<>
 					<div
 						className={styles.commentHeader}
@@ -42,54 +42,62 @@ function CommentSection() {
 					</div>
 
 					{isCommentsVisible && (
-						<ul className={styles.commentList}>
-							{comments.map((comment, index) => (
-								<li key={index} className={styles.commentItem}>
-									{comment}
-								</li>
-							))}
-						</ul>
+						<div className={styles.scrollableComments}>
+							<ul className={styles.commentList}>
+								{comments.map((comment, index) => (
+									<li key={index} className={styles.commentItem}>
+										{comment}
+									</li>
+								))}
+							</ul>
+						</div>
 					)}
 				</>
-			) : (
-				<div className={styles.emptyState}>What do you think?</div>
 			)}
 
-			<form onSubmit={handleAddComment} className={styles.commentForm}>
-				<div className={styles.inputContainer}>
-					<textarea
-						value={newComment}
-						onChange={(e) => setNewComment(e.target.value)}
-						onKeyDown={handleKeyDown}
-						placeholder="Add a comment"
-						className={styles.commentInput}
-						rows="1"
-					/>
-					<button
-						type="button"
-						className={styles.iconButton}
-						title="Add Emoticon">
-						<FaSmile size={20} />
-					</button>
-					<button type="button" className={styles.iconButton} title="Add GIF">
-						<FaGift size={20} />
-					</button>
-					<button
-						type="button"
-						className={styles.iconButton}
-						title="Upload Photo">
-						<FaImage size={20} />
-					</button>
-					{newComment.trim() && (
-						<button
-							type="submit"
-							className={styles.sendButton}
-							title="Send Comment">
-							<FaArrowRight size={20} />
-						</button>
-					)}
-				</div>
-			</form>
+			<div className={styles.fixedInputArea}>
+				<div className={styles.questionText}>What do you think?</div>
+				<form onSubmit={handleAddComment} className={styles.commentForm}>
+					<div className={styles.inputContainer}>
+						<textarea
+							value={newComment}
+							onChange={(e) => setNewComment(e.target.value)}
+							onKeyDown={handleKeyDown}
+							placeholder="Add a comment to start the..."
+							className={styles.commentInput}
+							rows="1"
+						/>
+						<div className={styles.iconGroup}>
+							<button
+								type="button"
+								className={styles.iconButton}
+								title="Add Emoticon">
+								<FaSmile size={20} />
+							</button>
+							<button
+								type="button"
+								className={styles.iconButton}
+								title="Add GIF">
+								<FaGift size={20} />
+							</button>
+							<button
+								type="button"
+								className={styles.iconButton}
+								title="Upload Photo">
+								<FaImage size={20} />
+							</button>
+						</div>
+						{newComment.trim() && (
+							<button
+								type="submit"
+								className={styles.sendButton}
+								title="Send Comment">
+								<FaArrowRight size={20} />
+							</button>
+						)}
+					</div>
+				</form>
+			</div>
 		</div>
 	);
 }

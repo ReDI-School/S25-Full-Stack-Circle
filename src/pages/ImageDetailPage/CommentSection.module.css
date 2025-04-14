@@ -1,5 +1,23 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 300px; /* Fixed height for the entire component */
+  position: relative;
   padding: 1rem;
+}
+
+.commentsContainer {
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollableComments {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 0 10px;
 }
 
 .commentHeader {
@@ -16,9 +34,9 @@
 }
 
 .commentList {
-  list-style-type: disc;
-  padding-left: 1.25rem;
-  margin-bottom: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .commentItem {
@@ -26,41 +44,70 @@
 }
 
 .emptyState {
+  padding: 20px;
+  text-align: center;
   background-color: rgb(243 244 246);
-  padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  color: rgb(55 65 81);
+  color: #666;
 }
 
 .commentForm {
-  margin-top: 1rem;
+  margin-top: 0;
+}
+
+.fixedInputArea {
+  position: sticky;
+  bottom: 0;
+  background-color: transparent;
+  padding: 12px;
+  padding-top: 0;
+}
+
+.questionText {
+  margin-bottom: 8px;
+  color: #000;
+  font-size: 15px;
+  padding-left: 4px;
 }
 
 .inputContainer {
   display: flex;
   align-items: center;
-  background-color: rgb(243 244 246);
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
+  background-color: #f0f2f5;
+  border-radius: 20px;
+  padding: 8px 12px;
+  margin-top: 4px;
 }
 
 .commentInput {
-  flex-grow: 1;
-  background-color: transparent;
+  flex: 1;
   border: none;
+  background: transparent;
   outline: none;
-  color: rgb(55 65 81);
+  font-size: 15px;
   resize: none;
-  overflow: hidden;
+  padding: 0;
+  margin-right: 8px;
+}
+
+.iconGroup {
+  display: flex;
+  gap: 8px;
 }
 
 .iconButton {
-  color: rgb(107 114 128);
-  margin: 0 0.5rem;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #65676B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .iconButton:hover {
-  color: rgb(55 65 81);
+  color: #1877f2;
 }
 
 .sendButton {

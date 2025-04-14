@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ShopItem from "./ImageDetailPage/ShopItem";
 import Breadcrumb from "./ImageDetailPage/Breadcrumb";
 import styles from "./Detail.module.css";
-import CommentSection from "./ImageDetailPage/CommentSection";
+
 function ImageDetailPage() {
 	return (
 		<div className={styles.pageWrapper}>
