@@ -1,0 +1,74 @@
+.container {
+  margin-top: 1.5rem;
+}
+
+.commentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(243 244 246);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.commentCount {
+  color: rgb(55 65 81);
+}
+
+.commentList {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.commentItem {
+  margin-bottom: 0.25rem;
+}
+
+.emptyState {
+  background-color: rgb(243 244 246);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  color: rgb(55 65 81);
+}
+
+.commentForm {
+  margin-top: 1rem;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  background-color: rgb(243 244 246);
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.commentInput {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: rgb(55 65 81);
+  resize: none;
+  overflow: hidden;
+}
+
+.iconButton {
+  color: rgb(107 114 128);
+  margin: 0 0.5rem;
+}
+
+.iconButton:hover {
+  color: rgb(55 65 81);
+}
+
+.sendButton {
+  color: rgb(59 130 246);
+  margin: 0 0.5rem;
+}
+
+.sendButton:hover {
+  color: rgb(29 78 216);
+}
