@@ -3,34 +3,24 @@ import { Link } from "react-router-dom";
 import { IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import {
-  Wrapper,
-  LogoWrapper,
-  ExploreButton,
-  SearchWrapper,
-  SearchBarWrapper,
-  AboutButton,
-  BusinessButton,
-  PressButton,
-  LoginButton,
-  SignupButton,
-  IconWrapper,
-} from "./HeaderStyles";
+import styles from "./Header.module.css";
 import logo from "/images/pinterest-seeklogo.svg";
 
 const Header = () => {
   return (
-    <Wrapper>
-      <LogoWrapper>
+    <div className={styles.wrapper}>
+      <div className={styles.logoWrapper}>
         <IconButton>
           <img src={logo} alt="Logo" width={100} height={100} />
         </IconButton>
-      </LogoWrapper>
-      <ExploreButton>
+      </div>
+
+      <div className={styles.exploreButton}>
         <Link to="/explore">Explore</Link>
-      </ExploreButton>
-      <SearchWrapper>
-        <SearchBarWrapper>
+      </div>
+
+      <div className={styles.searchWrapper}>
+        <div className={styles.searchBarWrapper}>
           <IconButton>
             <SearchIcon />
           </IconButton>
@@ -41,29 +31,35 @@ const Header = () => {
             />
             <button type="submit"></button>
           </form>
-        </SearchBarWrapper>
-      </SearchWrapper>
-      <AboutButton>
+        </div>
+      </div>
+
+      <div className={styles.aboutButton}>
         <Link to="/">About</Link>
-      </AboutButton>
-      <BusinessButton>
+      </div>
+
+      <div className={styles.businessButton}>
         <Link to="/">Business</Link>
-      </BusinessButton>
-      <PressButton>
+      </div>
+
+      <div className={styles.pressButton}>
         <Link to="/">Press</Link>
-      </PressButton>
-      <LoginButton>
+      </div>
+
+      <div className={styles.loginButton}>
         <Link to="/login">Log in</Link>
-      </LoginButton>
-      <SignupButton>
+      </div>
+
+      <div className={styles.signupButton}>
         <Link to="/signup">Sign up</Link>
-      </SignupButton>
-      <IconWrapper>
+      </div>
+
+      <div className={styles.iconWrapper}>
         <IconButton>
           <KeyboardArrowDownIcon />
         </IconButton>
-      </IconWrapper>
-    </Wrapper>
+      </div>
+    </div>
   );
 };
 

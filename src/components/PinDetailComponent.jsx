@@ -1,44 +1,49 @@
-import React from 'react'
+import React from "react";
+import styles from "./pinDetail.module.css";
 
 function PinDetailComponent() {
-  // dummy data
   const pin = {
     link: "https://www.instagram.com/",
     postName: "Character Design",
     description: "@inktober day 16: Grungy digital inking using @procreate",
-    hashtags: ["#inktober", "#inktober24", "#inktober2024", "#day16", "#inktoberday16", "#inktobergrungy", "#grungy", "#inking", "#inkart", "digital", "...more"],
+    hashtags: [
+      "#inktober",
+      "#inktober24",
+      "#inktober2024",
+      "#day16",
+      "#inktoberday16",
+      "#inktobergrungy",
+      "#grungy",
+      "#inking",
+      "#inkart",
+      "digital",
+      "...more",
+    ],
     username: "inscapia",
-    userProfile: "https://placehold.co/50x50", // Placeholder 
+    userProfile: "https://placehold.co/50x50",
   };
 
   return (
     <div>
-      {/* link */}
-      <a href={pin.link} target="_blank" rel="noopener noreferrer"> 
+      <a
+        href={pin.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.link}
+      >
         Instagram
       </a>
 
-       {/* Post Name */}
-       <h2>{pin.postName}</h2>
+      <h2 className={styles.title}>{pin.postName}</h2>
+      <p className={styles.description}>{pin.description}</p>
+      <p className={styles.hashtags}>{pin.hashtags.join(" ")}</p>
 
-        {/* Description */}
-      <p>{pin.description}</p>
-
-       {/* Hashtags */}
-       <p>{pin.hashtags.join(" ")}</p>
-
-       {/* User Info (Profile Picture + Username) */}
-      <div style={{ display: "flex", alignItems: "left" }}>
-        <img
-          src={pin.userProfile}
-          alt="User"
-          style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-        />
+      <div className={styles.userInfo}>
+        <img src={pin.userProfile} alt="User" className={styles.userImage} />
         <span>{pin.username}</span>
       </div>
-
     </div>
-  )
+  );
 }
 
-export default PinDetailComponent
+export default PinDetailComponent;
