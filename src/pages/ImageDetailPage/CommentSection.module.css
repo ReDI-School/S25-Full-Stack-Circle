@@ -1,19 +1,18 @@
 .container {
-  margin-top: 1.5rem;
+  padding: 1rem;
 }
 
 .commentHeader {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background-color: rgb(243 244 246);
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
+  align-items: center;
+  padding: 0.5rem 0;
   cursor: pointer;
 }
 
 .commentCount {
-  color: rgb(55 65 81);
+  font-size: 0.9rem;
+  color: #000;
 }
 
 .commentList {
