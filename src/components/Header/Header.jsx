@@ -1,33 +1,26 @@
 import React from "react";
-import logo from "/images/pinterest-seeklogo.svg";
+import { Link } from "react-router-dom";
+import { IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-
-import { IconButton } from "@mui/material";
-import {
-  Wrapper,
-  LogoWrapper,
-  ExploreButton,
-  LoginButton,
-  SignupButton,
-  SearchWrapper,
-  SearchBarWrapper,
-  IconWrapper,
-} from "./HeaderStyles";
+import styles from "./Header.module.css";
+import logo from "/images/pinterest-seeklogo.svg";
 
 const Header = () => {
   return (
-    <Wrapper>
-      <LogoWrapper>
+    <div className={styles.wrapper}>
+      <div className={styles.logoWrapper}>
         <IconButton>
           <img src={logo} alt="Logo" width={100} height={100} />
         </IconButton>
-      </LogoWrapper>
-      <ExploreButton>
-        <a href="/">Explore</a>
-      </ExploreButton>
-      <SearchWrapper>
-        <SearchBarWrapper>
+      </div>
+
+      <div className={styles.exploreButton}>
+        <Link to="/explore">Explore</Link>
+      </div>
+
+      <div className={styles.searchWrapper}>
+        <div className={styles.searchBarWrapper}>
           <IconButton>
             <SearchIcon />
           </IconButton>
@@ -38,20 +31,35 @@ const Header = () => {
             />
             <button type="submit"></button>
           </form>
-        </SearchBarWrapper>
-      </SearchWrapper>
-      <LoginButton>
-        <a href="/">Log in</a>
-      </LoginButton>
-      <SignupButton>
-        <a href="/">Sign up</a>
-      </SignupButton>
-      <IconWrapper>
+        </div>
+      </div>
+
+      <div className={styles.aboutButton}>
+        <Link to="/">About</Link>
+      </div>
+
+      <div className={styles.businessButton}>
+        <Link to="/">Business</Link>
+      </div>
+
+      <div className={styles.pressButton}>
+        <Link to="/">Press</Link>
+      </div>
+
+      <div className={styles.loginButton}>
+        <Link to="/login">Log in</Link>
+      </div>
+
+      <div className={styles.signupButton}>
+        <Link to="/signup">Sign up</Link>
+      </div>
+
+      <div className={styles.iconWrapper}>
         <IconButton>
           <KeyboardArrowDownIcon />
         </IconButton>
-      </IconWrapper>
-    </Wrapper>
+      </div>
+    </div>
   );
 };
 

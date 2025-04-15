@@ -1,5 +1,5 @@
 import React from "react";
-import "./Css/BrowseByCategory.css";
+import styles from "./BrowseByCategory.module.css"
 
 //random dummy data for the categories
 
@@ -59,23 +59,23 @@ const categories = [
 export const BrowseByCategory = () => {
   return (
     <React.Fragment>
-      <div className="title-container">
-        <h2 className="title">Browse by category</h2>
+      <div className={styles.titleContainer}>
+        <h2 className={styles.title}>Browse by category</h2>
       </div>
-      <div className="category-grid-container">
+      <div className={styles.categoryGridContainer}>
         {categories.map((category) => (
-          <div key={category.id} className="category-card">
-            <div className="category-image">
+          <div key={category.id} className={styles.categoryCard}>
+            <div className={styles.categoryImage}>
               <img src={category.image} alt={category.title} />
             </div>
-            <div className="category-title">
+            <div className={styles.categoryTitle}>
               <h3>{category.title}</h3>
             </div>
           </div>
         ))}
       </div>
       <div>
-        <button className="see-more-button">See more</button>
+        <button className={styles.seeMoreButton}>See more</button>
       </div>
     </React.Fragment>
   );

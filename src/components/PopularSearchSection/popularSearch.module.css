@@ -1,0 +1,35 @@
+
+.container {
+    margin: 0px 16px 16px 0;
+  }
+  
+  .btnStyle {
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    border: none;
+    background-color: #e9e9e9;
+    border-radius: 999px;
+    padding: 0.8rem 1.1rem;
+  }
+  
+  .iconStyle {
+    margin: 0 8px 0 0;
+    width: 16px;
+    height: 16px;
+  }
+  
+
+
+  .titleStyle {
+    margin: 64px 0 16px 0;
+    color: #111111;
+    font-size: 28px;
+    font-weight: 600; /* changed from 'semibold' to numeric value */
+  }
+  
+  .listStyle {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
