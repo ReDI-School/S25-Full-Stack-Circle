@@ -28,32 +28,35 @@ function CommentSection() {
 
 	return (
 		<div className={styles.container}>
-			{comments.length > 0 && (
-				<>
-					<div
-						className={styles.commentHeader}
-						onClick={toggleCommentsVisibility}>
-						<span className={styles.commentCount}>
-							{comments.length} {comments.length === 1 ? "comment" : "comments"}
-						</span>
-						<span className={styles.commentCount}>
-							{isCommentsVisible ? "▲" : "▼"}
-						</span>
-					</div>
-
-					{isCommentsVisible && (
-						<div className={styles.scrollableComments}>
-							<ul className={styles.commentList}>
-								{comments.map((comment, index) => (
-									<li key={index} className={styles.commentItem}>
-										{comment}
-									</li>
-								))}
-							</ul>
+			<div className={styles.commentsContainer}>
+				{comments.length > 0 && (
+					<>
+						<div
+							className={styles.commentHeader}
+							onClick={toggleCommentsVisibility}>
+							<span className={styles.commentCount}>
+								{comments.length}{" "}
+								{comments.length === 1 ? "comment" : "comments"}
+							</span>
+							<span className={styles.commentCount}>
+								{isCommentsVisible ? "▲" : "▼"}
+							</span>
 						</div>
-					)}
-				</>
-			)}
+
+						{isCommentsVisible && (
+							<div className={styles.scrollableComments}>
+								<ul className={styles.commentList}>
+									{comments.map((comment, index) => (
+										<li key={index} className={styles.commentItem}>
+											{comment}
+										</li>
+									))}
+								</ul>
+							</div>
+						)}
+					</>
+				)}
+			</div>
 
 			<div className={styles.fixedInputArea}>
 				<div className={styles.questionText}>What do you think?</div>
