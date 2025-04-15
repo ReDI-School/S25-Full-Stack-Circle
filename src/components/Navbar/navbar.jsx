@@ -1,11 +1,11 @@
 import React from "react";
 import Header from "../Header/Header";
-import "./navbar.css";
+import style from "./navbar.module.css";
 import Modal from "../Modal/Modal";
 
 export default function Navbar() {
   return (
-    <div className="navbar-container">
+    <div className={style.navbarContainer}>
       <Header />
       <Modal />
     </div>

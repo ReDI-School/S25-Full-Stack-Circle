@@ -1,11 +1,10 @@
 .breadcrumb {
     display: flex;
     align-items: center;
-    justify-content: center; /* center it horizontally */
     font-size: 14px;
     font-weight: 500;
     gap: 0.5rem;
-    margin: 1rem 0;
+    margin: 1rem 0 1rem 100px; /* top, right, bottom, left */
     color: #111;
   }
   
