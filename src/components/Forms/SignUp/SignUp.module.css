@@ -1,5 +1,5 @@
 /* Modal content */
-.modal-content {
+.modalContent {
   padding: 0 32px 32px;
   display: flex;
   flex-direction: column;
@@ -29,12 +29,12 @@
   width: 100%;
 }
 
-.input-group {
+.inputGroup {
   position: relative;
   width: 80%;
 }
 
-.icon-wrapper {
+.iconWrapper {
   position: absolute;
   left: 12px;
   top: 65%;
@@ -42,7 +42,7 @@
   color: #767676;
 }
 
-.input-label {
+.inputLabel {
   display: block;
   margin-left: 12px;
   margin-bottom: 6px;
@@ -81,28 +81,28 @@
   cursor: pointer;
 }
 
-.login-button {
+.loginButton {
   background-color: #e60023;
   color: white;
   border: none;
   margin-top: 8px;
 }
-.login-button:hover {
+.loginButton:hover {
   background-color: #d50c22;
 }
 
-.social-button {
+.socialButton {
   border: 1px solid #cdcdcd;
   background-color: white;
   margin-bottom: 12px;
 }
 
-.social-button:hover {
+.socialButton:hover {
   background-color: #f8f8f8;
 }
 /* end of button */
 
-.social-icon {
+.socialIcon {
   width: 20px;
   height: 20px;
   margin-right: 8px;
@@ -111,7 +111,7 @@
   justify-content: center;
 }
 
-.forgot-password {
+.forgotPassword {
   text-align: center;
   color: #767676;
   font-size: 14px;
@@ -119,50 +119,50 @@
   margin-top: 16px;
   cursor: pointer;
 }
-.forgot-password:hover {
+.forgotPassword:hover {
   text-decoration: underline;
 }
 
-.or-divider {
+.orDivider {
   display: flex;
   align-items: center;
   margin: 20px 0;
   color: #767676;
 }
 
-.or-divider::before,
-.or-divider::after {
+.orDivider::before,
+.orDivider::after {
   content: "";
   flex: 1;
   border-bottom: 1px solid #e3e3e3;
 }
 
-.or-divider::before {
+.orDivider::before {
   margin-right: 16px;
 }
 
-.or-divider::after {
+.orDivider::after {
   margin-left: 16px;
 }
 
-.signup-text {
+.signupText {
   text-align: center;
   margin-top: 24px;
   color: #767676;
   font-size: 14px;
 }
 
-.signup-link {
+.signupLink {
   color: #111;
   font-weight: 600;
   cursor: pointer;
 }
 
-.signup-link:hover {
+.signupLink:hover {
   text-decoration: underline;
 }
 
-.terms-text {
+.termsText {
   width: 80%;
   text-align: center;
   margin-top: 24px;
@@ -171,7 +171,7 @@
   line-height: 1.5;
 }
 
-.language-selector {
+.languageSelector {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,6 +183,6 @@
   cursor: pointer;
 }
 
-.language-selector:hover {
+.languageSelector:hover {
   text-decoration: underline;
 }

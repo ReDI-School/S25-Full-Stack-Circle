@@ -2,68 +2,68 @@ import React from "react";
 import { CiMail } from "react-icons/ci";
 import { CiLock } from "react-icons/ci";
 import { FaChevronDown } from "react-icons/fa";
-import classes from "./Login.module.css";
+import styles from "./Login.module.css";
 import googleLogo from "/images/google-new.svg";
 import facebookLogo from "/images/facebook-2020-2-1.svg";
 
 const Login = () => {
   return (
-    <div className={classes["modal-content"]}>
-      <h1 className={classes.title}>Welcome to Pinterest</h1>
+    <div className={styles.modalContent}>
+      <h1 className={styles.title}>Welcome to Pinterest</h1>
 
-      <form className={classes.form}>
-        <div className={classes["input-group"]}>
-          <div className={classes["icon-wrapper"]}>
+      <form className={styles.form}>
+        <div className={styles.inputGroup}>
+          <div className={styles.iconWrapper}>
             <CiMail size={20} />
           </div>
-          <label className={classes["input-label"]}>Email</label>
-          <input className={classes.input} type="email" placeholder="Email" />
+          <label className={styles.inputLabel}>Email</label>
+          <input className={styles.input} type="email" placeholder="Email" />
         </div>
 
-        <div className={classes["input-group"]}>
-          <div className={classes["icon-wrapper"]}>
+        <div className={styles.inputGroup}>
+          <div className={styles.iconWrapper}>
             <CiLock size={20} />
           </div>
-          <label className={classes["input-label"]}>Password</label>
+          <label className={styles.inputLabel}>Password</label>
           <input
-            className={classes.input}
+            className={styles.input}
             type="password"
             placeholder="Password"
           />
         </div>
-        <button className={`${classes["login-button"]} ${classes.button}`}>
+        <button className={`${styles.loginButton} ${styles.button}`}>
           Log in
         </button>
       </form>
 
-      <a className={classes["forgot-password"]}>Forgot your password?</a>
+      <a className={styles.forgotPassword}>Forgot your password?</a>
 
-      <div className={classes["or-divider"]}>OR</div>
+      <div className={styles.orDivider}>OR</div>
 
-      <button className={`${classes["social-button"]} ${classes.button}`}>
-        <div className={classes["social-icon"]}>
+      <button className={`${styles.socialButton} ${styles.button}`}>
+        <div className={styles.socialIcon}>
           <img src={googleLogo} alt="Google Logo" />
         </div>
         Continue with Google
       </button>
 
-      <button className={`${classes["social-button"]} ${classes.button}`}>
-        <div className={classes["social-icon"]}>
+      <button className={`${styles.socialButton} ${styles.button}`}>
+        <div className={styles.socialIcon}>
           <img src={facebookLogo} alt="Facebook Logo" />
         </div>
         Continue with Facebook
       </button>
 
-      <p className={classes["signup-text"]}>
-        Not on Pinterest yet? <a className={classes["signup-link"]}>Sign up</a>
+      <p className={styles.signupText}>
+        Not on Pinterest yet? <a className={styles.signupLink}>Sign up</a>
       </p>
 
-      <a className={classes["terms-text"]}>
+      <a className={styles.termsText}>
         By continuing, you agree to Pinterest's Terms of Service and acknowledge
         you've read our Privacy Policy
       </a>
 
-      <button className={classes["language-selector"]}>
+      <button className={styles.languageSelector}>
         English (US) <FaChevronDown size={16} style={{ marginLeft: "4px" }} />
       </button>
     </div>
