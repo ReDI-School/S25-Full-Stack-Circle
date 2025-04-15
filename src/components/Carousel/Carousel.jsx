@@ -13,18 +13,19 @@ export default function SimpleSlider() {
     <Slider {...settings}>
       <div>
         <p>
-        平日晩ご飯のアイデア
+        weeknight dinner idea
         </p>
       </div>
       <div>
-        <p>インテリアのアイデア
+        <p>home décor idea
         </p>
       </div>
       <div>
-        <p>最新ファッション</p>
+        <p>new outfit</p>
       </div>
       <div>
-        <p>ガーデニングのアイデア</p>
+        <p>green thumb idea
+        </p>
       </div>
     </Slider>
   );
