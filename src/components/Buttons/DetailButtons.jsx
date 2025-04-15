@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import styles from "./DetailButtons.module.css";
 import { BiFontSize } from "react-icons/bi";
 import { BsHeart, BsHeartFill, BsThreeDots } from "react-icons/bs";
 import { FiShare } from "react-icons/fi";
 
 export default function DetailPage_buttons() {
   // Container styles for the entire component.
+  /*
   const containerStyle = {
     display: "flex",
     alignItems: "center",
@@ -15,26 +17,31 @@ export default function DetailPage_buttons() {
     // optional, for rounded corners
     //boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // optional, for a slight shadow
   };
-
+*/
   // Button styles for the like/share icons.
+  /*
   const buttonStyle = {
     height: "48px",
-    width: "auto",
+    width: "48%",
     display: "flex",
     alignItems: "center",
     backgroundColor: "#ffffff",
+    borderRadius:'50%', // Rounded button
     border: "none",
     padding: "8px",
     cursor: "pointer",
   };
-
+*/
   // Styles for grouping elements (left and right)
+/*
   const groupLeftAndRightStyle = {
     display: "flex",
     alignItems: "center",
   };
+*/
 
   // Styles for the save button when unsaved.
+  /*
   const unsavedStyle = {
     backgroundColor: "#e60023", // Red background for unsaved
     color: "#ffffff",           // White text
@@ -46,8 +53,9 @@ export default function DetailPage_buttons() {
     fontSize: "12px",
     transition: "all 0.3s ease",
   };
-
+  */
   // Styles for the save button when saved.
+  /*
   const savedStyle = {
     backgroundColor: "#000000", // Black background for saved
     color: "#ffffff",           // White text
@@ -59,6 +67,7 @@ export default function DetailPage_buttons() {
     fontSize: "12px",
     transition: "all 0.3s ease",
   };
+*/
 
   // State hooks for the saved and liked states.
   const [isSaved, setIsSaved] = useState(false);
@@ -75,53 +84,52 @@ export default function DetailPage_buttons() {
   };
 
   return (
-    <div style={containerStyle}>
-      <div style={groupLeftAndRightStyle}>
-        <button style={buttonStyle} onClick={handleClickLiked}>
+    <div className={styles.containerstyle}>
+      <div className={styles.subcontainner}>
+        <button className={`${styles.buttonstyle} ${styles.heartButton}`}  onClick={handleClickLiked}>
           {isLiked ? (
-            <>
               <BsHeartFill
                 style={{ width: "24px", height: "24px", color: "#e60023" }}
               />
-              {/* Added a paragraph element next to the filled heart when liked.
-                  The margin and padding adjustments ensure it aligns nicely. */}
-              <p style={{ color: "#000000", margin: 0, paddingLeft: "4px" }}>
-                123
-              </p>
-            </>
           ) : (
             <BsHeart
               style={{ width: "24px", height: "24px", color: "#000000" }}
             />
           )}
         </button>
-        {/* Share and options icons remain clickable elements.
-            Added cursor and margin for a more interactive feel. */}
 
-        <FiShare
-          style={{
-            width: "24px",
-            height: "24px",
-            color: "#000000",
-            cursor: "pointer",
-            marginLeft: "8px",
-          }}
-        />
+        {isLiked && (
+          <p style={{ color: "#000000", margin: 0, paddingLeft: "4px" }} className={styles.numbercomment}>
+            123
+          </p>
+        )}
+        <button className={`${styles.buttonstyle} ${styles.shareButton}`}>
+          <FiShare
+            style={{
+              width: "24px",
+              height: "24px",
+              color: "#000000",
+              cursor: "pointer",
+              
+            }}
+          />
+        </button>
+        <button className={`${styles.buttonstyle} ${styles.menuButton}`}>
+          <BsThreeDots
+            style={{
+              width: "24px",
+              height: "24px",
+              color: "#000000",
+              cursor: "pointer",
+            }}
+          />
+        </button>
 
-        <BsThreeDots
-          style={{
-            width: "24px",
-            height: "24px",
-            color: "#000000",
-            cursor: "pointer",
-            marginLeft: "8px",
-          }}
-        />
       </div>
 
-      <div style={groupLeftAndRightStyle}>
+      <div className={styles.subcontainner}>
         <button
-          style={isSaved ? savedStyle : unsavedStyle}
+          className={isSaved ? styles.savedbtn : styles.unsavedbtn}
           onClick={handleClickSaved}
         >
           {isSaved ? "Saved" : "Save"}
