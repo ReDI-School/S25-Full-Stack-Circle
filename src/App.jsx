@@ -5,7 +5,6 @@ import Homepage from "./pages/Homepage";
 import ExplorePage from "./pages/Explorepage";
 import ImageDetailPage from "./pages/ImageDetailPage";
 
-
 function App() {
   return (
     <Router>

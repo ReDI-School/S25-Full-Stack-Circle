@@ -5,8 +5,14 @@ import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import styles from "./Header.module.css";
 import logo from "/images/pinterest-seeklogo.svg";
+import Modal from "../Modal/Modal";
+import useModal from "../Modal/hooks/useModal";
+import Login from "../Forms/Login/Login";
+import SignUp from "../Forms/SignUp/SignUp";
 
 const Header = () => {
+  const { isOpen, modalType, openModal, closeModal } = useModal();
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.logoWrapper}>
@@ -46,11 +52,11 @@ const Header = () => {
         <Link to="/">Press</Link>
       </div>
 
-      <div className={styles.loginButton}>
+      <div className={styles.loginButton} onClick={() => openModal("login")}>
         <Link to="/login">Log in</Link>
       </div>
 
-      <div className={styles.signupButton}>
+      <div className={styles.signupButton} onClick={() => openModal("signup")}>
         <Link to="/signup">Sign up</Link>
       </div>
 
@@ -59,6 +65,11 @@ const Header = () => {
           <KeyboardArrowDownIcon />
         </IconButton>
       </div>
+
+      <Modal isOpen={isOpen} onClose={closeModal}>
+        {modalType === "login" && <Login />}
+        {modalType === "signup" && <SignUp />}
+      </Modal>
     </div>
   );
 };
