@@ -1,10 +1,9 @@
 import React from "react";
-import Login from "../components/HomePageLogin/login";
-
 import { Link } from "react-router-dom";
-import styles from "./home.module.css";
+import styles from "./Home.module.css";
+import Login from "../components/Forms/Login/Login";
 
-function Homepage() {
+function HomePage() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Homepage</h1>
@@ -18,4 +17,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default HomePage;

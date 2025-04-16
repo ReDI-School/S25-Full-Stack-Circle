@@ -1,21 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./explore.module.css";
-import BestOfPinterestSection from "../components/ExplorePageSection1/BestOfPinterestSection"
-import { BrowseByCategory } from "../components/ExplorePage/BrowseByCategory";
-import PopularSearch from "../components/PopularSearchSection/PopularSearchList";
-
+import BestOfPinterestSection from "../components/ExplorePage/BestOfPinterest/BestOfPinterestSection";
+import BrowseByCategory from "../components/ExplorePage/BrowseByCategory/BrowseByCategory";
+import PopularSearchList from "../components/PopularSearchSection/PopularSearchList";
 
 function ExplorePage() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-xl font-bold mb-4">Explore Page</h1>
       <nav className="space-x-2 mt-4">
-        <Link
-          to="/"
-          className="bg-gray-200 px-4 py-2 rounded"
-          aria-label="Back to Homepage"
-        >
+        <Link to="/" className="bg-gray-200 px-4 py-2 rounded" aria-label="Back to Homepage">
           Back to Homepage
         </Link>
         <Link
@@ -27,7 +21,7 @@ function ExplorePage() {
         </Link>
         <BestOfPinterestSection />
         <BrowseByCategory />
-        <PopularSearch />
+        <PopularSearchList />
       </nav>
     </div>
   );

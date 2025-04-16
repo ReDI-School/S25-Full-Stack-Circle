@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./popularSearch.module.css";
+import styles from "./PopularSearch.module.css";
+
 function PopularSearchBtn({ idea }) {
   return (
     <div className={styles.container}>
