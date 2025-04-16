@@ -1,18 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./explore.module.css";
-import ExplorePage_Best_Of_Pinterest_Section from "../components/ExplorePage_Best_Of_Pinterest_Section";
+import BestOfPinterestSection from "../components/ExplorePageSection1/BestOfPinterestSection"
 import { BrowseByCategory } from "../components/ExplorePage/BrowseByCategory";
 import PopularSearch from "../components/PopularSearchSection/PopularSearchList";
 
-function Explorepage() {
+
+function ExplorePage() {
   return (
-    <div className={styles.container}>
-      <ExplorePage_Best_Of_Pinterest_Section />
-      <BrowseByCategory />
-      <PopularSearch />
+    <div className="container mx-auto p-4">
+      <h1 className="text-xl font-bold mb-4">Explore Page</h1>
+      <nav className="space-x-2 mt-4">
+        <Link
+          to="/"
+          className="bg-gray-200 px-4 py-2 rounded"
+          aria-label="Back to Homepage"
+        >
+          Back to Homepage
+        </Link>
+        <Link
+          to="/detail"
+          className="bg-gray-200 px-4 py-2 rounded"
+          aria-label="Go to Image Detail"
+        >
+          Go to Image Detail
+        </Link>
+        <BestOfPinterestSection />
+        <BrowseByCategory />
+        <PopularSearch />
+      </nav>
     </div>
   );
 }
 
-export default Explorepage;
+export default ExplorePage;
