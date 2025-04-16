@@ -1,24 +1,26 @@
-
+// src/components/Login.jsx
 import React from "react";
-import "./Login.css";
+import styles from "./Login.module.css";
 
 const Login = () => {
   return (
-    <div className="login-box">
+    <div className={styles.loginBox}>
       <h2>Welcome to Circle</h2>
       <p>Find new ideas to try</p>
-      <form>
+      <form className={styles.form}>
         <input type="email" placeholder="Email" required />
         <input type="password" placeholder="Create a password" required />
         <input type="date" placeholder="Birthdate" required />
-        <button type="submit">Continue</button>
+        <button type="submit" className={styles.submitButton}>
+          Continue
+        </button>
       </form>
 
-      <div className="or-section">OR</div>
+      <div className={styles.orSection}>OR</div>
 
-      <button className="google-login">Continue with Google</button>
+      <button className={styles.googleLogin}>Continue with Google</button>
 
-      <p className="login-note">
+      <p className={styles.loginNote}>
         Already a member? <a href="#">Log in</a>
       </p>
     </div>
