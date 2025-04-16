@@ -2,11 +2,10 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import ImageDetailPage from "./pages/ImageDetailPage";
-import Navbar from "./components/Navbar/Navbar";
 import CardDetailPage from "./components/ExplorePage/BestOfPinterest/CardDetailPage";
 import HomePage from "./pages/Homepage";
 import ExplorePage from "./pages/ExplorePage";
-
+import Navbar from "./components/Navbar/navbar";
 function App() {
   return (
     <Router>
