@@ -5,70 +5,7 @@ import { BsHeart, BsHeartFill, BsThreeDots } from "react-icons/bs";
 import { FiShare } from "react-icons/fi";
 
 export default function DetailPage_buttons() {
-  // Container styles for the entire component.
-  /*
-  const containerStyle = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between", // or 'flex-start', depending on your layout needs
-    width: "492px",                  // adjust to your preferred width
-    height: "48px",                  // adjust to your preferred height
-    backgroundColor: "#ffffff",      // white background
-    // optional, for rounded corners
-    //boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // optional, for a slight shadow
-  };
-*/
-  // Button styles for the like/share icons.
-  /*
-  const buttonStyle = {
-    height: "48px",
-    width: "48%",
-    display: "flex",
-    alignItems: "center",
-    backgroundColor: "#ffffff",
-    borderRadius:'50%', // Rounded button
-    border: "none",
-    padding: "8px",
-    cursor: "pointer",
-  };
-*/
-  // Styles for grouping elements (left and right)
-/*
-  const groupLeftAndRightStyle = {
-    display: "flex",
-    alignItems: "center",
-  };
-*/
-
-  // Styles for the save button when unsaved.
-  /*
-  const unsavedStyle = {
-    backgroundColor: "#e60023", // Red background for unsaved
-    color: "#ffffff",           // White text
-    border: "none",
-    height: "48px",
-    padding: "12px 16px",
-    borderRadius: "45%",       // Rounded corners (if desired)
-    cursor: "pointer",
-    fontSize: "12px",
-    transition: "all 0.3s ease",
-  };
-  */
-  // Styles for the save button when saved.
-  /*
-  const savedStyle = {
-    backgroundColor: "#000000", // Black background for saved
-    color: "#ffffff",           // White text
-    border: "none",
-    height: "48px",
-    padding: "12px 16px",
-    borderRadius: "45%",
-    cursor: "pointer",
-    fontSize: "12px",
-    transition: "all 0.3s ease",
-  };
-*/
-
+  
   // State hooks for the saved and liked states.
   const [isSaved, setIsSaved] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -89,40 +26,25 @@ export default function DetailPage_buttons() {
         <button className={`${styles.buttonstyle} ${styles.heartButton}`}  onClick={handleClickLiked}>
           {isLiked ? (
               <BsHeartFill
-                style={{ width: "24px", height: "24px", color: "#e60023" }}
+                className={styles.iconheartfilled}
               />
           ) : (
             <BsHeart
-              style={{ width: "24px", height: "24px", color: "#000000" }}
+            className={styles.iconheartstroke}
             />
           )}
         </button>
 
         {isLiked && (
-          <p style={{ color: "#000000", margin: 0, paddingLeft: "4px" }} className={styles.numbercomment}>
+          <p className={styles.numbercomment}>
             123
           </p>
         )}
         <button className={`${styles.buttonstyle} ${styles.shareButton}`}>
-          <FiShare
-            style={{
-              width: "24px",
-              height: "24px",
-              color: "#000000",
-              cursor: "pointer",
-              
-            }}
-          />
+          <FiShare className={styles.iconshare}/>
         </button>
         <button className={`${styles.buttonstyle} ${styles.menuButton}`}>
-          <BsThreeDots
-            style={{
-              width: "24px",
-              height: "24px",
-              color: "#000000",
-              cursor: "pointer",
-            }}
-          />
+          <BsThreeDots className={styles.iconthreedots}/>
         </button>
 
       </div>

@@ -39,12 +39,46 @@
   padding: 8px;
   cursor: pointer;
 }
+
 .numbercomment{
-    margin-right: 3px;;
+    margin-right: 3px;
+    color: #000000;
+    margin:0px;
+    padding-left:4px;
 }
+
 .buttonstyle:hover {
   background-color: #f0f0f0;
 }
+
+.iconheartfilled {
+  color: #e60023;
+  width:24px;
+  height:24px;
+  cursor: pointer;
+}
+
+.iconheartstroke {
+  color: #000000;
+  width:24px;
+  height:24px;
+  cursor: pointer;
+}
+.iconshare{
+  width:24px;
+  height:24px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.iconthreedots{
+  width:24px;
+  height:24px;
+  color: #000000;
+  cursor: pointer;
+}
+
+
 .unsavedbtn {
   background-color: #e60023; 
   color: #ffffff;        
