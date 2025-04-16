@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import "./CardDetailPage.css"; 
+import styles from './CardDetailPage.module.css';
 import { cards } from "./cardDetails"; 
 import Breadcrumb from "./Breadcrumb";
 
@@ -21,11 +21,11 @@ const CardDetailPage = () => {
   }
 
 return (
-  <div className="card-detail-page">
+  <div className={styles.cardDetailPage}>
     <Breadcrumb categories={categories} />
-    <div className="card-image-container">
+    <div className={styles.cardImageContainer}>
       <img src={card.image} alt={card.title} />
-      <div className="card-overlay">
+      <div className={styles.cardOverlay}>
         <h1>{card.title}</h1>
         <p>{card.description}</p>
       </div>
