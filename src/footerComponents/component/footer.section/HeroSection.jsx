@@ -6,9 +6,10 @@ const HeroSection = () => {
   return (
     <div className="hero-section">
       <div className="hero-image">
-      //i will pu the backround picture URL of footer here
-        <img src="" alt="Inspiration"/>
-          
+        <img
+          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4"
+          alt="Inspiration"
+        />
         <div className="hero-text">
           <h1>Sign up to get your ideas</h1>
         </div>
