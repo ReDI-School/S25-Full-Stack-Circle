@@ -1,16 +1,16 @@
-.breadcrumb-nav {
+.breadcrumbNav {
     font-size: 12px;
     margin-bottom: 15px;
     padding: 0 8px;
 }
 
-.breadcrumb-link {
+.breadcrumbLink {
     text-decoration: none;
     color: #111;
     margin-right: 5px;
 }
 
-.breadcrumb-separator {
+.breadcrumbSeparator {
     color: #111;
     padding: 0 12px;
 }
