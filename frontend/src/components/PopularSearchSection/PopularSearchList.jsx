@@ -1,4 +1,4 @@
-import PopularSearchBtn from "./PopularSearchBtn";
+import PopularSearchBtn from "./PopularSearchBtn.jsx";
 import { mockData } from "../../assets/data.js";
 import styles from "./popularSearch.module.css";
 function PopularSearchList() {
