@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import ImageDetailPage from "./pages/ImageDetailPage";
 import CardDetailPage from "./components/ExplorePage/BestOfPinterest/CardDetailPage";
-import HomePage from "./pages/y";
+import HomePage from "./pages/HomePage";
 import ExplorePage from "./pages/ExplorePage";
-import Navbar from "./components/Navbar/X";
+import Navbar from "./components/Navbar/Navbar";
+
 function App() {
   return (
     <Router>
@@ -21,4 +22,3 @@ function App() {
 }
 
 export default App;
-// to check
