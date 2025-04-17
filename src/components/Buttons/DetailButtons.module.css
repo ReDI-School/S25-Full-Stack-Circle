@@ -1,0 +1,199 @@
+
+.containerstyle {
+    color: rgb(33, 25, 34);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin:0px;
+    font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    justify-content: space-between; 
+    width: 492px;                  
+    height: 52px; 
+    text-size-adjust: 100%;                
+    background-color: #ffffff;
+    padding-top: 8px;
+    padding-right:16px;      
+}
+
+.subcontainner {
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius:8px;
+    border-bottom-right-radius:8px;
+    border-top-left-radius:8px;
+    border-top-right-radius:8px;
+    box-sizing:border-box;
+    justify-content:space-between;
+    max-width: 508px;
+}
+
+.buttonstyle {
+  height: 48px;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 24px;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.numbercomment{
+    margin-right: 3px;
+    color: #000000;
+    margin:0px;
+    padding-left:4px;
+}
+
+.buttonstyle:hover {
+  background-color: #f0f0f0;
+}
+
+.iconheartfilled {
+  color: #e60023;
+  width:24px;
+  height:24px;
+  cursor: pointer;
+}
+
+.iconheartstroke {
+  color: #000000;
+  width:24px;
+  height:24px;
+  cursor: pointer;
+}
+.iconshare{
+  width:24px;
+  height:24px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.iconthreedots{
+  width:24px;
+  height:24px;
+  color: #000000;
+  cursor: pointer;
+}
+
+
+.unsavedbtn {
+  background-color: #e60023; 
+  color: #ffffff;        
+  border: none;
+  height: 48px;
+  padding: 12px 16px;
+  border-radius: 24px; 
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.085s ease-out;
+  min-height:48px;
+  min-width:60px;
+}
+
+.savedbtn {
+  background-color: #000000; 
+  color: #ffffff;
+  border: none;
+  height: 48px;
+  padding: 12px 16px;
+  border-radius: 24px; 
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.085s ease-out;
+  min-height:48px;
+  min-width:60px;
+}
+
+
+
+/* -------------------------
+   NEW: Tooltip for HEART button
+---------------------------- */
+.heartButton {
+    position: relative; /* NEW */
+  }
+  
+  /* Add the hidden tooltip text by default */
+  .heartButton::after {
+    content: "React";    
+    position: absolute;  
+    bottom: -50%;        
+    left: 50%;           
+    transform: translateX(-50%); 
+    background-color: #000;      
+    color: #fff;                
+    padding: 4px 8px;            
+    border-radius: 4px;          
+    font-size: 12px;             
+    visibility: hidden;          
+    opacity: 0;                 
+    transition: opacity 0.2s ease; 
+    white-space: nowrap;         
+  }
+  
+  /* Show the tooltip on hover */
+  .heartButton:hover::after {
+    visibility: visible; 
+    opacity: 1;          
+  }
+  
+  /* -------------------------
+     NEW: Tooltip for SHARE button
+  ---------------------------- */
+  .shareButton {
+    position: relative; 
+  }
+  
+  .shareButton::after {
+    content: "Share";       
+    position: absolute;     
+    bottom: -50%;           
+    left: 50%;              
+    transform: translateX(-50%);
+    background-color: #000; 
+    color: #fff;            
+    padding: 4px 8px;       
+    border-radius: 4px;     
+    font-size: 12px;        
+    visibility: hidden;     
+    opacity: 0;             
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+  }
+  
+  .shareButton:hover::after {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  /* -------------------------
+     NEW: Tooltip for MENU (three dots) button
+  ---------------------------- */
+  .menuButton {
+    position: relative; 
+  }
+  
+  .menuButton::after {
+    content: "More options"; /* NEW: tooltip text for the three dot button */
+    position: absolute;      
+    bottom: -50%;            
+    left: 50%;               
+    transform: translateX(-50%);
+    background-color: #000;  
+    color: #fff;             
+    padding: 4px 8px;        
+    border-radius: 4px;      
+    font-size: 12px;         
+    visibility: hidden;      
+    opacity: 0;              
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+  }
+  
+  .menuButton:hover::after {
+    visibility: visible;
+    opacity: 1;
+  }
