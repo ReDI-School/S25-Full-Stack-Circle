@@ -1,0 +1,31 @@
+.section2-card-large-wrapper{
+    background-image: url(../../../../assets/preview-section/section2LargeCard.jpg);
+    border-radius: 80px;
+    height:45vh;
+    width:25vw;
+    display: flex;
+    flex-direction: column;
+   justify-content: end;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding-bottom: 5vh;
+    color:white;
+    text-align: center;
+   
+}
+
+.inner-card-wrapper{
+    display: flex;
+    margin:0 5vh;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.inner-card-wrapper img{
+    border-radius: 20px;
+    height:12vh;
+} 
+.card-text{
+    font-size: 3.5em;
+    font-weight: 600;
+}
