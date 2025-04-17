@@ -1,45 +1,38 @@
 import React from 'react';
 import FeaturedBoardCard from './FeaturedBoardCard';
-import './FeaturedBoards.css';
+import styles from './FeaturedBoards.module.css';
+
+
+const generateRandomImages = (id) => [
+  `https://picsum.photos/seed/${id}-1/300/300`,
+  `https://picsum.photos/seed/${id}-2/150/145`,
+  `https://picsum.photos/seed/${id}-3/150/145`,
+];
+
+const baseBoards = [
+  { title: "Ballerina-Schuhe Outfits", pins: 53, daysAgo: 1 },
+  { title: "Leckere Tofu-Rezepte", pins: 60, daysAgo: 2 },
+  { title: "Mocktails & Drinks", pins: 44, daysAgo: 3 },
+  { title: "Osterbrunch-Ideen", pins: 47, daysAgo: 5 },
+  { title: "Inspirierende Sprüche", pins: 60, daysAgo: 5 },
+  { title: "Playlist-Cover-Ideen", pins: 84, daysAgo: 1 },
+  { title: "Hautpflege für Männer", pins: 75, daysAgo: 1 },
+  { title: "Alles voller Sticker", pins: 50, daysAgo: 5 },
+  { title: "Split-Screen-Fotoideen", pins: 61, daysAgo: 1 },
+  { title: "Abiball-Frisuren", pins: 61, daysAgo: 1 },
+];
+
+
+const boardsData = baseBoards.map((board, index) => ({
+  ...board,
+  images: generateRandomImages(index)
+}));
 
 const FeaturedBoards = () => {
-  const boardsData = [
-    {
-      title: "Ballerina-Schuhe Outfits",
-      pins: 53,
-      daysAgo: 1,
-      images: [
-        "/public/images/BallerinaImg3.jpg",
-        "/public/images/BallerinaImg2.jpg",
-        "/public/images/BallerinaImg1.jpg"
-      ]
-    },
-    {
-      title: "Leckere Tofu-Rezepte",
-      pins: 60,
-      daysAgo: 2,
-      images: [
-        "/public/images/TofuImg1.jpg",
-        "/public/images/TofuImg2.jpg",
-        "/public/images/TofuImg3.jpg"
-      ]
-    },
-    {
-      title: "Mocktails & Drinks",
-      pins: 44,
-      daysAgo: 3,
-      images: [
-        "",
-        "",
-        ""
-      ]
-    }
-  ];
-
   return (
-    <div className="boards-container">
-      <h2 className="section-title">Explore featured boards</h2>
-      <div className="boards-grid">
+    <div className={styles.boardsContainer}>
+      <h2 className={styles.sectionTitle}>Explore featured boards</h2>
+      <div className={styles.boardsGrid}>
         {boardsData.map((board, index) => (
           <FeaturedBoardCard key={index} board={board} />
         ))}
@@ -49,3 +42,4 @@ const FeaturedBoards = () => {
 };
 
 export default FeaturedBoards;
+

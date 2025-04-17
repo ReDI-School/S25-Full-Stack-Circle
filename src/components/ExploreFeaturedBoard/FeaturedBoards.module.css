@@ -1,0 +1,153 @@
+/* Container + Grid */
+.boardsContainer {
+  padding: 24px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.sectionTitle {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.boardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Card Styles */
+.boardCard {
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  font-family: sans-serif;
+}
+
+.boardCard:hover {
+  transform: translateY(-4px);
+}
+
+
+.boardImages {
+  display: flex;
+  background-color: white;
+  gap: 2px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.leftImg,
+.rightImgs {
+  background-color: white;
+  overflow: hidden;
+}
+
+/* Left Large Image */
+.leftImg {
+  flex: 2;
+}
+
+.leftImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Right Stacked Images */
+.rightImgs {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rightImgs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card Info */
+.boardInfo {
+  padding: 10px 12px;
+}
+
+.boardInfo h3 {
+  font-size: 14px;
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+.boardMeta {
+  font-size: 11px;
+  color: #767676;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 2px;
+}
+
+.verified {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+.verified svg {
+  color: #e60023 !important;
+  font-size: 14px !important;
+}
+
+/* Meta text */
+.boardInfo p {
+  font-size: 11px;
+  color: #767676;
+  margin: 0;
+}
+
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .boardInfo h3 {
+    font-size: 13px;
+  }
+
+  .boardInfo p,
+  .boardMeta {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .boardsContainer {
+    padding: 16px;
+  }
+
+  .boardsGrid {
+    gap: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 20px;
+  }
+
+  .boardInfo h3 {
+    font-size: 12px;
+  }
+
+  .boardInfo p,
+  .boardMeta {
+    font-size: 9.5px;
+  }
+}
