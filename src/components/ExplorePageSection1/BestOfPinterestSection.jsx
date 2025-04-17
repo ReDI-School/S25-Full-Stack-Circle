@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { cards } from './cardDetails';
 import styles from './BestOfPinterestSection.module.css';
 
+
 const BestOfPinterestSection = () => {
   return (
     <div>

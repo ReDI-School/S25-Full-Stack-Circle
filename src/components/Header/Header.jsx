@@ -51,6 +51,10 @@ const Header = () => {
       <div className={styles.pressButton}>
         <Link to="/">Press</Link>
       </div>
+      
+      <div className={styles.pressButton}>
+        <Link to="/blog">Blog</Link>
+      </div>
 
       <div className={styles.loginButton} onClick={() => openModal("login")}>
         <Link to="/login">Log in</Link>
