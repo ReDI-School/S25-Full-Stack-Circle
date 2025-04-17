@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -16,49 +16,86 @@ import {
   SignupButton,
   IconWrapper
 } from "./HeaderStyles";
+import Modal from "../Modal/Modal";
+import Login from "../Forms/Login/Login";
+import SignUp from "../Forms/SignUp/SignUp";
 
-const Header = () => (
-  <Wrapper>
-    <LogoWrapper>
-      <IconButton>
-        <img src="/images/pinterest-seeklogo.svg" alt="Logo" width={100} height={100} />
-      </IconButton>
-    </LogoWrapper>
-    <ExploreButton>
-      <Link to="/explore">Explore</Link>
-    </ExploreButton>
-    <SearchWrapper>
-      <SearchBarWrapper>
+const Header = () => {
+  // State for modal management
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
+
+  // Modal functions
+  const openModal = (type) => {
+    setModalType(type);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setModalType(null);
+  };
+
+  return (
+    <Wrapper>
+      <LogoWrapper>
         <IconButton>
-          <SearchIcon />
+          <img src="/images/pinterest-seeklogo.svg" alt="Logo" width={100} height={100} />
         </IconButton>
-        <form action="">
-          <input type="text" placeholder="Search for easy dinners, fashion, etc." />
-          <button type="submit"></button>
-        </form>
-      </SearchBarWrapper>
-    </SearchWrapper>
-    <AboutButton>
-      <Link to="/">About</Link>
-    </AboutButton>
-    <BusinessButton>
-      <Link to="/">Business</Link>
-    </BusinessButton>
-    <PressButton>
-      <Link to="/">Press</Link>
-    </PressButton>
-    <LoginButton>
-      <Link to="/login">Log in</Link>
-    </LoginButton>
-    <SignupButton>
-      <Link to="/signup">Sign up</Link>
-    </SignupButton>
-    <IconWrapper>
-      <IconButton>
-        <KeyboardArrowDownIcon />
-      </IconButton>
-    </IconWrapper>
-  </Wrapper>
-);
+      </LogoWrapper>
+
+      <ExploreButton>
+        <Link to="/explore">Explore</Link>
+      </ExploreButton>
+
+      <SearchWrapper>
+        <SearchBarWrapper>
+          <IconButton>
+            <SearchIcon />
+          </IconButton>
+          <form action="">
+            <input type="text" placeholder="Search for easy dinners, fashion, etc." />
+            <button type="submit"></button>
+          </form>
+        </SearchBarWrapper>
+      </SearchWrapper>
+
+      <AboutButton>
+        <Link to="/">About</Link>
+      </AboutButton>
+
+      <BusinessButton>
+        <Link to="/">Business</Link>
+      </BusinessButton>
+
+      <PressButton>
+        <Link to="/">Press</Link>
+      </PressButton>
+
+      <PressButton>
+        <Link to="/blog">Blog</Link>
+      </PressButton>
+
+      <LoginButton onClick={() => openModal("login")}>
+        <Link to="#">Log in</Link>
+      </LoginButton>
+
+      <SignupButton onClick={() => openModal("signup")}>
+        <Link to="#">Sign up</Link>
+      </SignupButton>
+
+      <IconWrapper>
+        <IconButton>
+          <KeyboardArrowDownIcon />
+        </IconButton>
+      </IconWrapper>
+
+      <Modal isOpen={isOpen} onClose={closeModal}>
+        {modalType === "login" && <Login />}
+        {modalType === "signup" && <SignUp />}
+      </Modal>
+    </Wrapper>
+  );
+};
 
 export default Header;

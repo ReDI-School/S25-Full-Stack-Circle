@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Breadcrumb.module.css";
 
-const Breadcrumb = ({ categories }) => (
+const Breadcrumb = ({ categories }) => {
   <nav className={styles.breadcrumbNav}>
     {categories.map((category, index) => (
       <span key={index}>
@@ -12,7 +12,7 @@ const Breadcrumb = ({ categories }) => (
         {index < categories.length - 1 && <span className={styles.breadcrumbSeparator}>&gt;</span>}
       </span>
     ))}
-  </nav>
-);
+  </nav>;
+};
 
 export default Breadcrumb;
