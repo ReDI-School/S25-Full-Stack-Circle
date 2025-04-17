@@ -1,0 +1,181 @@
+/* Modal content */
+.modalContent {
+  padding: 0 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 16px 0;
+  text-align: center;
+  color: #333;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This centers the children */
+  gap: 16px;
+  width: 100%;
+}
+
+.inputGroup {
+  position: relative;
+  width: 80%;
+}
+
+.iconWrapper {
+  position: absolute;
+  left: 12px;
+  top: 65%;
+  transform: translateY(-50%);
+  color: #767676;
+}
+
+.inputLabel {
+  display: block;
+  margin-left: 12px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  border: 2px solid #cdcdcd;
+  border-radius: 16px;
+  font-size: 16px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #0074e8;
+}
+
+.input::placeholder {
+  color: #adadad;
+}
+
+/* start of button */
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  border-radius: 16px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.loginButton {
+  background-color: #e60023;
+  color: white;
+  border: none;
+  margin-top: 8px;
+}
+.loginButton:hover {
+  background-color: #d50c22;
+}
+
+.socialButton {
+  border: 1px solid #cdcdcd;
+  background-color: white;
+  margin-bottom: 12px;
+}
+
+.socialButton:hover {
+  background-color: #f8f8f8;
+}
+/* end of button */
+
+.socialIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forgotPassword {
+  text-align: center;
+  color: #767676;
+  font-size: 14px;
+  text-decoration: none;
+  margin-top: 16px;
+  cursor: pointer;
+}
+.forgotPassword:hover {
+  text-decoration: underline;
+}
+
+.orDivider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  color: #767676;
+}
+
+.oDivider::before,
+.orDivider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.orDivider::before {
+  margin-right: 16px;
+}
+
+.orDivider::after {
+  margin-left: 16px;
+}
+
+.signupText {
+  text-align: center;
+  margin-top: 24px;
+  color: #767676;
+  font-size: 14px;
+}
+
+.signupLink {
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.signupLink:hover {
+  text-decoration: underline;
+}
+
+.termsText {
+  width: 80%;
+  text-align: center;
+  margin-top: 24px;
+  color: #767676;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.languageSelector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  color: #767676;
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.languageSelector:hover {
+  text-decoration: underline;
+}

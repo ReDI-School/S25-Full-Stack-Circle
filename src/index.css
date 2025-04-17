@@ -13,7 +13,7 @@ body {
   line-height: 1.5; /* Improve readability */
   color: #333; /* Default text color */
   background-color: #fff; /* Default background */
-  padding: 12px 8px;
+  padding: 0px 8px;
 }
 
 /* 3. Remove list styles */
