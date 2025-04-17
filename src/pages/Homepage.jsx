@@ -1,5 +1,6 @@
 import React from "react";
 import Login from "../components/HomePageLogin/login";
+import PreviewSections from "../components/HomepageSections/PreviewSections";
 
 import { Link } from "react-router-dom";
 import styles from "./home.module.css";
@@ -13,7 +14,9 @@ function Homepage() {
           Go to Explore
         </Link>
       </nav>
+      <PreviewSections/>
       <Login></Login>
+     
     </div>
   );
 }

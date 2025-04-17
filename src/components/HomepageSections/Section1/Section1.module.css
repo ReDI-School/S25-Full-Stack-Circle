@@ -1,0 +1,113 @@
+.preview-section1-wrapper{
+    background-color:rgb(255,253,146) ;
+  
+}
+.preview-section1-wrapper h4{
+    text-align: center;
+    color:black;
+}
+                /*********************************** section1 text ***********************/
+.preview-section-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+
+.section1-text, .section2-text{
+    color:rgb(196,47,1);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex:1;
+    align-items: center;
+    text-align: center;
+
+}
+.section1-text,.section2-text,.section3-text p{
+    margin: 0 0 1rem 0;
+    padding:0 0 0 1rem;
+}
+.section-text-heading{
+   font-weight: 750;
+   font-size: 3.7em;
+   margin: 0.5em;
+}
+.section-text-p{  
+    padding: 0 10vh 0 15vh;
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 1.3;
+}
+.explore-button{
+    background-color:rgb(255,182,193) ;
+}
+/*******************Section1 Image***************/
+.section1-images{
+    flex:1;
+}
+
+.image-layers-container{
+    height:62vh;
+    width:28vw;
+    margin-left:11vw;
+    margin-top: 1vh;
+    position: relative;
+    display:grid;
+    grid-template-columns: repeat(2,1 fr);
+    grid-template-rows: repeat(2, 1 fr);
+    
+    
+}
+.preview-section1-layer1-img{
+  position: absolute;
+  width: 170px;
+  border-radius: 30px; 
+  height: 200px;
+  top: 0;
+  right: 0;
+
+}
+  
+.preview-section1-layer2-img{
+  position:absolute;  
+  height: 250px;
+  width:160px;
+  border-radius: 30px; 
+  bottom: 0;
+  right: 0; 
+}
+
+.preview-section1-layer3-img{
+    position: absolute;
+    left: 0;
+    top: 25%; 
+    width: 45%; 
+    height: 40%; 
+    border-radius: 30px;
+  }
+  .preview-section1-layer4-img{
+   
+    position: absolute;
+    left: 55%;
+    top: 51%;
+    transform: translate(-50%, -50%);
+    width: 55%;
+    height: 75%;
+    border-radius: 30px;
+  }
+.quickSearch-button{
+    color:rgb(110,15,61);
+    background-color: white;
+    font-weight: 700;
+    font-size:18px ;
+    padding:1.8rem  1.5rem;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    transform: translate(-40%, -50%);
+    opacity:0.8;
+}
