@@ -89,15 +89,18 @@ Apply styles using the imported object: Apply the styles to your HTML elements u
 </div>
 
 ## 3. CSS Module Structure
-Component-Centric: Create a CSS Module for each component or a small set of closely related elements. This promotes encapsulation and reusability.
+Component-Centric: Create a CSS Module for each component. This promotes encapsulation and reusability.
 
-Keep it focused: A CSS Module should contain only the styles relevant to its component.  Avoid mixing styles for different components in the same file.
+Keep it focused: A CSS Module should contain only the styles relevant to its component.  Avoid mixing styles for different components in the same file or folder.
 
 src/
 └── components/
-    ├── MyComponent.jsx
-    ├── MyComponent.module.css
-    └── AnotherComponent.jsx
+    └── MyComponent/
+        ├── MyComponent.jsx
+        └── MyComponent.module.css
+    ├── AnotherComponent/
+        ├── AnotherComponent.jsx
+        └── AnotherComponent.module.css
 
 ## 4. Class Naming
 Descriptive and concise: Use descriptive class names that clearly indicate the element or its purpose within the component.
