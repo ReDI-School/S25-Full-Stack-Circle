@@ -2,17 +2,22 @@
 .containerstyle {
     color: rgb(33, 25, 34);
     display: flex;
-    flex-direction: row;
+    /*flex-direction: row;*/
     align-items: center;
     margin:0px;
     font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     justify-content: space-between; 
     width: 492px;                  
-    height: 52px; 
+    height: auto; 
     text-size-adjust: 100%;                
     background-color: #ffffff;
     padding-top: 8px;
-    padding-right:16px;      
+    padding-right:16px;    
+    /*padding-bottom: 32px;*/  
+    overflow: visible;
+}
+.containerstyle:hover {
+    padding-bottom: 256px;
 }
 
 .subcontainner {
@@ -25,19 +30,21 @@
     box-sizing:border-box;
     justify-content:space-between;
     max-width: 508px;
+    overflow: visible;
 }
 
 .buttonstyle {
   height: 48px;
-  width: 48px;
+  width: autopx;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
   border-radius: 24px;
   border: none;
-  padding: 8px;
+  padding: 8px 12px;
   cursor: pointer;
+  overflow: visible;
 }
 
 .numbercomment{
@@ -49,7 +56,9 @@
 
 .buttonstyle:hover {
   background-color: #f0f0f0;
+  overflow: visible;
 }
+
 
 .iconheartfilled {
   color: #e60023;
@@ -113,17 +122,18 @@
    NEW: Tooltip for HEART button
 ---------------------------- */
 .heartButton {
-    position: relative; /* NEW */
+    position: relative;
+    overflow: visible;
   }
   
   /* Add the hidden tooltip text by default */
   .heartButton::after {
     content: "React";    
-    position: absolute;  
-    bottom: -50%;        
+    position: absolute; 
+    bottom:-75%;        
     left: 50%;           
-    transform: translateX(-50%); 
-    background-color: #000;      
+    transform: translateX(-50%);
+    background-color: #000000;      
     color: #fff;                
     padding: 4px 8px;            
     border-radius: 4px;          
@@ -131,7 +141,9 @@
     visibility: hidden;          
     opacity: 0;                 
     transition: opacity 0.2s ease; 
-    white-space: nowrap;         
+    white-space: nowrap;
+             
+    
   }
   
   /* Show the tooltip on hover */
@@ -144,16 +156,17 @@
      NEW: Tooltip for SHARE button
   ---------------------------- */
   .shareButton {
-    position: relative; 
+    position: relative;
+    overflow: visible; 
   }
   
   .shareButton::after {
     content: "Share";       
     position: absolute;     
-    bottom: -50%;           
+    bottom: -75%;           
     left: 50%;              
     transform: translateX(-50%);
-    background-color: #000; 
+    background-color: #000000; 
     color: #fff;            
     padding: 4px 8px;       
     border-radius: 4px;     
@@ -162,6 +175,7 @@
     opacity: 0;             
     transition: opacity 0.2s ease;
     white-space: nowrap;
+    
   }
   
   .shareButton:hover::after {
@@ -174,16 +188,17 @@
   ---------------------------- */
   .menuButton {
     position: relative; 
+    overflow: visible;
   }
   
   .menuButton::after {
     content: "More options"; /* NEW: tooltip text for the three dot button */
     position: absolute;      
-    bottom: -50%;            
+    bottom: -75%;            
     left: 50%;               
-    transform: translateX(-50%);
-    background-color: #000;  
-    color: #fff;             
+    transform: translateX(-50%);   
+    background-color: #000000;  
+    color: #ffffff;             
     padding: 4px 8px;        
     border-radius: 4px;      
     font-size: 12px;         
@@ -197,3 +212,12 @@
     visibility: visible;
     opacity: 1;
   }
+
+  .activeMenu {
+    background-color: #000000 !important; 
+  }
+
+  .menuButton.activeMenu .iconthreedots {
+    color: #ffffff;
+  }
+
