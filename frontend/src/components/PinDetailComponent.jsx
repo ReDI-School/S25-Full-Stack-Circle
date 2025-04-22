@@ -40,7 +40,7 @@ function PinDetailComponent() {
 
       <div className={styles.userInfo}>
         <img src={pin.userProfile} alt="User" className={styles.userImage} />
-        <span>{pin.username}</span>
+        <span  className={styles.userName}>{pin.username}</span>
       </div>
     </div>
   );
