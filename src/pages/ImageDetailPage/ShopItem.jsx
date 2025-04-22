@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./ShopItem.module.css";
 import CommentSection from "./CommentSection";
+import PinDetailComponent from '../../components/PinDetailComponent';
 
 const suggestions = [
 	"Art journal",
@@ -70,6 +71,7 @@ const ShopItem = () => {
 				<p className={styles.title}>Le High Skinny Jean...</p>
 				<p className={styles.price}>€ 1,95</p>
 				<div className={styles["shop-item-description"]}>
+				<PinDetailComponent/>
 					<CommentSection />
 				</div>
 			</div>
