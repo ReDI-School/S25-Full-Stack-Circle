@@ -1,4 +1,5 @@
 import React from "react";
+
 import PopularSearchBtn from "./PopularSearchBtn";
 
 function PopularSearchList({ title, popularSearch }) {

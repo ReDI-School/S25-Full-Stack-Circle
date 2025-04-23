@@ -1,5 +1,6 @@
-import styles from "../HomePageLogin/Login.module.css";
 import GoogleButton from "react-google-button";
+
+import styles from "../HomePageLogin/Login.module.css";
 const Login = () => (
   <div className={styles.login}>
     <div className={styles.signup}>

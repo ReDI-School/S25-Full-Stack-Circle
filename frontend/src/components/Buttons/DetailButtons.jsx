@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import styles from "./DetailButtons.module.css";
 import { BiFontSize } from "react-icons/bi";
 import { BsHeart, BsHeartFill, BsThreeDots } from "react-icons/bs";
-import { FiShare } from "react-icons/fi";
+import { FiDownload, FiShare2, FiMoreHorizontal } from "react-icons/fi";
+
+import styles from "./DetailButtons.module.css";
 
 export default function DetailPageButtons() {
   // State hooks for the saved and liked states.
@@ -35,10 +36,10 @@ export default function DetailPageButtons() {
 
         {isLiked && <p className={styles.numbercomment}>123</p>}
         <button className={`${styles.buttonstyle} ${styles.shareButton}`}>
-          <FiShare className={styles.iconshare} />
+          <FiShare2 className={styles.iconshare} />
         </button>
         <button className={`${styles.buttonstyle} ${styles.menuButton}`}>
-          <BsThreeDots className={styles.iconthreedots} />
+          <FiMoreHorizontal className={styles.iconthreedots} />
         </button>
       </div>
 

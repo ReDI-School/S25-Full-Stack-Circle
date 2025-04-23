@@ -1,8 +1,13 @@
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import SearchIcon from "@mui/icons-material/Search";
+import { IconButton } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { IconButton } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+
+import Login from "../Forms/Login/Login";
+import SignUp from "../Forms/SignUp/SignUp";
+import Modal from "../Modal/Modal";
+
 import {
   Wrapper,
   LogoWrapper,
@@ -16,9 +21,6 @@ import {
   SignupButton,
   IconWrapper
 } from "./HeaderStyles";
-import Modal from "../Modal/Modal";
-import Login from "../Forms/Login/Login";
-import SignUp from "../Forms/SignUp/SignUp";
 
 const Header = () => {
   // State for modal management

@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import styles from "./ShopItem.module.css";
-import CommentSection from "./CommentSection";
+
 import PinDetailComponent from "../../components/PinDetailComponent";
+
+import CommentSection from "./CommentSection";
+import styles from "./ShopItem.module.css";
 
 const suggestions = ["Art journal", "Collage art", "Art inspo", "Creative", "Create board"];
 

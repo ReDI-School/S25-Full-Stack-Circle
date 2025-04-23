@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BestOfPinterestSection from "../components/ExplorePage/BestOfPinterest/BestOfPinterestSection";
-import BrowseByCategory from "../components/ExplorePage/BrowseByCategory/BrowseByCategory";
+
+import BrowseByCategory from "../components/ExplorePage/BrowseByCategory";
+import BestOfPinterestSection from "../components/ExplorePageSection1/BestOfPinterestSection";
 import PopularSearchList from "../components/PopularSearchSection/PopularSearchList";
+
 import styles from "./Explore.module.css";
 
 function ExplorePage() {

@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import styles from "./BlogHeader.module.css";
+import { FaArrowRight , FaDownload } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
-import { FaArrowRight } from "react-icons/fa";
-import { FaDownload } from "react-icons/fa";
 import { PiBellRingingFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
+
+import styles from "./BlogHeader.module.css";
 const cards = [
   {
     image: "https://i.pinimg.com/736x/a4/04/29/a404295ee9ceb7366b0068144abaf3f9.jpg"

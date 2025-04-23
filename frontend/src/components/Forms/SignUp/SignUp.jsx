@@ -1,7 +1,7 @@
 import React from "react";
+import { CiMail, CiLock } from "react-icons/ci";
+
 import styles from "./SignUp.module.css";
-import { CiMail } from "react-icons/ci";
-import { CiLock } from "react-icons/ci";
 
 const SignUp = () => (
   <div className={styles.modalContent}>

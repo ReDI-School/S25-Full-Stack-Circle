@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./home.module.css";
+
 import SimpleSlider from "../components/Carousel/Carousel";
+
+import styles from "./home.module.css";
 
 function HomePage() {
   return (

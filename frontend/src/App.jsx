@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import ExplorePage from "./pages/ExplorePage";
-import ImageDetailPage from "./pages/ImageDetailPage";
+
+import CardDetailPage from "./components/ExplorePageSection1/CardDetailPage";
 import Navbar from "./components/Navbar/Navbar";
 import Blog from "./pages/BlogPage/Blog";
-import CardDetailPage from "./components/ExplorePage/BestOfPinterest/CardDetailPage";
+import ExplorePage from "./pages/ExplorePage";
 import HomePage from "./pages/HomePage";
+import ImageDetailPage from "./pages/ImageDetailPage";
 
 function AppContent() {
   const location = useLocation();

@@ -1,4 +1,5 @@
 import React from "react";
+
 import styles from "./PopularSearch.module.css";
 
 function PopularSearchBtn({ idea }) {
