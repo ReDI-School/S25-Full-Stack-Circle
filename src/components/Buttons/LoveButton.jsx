@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./DetailButtons.module.css";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
-
+/////
 export default function LoveButton() {
   const [isLiked, setIsLiked] = useState(false);
 

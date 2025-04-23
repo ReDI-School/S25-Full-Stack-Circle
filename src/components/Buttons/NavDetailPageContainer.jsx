@@ -8,7 +8,7 @@ import ShareButton from "./ShareButton";
 import MoreButton from "./MoreButton";
 import LikeButton from "./LikeButton";
 
-
+////
 export default function NavDetailPageContainer() {
 /* -------------OLD CODE-----------------
   // State hooks for the saved and liked states.
