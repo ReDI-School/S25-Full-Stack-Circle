@@ -1,0 +1,182 @@
+.box {
+  background-color: rgb(243, 237, 237); 
+  width: 100%; 
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  position: relative; 
+}
+
+.header {
+  background-color: rgb(255, 250, 250);  /* Keep the grayish background */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  top: 0px; /* Make sure the header sticks at the top */
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure the header stays on top */
+}
+
+.container {
+  width: 100%;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1b1919;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+  padding-right: 70px;
+  
+}
+
+.link {
+  text-decoration: none;
+  color:rgb(17, 17, 17);
+  font-size: 19px;
+
+}
+
+.link:hover {
+  color: #e60023;
+}
+
+.content {
+  padding: 2rem 2rem;
+  width: 100%;
+  height: 850px;
+}
+.buttons{
+  width: 100%;
+  height: 10vh;
+  position: absolute;
+  top: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  position: relative;
+
+}
+.buttons p {
+  font-size: 22px;
+  font-weight: bold;
+  position:absolute;
+  top: 30px;
+  left: 135px
+}
+.buttons button{
+  width: 150px;
+  background-color: #cec8c8;
+  height: 50px;
+  border-radius: 25px;
+position: absolute;
+top: 20px;
+right: 120px;
+color: black;
+font-weight: bold;
+font-size: 18px
+}
+
+.containers {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Left text + Right images */
+  gap: 2rem;
+  align-items: start;
+  background-color: red;
+  padding: 20px;
+  border-radius: 25px;
+  background-color: white;
+  position: absolute;
+  top: 300px;
+  left:128px;
+}
+
+.textBlock {
+  max-width: 5050px;
+  font-size: 35px;
+  padding:20px
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 150px;
+  gap: 1rem;
+}
+
+.smallImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.largeImage {
+  grid-column: 1 / 4; /* Span all 3 columns */
+  grid-row: span 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.press{
+  width: 100%;
+  position: absolute;
+  top: 450px;
+  margin-top: 750px;
+}
+.press h1 {
+  font-size: 55px;
+  text-align: center;
+}
+
+.iconsContainer{
+  width: 550px;
+  height: 450px;
+  background-color:#dadada;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  margin-left: 100px;
+  margin-top: 65px;
+
+}
+.iconstext {
+  font-size: 25px;
+  margin-left: 350px;
+  margin-top: 30px;
+  position: relative;
+  padding-right: 5px;
+}
+.iconstext span{
+  display: inline;
+  position: absolute;
+  top: 5px;
+  left: 150px;
+ 
+}
+.iconstext:last-child span{
+  left: 210px;
+
+}
+.iconboxes{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+
+}

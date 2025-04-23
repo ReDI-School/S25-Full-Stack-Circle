@@ -1,0 +1,45 @@
+.link {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .description {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .hashtags {
+    color: #555;
+    /* font-style: italic; */
+    margin-bottom: 12px;
+  }
+  
+  .userInfo {
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+    justify-content: flex-start; 
+    width: fit-content; 
+   
+  }
+  
+  .userImage {
+     width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: block; 
+  }
+  
+  .userName {
+     margin: 0;
+  }
+  
+  
