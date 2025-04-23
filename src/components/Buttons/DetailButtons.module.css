@@ -2,7 +2,7 @@
 .containerstyle {
     color: rgb(33, 25, 34);
     display: flex;
-    /*flex-direction: row;*/
+    flex-direction: row;
     align-items: center;
     margin:0px;
     font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
