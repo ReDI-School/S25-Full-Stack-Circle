@@ -1,7 +1,9 @@
 import React from "react";
-import styles from "./ImageCard.module.css";
-import { ImEnlarge2 } from "react-icons/im";
 import { GrSearchAdvanced } from "react-icons/gr";
+import { ImEnlarge2 } from "react-icons/im";
+
+import styles from "./ImageCard.module.css";
+
 
 function ImageCard() {
   return (

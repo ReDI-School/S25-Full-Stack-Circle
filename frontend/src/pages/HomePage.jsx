@@ -1,11 +1,11 @@
 import React from "react";
-import Login from "../components/HomePageLogin/login";
-
 import { Link } from "react-router-dom";
-import styles from "./home.module.css";
+
 import SimpleSlider from "../components/Carousel/Carousel";
 
-function Homepage() {
+import styles from "./home.module.css";
+
+function HomePage() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Homepage</h1>
@@ -15,9 +15,8 @@ function Homepage() {
           Go to Explore
         </Link>
       </nav>
-      <Login></Login>
     </div>
   );
 }
 
-export default Homepage;
+export default HomePage;
