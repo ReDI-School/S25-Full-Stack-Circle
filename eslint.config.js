@@ -12,7 +12,6 @@ export default [
 
   // Shared base configuration
   {
-    files: ["**/*.{js,mjs}"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module"
@@ -42,6 +41,7 @@ export default [
       ],
       "no-console": ["warn", { allow: ["warn", "error"] }],
       "prefer-const": "error",
+      "no-var": "error",
       eqeqeq: ["error", "always"],
       "max-len": [
         "error",

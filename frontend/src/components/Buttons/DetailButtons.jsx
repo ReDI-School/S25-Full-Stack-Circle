@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { BiFontSize } from "react-icons/bi";
-import { BsHeart, BsHeartFill, BsThreeDots } from "react-icons/bs";
-import { FiDownload, FiShare2, FiMoreHorizontal } from "react-icons/fi";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
+import { FiShare2, FiMoreHorizontal } from "react-icons/fi";
 
 import styles from "./DetailButtons.module.css";
 

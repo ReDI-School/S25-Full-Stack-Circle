@@ -4,7 +4,6 @@ import { ImEnlarge2 } from "react-icons/im";
 
 import styles from "./ImageCard.module.css";
 
-
 function ImageCard() {
   return (
     <>

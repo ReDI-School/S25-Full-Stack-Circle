@@ -1,4 +1,4 @@
-import { FaArrowRight , FaDownload } from "react-icons/fa";
+import { FaArrowRight, FaDownload } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { PiBellRingingFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
