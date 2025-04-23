@@ -1,23 +1,24 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import ExplorePage from "./pages/ExplorePage";
-import ImageDetailPage from "./pages/ImageDetailPage";
+
 import CardDetailPage from "./components/ExplorePageSection1/CardDetailPage";
-import Navbar from "./components/Navbar/navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Blog from "./pages/BlogPage/Blog";
+import ExplorePage from "./pages/ExplorePage";
+import HomePage from "./pages/HomePage";
+import ImageDetailPage from "./pages/ImageDetailPage";
 
 function AppContent() {
   const location = useLocation();
 
-  // 👇 Hier bestimmst du, ob Navbar angezeigt wird
+  // Determine whether to display the Navbar based on current path
   const showNavbar = location.pathname !== "/blog";
 
   return (
     <>
       {showNavbar && <Navbar />}
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/card/:id" element={<CardDetailPage />} />
         <Route path="/detail" element={<ImageDetailPage />} />

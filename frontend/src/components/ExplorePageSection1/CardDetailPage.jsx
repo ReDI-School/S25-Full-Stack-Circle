@@ -1,10 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import styles from './CardDetailPage.module.css';
-import { cards } from "./cardDetails"; 
+
 import Breadcrumb from "./Breadcrumb";
-import shareIcon from "../../../public/images/share-icon.svg";
-import moreIcon from "../../../public/images/more-icon.svg"
+import styles from "./CardDetailPage.module.css";
+import { cards } from "./cardDetails";
 
 const CardDetailPage = () => {
   const { id } = useParams();
@@ -15,14 +14,14 @@ const CardDetailPage = () => {
     { name: "Explore", link: "/explore" },
     { name: "Electronics", link: "/electronics" },
     { name: "Cell Phones And Accessories", link: "/phones-accessories" },
-    { name: "Phone Accessories", link: "/phone-accessories" },
-    ];
+    { name: "Phone Accessories", link: "/phone-accessories" }
+  ];
 
   if (!card) {
     return <div className="card-detail-page">Card not found!</div>;
   }
 
-    const galleryImages = [
+  const galleryImages = [
     {
       src: "https://i.pinimg.com/236x/bc/3c/cc/bc3ccc733a0ac6ac294888b06665a470.jpg",
       tags: ["Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5"]
@@ -55,22 +54,21 @@ const CardDetailPage = () => {
       src: "https://i.pinimg.com/236x/ad/ba/81/adba8160b0862e6ddbf3333eba7b5ae3.jpg",
       tags: []
     }
-    
   ];
 
-return (
-  <div className={styles.cardDetailPage}>
-    <Breadcrumb categories={categories} />
-    <div className={styles.cardImageContainer}>
-      <img src={card.image} alt={card.title} />
-      <div className={styles.cardOverlay}>
-        <h1>{card.title}</h1>
-        <p>{card.description}</p>
+  return (
+    <div className={styles.cardDetailPage}>
+      <Breadcrumb categories={categories} />
+      <div className={styles.cardImageContainer}>
+        <img src={card.image} alt={card.title} />
+        <div className={styles.cardOverlay}>
+          <h1>{card.title}</h1>
+          <p>{card.description}</p>
+        </div>
       </div>
-    </div>
-    <h3>{card.subtitle}</h3>
+      <h3>{card.subtitle}</h3>
 
-         <div className={styles.galleryContainer}>
+      <div className={styles.galleryContainer}>
         <div className={styles.gallery}>
           {galleryImages.map((image, index) => (
             <div key={index} className={styles.imageContainer}>
@@ -79,8 +77,8 @@ return (
                 <div className={styles.overlay}>
                   <span className={styles.overlayText}>Open</span>
                   <div className={styles.overlayButtons}>
-                    <img src={shareIcon} alt="Share" className={styles.shareIcon} />
-                    <img src={moreIcon} alt="More" className={styles.moreIcon} />
+                    <img src="/images/share-icon.svg" alt="Share" className={styles.shareIcon} />
+                    <img src="/images/more-icon.svg" alt="More" className={styles.moreIcon} />
                   </div>
                 </div>
               </div>
@@ -95,9 +93,8 @@ return (
           ))}
         </div>
       </div>
-  </div>
-);
-
+    </div>
+  );
 };
 
 export default CardDetailPage;

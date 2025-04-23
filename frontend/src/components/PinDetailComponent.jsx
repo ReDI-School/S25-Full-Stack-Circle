@@ -1,4 +1,5 @@
 import React from "react";
+
 import styles from "./pinDetail.module.css";
 
 function PinDetailComponent() {
@@ -17,30 +18,32 @@ function PinDetailComponent() {
       "#inking",
       "#inkart",
       "digital",
-      "...more",
+      "...more"
     ],
     username: "inscapia",
-    userProfile: "https://placehold.co/50x50",
+    userProfile: "https://placehold.co/50x50" // Placeholder
   };
 
   return (
     <div>
-      <a
-        href={pin.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.link}
-      >
+      {/* link */}
+      <a href={pin.link} target="_blank" rel="noopener noreferrer">
         Instagram
       </a>
 
-      <h2 className={styles.title}>{pin.postName}</h2>
-      <p className={styles.description}>{pin.description}</p>
-      <p className={styles.hashtags}>{pin.hashtags.join(" ")}</p>
+      {/* Post Name */}
+      <h2>{pin.postName}</h2>
 
+      {/* Description */}
+      <p>{pin.description}</p>
+
+      {/* Hashtags */}
+      <p>{pin.hashtags.join(" ")}</p>
+
+      {/* User Info (Profile Picture + Username) */}
       <div className={styles.userInfo}>
         <img src={pin.userProfile} alt="User" className={styles.userImage} />
-        <span  className={styles.userName}>{pin.username}</span>
+        <span className={styles.userName}>{pin.username}</span>
       </div>
     </div>
   );

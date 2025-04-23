@@ -1,80 +1,102 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { IconButton } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import styles from "./Header.module.css";
-import logo from "/images/pinterest-seeklogo.svg";
-import Modal from "../Modal/Modal";
-import useModal from "../Modal/hooks/useModal";
+import SearchIcon from "@mui/icons-material/Search";
+import { IconButton } from "@mui/material";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import Login from "../Forms/Login/Login";
 import SignUp from "../Forms/SignUp/SignUp";
+import Modal from "../Modal/Modal";
+
+import {
+  Wrapper,
+  LogoWrapper,
+  ExploreButton,
+  SearchWrapper,
+  SearchBarWrapper,
+  AboutButton,
+  BusinessButton,
+  PressButton,
+  LoginButton,
+  SignupButton,
+  IconWrapper
+} from "./HeaderStyles";
 
 const Header = () => {
-  const { isOpen, modalType, openModal, closeModal } = useModal();
+  // State for modal management
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
+
+  // Modal functions
+  const openModal = (type) => {
+    setModalType(type);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setModalType(null);
+  };
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.logoWrapper}>
+    <Wrapper>
+      <LogoWrapper>
         <IconButton>
-          <img src={logo} alt="Logo" width={100} height={100} />
+          <img src="/images/pinterest-seeklogo.svg" alt="Logo" width={100} height={100} />
         </IconButton>
-      </div>
+      </LogoWrapper>
 
-      <div className={styles.exploreButton}>
+      <ExploreButton>
         <Link to="/explore">Explore</Link>
-      </div>
+      </ExploreButton>
 
-      <div className={styles.searchWrapper}>
-        <div className={styles.searchBarWrapper}>
+      <SearchWrapper>
+        <SearchBarWrapper>
           <IconButton>
             <SearchIcon />
           </IconButton>
           <form action="">
-            <input
-              type="text"
-              placeholder="Search for easy dinners, fashion, etc."
-            />
+            <input type="text" placeholder="Search for easy dinners, fashion, etc." />
             <button type="submit"></button>
           </form>
-        </div>
-      </div>
+        </SearchBarWrapper>
+      </SearchWrapper>
 
-      <div className={styles.aboutButton}>
+      <AboutButton>
         <Link to="/">About</Link>
-      </div>
+      </AboutButton>
 
-      <div className={styles.businessButton}>
+      <BusinessButton>
         <Link to="/">Business</Link>
-      </div>
+      </BusinessButton>
 
-      <div className={styles.pressButton}>
+      <PressButton>
         <Link to="/">Press</Link>
-      </div>
-      
-      <div className={styles.pressButton}>
+      </PressButton>
+
+      <PressButton>
         <Link to="/blog">Blog</Link>
-      </div>
+      </PressButton>
 
-      <div className={styles.loginButton} onClick={() => openModal("login")}>
-        <Link to="/login">Log in</Link>
-      </div>
+      <LoginButton onClick={() => openModal("login")}>
+        <Link to="#">Log in</Link>
+      </LoginButton>
 
-      <div className={styles.signupButton} onClick={() => openModal("signup")}>
-        <Link to="/signup">Sign up</Link>
-      </div>
+      <SignupButton onClick={() => openModal("signup")}>
+        <Link to="#">Sign up</Link>
+      </SignupButton>
 
-      <div className={styles.iconWrapper}>
+      <IconWrapper>
         <IconButton>
           <KeyboardArrowDownIcon />
         </IconButton>
-      </div>
+      </IconWrapper>
 
       <Modal isOpen={isOpen} onClose={closeModal}>
         {modalType === "login" && <Login />}
         {modalType === "signup" && <SignUp />}
       </Modal>
-    </div>
+    </Wrapper>
   );
 };
 
