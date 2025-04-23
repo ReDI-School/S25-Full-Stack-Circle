@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./pinDetail.module.css";
 
 function PinDetailComponent() {
   const pin = {
@@ -39,13 +40,9 @@ function PinDetailComponent() {
       <p>{pin.hashtags.join(" ")}</p>
 
       {/* User Info (Profile Picture + Username) */}
-      <div style={{ display: "flex", alignItems: "left" }}>
-        <img
-          src={pin.userProfile}
-          alt="User"
-          style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-        />
-        <span>{pin.username}</span>
+      <div className={styles.userInfo}>
+        <img src={pin.userProfile} alt="User" className={styles.userImage} />
+        <span className={styles.userName}>{pin.username}</span>
       </div>
     </div>
   );

@@ -18,19 +18,28 @@
   
   .hashtags {
     color: #555;
-    font-style: italic;
+    /* font-style: italic; */
     margin-bottom: 12px;
   }
   
   .userInfo {
     display: flex;
-    align-items: center;
+    align-items: center; 
     gap: 10px;
+    justify-content: flex-start; 
+    width: fit-content; 
+   
   }
   
   .userImage {
-    width: 40px;
+     width: 40px;
     height: 40px;
     border-radius: 50%;
+    display: block; 
   }
+  
+  .userName {
+     margin: 0;
+  }
+  
   

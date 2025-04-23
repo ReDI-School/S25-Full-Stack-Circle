@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./ShopItem.module.css";
+import CommentSection from "./CommentSection";
+import PinDetailComponent from "../../components/PinDetailComponent";
 
 const suggestions = ["Art journal", "Collage art", "Art inspo", "Creative", "Create board"];
 
@@ -57,10 +59,13 @@ const ShopItem = () => {
           )}
           <button className={styles["Save-button"]}>Save</button>
         </div>
-
         <p className={styles.brand}>Order Of Style</p>
         <p className={styles.title}>Le High Skinny Jean...</p>
         <p className={styles.price}>€ 1,95</p>
+        <div className={styles["shop-item-description"]}>
+          <PinDetailComponent />
+          <CommentSection />
+        </div>
       </div>
     </div>
   );
