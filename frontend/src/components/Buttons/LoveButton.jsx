@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import styles from "./DetailButtons.module.css";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
+
+import styles from "./DetailButtons.module.css";
 
 export default function LoveButton() {
   const [isLiked, setIsLiked] = useState(false);
@@ -11,10 +12,7 @@ export default function LoveButton() {
 
   return (
     <>
-      <button
-        className={`${styles.buttonstyle} ${styles.heartButton}`}
-        onClick={handleClickLiked}
-      >
+      <button className={`${styles.buttonstyle} ${styles.heartButton}`} onClick={handleClickLiked}>
         {isLiked ? (
           <BsHeartFill className={styles.iconheartfilled} />
         ) : (

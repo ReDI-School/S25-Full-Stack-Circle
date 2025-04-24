@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import styles from "./DetailButtons.module.css";
 
 export default function LikeButton() {
@@ -9,10 +10,7 @@ export default function LikeButton() {
   };
 
   return (
-    <button
-      className={isSaved ? styles.savedbtn : styles.unsavedbtn}
-      onClick={handleClickSaved}
-    >
+    <button className={isSaved ? styles.savedbtn : styles.unsavedbtn} onClick={handleClickSaved}>
       {isSaved ? "Saved" : "Save"}
     </button>
   );

@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import styles from "./DetailButtons.module.css";
 import { BiFontSize } from "react-icons/bi";
 import { BsHeart, BsHeartFill, BsThreeDots } from "react-icons/bs";
 import { FiShare } from "react-icons/fi";
-import LoveButton from "./LoveButton";
-import ShareButton from "./ShareButton";
-import MoreButton from "./MoreButton";
-import LikeButton from "./LikeButton";
 
+import styles from "./DetailButtons.module.css";
+import LikeButton from "./LikeButton";
+import LoveButton from "./LoveButton";
+import MoreButton from "./MoreButton";
+import ShareButton from "./ShareButton";
 
 export default function NavDetailPageContainer() {
-/* -------------OLD CODE-----------------
+  /* -------------OLD CODE-----------------
   // State hooks for the saved and liked states.
   const [isSaved, setIsSaved] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -67,18 +67,18 @@ export default function NavDetailPageContainer() {
     
   );
 */
-// -------------NEW CODE-----------------
-    return (
-      <div className={styles.containerstyle}>
-        <div className={styles.subcontainner}>
-          <LoveButton />
-          <ShareButton />
-          <MoreButton />
-        </div>
-
-        <div className={styles.subcontainner}>
-          <LikeButton />
-        </div>
+  // -------------NEW CODE-----------------
+  return (
+    <div className={styles.containerstyle}>
+      <div className={styles.subcontainner}>
+        <LoveButton />
+        <ShareButton />
+        <MoreButton />
       </div>
-    );
+
+      <div className={styles.subcontainner}>
+        <LikeButton />
+      </div>
+    </div>
+  );
 }

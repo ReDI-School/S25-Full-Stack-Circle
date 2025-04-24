@@ -1,9 +1,10 @@
 import React from "react";
+
 import styles from "./DetailButtons.module.css";
-import LoveButton from "./LoveButton";
-import ShareButton from "./ShareButton";
-import MoreButton from "./MoreButton";
 import LikeButton from "./LikeButton";
+import LoveButton from "./LoveButton";
+import MoreButton from "./MoreButton";
+import ShareButton from "./ShareButton";
 
 export default function DetailButtons() {
   return (
