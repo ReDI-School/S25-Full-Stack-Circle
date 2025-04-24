@@ -1,0 +1,65 @@
+.section3-card-wrapper{
+    height:44vh;
+    width:28vh;
+    background-size: cover;
+    background-position: center;
+    /*background-color: antiquewhite;*/
+   /*} border: 5px solid red;*/
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-bottom: 1vh;
+}
+.card-image{
+    
+    height: 340px;
+    border-radius: 25px;
+    border-top: 1px solid black;
+    position:relative;
+    
+}
+.section3-card-wrapper p{
+    margin: 0;
+    padding: 0;
+}
+.card-text{
+    margin: 0 0 0 7vh;  
+    line-height:1.2em;
+    color: white;
+    font-size: 1em;
+}
+.profile-picture{
+    height: 10vh;
+    border-radius: 50px;
+    position: relative;
+    bottom: 0;
+    left:0;
+    border: 2px solid white;
+    transform: translate(-15vh,-10vh);
+}
+.profile-name{
+    font-weight: 800;
+}
+.card-caption-wrapper{
+    position:absolute;
+    top:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.carousel-icons{
+    color:white;
+    font-size: 1.5em;
+    font-weight: 800;
+   display: flex;
+   padding-top:4px;
+   justify-content: center;
+}
+.card-caption{
+    color: black;
+    font-size: 1.4em;
+    margin: 1em;
+   text-align: center;
+   line-height: 1.1em;
+}
