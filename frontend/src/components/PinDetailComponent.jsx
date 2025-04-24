@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./pinDetail.module.css";
 
 function PinDetailComponent() {
-  var pin = {
+  const pin = {
     link: "https://www.instagram.com/",
     postName: "Character Design",
     description: "@inktober day 16: Grungy digital inking using @procreate",
