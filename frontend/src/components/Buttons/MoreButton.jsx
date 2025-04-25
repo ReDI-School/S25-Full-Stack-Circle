@@ -3,6 +3,7 @@ import { BsThreeDots } from "react-icons/bs";
 
 import optionsStyles from "../OptionsList/OptionsList.module.css";
 import itemStyles from "../OptionsList/OptionsListItem.module.css";
+
 import styles from "./DetailButtons.module.css";
 
 // Option list items
