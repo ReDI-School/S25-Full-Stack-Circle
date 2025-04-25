@@ -12,7 +12,10 @@ export default function LoveButton() {
 
   return (
     <>
-      <button className={`${styles.buttonstyle} ${styles.heartButton}`} onClick={handleClickLiked}>
+      <button
+        className={`${styles.buttonstyle} ${styles.heartButton}`}
+        onClick={handleClickLiked}
+      >
         {isLiked ? (
           <BsHeartFill className={styles.iconheartfilled} />
         ) : (

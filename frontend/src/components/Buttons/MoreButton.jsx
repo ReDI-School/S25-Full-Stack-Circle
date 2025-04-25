@@ -1,22 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BsThreeDots } from "react-icons/bs";
 
-// import from optionList
-import optionsStyles from "../OptionsList/OptionsList.module.css"; // friend's style
-import itemStyles from "../OptionsList/OptionsListItem.module.css"; // friend's item style
-
+import optionsStyles from "../OptionsList/OptionsList.module.css";
+import itemStyles from "../OptionsList/OptionsListItem.module.css";
 import styles from "./DetailButtons.module.css";
-// --- New code --- Below is the code from OptionsList.jsx
+
+// Option list items
 const options = [
   { label: "Download image", action: () => console.log("Download image") },
   { label: "Hide Pin", action: () => console.log("Hide Pin") },
   { label: "Report Pin", action: () => console.log("Report Pin") },
   { label: "Get Pin embed code", action: () => console.log("Get Pin embed code") }
 ];
-// //////
 
 export default function MoreButton() {
-  // // Open/Close logic from optionsList
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -28,19 +25,10 @@ export default function MoreButton() {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    // ////// All additional above /////
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-  // // Open/Close logic from optionsList
-  return (
-    /* --- Previous code --- */
-    /*
-    <button className={`${styles.buttonstyle} ${styles.menuButton}`}>
-      <BsThreeDots className={styles.iconthreedots} />
-    </button>
-    */
 
-    /* --- New code --- */
+  return (
     <div className={optionsStyles.optionsList} ref={ref}>
       <button
         className={`${styles.buttonstyle} ${styles.menuButton} ${open ? styles.activeMenu : ""}`}
