@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+// import Login from "../components/HomePageLogin/Login";
 import SimpleSlider from "../components/Carousel/Carousel";
 
 import styles from "./home.module.css";
@@ -14,6 +14,7 @@ function HomePage() {
         <Link to="/explore" className={styles.link}>
           Go to Explore
         </Link>
+        {/* <Login></Login> */}
       </nav>
     </div>
   );
