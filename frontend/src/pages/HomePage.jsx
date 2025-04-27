@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import SimpleSlider from "../components/Carousel/Carousel";
-
-import styles from "./home.module.css";
+import styles from "./Home.module.css";
+import Login from "../components/HomePageLogin/Login";
 
 function HomePage() {
   return (
@@ -14,6 +13,7 @@ function HomePage() {
         <Link to="/explore" className={styles.link}>
           Go to Explore
         </Link>
+        <Login></Login>
       </nav>
     </div>
   );

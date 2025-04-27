@@ -3,7 +3,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import { IconButton } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import Login from "../Forms/Login/Login";
 import SignUp from "../Forms/SignUp/SignUp";
 import Modal from "../Modal/Modal";

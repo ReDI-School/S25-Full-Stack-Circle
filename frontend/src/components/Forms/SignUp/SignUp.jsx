@@ -1,6 +1,5 @@
 import React from "react";
 import { CiMail, CiLock } from "react-icons/ci";
-
 import styles from "./SignUp.module.css";
 
 const SignUp = () => (

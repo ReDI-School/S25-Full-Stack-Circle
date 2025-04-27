@@ -48,3 +48,32 @@
     margin: 5px 0 0;
     font-size: 24px;
 }
+
+.seeMoreButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.seeMoreButton {
+    display: block;
+    padding: 8px 20px;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.seeMoreButton:hover {
+    background-color: #e0e0e0;
+}
+
+.seeMoreButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}

@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-
 import Breadcrumb from "./Breadcrumb";
 import styles from "./CardDetailPage.module.css";
 import { cards } from "./cardDetails";
