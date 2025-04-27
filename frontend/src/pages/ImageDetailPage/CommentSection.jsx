@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FaSmile, FaImage, FaGift, FaArrowRight } from "react-icons/fa";
-
 import styles from "./CommentSection.module.css";
 
 function CommentSection() {

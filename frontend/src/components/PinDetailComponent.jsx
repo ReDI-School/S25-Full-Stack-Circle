@@ -1,6 +1,5 @@
 import React from "react";
-
-import styles from "./pinDetail.module.css";
+import styles from "./PinDetail.module.css";
 
 function PinDetailComponent() {
   const pin = {

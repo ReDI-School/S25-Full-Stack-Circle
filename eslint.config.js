@@ -117,14 +117,6 @@ export default [
         }
       ],
       "import/no-duplicates": "error",
-      "import/order": [
-        "error",
-        {
-          groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
-          "newlines-between": "always",
-          alphabetize: { order: "asc", caseInsensitive: true }
-        }
-      ],
       "react/prop-types": "off",
       "react/react-in-jsx-scope": "off",
       "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }]

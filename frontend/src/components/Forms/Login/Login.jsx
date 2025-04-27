@@ -1,7 +1,6 @@
 import React from "react";
 import { CiMail, CiLock } from "react-icons/ci";
 import { FaChevronDown } from "react-icons/fa";
-
 import styles from "./Login.module.css";
 
 const Login = () => (

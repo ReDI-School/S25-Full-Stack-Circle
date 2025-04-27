@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-
 import PinDetailComponent from "../../components/PinDetailComponent";
-
 import CommentSection from "./CommentSection";
 import styles from "./ShopItem.module.css";
 

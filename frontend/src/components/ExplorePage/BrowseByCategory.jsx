@@ -1,5 +1,5 @@
 import React from "react";
-
+import SeeMoreButton from "../SeeMoreButton";
 import styles from "./BrowseByCategory.module.css";
 
 // random dummy data for the categories
@@ -57,27 +57,34 @@ const categories = [
   }
 ];
 
-export const BrowseByCategory = () => (
-  <React.Fragment>
-    <div className={styles.titleContainer}>
-      <h2 className={styles.title}>Browse by category</h2>
-    </div>
-    <div className={styles.categoryGridContainer}>
-      {categories.map((category) => (
-        <div key={category.id} className={styles.categoryCard}>
-          <div className={styles.categoryImage}>
-            <img src={category.image} alt={category.title} />
+export const BrowseByCategory = () => {
+  const handleSeeMoreClick = () => {
+    // Add implementation for when the button is clicked
+    console.warn("See more categories clicked");
+  };
+
+  return (
+    <React.Fragment>
+      <div className={styles.titleContainer}>
+        <h2 className={styles.title}>Browse by category</h2>
+      </div>
+      <div className={styles.categoryGridContainer}>
+        {categories.map((category) => (
+          <div key={category.id} className={styles.categoryCard}>
+            <div className={styles.categoryImage}>
+              <img src={category.image} alt={category.title} />
+            </div>
+            <div className={styles.categoryTitle}>
+              <h3>{category.title}</h3>
+            </div>
           </div>
-          <div className={styles.categoryTitle}>
-            <h3>{category.title}</h3>
-          </div>
-        </div>
-      ))}
-    </div>
-    <div>
-      <button className={styles.seeMoreButton}>See more</button>
-    </div>
-  </React.Fragment>
-);
+        ))}
+      </div>
+      <div className={styles.seeMoreButtonContainer}>
+        <SeeMoreButton onClick={handleSeeMoreClick} className={styles.seeMoreButton} />
+      </div>
+    </React.Fragment>
+  );
+};
 
 export default BrowseByCategory;

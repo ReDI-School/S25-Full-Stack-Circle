@@ -29,3 +29,63 @@ Suleman Ahmed Khan
 Julita Lapinska
 Zakaria Sebai
 Muhammad Shehbaz
+
+## Getting Started
+
+This project is organized into separate frontend and backend directories, each with their own dependencies and startup procedures.
+
+### Frontend Setup
+
+To start the frontend development server:
+
+1. Navigate to the frontend folder:
+
+   ```
+   cd frontend
+   ```
+
+2. Install dependencies:
+
+   ```
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```
+   npm run dev
+   ```
+
+4. The frontend will be available at http://localhost:5173 by default
+
+### Backend Setup
+
+To start the backend server:
+
+1. Open a new terminal and navigate to the backend folder:
+
+   ```
+   cd backend
+   ```
+
+2. Install dependencies:
+
+   ```
+   npm install
+   ```
+
+3. Start the backend server:
+
+   ```
+   npm start
+   ```
+
+4. The backend API will be available at http://localhost:4000
+
+## Development Notes
+
+- The frontend is built with React 19 and Vite
+- Material UI components are available through @mui/material
+- The backend runs on Express.js
+- Both servers need to be running simultaneously during development
+- Frontend can be built for production using `npm run build`
