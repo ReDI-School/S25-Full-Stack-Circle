@@ -1,4 +1,5 @@
 import prisma from "../prisma/client.js";
+import { BAD_REQUEST, CONFLICT, CREATED, INTERNAL_SERVER_ERROR, OK } from "../constants/http.js";
 
 export const getReactions = async (req, res) => {
   const { pinId, userId } = req.query;
@@ -15,7 +16,7 @@ export const getReactions = async (req, res) => {
 
     res.json({ reactions: count, userReacted });
   } catch (err) {
-    res.status(500).json({ error: "Something went wrong." });
+    res.status(INTERNAL_SERVER_ERROR).json({ error: "Something went wrong." });
   }
 };
 
@@ -24,7 +25,7 @@ export const addReaction = async (req, res) => {
 
   // Validate required fields
   if (!pinId || !userId) {
-    return res.status(400).json({ error: "pinId and userId are required." });
+    return res.status(BAD_REQUEST).json({ error: "pinId and userId are required." });
   }
 
   try {
@@ -36,18 +37,18 @@ export const addReaction = async (req, res) => {
       }
     });
 
-    res.status(201).json({
+    res.status(CREATED).json({
       message: "Reaction added.",
       reaction
     });
   } catch (err) {
     if (err.code === "P2002") {
       // Prisma unique constraint failed
-      return res.status(409).json({ error: "User already reacted to this pin." });
+      return res.status(CONFLICT).json({ error: "User already reacted to this pin." });
     }
 
     console.error("Add Reaction Error:", err);
-    res.status(500).json({ error: "Failed to add reaction." });
+    res.status(INTERNAL_SERVER_ERROR).json({ error: "Failed to add reaction." });
   }
 };
 
@@ -62,8 +63,8 @@ export const deleteReaction = async (req, res) => {
         }
       }
     });
-    res.status(200).json({ message: "Reaction removed." });
+    res.status(OK).json({ message: "Reaction removed." });
   } catch (err) {
-    res.status(500).json({ error: "Failed to remove reaction." });
+    res.status(INTERNAL_SERVER_ERROR).json({ error: "Failed to remove reaction." });
   }
 };
