@@ -66,10 +66,17 @@
 }
 
 /* See more button */
+.seeMoreButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
 .seeMoreButton {
     display: block;
     width: fit-content;
-    margin: 0 auto;
     padding: 8px 20px;
     background-color: #f5f5f5;
     border: none;
