@@ -106,5 +106,4 @@ const BrowseByCategory = () => {
   );
 };
 
-
 export default BrowseByCategory;
