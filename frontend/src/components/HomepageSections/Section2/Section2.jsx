@@ -6,7 +6,7 @@ const Section2 = () => {
   return(
     <div className={styles["preview-section-2"]}>
       <div className={styles["section2-text"]}>
-      <h1 className={styles["section-text-heading"]}>Save ideas you like</h1> 
+        <h1 className={styles["section-text-heading"]}>Save ideas you like</h1> 
         <div className={styles["section-text-p"]}>
           <p>Collect your favorites so you can get back to them later.</p>
         </div>
@@ -28,7 +28,7 @@ const Section2 = () => {
           </div>
         </div>
       </div>
-    </div>      
+    </div>
   );
 };
 
