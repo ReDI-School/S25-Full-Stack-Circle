@@ -1,10 +1,8 @@
 import React from 'react'
 import styles from'./Section2.module.css';
 import CardLarge from './PreviewSection2Cards/CardLarge';
-import Section2Img1 from '../../../assets/preview-section/section2Bedroom.jpg';
-import CardsSmall from './PreviewSection2Cards/CardsSmall';
 
-const Section2 = () => {
+const Section2 = () =>{
   return (
     <div className={styles['preview-section-2']}>
             <div className={styles['section2-text']}>
@@ -27,12 +25,11 @@ const Section2 = () => {
                  <div className={`${styles["small-card"]} ${styles['medium']} ${styles['image4']}`}>
                  <p>Serve my drinks in style</p>
                  </div>
-                
                </div>
             </div>
           </div>
           
-  )
-}
+  );
+};
 
 export default Section2
