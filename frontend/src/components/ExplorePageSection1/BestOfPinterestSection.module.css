@@ -4,8 +4,14 @@
 }
 
 .cardContainer {
-    display: flex;
+    /*display: flex;
     justify-content: space-around;
+    */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 0 20px;
 }
 
 .card {

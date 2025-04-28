@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./BestOfPinterestSection.module.css";
 import { cards } from "./cardDetails";
 import SeeMoreButton from "../SeeMoreButton";
 
 const BestOfPinterestSection = () => {
+  const INITIAL_VISIBLE = 3;
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
+
   const handleSeeMoreClick = () => {
-    // Add implementation for when the button is clicked
-    console.warn("See more categories clicked");
+    const nextCount = visibleCount + 3;
+    setVisibleCount(nextCount > cards.length ? cards.length : nextCount);
   };
+
+  const isSeeMoreVisible = visibleCount < cards.length;
 
   return (
     <div>
       <h1 className={styles.exploreSection}>Explore the Best of Pinterest</h1>
       <div className={styles.cardContainer}>
-        {cards.map((card, index) => (
+        {cards.slice(0, visibleCount).map((card, index) => (
           <Link to={`/card/${index}`} key={index}>
             <div className={styles.card}>
               <img src={card.image} alt={card.title} />
@@ -26,9 +31,11 @@ const BestOfPinterestSection = () => {
           </Link>
         ))}
       </div>
-      <div className={styles.seeMoreButtonContainer}>
-        <SeeMoreButton onClick={handleSeeMoreClick} className={styles.seeMoreButton} />
-      </div>
+      {isSeeMoreVisible && (
+        <div className={styles.seeMoreButtonContainer}>
+          <SeeMoreButton onClick={handleSeeMoreClick} className={styles.seeMoreButton} />
+        </div>
+      )}
     </div>
   );
 };
