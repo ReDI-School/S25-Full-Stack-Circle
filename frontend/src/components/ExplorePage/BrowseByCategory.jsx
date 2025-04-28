@@ -67,7 +67,7 @@ const categories = [
     id: 13,
     title: "Women's Fashion",
     image: "https://picsum.photos/300/150?random=13"
-  },
+  }
 ];
 
 const BrowseByCategory = () => {
@@ -99,11 +99,12 @@ const BrowseByCategory = () => {
       </div>
       {isSeeMoreVisible && (
         <div className={styles.seeMoreButtonContainer}>
-          <SeeMoreButton onClick={handleSeeMoreClick} className={styles.seeMoreButton}/>
+          <SeeMoreButton onClick={handleSeeMoreClick} className={styles.seeMoreButton} />
         </div>
       )}
     </>
   );
 };
+
 
 export default BrowseByCategory;

@@ -6,10 +6,11 @@ import SeeMoreButton from "../SeeMoreButton";
 
 const BestOfPinterestSection = () => {
   const INITIAL_VISIBLE = 3;
+  const ITEM_INCREMENT = 3;
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
   const handleSeeMoreClick = () => {
-    const nextCount = visibleCount + 3;
+    const nextCount = visibleCount + ITEM_INCREMENT;
     setVisibleCount(nextCount > cards.length ? cards.length : nextCount);
   };
 
