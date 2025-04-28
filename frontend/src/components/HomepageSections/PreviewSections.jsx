@@ -1,9 +1,9 @@
-import React from "react"
+import React from "react";
 import Section1 from "./Section1/Section1";
 import Section2 from "./Section2/Section2";
 import Section3 from "./Section3/Section3";
 
-const PreviewSections = () =>{
+const PreviewSections = () =>{ 
   return (
     <div>
       <Section1 />
@@ -13,4 +13,4 @@ const PreviewSections = () =>{
   );
 };
 
-export default PreviewSections
+export default PreviewSections;

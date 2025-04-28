@@ -1,9 +1,8 @@
 import React from "react";
 import styles from "./CardLarge.module.css";
 import image1 from "../../../../assets/preview-section/section2-fern-bed.jpg";
- 
-const CardLarge = () =>{
-  
+
+const CardLarge = () => { 
   return (
     <div className={styles["section2-card-large-wrapper"]}>
       <p className={styles["card-text"]}>Fern future home vibes</p>
@@ -16,4 +15,4 @@ const CardLarge = () =>{
   );
 };
 
-export default CardLarge
+export default CardLarge;

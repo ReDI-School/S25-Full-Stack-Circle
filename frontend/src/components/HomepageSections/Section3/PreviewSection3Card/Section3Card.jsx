@@ -13,11 +13,11 @@ const Section3Card = () =>{
         <img className={styles["card-image"]} src={cardImage} />
         <div className={styles["card-caption-wrapper"]}>
           <div className={styles["carousel-icons"]}>
-             <MdKeyboardArrowLeft /><BsDashLg/><BsDashLg/><BsDashLg/><BsDashLg/><BsDashLg/><BiDotsHorizontalRounded/>
+            <MdKeyboardArrowLeft /><BsDashLg/><BsDashLg/><BsDashLg/><BsDashLg/><BsDashLg/><BiDotsHorizontalRounded/>
           </div>
           <div className={styles["card-caption"]}>
             <p >How to find the perfect lipshade for any occassion</p>
-            </div>
+          </div>
         </div>
         <div className={styles["card-text"]}>
            <p className={styles["profile-name"]}>Scout the city</p>
@@ -29,4 +29,4 @@ const Section3Card = () =>{
   );
 };
 
-export default Section3Card
+export default Section3Card;
