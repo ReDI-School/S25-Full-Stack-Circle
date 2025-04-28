@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./Section2.module.css";
 import CardLarge from "./PreviewSection2Cards/CardLarge";
 
-const Section2 = () =>{ 
-  return (
+const Section2 = () => {
+  return(
     <div className={styles["preview-section-2"]}>
       <div className={styles["section2-text"]}>
-       <h1 className={styles["section-text-heading"]}>Save ideas you like</h1> 
+      <h1 className={styles["section-text-heading"]}>Save ideas you like</h1> 
         <div className={styles["section-text-p"]}>
           <p>Collect your favorites so you can get back to them later.</p>
         </div>
