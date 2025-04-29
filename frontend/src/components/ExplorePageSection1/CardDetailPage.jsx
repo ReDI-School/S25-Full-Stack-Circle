@@ -73,8 +73,7 @@ const CardDetailPage = () => {
           {galleryImages.map((image, index) => (
             <div key={index} className={styles.imageContainer}>
               <div className={styles.imageWrapper}>
-              <Link to="/detail"
-              state={{ image: image.src }} >
+              <Link to={`/detail/${index}`} key={index} state={{ image: image }} >
                 <img src={image.src} alt={`Gallery ${index + 1}`} className={styles.image} />
                 <div className={styles.overlay}>
                   <span className={styles.overlayText}>Open</span>

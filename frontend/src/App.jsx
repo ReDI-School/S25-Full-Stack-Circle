@@ -21,6 +21,7 @@ function AppContent() {
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/card/:id" element={<CardDetailPage />} />
         <Route path="/detail" element={<ImageDetailPage />} />
+        <Route path="/detail/:id" element={<ImageDetailPage />} />
         <Route path="/blog" element={<Blog />} />
       </Routes>
     </>
