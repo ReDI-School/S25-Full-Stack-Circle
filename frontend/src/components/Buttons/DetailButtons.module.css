@@ -88,7 +88,12 @@
   flex-direction: row;
   align-items: center;
   margin: 0px;
-  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family:
+    -apple-system, 'system-ui', 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica,
+    'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo,
+    'ＭＳ Ｐゴシック', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
   justify-content: space-between;
   width: 492px;
   height: 52px;
@@ -166,7 +171,7 @@
    NEW: Tooltip for HEART button
 ---------------------------- */
 .heartButton::after {
-  content: "React";
+  content: 'React';
   position: absolute;
   bottom: -50%;
   left: 50%;
@@ -192,7 +197,7 @@
    NEW: Tooltip for SHARE button
 ---------------------------- */
 .shareButton::after {
-  content: "Share";
+  content: 'Share';
   position: absolute;
   bottom: -50%;
   left: 50%;
@@ -217,7 +222,7 @@
    NEW: Tooltip for MENU (three dots) button
 ---------------------------- */
 .menuButton::after {
-  content: "More options";
+  content: 'More options';
   /* NEW: tooltip text for the three dot button */
   position: absolute;
   bottom: -50%;

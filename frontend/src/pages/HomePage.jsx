@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "../components/HomePageLogin/login";
+import Login from "../components/HomePageLogin/Login";
 import PreviewSections from "../components/HomepageSections/PreviewSections";
 
 import { Link } from "react-router-dom";
@@ -17,8 +17,8 @@ function HomePage() {
         </Link>
         <Login></Login>
       </nav>
-      <PreviewSections/>
-      <Login/>
+      <PreviewSections />
+      <Login />
     </div>
   );
 }

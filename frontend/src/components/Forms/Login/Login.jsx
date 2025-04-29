@@ -1,7 +1,7 @@
-import React from "react";
-import { CiMail, CiLock } from "react-icons/ci";
-import { FaChevronDown } from "react-icons/fa";
-import styles from "./Login.module.css";
+import React from 'react';
+import { CiMail, CiLock } from 'react-icons/ci';
+import { FaChevronDown } from 'react-icons/fa';
+import styles from './Login.module.css';
 
 const Login = () => (
   <div className={styles.modalContent}>
@@ -21,9 +21,15 @@ const Login = () => (
           <CiLock size={20} />
         </div>
         <label className={styles.inputLabel}>Password</label>
-        <input className={styles.input} type="password" placeholder="Password" />
+        <input
+          className={styles.input}
+          type="password"
+          placeholder="Password"
+        />
       </div>
-      <button className={`${styles.loginButton} ${styles.button}`}>Log in</button>
+      <button className={`${styles.loginButton} ${styles.button}`}>
+        Log in
+      </button>
     </form>
 
     <a className={styles.forgotPassword}>Forgot your password?</a>
@@ -49,12 +55,12 @@ const Login = () => (
     </p>
 
     <a className={styles.termsText}>
-      By continuing, you agree to Pinterest's Terms of Service and acknowledge you've read our
-      Privacy Policy
+      By continuing, you agree to Pinterest's Terms of Service and acknowledge
+      you've read our Privacy Policy
     </a>
 
     <button className={styles.languageSelector}>
-      English (US) <FaChevronDown size={16} style={{ marginLeft: "4px" }} />
+      English (US) <FaChevronDown size={16} style={{ marginLeft: '4px' }} />
     </button>
   </div>
 );

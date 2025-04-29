@@ -1,11 +1,11 @@
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import SearchIcon from "@mui/icons-material/Search";
-import { IconButton } from "@mui/material";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Login from "../Forms/Login/Login";
-import SignUp from "../Forms/SignUp/SignUp";
-import Modal from "../Modal/Modal";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import SearchIcon from '@mui/icons-material/Search';
+import { IconButton } from '@mui/material';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Login from '../Forms/Login/Login';
+import SignUp from '../Forms/SignUp/SignUp';
+import Modal from '../Modal/Modal';
 
 import {
   Wrapper,
@@ -18,8 +18,8 @@ import {
   PressButton,
   LoginButton,
   SignupButton,
-  IconWrapper
-} from "./HeaderStyles";
+  IconWrapper,
+} from './HeaderStyles';
 
 const Header = () => {
   // State for modal management
@@ -27,7 +27,7 @@ const Header = () => {
   const [modalType, setModalType] = useState(null);
 
   // Modal functions
-  const openModal = (type) => {
+  const openModal = type => {
     setModalType(type);
     setIsOpen(true);
   };
@@ -41,7 +41,12 @@ const Header = () => {
     <Wrapper>
       <LogoWrapper>
         <IconButton>
-          <img src="/images/pinterest-seeklogo.svg" alt="Logo" width={100} height={100} />
+          <img
+            src="/images/pinterest-seeklogo.svg"
+            alt="Logo"
+            width={100}
+            height={100}
+          />
         </IconButton>
       </LogoWrapper>
 
@@ -55,7 +60,10 @@ const Header = () => {
             <SearchIcon />
           </IconButton>
           <form action="">
-            <input type="text" placeholder="Search for easy dinners, fashion, etc." />
+            <input
+              type="text"
+              placeholder="Search for easy dinners, fashion, etc."
+            />
             <button type="submit"></button>
           </form>
         </SearchBarWrapper>
@@ -77,11 +85,11 @@ const Header = () => {
         <Link to="/blog">Blog</Link>
       </PressButton>
 
-      <LoginButton onClick={() => openModal("login")}>
+      <LoginButton onClick={() => openModal('login')}>
         <Link to="#">Log in</Link>
       </LoginButton>
 
-      <SignupButton onClick={() => openModal("signup")}>
+      <SignupButton onClick={() => openModal('signup')}>
         <Link to="#">Sign up</Link>
       </SignupButton>
 
@@ -92,8 +100,8 @@ const Header = () => {
       </IconWrapper>
 
       <Modal isOpen={isOpen} onClose={closeModal}>
-        {modalType === "login" && <Login />}
-        {modalType === "signup" && <SignUp />}
+        {modalType === 'login' && <Login />}
+        {modalType === 'signup' && <SignUp />}
       </Modal>
     </Wrapper>
   );
