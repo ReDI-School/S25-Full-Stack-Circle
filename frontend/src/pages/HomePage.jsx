@@ -5,7 +5,6 @@ import PreviewSections from "../components/HomepageSections/PreviewSections";
 import { Link } from "react-router-dom";
 import SimpleSlider from "../components/Carousel/Carousel";
 import styles from "./Home.module.css";
-//import Login from "../components/HomePageLogin/Login";
 
 function HomePage() {
   return (
