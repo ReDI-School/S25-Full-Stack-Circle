@@ -42,19 +42,38 @@
 
   .backgroundContainer {
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
-    z-index: -1; /* 背景なので後ろに */
-    display: flex;
-    flex-wrap: wrap; /* 必要なら折り返す */
-    justify-content: center;
-    align-items: center;
+    height: 200%;
+    column-count: 5; /* ← カラム数を決める！ここを好きに増減できる */
+    column-gap: 12px; /* カラム間の隙間 */
+    animation: scrollUp 40s linear infinite;
+    z-index: -1;
+    padding: 10px;
   }
-  
+
   .bgImage {
-    width: 100px; /* 好きなサイズにしてね */
-    height: 150px;
-    margin: 10px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 12px;
     object-fit: cover;
+    break-inside: avoid;/* 画像が途中で分割されないようにする */
+    animation: fadeInOut 2.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollUp {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
   }
