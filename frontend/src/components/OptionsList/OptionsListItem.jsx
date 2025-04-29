@@ -1,4 +1,4 @@
-import styles from "./OptionsListItem.module.css";
+import styles from './OptionsListItem.module.css';
 
 export default function OptionsListItem({ label, onClick }) {
   return (

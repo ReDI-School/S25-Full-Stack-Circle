@@ -7,7 +7,12 @@
 
 /* 2. Reset typography styles */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica, 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', Ubuntu, Cantarell,
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica,
+    'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', Arial,
+    sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 1.5; /* Improve readability */
@@ -17,12 +22,16 @@ body {
 }
 
 /* 3. Remove list styles */
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
 /* 4. Remove default button & link styles */
-button, input, textarea, select {
+button,
+input,
+textarea,
+select {
   font: inherit;
   border: none;
   outline: none;
@@ -34,20 +43,27 @@ a {
 }
 
 /* 5. Ensure media elements fit their containers */
-img, video {
+img,
+video {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
 /* 6. Normalize headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 500;
   line-height: 1.2;
 }
 
 /* 7. Prevent overflow issues */
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
@@ -61,7 +77,6 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
-
 
 /*to center the content on large screen except the navbar so pls wrap you section in section tag*/
 @media (min-width: 1244px) {
