@@ -15,12 +15,12 @@ const Section3Card = () => (
       <div className={styles["card-caption-wrapper"]}>
         <div className={styles["carousel-icons"]}>
           <MdKeyboardArrowLeft />
-          <BsDashLg/>
-          <BsDashLg/>
-          <BsDashLg/>
-          <BsDashLg/>
-          <BsDashLg/>
-          <BiDotsHorizontalRounded/>
+          <BsDashLg />
+          <BsDashLg />
+          <BsDashLg />
+          <BsDashLg />
+          <BsDashLg />
+          <BiDotsHorizontalRounded />
         </div>
         <div className={styles["card-caption"]}>
           <p>How to find the perfect lipshade for any occassion </p>
@@ -36,6 +36,6 @@ const Section3Card = () => (
       </div>
     </div>
   </div>
-  );
+);
 
 export default Section3Card;
