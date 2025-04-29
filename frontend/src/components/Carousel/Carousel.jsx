@@ -18,16 +18,27 @@ export default function SimpleSlider() {
     autoplaySpeed: 2500
   };
 
+  // カラムごとの配列を作る（5個の空配列を用意）
+  const columns = [[], [], [], [], []];
+  bgImages.forEach((bg, index) => {
+    columns[index % 5].push(bg);
+  });
+
   return (
     <div>
       <section className={styles.topSection}>
-        {/* Backbround Area*/}
         <div className={styles.backgroundContainer}>
-        {/* Put 18 images */}
-        {bgImages.map((bg, index) => (
-            <img key={index} src={bg} className={styles.bgImage} />
+          {columns.map((columnImages, colIndex) => (
+            <div key={colIndex} className={styles.column}>
+              {columnImages.map((bg, index) => {
+                const delayClass = `delay-${colIndex}`; // カラムごとにdelayをつける
+                return (
+                  <img key={index} src={bg} className={`${styles.bgImage} ${styles[delayClass]}`} />
+                );
+              })}
+            </div>
           ))}
-    </div>
+        </div>
 
       {/*  Text Slider */}
       <p className={styles.label}>Get your next</p>
