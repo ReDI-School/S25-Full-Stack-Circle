@@ -1,0 +1,26 @@
+.top {
+    position: relative;
+  }
+  .position{
+    text-align: center;
+    bottom: 40px;
+    right: 35px;
+    z-index: 20;
+  }
+
+  .style{
+    background-color: red;
+    border: 2px solid #fff;
+    border-radius: 30%;
+    height: 30px;
+    width: 30px;
+    color: #fff;
+    cursor: pointer;    
+  }
+
+  .style:hover{
+    animation: none;
+    background: #fff;
+    color: red;
+    border: 2px solid  red;
+  }
