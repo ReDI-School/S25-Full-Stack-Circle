@@ -1,4 +1,7 @@
 import React from "react";
+import Login from "../components/HomePageLogin/login";
+import PreviewSections from "../components/HomepageSections/PreviewSections";
+
 import { Link } from "react-router-dom";
 import SimpleSlider from "../components/Carousel/Carousel";
 import styles from "./Home.module.css";
@@ -15,6 +18,8 @@ function HomePage() {
         </Link>
         <Login></Login>
       </nav>
+      <PreviewSections/>
+      <Login/>
     </div>
   );
 }
