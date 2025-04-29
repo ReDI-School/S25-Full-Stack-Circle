@@ -9,6 +9,6 @@ const PreviewSections = () => (
     <Section2 />
     <Section3 />
   </div>
-  );
+);
 
 export default PreviewSections;
