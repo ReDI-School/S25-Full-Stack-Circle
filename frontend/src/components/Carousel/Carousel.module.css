@@ -34,3 +34,27 @@
   .Text4 {
     color: #407a57;
   }
+  .topSection {
+    height: 100vh; /* 画面の高さぴったり */
+    position: relative;
+    overflow: hidden; /* アニメーションで飛び出す画像を隠す */
+  }
+
+  .backgroundContainer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* 背景なので後ろに */
+    display: flex;
+    flex-wrap: wrap; /* 必要なら折り返す */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .bgImage {
+    width: 100px; /* 好きなサイズにしてね */
+    height: 150px;
+    margin: 10px;
+    object-fit: cover;
+  }
