@@ -1,37 +1,37 @@
-import { useState, useRef, useEffect } from 'react';
-import styles from './OptionsList.module.css';
-import OptionsListItem from './OptionsListItem';
+import { useState, useRef, useEffect } from "react";
+import styles from "./OptionsList.module.css";
+import OptionsListItem from "./OptionsListItem";
 
 /* example*/
 const options = [
   {
-    label: 'Download image',
+    label: "Download image",
     action: () => {
       // Implement actual download functionality
       // Example: downloadImage(imageUrl)
-    },
+    }
   },
   {
-    label: 'Hide Pin',
+    label: "Hide Pin",
     action: () => {
       // Implement hide pin functionality
       // Example: hidePinFromFeed(pinId)
-    },
+    }
   },
   {
-    label: 'Report Pin',
+    label: "Report Pin",
     action: () => {
       // Implement report functionality
       // Example: openReportDialog(pinId)
-    },
+    }
   },
   {
-    label: 'Get Pin embed code',
+    label: "Get Pin embed code",
     action: () => {
       // Implement embed code generation
       // Example: generateEmbedCode(pinId)
-    },
-  },
+    }
+  }
 ];
 
 export default function OptionsList() {
@@ -46,8 +46,8 @@ export default function OptionsList() {
       }
     }
 
-    document.addEventListener('mousedown', ClickOutside);
-    return () => document.removeEventListener('mousedown', ClickOutside);
+    document.addEventListener("mousedown", ClickOutside);
+    return () => document.removeEventListener("mousedown", ClickOutside);
   }, []);
 
   return (
