@@ -5,6 +5,7 @@ import PreviewSections from "../components/HomepageSections/PreviewSections";
 import { Link } from "react-router-dom";
 import SimpleSlider from "../components/Carousel/Carousel";
 import styles from "./Home.module.css";
+import ScrollToTop from "../components/ScrollButton/ScrollToTop";
 
 function HomePage() {
   return (
@@ -15,10 +16,10 @@ function HomePage() {
         <Link to="/explore" className={styles.link}>
           Go to Explore
         </Link>
-        <Login></Login>
       </nav>
       <PreviewSections />
       <Login />
+      <ScrollToTop />
     </div>
   );
 }
