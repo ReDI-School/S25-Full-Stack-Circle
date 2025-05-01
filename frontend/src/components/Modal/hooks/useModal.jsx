@@ -1,9 +1,9 @@
 // custom hook
-import { useState } from 'react';
+import { useState } from "react";
 
 const useModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [modalType, setModalType] = useState('');
+  const [modalType, setModalType] = useState("");
 
   // Open the modal with a specific type (login, signup)
   const openModal = type => {
@@ -14,7 +14,7 @@ const useModal = () => {
   // Close the modal
   const closeModal = () => {
     setIsOpen(false);
-    setModalType('');
+    setModalType("");
   };
 
   return { isOpen, modalType, openModal, closeModal };

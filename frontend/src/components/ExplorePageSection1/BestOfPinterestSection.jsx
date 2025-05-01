@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './BestOfPinterestSection.module.css';
-import { cards } from './cardDetails';
-import SeeMoreButton from '../SeeMoreButton';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./BestOfPinterestSection.module.css";
+import { cards } from "./cardDetails";
+import SeeMoreButton from "../SeeMoreButton";
 
 const BestOfPinterestSection = () => {
   const handleSeeMoreClick = () => {
     // Add implementation for when the button is clicked
-    console.warn('See more categories clicked');
+    console.warn("See more categories clicked");
   };
 
   return (

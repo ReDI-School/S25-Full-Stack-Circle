@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { BsHeart, BsHeartFill } from 'react-icons/bs';
-import { FiShare2, FiMoreHorizontal } from 'react-icons/fi';
+import React, { useState } from "react";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
+import { FiShare2, FiMoreHorizontal } from "react-icons/fi";
 
-import styles from './DetailButtons.module.css';
+import styles from "./DetailButtons.module.css";
 
 export default function DetailPageButtons() {
   // State hooks for the saved and liked states.
@@ -47,7 +47,7 @@ export default function DetailPageButtons() {
           className={isSaved ? styles.savedbtn : styles.unsavedbtn}
           onClick={handleClickSaved}
         >
-          {isSaved ? 'Saved' : 'Save'}
+          {isSaved ? "Saved" : "Save"}
         </button>
       </div>
     </div>

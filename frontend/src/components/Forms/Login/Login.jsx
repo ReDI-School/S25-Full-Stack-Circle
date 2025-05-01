@@ -1,7 +1,7 @@
-import React from 'react';
-import { CiMail, CiLock } from 'react-icons/ci';
-import { FaChevronDown } from 'react-icons/fa';
-import styles from './Login.module.css';
+import React from "react";
+import { CiMail, CiLock } from "react-icons/ci";
+import { FaChevronDown } from "react-icons/fa";
+import styles from "./Login.module.css";
 
 const Login = () => (
   <div className={styles.modalContent}>
@@ -60,7 +60,7 @@ const Login = () => (
     </a>
 
     <button className={styles.languageSelector}>
-      English (US) <FaChevronDown size={16} style={{ marginLeft: '4px' }} />
+      English (US) <FaChevronDown size={16} style={{ marginLeft: "4px" }} />
     </button>
   </div>
 );
