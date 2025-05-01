@@ -1,0 +1,10 @@
+.navbarContainer {
+  position: fixed;
+  top: 10;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
