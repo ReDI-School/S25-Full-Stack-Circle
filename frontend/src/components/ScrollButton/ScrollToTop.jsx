@@ -11,7 +11,6 @@ const ScrollToTop = () => {
     } else {
       setIsVisible(false);
     }
-    setIsVisible(true);
   };
 
   const scrollToTop = () => {
