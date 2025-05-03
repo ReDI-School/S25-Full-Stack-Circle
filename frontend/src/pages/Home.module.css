@@ -20,3 +20,11 @@
   text-decoration: none;
   color: black;
 }
+
+/* Scroll bar behaviour */
+*{
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}

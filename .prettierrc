@@ -10,6 +10,6 @@
   "jsxSingleQuote": false,
   "quoteProps": "as-needed",
   "useTabs": false,
-  "endOfLine": "lf",
+  "endOfLine": "auto",
   "htmlWhitespaceSensitivity": "ignore"
 }
