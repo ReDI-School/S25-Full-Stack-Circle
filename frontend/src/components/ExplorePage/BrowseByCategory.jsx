@@ -69,7 +69,7 @@ export const BrowseByCategory = () => {
         <h2 className={styles.title}>Browse by category</h2>
       </div>
       <div className={styles.categoryGridContainer}>
-        {categories.map((category) => (
+        {categories.map(category => (
           <div key={category.id} className={styles.categoryCard}>
             <div className={styles.categoryImage}>
               <img src={category.image} alt={category.title} />
@@ -81,7 +81,10 @@ export const BrowseByCategory = () => {
         ))}
       </div>
       <div className={styles.seeMoreButtonContainer}>
-        <SeeMoreButton onClick={handleSeeMoreClick} className={styles.seeMoreButton} />
+        <SeeMoreButton
+          onClick={handleSeeMoreClick}
+          className={styles.seeMoreButton}
+        />
       </div>
     </React.Fragment>
   );

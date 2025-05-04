@@ -27,7 +27,10 @@ const BestOfPinterestSection = () => {
         ))}
       </div>
       <div className={styles.seeMoreButtonContainer}>
-        <SeeMoreButton onClick={handleSeeMoreClick} className={styles.seeMoreButton} />
+        <SeeMoreButton
+          onClick={handleSeeMoreClick}
+          className={styles.seeMoreButton}
+        />
       </div>
     </div>
   );

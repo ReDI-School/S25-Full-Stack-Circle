@@ -1,32 +1,31 @@
 .breadcrumb {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 500;
-    gap: 0.5rem;
-    margin: 1rem 0 1rem 100px; /* top, right, bottom, left */
-    color: #111;
-  }
-  
-  .breadcrumb-link {
-    color: #111;
-    text-decoration: none;
-  }
-  
-  .breadcrumb-link:hover {
-    text-decoration: underline;
-  }
-  
-  .breadcrumb-separator {
-    color: #999;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .breadcrumb-current {
-    background-color: #eee;
-    padding: 4px 12px;
-    border-radius: 999px;
-    font-weight: 500;
-  }
-  
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  gap: 0.5rem;
+  margin: 1rem 0 1rem 100px; /* top, right, bottom, left */
+  color: #111;
+}
+
+.breadcrumb-link {
+  color: #111;
+  text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: #999;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.breadcrumb-current {
+  background-color: #eee;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-weight: 500;
+}
