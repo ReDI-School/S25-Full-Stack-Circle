@@ -18,27 +18,43 @@ export default function SimpleSlider() {
     autoplaySpeed: 2500
   };
 
-  // カラムごとの配列を作る（5個の空配列を用意）
-  const columns = [[], [], [], [], []];
-  bgImages.forEach((bg, index) => {
-    columns[index % 5].push(bg);
-  });
+ // 前提：bgImagesは全18枚くらいの画像配列
+const columnCount = 7;
+const columnHeights = [3, 2, 2, 1, 2, 2, 3]; // V字型に見せるための割り当て数
+
+// 空の配列（各カラムに画像を入れる箱）を作成
+const columns = Array.from({ length: columnCount }, () => []);
+
+// 順番に割り振る処理
+let imageIndex = 0;
+for (let col = 0; col < columnCount; col++) {
+  for (let i = 0; i < columnHeights[col]; i++) {
+    if (imageIndex < bgImages.length) {
+      columns[col].push(bgImages[imageIndex]);
+      imageIndex++;
+    }
+  }
+}
 
   return (
     <div>
       <section className={styles.topSection}>
-        <div className={styles.backgroundContainer}>
-          {columns.map((columnImages, colIndex) => (
-            <div key={colIndex} className={styles.column}>
-              {columnImages.map((bg, index) => {
-                const delayClass = `delay-${colIndex}`; // カラムごとにdelayをつける
-                return (
-                  <img key={index} src={bg} className={`${styles.bgImage} ${styles[delayClass]}`} />
-                );
-              })}
-            </div>
-          ))}
-        </div>
+      <div className={styles.backgroundContainer}>
+  {columns.map((columnImages, colIndex) => (
+    <div key={colIndex} className={styles.column}>
+            {/* ここ ↓ に delay クラス付きで入れる！ */}
+            <div className={`${styles.cardList} ${styles[`delay-${colIndex}`]}`}>
+            {columnImages.map((bg, index) => (
+    <img
+      key={index}
+      src={bg}
+      className={styles.bgImage}
+    />
+  ))}
+</div>
+    </div>
+  ))}
+</div>
 
       {/*  Text Slider */}
       <p className={styles.label}>Get your next</p>
