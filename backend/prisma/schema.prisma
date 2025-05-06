@@ -28,7 +28,7 @@ model User {
   id       String     @id @default(uuid()) // primary key with auto generated UUID
   email    String     @unique
   password String
-  name     String? // optional field
+  name     String? 
   Reaction Reaction[]
 }
 
