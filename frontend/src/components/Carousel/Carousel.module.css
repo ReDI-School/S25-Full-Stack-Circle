@@ -35,69 +35,90 @@
     color: #407a57;
   }
   .topSection {
-    height: 100vh; /* 画面の高さぴったり */
     position: relative;
+    height: 520px; /* ← Pinterestっぽい高さ感 */
     overflow: hidden; /* アニメーションで飛び出す画像を隠す */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .backgroundContainer {
     display: flex;
+    justify-content: center; /* カラムを中央寄せ */
     width: 100%;
-    height: 100vh;
+    max-width: 1800px; /* ← Pinterest級の広さに！ */
+    margin: 0 auto;
+    padding: 0 32px;   /* ← 左右の余白感 */
+    gap: 16px;
     overflow: hidden;
-    background: #f0f0f0;
+    position: absolute;
+    bottom: 0;
   }
   
   .column {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* ← ここが超重要！下に詰める */
-    align-items: center;
-    gap: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.1); /* ✅ 確認用の枠線 */
+    justify-content: flex-end; /* 下詰め */
   }
   
   .cardList {
-    animation: scrollAndFade 8s ease-in-out infinite;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+    height: 300px;
 
   }
   
   .bgImage {
-    width: 90%;
-    height: 150px;
+    width: 100%;
+    aspect-ratio: 2 / 3; /* ← Pinterestっぽい縦長比率 */
     object-fit: cover;
-    border-radius: 8px;
-    background: #ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    animation: scrollAndFade 6s ease-in-out infinite;
   }
 
-  .delay-0 { animation-delay: 0s; }
-  .delay-1 { animation-delay: 0.3s; }
-  .delay-2 { animation-delay: 0.6s; }
-  .delay-3 { animation-delay: 0.9s; }
-  .delay-4 { animation-delay: 1.2s; }
-  .delay-5 { animation-delay: 1.5s; }
-  .delay-6 { animation-delay: 1.8s; }
-
-  @keyframes scrollAndFade {
-    0% {
-      transform: translateY(10px);
-      opacity: 0;
-    }
-    10% {
-      transform: translateY(0px);
-      opacity: 1;
-    }
-    65% {
-      transform: translateY(0px);
-      opacity: 1;
-    }
-    80% {
-      transform: translateY(-80px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(-80px);
-      opacity: 0;
-    }
+  .offsetWrapper {
+    will-change: transform;
+    display: flex;
+    flex-direction: column;
   }
+  
+/* 左から順に0.3秒ずつ遅らせる */
+.delay-0 { animation-delay: 0s !important; }
+.delay-1 { animation-delay: 0.3s !important; }
+.delay-2 { animation-delay: 0.6s !important; }
+.delay-3 { animation-delay: 0.9s !important; }
+.delay-4 { animation-delay: 1.2s !important; }
+.delay-5 { animation-delay: 1.5s !important; }
+.delay-6 { animation-delay: 1.8s !important; }
+
+@keyframes scrollAndFade {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+
+.offset-0 { transform: translateY(0px); }
+.offset-1 { transform: translateY(20px); }
+.offset-2 { transform: translateY(40px); }
+.offset-3 { transform: translateY(60px); }
+.offset-4 { transform: translateY(40px); }
+.offset-5 { transform: translateY(20px); }
+.offset-6 { transform: translateY(0px); }
