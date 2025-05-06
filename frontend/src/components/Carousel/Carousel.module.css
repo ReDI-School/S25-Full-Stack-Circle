@@ -1,21 +1,36 @@
 
   
-  .label {
-    white-space: nowrap;
-    text-align: center;
-    margin: 2px;
-    font-size: 60px;
-    font-weight: 600;
-  }
+.label {
+  text-align: center;
+  font-size: 64px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
   
   .sliderWrapper {
-    width: 200px;
+    z-index: 2;
+    position: relative;
   }
   .slideText {
-    margin: 2px;
-    font-size: 60px;
-    font-weight: 600;
     text-align: center;
+    font-size: 64px;
+    font-weight: bold;
+    line-height: 1.2;
+    display: inline-block; /* ← ここ追加でOK */
+
+  }
+
+  .textWrapper {
+    position: absolute;        /* ← ここを relative から absolute に変更 */
+    top: 28%;                  /* ← 高さをPinterestと同じくらいに */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;         /* 背景カードより上に表示するため */
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 80px;
   }
 
   /* Text Color*/
@@ -36,55 +51,66 @@
   }
   .topSection {
     position: relative;
-    height: 520px; /* ← Pinterestっぽい高さ感 */
-    overflow: hidden; /* アニメーションで飛び出す画像を隠す */
+    height: 100vh; /* 画面いっぱいの高さに */
+    width: 100%; /* ← 明示する */
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    overflow-x: visible;
+    overflow-y: hidden;
+    max-width: none !important; /* ← 強制的に 1244px 制限を解除 */
+    overflow: visible;  /* または overflow-y: visible; にしてOK */
+
+    
   }
 
   .backgroundContainer {
     display: flex;
-    justify-content: center; /* カラムを中央寄せ */
-    width: 100%;
-    max-width: 1800px; /* ← Pinterest級の広さに！ */
-    margin: 0 auto;
-    padding: 0 32px;   /* ← 左右の余白感 */
-    gap: 16px;
-    overflow: hidden;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 1800px;
+    max-width: 100%;
     position: absolute;
-    bottom: 0;
+    top: 50%;
+    transform: translateY(-10%);
+    height: auto;
+    bottom: auto;
+    z-index: 1;
+    gap: 16px;
   }
-  
-  .column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* 下詰め */
-  }
-  
+
+.column {
+  flex: 0 0 256px; /* ← これだけでOK（1列160px固定） */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
   .cardList {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    overflow: hidden;
-    height: 300px;
+    overflow: visible; /* ← これに変える！ */
+    height: auto; 
+    overflow: visible;  /* ← これに戻すと上下にふわっと動くカードが切れない */
 
   }
   
   .bgImage {
+    aspect-ratio: 2 / 3;
     width: 100%;
-    aspect-ratio: 2 / 3; /* ← Pinterestっぽい縦長比率 */
+    height: auto;
     object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     animation: scrollAndFade 6s ease-in-out infinite;
+    background-color: transparent;
   }
 
   .offsetWrapper {
     will-change: transform;
     display: flex;
     flex-direction: column;
+
   }
   
 /* 左から順に0.3秒ずつ遅らせる */
@@ -112,13 +138,15 @@
   100% {
     transform: translateY(-30px);
     opacity: 0;
+    visibility: hidden;
   }
 }
 
+
 .offset-0 { transform: translateY(0px); }
-.offset-1 { transform: translateY(20px); }
-.offset-2 { transform: translateY(40px); }
-.offset-3 { transform: translateY(60px); }
-.offset-4 { transform: translateY(40px); }
-.offset-5 { transform: translateY(20px); }
+.offset-1 { transform: translateY(80px); }
+.offset-2 { transform: translateY(160px); }
+.offset-3 { transform: translateY(240px); }
+.offset-4 { transform: translateY(160px); }
+.offset-5 { transform: translateY(80px); }
 .offset-6 { transform: translateY(0px); }

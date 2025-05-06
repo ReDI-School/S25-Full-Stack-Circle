@@ -15,11 +15,12 @@ export default function SimpleSlider() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 6000
+    autoplaySpeed: 6000,
+    fade: true
   };
 
   const columnCount = 7;
-  const columnHeights = [3, 2, 2, 1, 2, 2, 3];
+  const columnHeights = [2, 2, 2, 2, 2, 2, 2];
   const columns = Array.from({ length: columnCount }, () => []);
   let imageIndex = 0;
   for (let col = 0; col < columnCount; col++) {
@@ -34,22 +35,25 @@ export default function SimpleSlider() {
   return (
     <div>
 <section className={styles.topSection}>
-       {/* Text Slider */}
-       <p className={styles.label}>Get your next</p>
-        <Slider {...settings}>
-          <div>
-            <p className={`${styles.slideText} ${styles.Text1}`}>weeknight dinner idea</p>
-          </div>
-          <div>
-            <p className={`${styles.slideText} ${styles.Text2}`}>home décor idea</p>
-          </div>
-          <div>
-            <p className={`${styles.slideText} ${styles.Text3}`}>new outfit</p>
-          </div>
-          <div>
-            <p className={`${styles.slideText} ${styles.Text4}`}>green thumb idea</p>
-          </div>
-        </Slider>
+  {/* Text Slider */}
+  <div className={styles.textWrapper}>
+    <p className={styles.label}>Get your next</p>
+    <Slider {...settings}>
+      <div>
+        <p className={`${styles.slideText} ${styles.Text1}`}>weeknight dinner idea</p>
+      </div>
+      <div>
+        <p className={`${styles.slideText} ${styles.Text2}`}>home décor idea</p>
+      </div>
+      <div>
+        <p className={`${styles.slideText} ${styles.Text3}`}>new outfit</p>
+      </div>
+      <div>
+        <p className={`${styles.slideText} ${styles.Text4}`}>green thumb idea</p>
+      </div>
+    </Slider>
+  </div>
+
 
 
       
