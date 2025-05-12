@@ -5,9 +5,17 @@ import styles from "./Carousel.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const bgImages = Array.from({ length: 18 }, (_, i) => `/images/Homepage-topimages/${i + 1}.jpg`);
+
 
 export default function SimpleSlider() {
+  const imageSets = ['set1', 'set2', 'set3'];
+  const allImageSets = imageSets.map(setName =>
+    Array.from({ length: 18 }, (_, i) => `/images/Homepage-topimages/${setName}/${i + 1}.jpg`)
+  );
+
+  const [currentSetIndex, setCurrentSetIndex] = React.useState(0);
+  const bgImages = allImageSets[currentSetIndex];
+
   const settings = {
     dots: true,
     infinite: true,
@@ -16,7 +24,11 @@ export default function SimpleSlider() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 6000,
-    fade: true
+    fade: true,
+    beforeChange: (_, next) => {
+  setCurrentSetIndex(next % allImageSets.length); // スライド番号に合わせて切り替え
+}
+
   };
 
   const columnCount = 7;
@@ -60,6 +72,7 @@ export default function SimpleSlider() {
         <div className={styles.backgroundContainer}>
   {columns.map((columnImages, colIndex) => (
     <div key={colIndex} className={styles.column}>
+      
       <div className={`${styles.offsetWrapper} ${styles[`offset-${colIndex}`]}`}>
       <div className={styles.cardList}>
   {columnImages.map((bg, index) => (
