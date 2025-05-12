@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import reactionsRoutes from "./routes/reactionsRoute.js";
-import userRoutes from './routes/userRoute.js';
+import userRoutes from "./routes/userRoute.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -12,7 +12,7 @@ app.use(cors());
 
 // routes
 app.use("/api/reactions", reactionsRoutes);
-app.use('/api/user', userRoutes);
+app.use("/api/user", userRoutes);
 
 // get
 app.get("/", (req, res) => {
