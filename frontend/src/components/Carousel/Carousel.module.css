@@ -102,8 +102,10 @@
     object-fit: cover;
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    animation: scrollAndFade 6s ease-in-out infinite;
+    animation: scrollAndFade 6s ease-in-out; /* ← 1枚切り替えごとのアニメだけ */
     background-color: transparent;
+      animation-fill-mode: both;
+
   }
 
   .offsetWrapper {

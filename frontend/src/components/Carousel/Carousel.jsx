@@ -15,6 +15,8 @@ export default function SimpleSlider() {
 
   const [currentSetIndex, setCurrentSetIndex] = React.useState(0);
   const bgImages = allImageSets[currentSetIndex];
+  const [visibleImages, setVisibleImages] = React.useState(allImageSets[0]);
+
 
   const settings = {
     dots: true,
@@ -25,24 +27,45 @@ export default function SimpleSlider() {
     autoplay: true,
     autoplaySpeed: 6000,
     fade: true,
-    beforeChange: (_, next) => {
-  setCurrentSetIndex(next % allImageSets.length); // スライド番号に合わせて切り替え
-}
+beforeChange: (_, next) => {
+  const nextImages = allImageSets[next % allImageSets.length];
 
-  };
+  // 各列ごとに遅れて1枚ずつ更新する
+  const newImages = [...visibleImages]; // いったんコピー
+
+  let delay = 0;
+  const colCount = 7;
+  const imgsPerCol = 2;
+
+  for (let col = 0; col < colCount; col++) {
+    setTimeout(() => {
+      for (let row = 0; row < imgsPerCol; row++) {
+        const i = col * imgsPerCol + row;
+        newImages[i] = nextImages[i];
+      }
+      // 変更された画像を表示する
+      setVisibleImages([...newImages]);
+    }, delay);
+
+    delay += 300; // 0.3秒ずつ遅らせる
+  }
+
+  setCurrentSetIndex(next % allImageSets.length);
+},
+};
 
   const columnCount = 7;
   const columnHeights = [2, 2, 2, 2, 2, 2, 2];
-  const columns = Array.from({ length: columnCount }, () => []);
-  let imageIndex = 0;
-  for (let col = 0; col < columnCount; col++) {
-    for (let i = 0; i < columnHeights[col]; i++) {
-      if (imageIndex < bgImages.length) {
-        columns[col].push(bgImages[imageIndex]);
-        imageIndex++;
-      }
+ const columns = Array.from({ length: columnCount }, () => []);
+let imageIndex = 0;
+for (let col = 0; col < columnCount; col++) {
+  for (let i = 0; i < columnHeights[col]; i++) {
+    if (imageIndex < visibleImages.length) {
+      columns[col].push(visibleImages[imageIndex]);
+      imageIndex++;
     }
   }
+}
 
   return (
     <div>
@@ -75,13 +98,14 @@ export default function SimpleSlider() {
       
       <div className={`${styles.offsetWrapper} ${styles[`offset-${colIndex}`]}`}>
       <div className={styles.cardList}>
-  {columnImages.map((bg, index) => (
-    <img
-      key={index}
-      src={bg}
-      className={`${styles.bgImage} ${styles[`delay-${colIndex}`]}`} // ← delayをimgにかける！
-    />
-  ))}
+        {columnImages.map((bg, index) => (
+          <img
+          key={`${colIndex}-${index}-${bg}`} // 画像のURLが変われば再レンダリングされる
+          src={bg}
+          className={`${styles.bgImage} ${styles[`delay-${colIndex}`]}`}
+           />
+        ))}
+
 </div>
       </div>
     </div>
