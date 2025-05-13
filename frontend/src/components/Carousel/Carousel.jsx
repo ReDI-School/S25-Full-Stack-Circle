@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 export default function SimpleSlider() {
-  const imageSets = ['set1', 'set2', 'set3'];
+  const imageSets = ['set1', 'set2', 'set3', 'set4'];
   const allImageSets = imageSets.map(setName =>
     Array.from({ length: 18 }, (_, i) => `/images/Homepage-topimages/${setName}/${i + 1}.jpg`)
   );
@@ -30,8 +30,8 @@ export default function SimpleSlider() {
 beforeChange: (_, next) => {
   const nextImages = allImageSets[next % allImageSets.length];
 
-  // 各列ごとに遅れて1枚ずつ更新する
-  const newImages = [...visibleImages]; // いったんコピー
+// Update one slide at a time with a delay for each column
+  const newImages = [...visibleImages];
 
   let delay = 0;
   const colCount = 7;
@@ -43,11 +43,11 @@ beforeChange: (_, next) => {
         const i = col * imgsPerCol + row;
         newImages[i] = nextImages[i];
       }
-      // 変更された画像を表示する
+      // Display the updated image
       setVisibleImages([...newImages]);
     }, delay);
 
-    delay += 300; // 0.3秒ずつ遅らせる
+    delay += 300; // Delay by 0.3 seconds each
   }
 
   setCurrentSetIndex(next % allImageSets.length);
@@ -100,7 +100,7 @@ for (let col = 0; col < columnCount; col++) {
       <div className={styles.cardList}>
         {columnImages.map((bg, index) => (
           <img
-          key={`${colIndex}-${index}-${bg}`} // 画像のURLが変われば再レンダリングされる
+          key={`${colIndex}-${index}-${bg}`} // Re-render when the image URL changes
           src={bg}
           className={`${styles.bgImage} ${styles[`delay-${colIndex}`]}`}
            />

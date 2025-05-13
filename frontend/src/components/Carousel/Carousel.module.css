@@ -51,16 +51,14 @@
   }
   .topSection {
     position: relative;
-    height: 100vh; /* 画面いっぱいの高さに */
-    width: 100%; /* ← 明示する */
+    height: 100vh; 
+    width: 100%; 
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow-x: visible;
+    overflow-x: hidden;
     overflow-y: hidden;
-    max-width: none !important; /* ← 強制的に 1244px 制限を解除 */
-    overflow: visible;  /* または overflow-y: visible; にしてOK */
-
+    max-width: none !important; /* Manually override the 1244px limit */
     
   }
 
@@ -68,8 +66,8 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-    width: 1800px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 1800px; 
     position: absolute;
     top: 50%;
     transform: translateY(-10%);
@@ -80,7 +78,7 @@
   }
 
 .column {
-  flex: 0 0 256px; /* ← これだけでOK（1列160px固定） */
+  flex: 0 0 256px; 
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -89,9 +87,8 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    overflow: visible; /* ← これに変える！ */
     height: auto; 
-    overflow: visible;  /* ← これに戻すと上下にふわっと動くカードが切れない */
+    overflow: visible;  
 
   }
   
@@ -102,7 +99,7 @@
     object-fit: cover;
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    animation: scrollAndFade 6s ease-in-out; /* ← 1枚切り替えごとのアニメだけ */
+    animation: scrollAndFade 6s ease-in-out; /* Animation only for single-slide transitions */
     background-color: transparent;
       animation-fill-mode: both;
 
@@ -115,7 +112,7 @@
 
   }
   
-/* 左から順に0.3秒ずつ遅らせる */
+/* Delay each item by 0.3s from left to right */
 .delay-0 { animation-delay: 0s !important; }
 .delay-1 { animation-delay: 0.3s !important; }
 .delay-2 { animation-delay: 0.6s !important; }
