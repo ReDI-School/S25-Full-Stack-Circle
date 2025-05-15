@@ -11,7 +11,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://pinterest_db_bghq_user:Q7WXpnxRX8HCjNZfbOiiP7m5vwuc9vNE@dpg-d05h0peuk2gs73ceta00-a.frankfurt-postgres.render.com/pinterest_db_bghq"
 }
 
 model Reaction {
@@ -30,10 +30,24 @@ model User {
   password String
   name     String? 
   Reaction Reaction[]
+  Comment Comment[]
 }
 
 model Pin {
   id        Int        @id @default(autoincrement())
   title     String
   reactions Reaction[]
+  comments Comment[]
+}
+
+model Comment {
+  id        Int       @id @default(autoincrement())
+  user    User @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now())
+  pin       Pin  @relation(fields: [pinId], references: [id])
+  pinId     Int
+  content   String
+
+  @@unique([userId, pinId]) // prevent duplicate Comments
 }
