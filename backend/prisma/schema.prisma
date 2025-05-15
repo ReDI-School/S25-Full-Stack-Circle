@@ -11,7 +11,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://pinterest_db_bghq_user:Q7WXpnxRX8HCjNZfbOiiP7m5vwuc9vNE@dpg-d05h0peuk2gs73ceta00-a.frankfurt-postgres.render.com/pinterest_db_bghq"
+  url      = env("DATABASE_URL")
 }
 
 model Reaction {
