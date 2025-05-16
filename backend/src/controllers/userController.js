@@ -5,7 +5,7 @@ import {
   BAD_REQUEST,
   CREATED,
   INTERNAL_SERVER_ERROR,
-  OK
+  OK,
 } from "../constants/http.js";
 
 export const signup = async (req, res) => {
@@ -26,7 +26,7 @@ export const signup = async (req, res) => {
     const cycles = 10;
     const hashedPassword = await bcrypt.hash(password, cycles);
     const newUser = await prisma.user.create({
-      data: { email, password: hashedPassword, name }
+      data: { email, password: hashedPassword, name },
     });
 
     res
@@ -61,12 +61,33 @@ export const login = async (req, res) => {
     }
 
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
-      expiresIn: "7d"
+      expiresIn: "7d",
     });
 
     res.status(OK).json({ message: "Login successfull!", token });
   } catch (error) {
     console.error("Error is login controller", error.message);
+    res
+      .status(INTERNAL_SERVER_ERROR)
+      .json({ message: "Internal Server Error" });
+  }
+};
+
+// test get
+export const getUserHandler = async (req, res) => {
+  try {
+    const users = await prisma.user.findMany({
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        createdAt: true,
+      },
+    });
+
+    res.status(OK).json({ users });
+  } catch (error) {
+    console.error("Error in getUsers controller", error);
     res
       .status(INTERNAL_SERVER_ERROR)
       .json({ message: "Internal Server Error" });
