@@ -15,7 +15,7 @@ export const protect = async (req, res, next) => {
     const decoded = verifyToken(token);
 
     const user = await prisma.user.findUnique({
-      where: { id: decoded.userId },
+      where: { id: decoded.userId }
     });
 
     if (!user) {
@@ -25,7 +25,7 @@ export const protect = async (req, res, next) => {
     req.user = {
       id: user.id,
       email: user.email,
-      name: user.name,
+      name: user.name
     };
 
     next();

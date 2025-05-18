@@ -4,22 +4,22 @@ import {
   CONFLICT,
   CREATED,
   INTERNAL_SERVER_ERROR,
-  OK,
+  OK
 } from "../constants/http.js";
 
 export const getReactions = async (req, res) => {
   const { pinId, userId } = req.query;
   try {
     const count = await prisma.reaction.count({
-      where: { pinId: Number(pinId) },
+      where: { pinId: Number(pinId) }
     });
 
     let userReacted = false;
     if (userId) {
       const existing = await prisma.reaction.findUnique({
         where: {
-          userId_pinId: { userId: Number(userId), pinId: Number(pinId) },
-        },
+          userId_pinId: { userId: Number(userId), pinId: Number(pinId) }
+        }
       });
       userReacted = !!existing;
     }
@@ -45,13 +45,13 @@ export const addReaction = async (req, res) => {
     const reaction = await prisma.reaction.create({
       data: {
         userId: Number(userId),
-        pinId: Number(pinId),
-      },
+        pinId: Number(pinId)
+      }
     });
 
     res.status(CREATED).json({
       message: "Reaction added.",
-      reaction,
+      reaction
     });
   } catch (err) {
     if (err.code === "P2002") {
@@ -75,9 +75,9 @@ export const deleteReaction = async (req, res) => {
       where: {
         userId_pinId: {
           userId: Number(userId),
-          pinId: Number(pinId),
-        },
-      },
+          pinId: Number(pinId)
+        }
+      }
     });
     res.status(OK).json({ message: "Reaction removed." });
   } catch (err) {

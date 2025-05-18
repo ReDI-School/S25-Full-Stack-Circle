@@ -5,7 +5,7 @@ import {
   BAD_REQUEST,
   CREATED,
   INTERNAL_SERVER_ERROR,
-  OK,
+  OK
 } from "../constants/http.js";
 import { getAllUsers } from "../services/userService.js";
 
@@ -27,7 +27,7 @@ export const signup = async (req, res) => {
     const cycles = 10;
     const hashedPassword = await bcrypt.hash(password, cycles);
     const newUser = await prisma.user.create({
-      data: { email, password: hashedPassword, name },
+      data: { email, password: hashedPassword, name }
     });
 
     res
@@ -62,7 +62,7 @@ export const login = async (req, res) => {
     }
 
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+      expiresIn: "7d"
     });
 
     res.status(OK).json({ message: "Login successful!", token });
