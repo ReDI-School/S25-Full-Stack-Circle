@@ -29,7 +29,7 @@ Suleman Ahmed Khan
 Julita Lapinska
 Zakaria Sebai
 Muhammad Shehbaz
-
+Peeradon Warithkorasuth
 ## Getting Started
 
 This project is organized into separate frontend and backend directories, each with their own dependencies and startup procedures.
