@@ -38,6 +38,7 @@ const BestOfPinterestSection = () => {
           <SeeMoreButton onClick={handleSeeMoreClick} className={styles.seeMoreButton} />
         </div>
       )}
+    </div>  
   );
 };
 

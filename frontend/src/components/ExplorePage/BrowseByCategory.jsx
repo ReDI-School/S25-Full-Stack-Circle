@@ -87,7 +87,7 @@ const BrowseByCategory = () => {
       </div>
       <div className={styles.categoryGridContainer}>
 
-        {categories.slice(0, visibleCount).map(category) => (
+        {categories.slice(0, visibleCount).map(category => (
 
           <div key={category.id} className={styles.categoryCard}>
             <div className={styles.categoryImage}>
