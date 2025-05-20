@@ -97,6 +97,7 @@ const BrowseByCategory = () => {
           </div>
         ))}
       </div>
+
       {isSeeMoreVisible && (
         <div className={styles.seeMoreButtonContainer}>
           <SeeMoreButton 
@@ -106,6 +107,7 @@ const BrowseByCategory = () => {
         </div>
       )}
     </>
+
   );
 };
 
