@@ -9,22 +9,21 @@ import {
 export const getComments = async (req, res) => {
   const { pinId } = req.query;
   try {
-    const count = await prisma.comment.count({
-      where: { pinId: Number(pinId) }
-    });
-
-    if (userId) {
-      const comments = await prisma.comment.findUnique({
-        where: {
-          pinId: { pinId: Number(pinId) }
-        }
-      });
-      
+    if (!pinId) {
+      return res.status(BAD_REQUEST).json({ error: "pinId is required." });
     }
+
+    const comments = await prisma.comment.findMany({
+      where: {
+        pinId: Number(pinId)
+      }
+    });
 
     res.json({ comments });
   } catch (err) {
-    res.status(INTERNAL_SERVER_ERROR).json({ error: "Something went wrong." });
+    res
+      .status(INTERNAL_SERVER_ERROR)
+      .json({ error: "Something went wrong in loading comments." });
   }
 };
 
@@ -38,9 +37,7 @@ export const addComment = async (req, res) => {
       .json({ error: "pinId and userId are required." });
   }
   if (!content) {
-    return res
-      .status(BAD_REQUEST)
-      .json({ error: "Comment is empty." });
+    return res.status(BAD_REQUEST).json({ error: "Comment is empty." });
   }
 
   try {
@@ -59,9 +56,7 @@ export const addComment = async (req, res) => {
     });
   } catch (err) {
     console.error("Add Comment Error:", err);
-    res
-      .status(INTERNAL_SERVER_ERROR)
-      .json({ error: "Failed to add comment." });
+    res.status(INTERNAL_SERVER_ERROR).json({ error: "Failed to add comment." });
   }
 };
 
