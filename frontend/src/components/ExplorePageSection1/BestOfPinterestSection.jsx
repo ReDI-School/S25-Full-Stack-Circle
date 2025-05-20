@@ -32,12 +32,13 @@ const BestOfPinterestSection = () => {
           </Link>
         ))}
       </div>
+
       {isSeeMoreVisible && (
         <div className={styles.seeMoreButtonContainer}>
           <SeeMoreButton onClick={handleSeeMoreClick} className={styles.seeMoreButton} />
         </div>
       )}
-    </div>
+
   );
 };
 

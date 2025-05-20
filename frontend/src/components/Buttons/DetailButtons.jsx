@@ -11,12 +11,12 @@ export default function DetailPageButtons() {
 
   // Toggle function for the save state.
   const handleClickSaved = () => {
-    setIsSaved((prevState) => !prevState);
+    setIsSaved(prevState => !prevState);
   };
 
   // Toggle function for the like state.
   const handleClickLiked = () => {
-    setIsLiked((prevState) => !prevState);
+    setIsLiked(prevState => !prevState);
   };
 
   return (

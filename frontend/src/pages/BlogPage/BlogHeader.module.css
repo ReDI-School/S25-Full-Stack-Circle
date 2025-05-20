@@ -1,14 +1,14 @@
 .box {
-  background-color: rgb(243, 237, 237); 
-  width: 100%; 
-  height: 100vh; 
+  background-color: rgb(243, 237, 237);
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  position: relative; 
+  position: relative;
 }
 
 .header {
-  background-color: rgb(255, 250, 250);  /* Keep the grayish background */
+  background-color: rgb(255, 250, 250); /* Keep the grayish background */
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   position: absolute;
   top: 0px; /* Make sure the header sticks at the top */
@@ -39,14 +39,12 @@
   display: flex;
   gap: 24px;
   padding-right: 70px;
-  
 }
 
 .link {
   text-decoration: none;
-  color:rgb(17, 17, 17);
+  color: rgb(17, 17, 17);
   font-size: 19px;
-
 }
 
 .link:hover {
@@ -58,7 +56,7 @@
   width: 100%;
   height: 850px;
 }
-.buttons{
+.buttons {
   width: 100%;
   height: 10vh;
   position: absolute;
@@ -67,26 +65,25 @@
   justify-content: space-between;
   margin: 0;
   position: relative;
-
 }
 .buttons p {
   font-size: 22px;
   font-weight: bold;
-  position:absolute;
+  position: absolute;
   top: 30px;
-  left: 135px
+  left: 135px;
 }
-.buttons button{
+.buttons button {
   width: 150px;
   background-color: #cec8c8;
   height: 50px;
   border-radius: 25px;
-position: absolute;
-top: 20px;
-right: 120px;
-color: black;
-font-weight: bold;
-font-size: 18px
+  position: absolute;
+  top: 20px;
+  right: 120px;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .containers {
@@ -101,13 +98,13 @@ font-size: 18px
   background-color: white;
   position: absolute;
   top: 300px;
-  left:128px;
+  left: 128px;
 }
 
 .textBlock {
   max-width: 5050px;
   font-size: 35px;
-  padding:20px
+  padding: 20px;
 }
 
 .imageGrid {
@@ -131,7 +128,7 @@ font-size: 18px
   object-fit: cover;
 }
 
-.press{
+.press {
   width: 100%;
   position: absolute;
   top: 450px;
@@ -142,10 +139,10 @@ font-size: 18px
   text-align: center;
 }
 
-.iconsContainer{
+.iconsContainer {
   width: 550px;
   height: 450px;
-  background-color:#dadada;
+  background-color: #dadada;
   border-radius: 25px;
   display: flex;
   justify-content: center;
@@ -153,7 +150,6 @@ font-size: 18px
   font-size: 100px;
   margin-left: 100px;
   margin-top: 65px;
-
 }
 .iconstext {
   font-size: 25px;
@@ -162,21 +158,17 @@ font-size: 18px
   position: relative;
   padding-right: 5px;
 }
-.iconstext span{
+.iconstext span {
   display: inline;
   position: absolute;
   top: 5px;
   left: 150px;
- 
 }
-.iconstext:last-child span{
+.iconstext:last-child span {
   left: 210px;
-
 }
-.iconboxes{
+.iconboxes {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-
-
 }

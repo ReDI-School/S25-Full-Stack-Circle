@@ -1,25 +1,24 @@
 .pageWrapper {
-    padding-top: 6rem; /* Equivalent to pt-24 */
-  }
-  
-  .title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    margin-top: 50px;
-  }
-  
-  .backLink {
-    color: #dc2626; /* Tailwind's red-600 */
-    text-decoration: underline;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    display: inline-block;
-  }
-  
-  .centered {
-    margin-top: 1.5rem;
-    display: flex;
-    justify-content: center;
-  }
-  
+  padding-top: 6rem; /* Equivalent to pt-24 */
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-top: 50px;
+}
+
+.backLink {
+  color: #dc2626; /* Tailwind's red-600 */
+  text-decoration: underline;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.centered {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
