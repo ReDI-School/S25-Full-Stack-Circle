@@ -6,7 +6,7 @@ const useModal = () => {
   const [modalType, setModalType] = useState("");
 
   // Open the modal with a specific type (login, signup)
-  const openModal = (type) => {
+  const openModal = type => {
     setModalType(type); // Set the type of modal (login or signup)
     setIsOpen(true); // Open the modal
   };

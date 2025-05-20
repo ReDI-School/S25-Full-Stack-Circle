@@ -27,7 +27,7 @@ const Header = () => {
   const [modalType, setModalType] = useState(null);
 
   // Modal functions
-  const openModal = (type) => {
+  const openModal = type => {
     setModalType(type);
     setIsOpen(true);
   };
@@ -41,7 +41,12 @@ const Header = () => {
     <Wrapper>
       <LogoWrapper>
         <IconButton>
-          <img src="/images/pinterest-seeklogo.svg" alt="Logo" width={100} height={100} />
+          <img
+            src="/images/pinterest-seeklogo.svg"
+            alt="Logo"
+            width={100}
+            height={100}
+          />
         </IconButton>
       </LogoWrapper>
 
@@ -55,7 +60,10 @@ const Header = () => {
             <SearchIcon />
           </IconButton>
           <form action="">
-            <input type="text" placeholder="Search for easy dinners, fashion, etc." />
+            <input
+              type="text"
+              placeholder="Search for easy dinners, fashion, etc."
+            />
             <button type="submit"></button>
           </form>
         </SearchBarWrapper>

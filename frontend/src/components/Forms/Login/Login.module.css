@@ -125,7 +125,7 @@
 
 .oDivider::before,
 .orDivider::after {
-  content: "";
+  content: '';
   flex: 1;
   border-bottom: 1px solid #e3e3e3;
 }

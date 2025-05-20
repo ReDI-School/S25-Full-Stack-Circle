@@ -17,16 +17,22 @@ export default function SimpleSlider() {
       <p className={styles.label}>Get your next</p>
       <Slider {...settings}>
         <div>
-          <p className={`${styles.slideText} ${styles.Text1}`}>weeknight dinner idea</p>
+          <p className={`${styles.slideText} ${styles.Text1}`}>
+            weeknight dinner idea
+          </p>
         </div>
         <div>
-          <p className={`${styles.slideText} ${styles.Text2}`}>home décor idea</p>
+          <p className={`${styles.slideText} ${styles.Text2}`}>
+            home décor idea
+          </p>
         </div>
         <div>
           <p className={`${styles.slideText} ${styles.Text3}`}>new outfit</p>
         </div>
         <div>
-          <p className={`${styles.slideText} ${styles.Text4}`}>green thumb idea</p>
+          <p className={`${styles.slideText} ${styles.Text4}`}>
+            green thumb idea
+          </p>
         </div>
       </Slider>
     </div>

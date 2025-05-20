@@ -1,12 +1,11 @@
 .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 8rem 1rem;
-  }
-  
-  .title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 8rem 1rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}

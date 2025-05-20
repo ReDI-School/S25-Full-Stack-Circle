@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  output   = "./node_modules/@prisma/client"
 }
 
 datasource db {
@@ -15,20 +15,21 @@ datasource db {
 }
 
 model Reaction {
-  id     Int  @id @default(autoincrement())
-  user   User @relation(fields: [userId], references: [id])
-  userId Int
-  pin    Pin  @relation(fields: [pinId], references: [id])
+  id     Int    @id @default(autoincrement())
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+  pin    Pin    @relation(fields: [pinId], references: [id])
   pinId  Int
 
   @@unique([userId, pinId]) // prevent duplicate reactions
 }
 
-// just for testing
 model User {
-  id        Int        @id @default(autoincrement())
-  name      String
-  reactions Reaction[]
+  id       String     @id @default(uuid()) // primary key with auto generated UUID
+  email    String     @unique
+  password String
+  name     String? 
+  Reaction Reaction[]
 }
 
 model Pin {

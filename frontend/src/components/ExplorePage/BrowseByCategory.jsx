@@ -86,7 +86,9 @@ const BrowseByCategory = () => {
         <h2 className={styles.title}>Browse by category</h2>
       </div>
       <div className={styles.categoryGridContainer}>
+
         {categories.slice(0, visibleCount).map((category) => (
+
           <div key={category.id} className={styles.categoryCard}>
             <div className={styles.categoryImage}>
               <img src={category.image} alt={category.title} />
@@ -97,12 +99,14 @@ const BrowseByCategory = () => {
           </div>
         ))}
       </div>
+
       {isSeeMoreVisible && (
         <div className={styles.seeMoreButtonContainer}>
           <SeeMoreButton onClick={handleSeeMoreClick} className={styles.seeMoreButton} />
         </div>
       )}
     </>
+
   );
 };
 
