@@ -29,6 +29,7 @@ Suleman Ahmed Khan
 Julita Lapinska
 Zakaria Sebai
 Muhammad Shehbaz
+<<<<<<< Updated upstream
 Peeradon Warithkorasuth
 ## Getting Started
 
@@ -89,3 +90,6 @@ To start the backend server:
 - The backend runs on Express.js
 - Both servers need to be running simultaneously during development
 - Frontend can be built for production using `npm run build`
+=======
+Peeradon Warithkorasuth
+>>>>>>> Stashed changes
