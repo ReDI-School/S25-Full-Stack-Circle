@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import CardDetailPage from "./components/ExplorePageSection1/CardDetailPage";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import Blog from "./pages/BlogPage/Blog";
 import ExplorePage from "./pages/ExplorePage";
 import HomePage from "./pages/HomePage";
@@ -28,6 +29,7 @@ function AppContent() {
         <Route path="/detail" element={<ImageDetailPage />} />
         <Route path="/blog" element={<Blog />} />
       </Routes>
+      {<Footer />}
     </>
   );
 }
