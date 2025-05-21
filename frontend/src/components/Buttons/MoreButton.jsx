@@ -8,10 +8,22 @@ import styles from "./DetailButtons.module.css";
 
 // Option list items
 const options = [
-  { label: "Download image", action: () => console.log("Download image") },
-  { label: "Hide Pin", action: () => console.log("Hide Pin") },
-  { label: "Report Pin", action: () => console.log("Report Pin") },
-  { label: "Get Pin embed code", action: () => console.log("Get Pin embed code") }
+  {
+    label: "Download image",
+    action: () => console.log("Download image")
+  },
+  {
+    label: "Hide Pin",
+    action: () => console.log("Hide Pin")
+  },
+  {
+    label: "Report Pin",
+    action: () => console.log("Report Pin")
+  },
+  {
+    label: "Get Pin embed code",
+    action: () => console.log("Get Pin embed code")
+  }
 ];
 
 export default function MoreButton() {
@@ -19,7 +31,7 @@ export default function MoreButton() {
   const ref = useRef(null);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = event => {
       if (ref.current && !ref.current.contains(event.target)) {
         setOpen(false);
       }
