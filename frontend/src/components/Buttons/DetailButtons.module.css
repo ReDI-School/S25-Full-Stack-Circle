@@ -86,6 +86,7 @@
   cursor: pointer;
 }
 
+
 /* ==== SAVE/LIKE BUTTON STYLES ==== */
 .savedbtn {
   background-color: #000000;
@@ -114,6 +115,7 @@
   min-height: 48px;
   min-width: 60px;
 }
+
 
 /* ==== TOOLTIP BASE STYLES ==== */
 .heartButton,
@@ -171,3 +173,4 @@
 .menuButton.activeMenu .iconthreedots {
   color: #ffffff;
 }
+
