@@ -44,7 +44,7 @@ export const addComment = async (req, res) => {
     // Create a comment
     const comment = await prisma.comment.create({
       data: {
-        userId: Number(userId),
+        userId: String(userId),
         pinId: Number(pinId),
         content: String(content)
       }
@@ -65,9 +65,7 @@ export const deleteComment = async (req, res) => {
   try {
     await prisma.comment.delete({
       where: {
-        id: {
-          id: Number(id)
-        }
+        id: Number(id)
       }
     });
     res.status(OK).json({ message: "Comment removed." });
