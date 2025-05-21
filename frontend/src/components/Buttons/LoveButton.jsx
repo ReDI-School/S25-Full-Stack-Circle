@@ -12,7 +12,7 @@ export default function LoveButton() {
 
   return (
     <>
-       <button
+      <button
         className={`${styles.buttonstyle} ${styles.heartButton}`}
         onClick={handleClickLiked}
       >

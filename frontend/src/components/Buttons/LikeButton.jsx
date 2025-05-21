@@ -10,11 +10,11 @@ export default function LikeButton() {
   };
 
   return (
-     <button
+    <button
       className={isSaved ? styles.savedbtn : styles.unsavedbtn}
       onClick={handleClickSaved}
     >
-    {isSaved ? "Saved" : "Save"}
+      {isSaved ? "Saved" : "Save"}
     </button>
   );
 }
