@@ -11,7 +11,7 @@ export default function LikeButton() {
 
   return (
     <button className={isSaved ? styles.savedbtn : styles.unsavedbtn}
-    onClick={handleClickSaved}>
+      onClick={handleClickSaved}>
       {isSaved ? "Saved" : "Save"}
     </button>
   );

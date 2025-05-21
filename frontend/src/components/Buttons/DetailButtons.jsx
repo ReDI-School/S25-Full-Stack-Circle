@@ -6,7 +6,6 @@ import LoveButton from "./LoveButton";
 import MoreButton from "./MoreButton";
 import ShareButton from "./ShareButton";
 
-
 export default function DetailButtons() {
   return (
     <div className={styles.containerstyle}>
