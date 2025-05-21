@@ -6,6 +6,7 @@ import LoveButton from "./LoveButton";
 import MoreButton from "./MoreButton";
 import ShareButton from "./ShareButton";
 
+
 export default function DetailButtons() {
   return (
     <div className={styles.containerstyle}>
@@ -14,7 +15,6 @@ export default function DetailButtons() {
         <ShareButton />
         <MoreButton />
       </div>
-
       <div className={styles.subcontainner}>
         <LikeButton />
       </div>

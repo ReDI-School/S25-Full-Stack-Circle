@@ -1,69 +1,68 @@
-
 .login {
-    background-image: url("../images/img_home.jpg");
-    height: 100%;
-    width: 100%;
-    position: relative;
-    display: flex;
-  }
+  background-image: url('../images/img_home.jpg');
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+}
 
 img {
   height: 50px;
   margin: auto;
- }
-  
-  .signup {
-    color: white;
-    align-self: center;
-    width: 50%;
-    font-size: 50px;
-    font-weight: 600;
-    margin-left: 60px;
-  }
-  
-  /* login component */
-  .container {
-    background: #fff;
-    padding: 2rem 1.5rem;
-    align-items: center;
-    min-height: 450px;
-    min-width: 500px;
-    text-align: center;
-  }
-  
-  .form {
-    text-align: left;
-    margin:5px;
-  }
-  .form input{
-    border: 2px solid gray;
-    border-radius: 0.5rem;
-    margin-bottom: 5px;
-    width: 260px;
-    height: 35px;
-  }
-  .continue {
-    background-color: red;
-    color: #fff;
-    border-radius: 0.5rem;    
-    width: 250px;
-    height: 35px;
-  }
-  
-  .wrapper {
-    margin: 0px auto;
-    margin-top: 0px;
-    margin-right: auto;
-    margin-bottom: 0px;
-    margin-left: auto;
-    width: 268px;
-  }
+}
 
-  .buttons {
-    text-align: center;
-    margin: 5 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center horizontally */
-    align-items: center;
-  }
+.signup {
+  color: white;
+  align-self: center;
+  width: 50%;
+  font-size: 50px;
+  font-weight: 600;
+  margin-left: 60px;
+}
+
+/* login component */
+.container {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  align-items: center;
+  min-height: 450px;
+  min-width: 500px;
+  text-align: center;
+}
+
+.form {
+  text-align: left;
+  margin: 5px;
+}
+.form input {
+  border: 2px solid gray;
+  border-radius: 0.5rem;
+  margin-bottom: 5px;
+  width: 260px;
+  height: 35px;
+}
+.continue {
+  background-color: red;
+  color: #fff;
+  border-radius: 0.5rem;
+  width: 250px;
+  height: 35px;
+}
+
+.wrapper {
+  margin: 0px auto;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+  width: 268px;
+}
+
+.buttons {
+  text-align: center;
+  margin: 5 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+}

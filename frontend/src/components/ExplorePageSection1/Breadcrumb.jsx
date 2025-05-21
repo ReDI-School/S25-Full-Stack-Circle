@@ -9,7 +9,9 @@ const Breadcrumb = ({ categories }) => (
         <Link to={category.link} className={styles.breadcrumbLink}>
           {category.name}
         </Link>
-        {index < categories.length - 1 && <span className={styles.breadcrumbSeparator}>&gt;</span>}
+        {index < categories.length - 1 && (
+          <span className={styles.breadcrumbSeparator}>&gt;</span>
+        )}
       </span>
     ))}
   </nav>

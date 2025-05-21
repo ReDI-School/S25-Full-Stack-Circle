@@ -1,36 +1,34 @@
+.label {
+  white-space: nowrap;
+  text-align: center;
+  margin: 2px;
+  font-size: 60px;
+  font-weight: 600;
+}
 
-  
-  .label {
-    white-space: nowrap;
-    text-align: center;
-    margin: 2px;
-    font-size: 60px;
-    font-weight: 600;
-  }
-  
-  .sliderWrapper {
-    width: 200px;
-  }
-  .slideText {
-    margin: 2px;
-    font-size: 60px;
-    font-weight: 600;
-    text-align: center;
-  }
+.sliderWrapper {
+  width: 200px;
+}
+.slideText {
+  margin: 2px;
+  font-size: 60px;
+  font-weight: 600;
+  text-align: center;
+}
 
-  /* Text Color*/
+/* Text Color*/
 .Text1 {
-    color: #c28b00;
-  }
-  
-  .Text2 {
-    color: #618c7b;
-  }
-  
-  .Text3 {
-    color: #0076d3;
-  }
-  
-  .Text4 {
-    color: #407a57;
-  }
+  color: #c28b00;
+}
+
+.Text2 {
+  color: #618c7b;
+}
+
+.Text3 {
+  color: #0076d3;
+}
+
+.Text4 {
+  color: #407a57;
+}

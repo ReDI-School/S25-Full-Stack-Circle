@@ -7,7 +7,10 @@ const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
   return (
     <div className={classes.overlay} onClick={onClose}>
-      <div className={classes["modal-container"]} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={classes["modal-container"]}
+        onClick={e => e.stopPropagation()}
+      >
         <div className={classes["modal-header"]}>
           <div className={classes.logo}>
             <img src="/images/pinterest-3.svg" alt="Pinterest Logo" />
