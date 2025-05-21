@@ -1,4 +1,5 @@
-
+import React from "react";
+  import "./Footer.css";
   export default function Footer() {
     return (
       <footer style={{ backgroundColor: "#f8f9fa", padding: "20px", textAlign: "center" }}>
