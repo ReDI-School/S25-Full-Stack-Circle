@@ -29,7 +29,6 @@ Suleman Ahmed Khan
 Julita Lapinska
 Zakaria Sebai
 Muhammad Shehbaz
-<<<<<<< Updated upstream
 Peeradon Warithkorasuth
 ## Getting Started
 

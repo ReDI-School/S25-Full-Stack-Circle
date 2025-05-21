@@ -1,5 +1,5 @@
 export const cards = [
-  
+
   {
     image:
     "https://i.pinimg.com/736x/a4/04/29/a404295ee9ceb7366b0068144abaf3f9.jpg",
