@@ -12,14 +12,15 @@ export default function LoveButton() {
 
   return (
     <>
-       <button className={`${styles.buttonstyle} ${styles.heartButton}`}
+       <button
+        className={`${styles.buttonstyle} ${styles.heartButton}`}
         onClick={handleClickLiked}
-            >
-              {isLiked ? (
-              <BsHeartFill className={styles.iconheartfilled} />
-            ) : (
-              <BsHeart className={styles.iconheartstroke} />
-            )}
+      >
+        {isLiked ? (
+          <BsHeartFill className={styles.iconheartfilled} />
+        ) : (
+          <BsHeart className={styles.iconheartstroke} />
+        )}
       </button>
       {isLiked && <p className={styles.numbercomment}>123</p>}
     </>
