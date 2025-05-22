@@ -1,42 +1,69 @@
+.pinDetailContainer {
+  margin-bottom: 20px;
+}
+
 .link {
-  color: #0077cc;
+  color: #0076d3;
   text-decoration: none;
   font-weight: 600;
   margin-bottom: 10px;
   display: inline-block;
+  font-size: 14px;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 
 .title {
   font-size: 24px;
-  margin: 10px 0;
+  font-weight: 600;
+  color: #111;
+  margin: 16px 0 8px 0;
 }
 
 .description {
+  font-size: 16px;
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+  line-height: 1.4;
 }
 
 .hashtags {
   color: #555;
-  /* font-style: italic; */
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.hashtag {
+  cursor: pointer;
+}
+
+.hashtag:hover {
+  text-decoration: underline;
 }
 
 .userInfo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  justify-content: flex-start;
-  width: fit-content;
+  gap: 12px;
+  margin: 16px 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
 }
 
 .userImage {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: block;
+  object-fit: cover;
 }
 
 .userName {
-  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  color: #111;
 }

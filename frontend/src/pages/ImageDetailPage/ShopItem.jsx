@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { IoMdArrowDropdown } from "react-icons/io";
 import PinDetailComponent from "../../components/PinDetailComponent";
 import CommentSection from "./CommentSection";
 import styles from "./ShopItem.module.css";
@@ -11,7 +12,7 @@ const suggestions = [
   "Create board"
 ];
 
-const ShopItem = () => {
+const ShopItem = ({ imageSrc }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [search, setSearch] = useState("");
   const popupRef = useRef(null);
@@ -33,20 +34,32 @@ const ShopItem = () => {
     item.toLowerCase().includes(search.toLowerCase())
   );
 
+  // Tags for the Pinterest-style tag list
+  const hashtags = [
+    "#inktober",
+    "#inktober24",
+    "#inktober2024",
+    "#day16",
+    "#inktoberday16",
+    "#grungy"
+  ];
+
   return (
     <div className={styles["shop-item"]}>
+      {/* Left side - Image */}
       <div className={styles["shop-item-image"]}>
-        <img src="https://picsum.photos/300/300" alt="Product" />
+        <img src={imageSrc || "https://picsum.photos/300/300"} alt="Product" />
       </div>
 
+      {/* Right side - Content details */}
       <div className={styles["shop-item-details"]}>
-        {/* Buttons now inside shop-item-details */}
+        {/* Profile and Save buttons - updated to match design */}
         <div className={styles["profile-wrapper"]} ref={popupRef}>
           <button
             className={styles["profile-button"]}
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            Profile
+            Profile <IoMdArrowDropdown />
           </button>
           {menuOpen && (
             <div className={styles["profile-popup"]}>
@@ -68,11 +81,33 @@ const ShopItem = () => {
           )}
           <button className={styles["Save-button"]}>Save</button>
         </div>
+
+        {/* Product info */}
         <p className={styles.brand}>Order Of Style</p>
         <p className={styles.title}>Le High Skinny Jean...</p>
         <p className={styles.price}>€ 1,95</p>
+
         <div className={styles["shop-item-description"]}>
+          {/* Pin details */}
           <PinDetailComponent />
+
+          {/* Tags */}
+          <div className={styles["tag-list"]}>
+            {hashtags.map((tag, index) => (
+              <span
+                key={index}
+                className={styles.tag}
+                onClick={() => console.log(`Clicked ${tag}`)}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* This flexible spacer pushes the comment section to bottom */}
+          <div className={styles["content-spacer"]}></div>
+
+          {/* Comment section at the very bottom where the photo ends */}
           <CommentSection />
         </div>
       </div>
