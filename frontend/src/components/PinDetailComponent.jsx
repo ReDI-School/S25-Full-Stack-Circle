@@ -1,26 +1,26 @@
-import React from 'react';
-import styles from './PinDetail.module.css';
+import React from "react";
+import styles from "./PinDetail.module.css";
 
 function PinDetailComponent() {
   const pin = {
-    link: 'https://www.instagram.com/',
-    postName: 'Character Design',
-    description: '@inktober day 16: Grungy digital inking using @procreate',
+    link: "https://www.instagram.com/",
+    postName: "Character Design",
+    description: "@inktober day 16: Grungy digital inking using @procreate",
     hashtags: [
-      '#inktober',
-      '#inktober24',
-      '#inktober2024',
-      '#day16',
-      '#inktoberday16',
-      '#inktobergrungy',
-      '#grungy',
-      '#inking',
-      '#inkart',
-      'digital',
-      '...more',
+      "#inktober",
+      "#inktober24",
+      "#inktober2024",
+      "#day16",
+      "#inktoberday16",
+      "#inktobergrungy",
+      "#grungy",
+      "#inking",
+      "#inkart",
+      "digital",
+      "...more"
     ],
-    username: 'inscapia',
-    userProfile: 'https://placehold.co/50x50', // Placeholder
+    username: "inscapia",
+    userProfile: "https://placehold.co/50x50" // Placeholder
   };
 
   return (

@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { FaSmile, FaImage, FaGift } from 'react-icons/fa';
-import styles from './CommentSection.module.css';
+import React, { useState } from "react";
+import { FaSmile, FaImage, FaGift } from "react-icons/fa";
+import styles from "./CommentSection.module.css";
 
 function CommentSection() {
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState('');
+  const [newComment, setNewComment] = useState("");
   const [isCommentsVisible, setIsCommentsVisible] = useState(true);
 
   const handleAddComment = e => {
     e.preventDefault();
     if (newComment.trim()) {
       setComments([newComment, ...comments]);
-      setNewComment('');
+      setNewComment("");
     }
   };
 
@@ -29,9 +29,9 @@ function CommentSection() {
             onClick={toggleCommentsVisibility}
           >
             <span>
-              {comments.length} {comments.length === 1 ? 'comment' : 'comments'}
+              {comments.length} {comments.length === 1 ? "comment" : "comments"}
             </span>
-            <span>{isCommentsVisible ? '▲' : '▼'}</span>
+            <span>{isCommentsVisible ? "▲" : "▼"}</span>
           </div>
 
           {isCommentsVisible && (
