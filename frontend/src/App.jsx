@@ -12,6 +12,7 @@ import ExplorePage from "./pages/ExplorePage";
 import HomePage from "./pages/HomePage";
 import ImageDetailPage from "./pages/ImageDetailPage";
 
+
 function AppContent() {
   const location = useLocation();
 
