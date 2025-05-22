@@ -7,6 +7,7 @@ import {
   INTERNAL_SERVER_ERROR,
   OK
 } from "../constants/http.js";
+import { getAllUsers } from "../services/userService.js";
 
 export const signup = async (req, res) => {
   const { email, password, name } = req.body;
@@ -20,7 +21,7 @@ export const signup = async (req, res) => {
     if (password.length < max) {
       return res
         .status(BAD_REQUEST)
-        .json({ message: "Password must be atleast 6 characters" });
+        .json({ message: "Password must be at least 6 characters" });
     }
 
     const cycles = 10;
@@ -64,11 +65,21 @@ export const login = async (req, res) => {
       expiresIn: "7d"
     });
 
-    res.status(OK).json({ message: "Login successfull!", token });
+    res.status(OK).json({ message: "Login successful!", token });
   } catch (error) {
     console.error("Error is login controller", error.message);
     res
       .status(INTERNAL_SERVER_ERROR)
       .json({ message: "Internal Server Error" });
+  }
+};
+
+// GET for testing jwt only
+export const getAllUsersHandler = async (req, res, next) => {
+  try {
+    const users = await getAllUsers();
+    res.status(OK).json({ message: "All Users retrieved", users });
+  } catch (err) {
+    next(err);
   }
 };
