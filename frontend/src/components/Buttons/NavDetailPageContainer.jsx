@@ -6,7 +6,7 @@ import LoveButton from "./LoveButton";
 import MoreButton from "./MoreButton";
 import ShareButton from "./ShareButton";
 
-export default function DetailButtons() {
+export default function NavDetailPageContainer() {
   return (
     <div className={styles.containerstyle}>
       <div className={styles.subcontainner}>
@@ -14,6 +14,7 @@ export default function DetailButtons() {
         <ShareButton />
         <MoreButton />
       </div>
+
       <div className={styles.subcontainner}>
         <LikeButton />
       </div>

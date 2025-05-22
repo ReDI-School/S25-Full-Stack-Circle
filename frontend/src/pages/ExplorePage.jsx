@@ -14,7 +14,11 @@ function ExplorePage() {
         <Link to="/" className={styles.navLink} aria-label="Back to Homepage">
           Back to Homepage
         </Link>
-        <Link to="/detail" className={styles.navLink} aria-label="Go to Image Detail">
+        <Link
+          to="/detail"
+          className={styles.navLink}
+          aria-label="Go to Image Detail"
+        >
           Go to Image Detail
         </Link>
       </nav>

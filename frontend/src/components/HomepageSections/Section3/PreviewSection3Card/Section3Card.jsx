@@ -9,9 +9,7 @@ import { BsDashLg } from "react-icons/bs";
 const Section3Card = () => (
   <div className={styles["section3-card-wrapper"]}>
     <div className={styles["card-caraousel-wrapper"]}>
-      <img className={styles["card-image"]}
-        src={cardImage}
-      />
+      <img className={styles["card-image"]} src={cardImage} />
       <div className={styles["card-caption-wrapper"]}>
         <div className={styles["carousel-icons"]}>
           <MdKeyboardArrowLeft />
@@ -29,10 +27,7 @@ const Section3Card = () => (
       <div className={styles["card-text"]}>
         <p className={styles["profile-name"]}>Scout the city</p>
         <p className={styles["followers"]}>56.7 followers</p>
-        <img
-          className={styles["profile-picture"]}
-          src={profilePicture}
-        />
+        <img className={styles["profile-picture"]} src={profilePicture} />
       </div>
     </div>
   </div>

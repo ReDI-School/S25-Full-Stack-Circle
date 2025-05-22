@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation
+} from "react-router-dom";
 import CardDetailPage from "./components/ExplorePageSection1/CardDetailPage";
 import Navbar from "./components/Navbar/Navbar";
 import Blog from "./pages/BlogPage/Blog";

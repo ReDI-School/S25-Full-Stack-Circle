@@ -6,7 +6,7 @@ const CardLarge = () => (
   <div className={styles["section2-card-large-wrapper"]}>
     <p className={styles["card-text"]}>Fern future home vibes</p>
     <div className={styles["inner-card-wrapper"]}>
-      <img 
+      <img
         className={styles["inner-card-wrapper-image"]}
         src={image1}
         alt="section 2 fern bed image"

@@ -8,12 +8,17 @@ const Section3 = () => (
       <Section3Card />
     </div>
     <div className={styles["section3-text"]}>
-      <h1 className={styles["section-text-heading"]}>See it, make it,<br />
-      try it, do it</h1>
+      <h1 className={styles["section-text-heading"]}>
+        See it, make it,
+        <br />
+        try it, do it
+      </h1>
       <div className={styles["section-text-p"]}>
-        <p>The best part of Pinterest is <br />
-            discovering new things and<br />
-            ideas from people around the world.
+        <p>
+          The best part of Pinterest is <br />
+          discovering new things and
+          <br />
+          ideas from people around the world.
         </p>
       </div>
     </div>
