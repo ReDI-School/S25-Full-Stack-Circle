@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { FaSmile, FaImage, FaGift, FaArrowRight } from "react-icons/fa";
-import styles from "./CommentSection.module.css";
+import React, { useState } from 'react';
+import { FaSmile, FaImage, FaGift, FaArrowRight } from 'react-icons/fa';
+import styles from './CommentSection.module.css';
 
 function CommentSection() {
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState("");
+  const [newComment, setNewComment] = useState('');
   const [isCommentsVisible, setIsCommentsVisible] = useState(true);
 
   const handleAddComment = e => {
     e.preventDefault();
     if (newComment.trim()) {
       setComments([newComment, ...comments]); // Add new comments at the beginning
-      setNewComment("");
+      setNewComment('');
     }
   };
 
@@ -20,7 +20,7 @@ function CommentSection() {
   };
 
   const handleKeyDown = e => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       e.target.style.height = `${e.target.scrollHeight}px`;
     }
@@ -36,11 +36,11 @@ function CommentSection() {
               onClick={toggleCommentsVisibility}
             >
               <span className={styles.commentCount}>
-                {comments.length}{" "}
-                {comments.length === 1 ? "comment" : "comments"}
+                {comments.length}{' '}
+                {comments.length === 1 ? 'comment' : 'comments'}
               </span>
               <span className={styles.commentCount}>
-                {isCommentsVisible ? "▲" : "▼"}
+                {isCommentsVisible ? '▲' : '▼'}
               </span>
             </div>
 

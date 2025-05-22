@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 /**
  * A reusable "See More" button component
@@ -8,7 +8,7 @@ import React from "react";
  * @param {string} [props.className] - Additional CSS class for custom styling
  * @returns {JSX.Element} - Button component
  */
-const SeeMoreButton = ({ onClick, text = "See more", className }) => (
+const SeeMoreButton = ({ onClick, text = 'See more', className }) => (
   <button className={className} onClick={onClick} aria-label={text}>
     {text}
   </button>

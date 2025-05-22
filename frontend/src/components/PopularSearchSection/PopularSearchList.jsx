@@ -1,5 +1,5 @@
-import React from "react";
-import PopularSearchBtn from "./PopularSearchBtn";
+import React from 'react';
+import PopularSearchBtn from './PopularSearchBtn';
 
 function PopularSearchList({ title, popularSearch }) {
   return (
@@ -15,14 +15,14 @@ function PopularSearchList({ title, popularSearch }) {
 }
 
 const titleStyle = {
-  margin: "64px 0 16px 0",
-  color: "#111111",
-  fontSize: "28px",
-  fontWeight: "semibold"
+  margin: '64px 0 16px 0',
+  color: '#111111',
+  fontSize: '28px',
+  fontWeight: 'semibold',
 };
 
 const listStyle = {
-  display: "flex",
-  flexWrap: "wrap"
+  display: 'flex',
+  flexWrap: 'wrap',
 };
 export default PopularSearchList;
