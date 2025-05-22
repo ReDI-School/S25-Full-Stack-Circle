@@ -1,9 +1,9 @@
-import React from "react";
+
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation
+  useLocation,
 } from "react-router-dom";
 import CardDetailPage from "./components/ExplorePageSection1/CardDetailPage";
 import Navbar from "./components/Navbar/Navbar";
@@ -16,7 +16,7 @@ function AppContent() {
   const location = useLocation();
 
   // Determine whether to display the Navbar based on current path
-  const showNavbar = location.pathname !== "/blog";
+  const showNavbar = location.pathname !== '/blog';
 
   return (
     <>

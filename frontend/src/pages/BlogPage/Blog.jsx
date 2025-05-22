@@ -1,34 +1,34 @@
-import { FaArrowRight, FaDownload } from "react-icons/fa";
-import { MdOutlineMail } from "react-icons/md";
-import { PiBellRingingFill } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { FaArrowRight, FaDownload } from 'react-icons/fa';
+import { MdOutlineMail } from 'react-icons/md';
+import { PiBellRingingFill } from 'react-icons/pi';
+import { Link } from 'react-router-dom';
 
-import styles from "./BlogHeader.module.css";
+import styles from './BlogHeader.module.css';
 const cards = [
   {
     image:
-      "https://i.pinimg.com/736x/a4/04/29/a404295ee9ceb7366b0068144abaf3f9.jpg"
+      'https://i.pinimg.com/736x/a4/04/29/a404295ee9ceb7366b0068144abaf3f9.jpg',
   },
   {
     image:
-      "https://images.unsplash.com/photo-1744349348850-a2bfb2731593?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0OHx8fGVufDB8fHx8fA%3D%3D"
+      'https://images.unsplash.com/photo-1744349348850-a2bfb2731593?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0OHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     image:
-      "https://images.unsplash.com/photo-1744638628542-12578d73179b?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      'https://images.unsplash.com/photo-1744638628542-12578d73179b?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     image:
-      "https://images.unsplash.com/photo-1744221127291-92299c0600dc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      'https://images.unsplash.com/photo-1744221127291-92299c0600dc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     image:
-      "https://plus.unsplash.com/premium_photo-1744576035583-e014eb83ec2a?q=80&w=1969&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      'https://plus.unsplash.com/premium_photo-1744576035583-e014eb83ec2a?q=80&w=1969&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     image:
-      "https://plus.unsplash.com/premium_photo-1679492942912-a7dc8d5be711?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  }
+      'https://plus.unsplash.com/premium_photo-1679492942912-a7dc8d5be711?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  },
 ];
 
 const Blog = () => (
@@ -92,7 +92,7 @@ const Blog = () => (
             <MdOutlineMail />
           </div>
           <p className={styles.iconstext}>
-            Contact us{" "}
+            Contact us{' '}
             <span>
               <FaArrowRight />
             </span>
@@ -103,7 +103,7 @@ const Blog = () => (
             <FaDownload />
           </div>
           <p className={styles.iconstext}>
-            Press assets{" "}
+            Press assets{' '}
             <span>
               <FaArrowRight />
             </span>
@@ -114,7 +114,7 @@ const Blog = () => (
             <PiBellRingingFill />
           </div>
           <p className={styles.iconstext}>
-            Subscribe via RSS{" "}
+            Subscribe via RSS{' '}
             <span>
               <FaArrowRight />
             </span>
