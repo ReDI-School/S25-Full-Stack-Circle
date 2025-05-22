@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { IoMdArrowDropdown } from 'react-icons/io';
 import PinDetailComponent from '../../components/PinDetailComponent';
 import CommentSection from './CommentSection';
 import styles from './ShopItem.module.css';
@@ -52,13 +53,13 @@ const ShopItem = ({ imageSrc }) => {
 
       {/* Right side - Content details */}
       <div className={styles['shop-item-details']}>
-        {/* Profile and Save buttons */}
+        {/* Profile and Save buttons - updated to match design */}
         <div className={styles['profile-wrapper']} ref={popupRef}>
           <button
             className={styles['profile-button']}
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            Profile
+            Profile <IoMdArrowDropdown />
           </button>
           {menuOpen && (
             <div className={styles['profile-popup']}>

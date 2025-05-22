@@ -20,7 +20,7 @@
   z-index: 10;
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
@@ -41,35 +41,40 @@
 }
 
 .profile-button {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  font-weight: bold;
+  background-color: white;
+  color: black;
+  font-weight: 600;
   padding: 8px 16px;
   border-radius: 24px;
   border: none;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .profile-button:hover {
-  background-color: black;
+  background-color: #f0f0f0;
 }
 
 .Save-button {
-  background-color: #000000; /* Changed from #e60023 (red) to solid black */
+  background-color: #e60023; /* Pinterest red color */
   color: white;
-  font-weight: bold;
+  font-weight: 600;
   padding: 8px 16px;
   border-radius: 24px;
   border: none;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.2s;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .Save-button:hover {
-  background-color: #333333; /* Slightly lighter black on hover */
+  background-color: #ad081b; /* Slightly darker red on hover */
 }
 
 .shop-item-details {
