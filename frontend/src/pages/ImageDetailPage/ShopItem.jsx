@@ -33,14 +33,26 @@ const ShopItem = ({ imageSrc }) => {
     item.toLowerCase().includes(search.toLowerCase())
   );
 
+  // Tags for the Pinterest-style tag list
+  const hashtags = [
+    '#inktober',
+    '#inktober24',
+    '#inktober2024',
+    '#day16',
+    '#inktoberday16',
+    '#grungy',
+  ];
+
   return (
     <div className={styles['shop-item']}>
+      {/* Left side - Image */}
       <div className={styles['shop-item-image']}>
         <img src={imageSrc || 'https://picsum.photos/300/300'} alt="Product" />
       </div>
 
+      {/* Right side - Content details */}
       <div className={styles['shop-item-details']}>
-        {/* Buttons now inside shop-item-details */}
+        {/* Moved buttons to the top of the details section */}
         <div className={styles['profile-wrapper']} ref={popupRef}>
           <button
             className={styles['profile-button']}
@@ -68,11 +80,32 @@ const ShopItem = ({ imageSrc }) => {
           )}
           <button className={styles['Save-button']}>Save</button>
         </div>
+
         <p className={styles.brand}>Order Of Style</p>
         <p className={styles.title}>Le High Skinny Jean...</p>
         <p className={styles.price}>€ 1,95</p>
+
         <div className={styles['shop-item-description']}>
+          {/* Pin detail component with Instagram button */}
           <PinDetailComponent />
+
+          {/* Tags */}
+          <div className={styles['tag-list']}>
+            {hashtags.map((tag, index) => (
+              <span
+                key={index}
+                className={styles.tag}
+                onClick={() => console.log(`Clicked ${tag}`)}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Add a spacer to push comments to bottom */}
+          <div className={styles['content-spacer']}></div>
+
+          {/* Comment section at the very bottom */}
           <CommentSection />
         </div>
       </div>
