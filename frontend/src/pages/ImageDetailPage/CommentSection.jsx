@@ -31,7 +31,7 @@ function CommentSection() {
             <span>
               {comments.length} {comments.length === 1 ? 'comment' : 'comments'}
             </span>
-            <span>{isCommentsVisible ? '▼' : '▶'}</span>
+            <span>{isCommentsVisible ? '▲' : '▼'}</span>
           </div>
 
           {isCommentsVisible && (

@@ -52,7 +52,7 @@ const ShopItem = ({ imageSrc }) => {
 
       {/* Right side - Content details */}
       <div className={styles['shop-item-details']}>
-        {/* Moved buttons to the top of the details section */}
+        {/* Profile and Save buttons */}
         <div className={styles['profile-wrapper']} ref={popupRef}>
           <button
             className={styles['profile-button']}
@@ -81,12 +81,13 @@ const ShopItem = ({ imageSrc }) => {
           <button className={styles['Save-button']}>Save</button>
         </div>
 
+        {/* Product info */}
         <p className={styles.brand}>Order Of Style</p>
         <p className={styles.title}>Le High Skinny Jean...</p>
         <p className={styles.price}>€ 1,95</p>
 
         <div className={styles['shop-item-description']}>
-          {/* Pin detail component with Instagram button */}
+          {/* Pin details */}
           <PinDetailComponent />
 
           {/* Tags */}
@@ -102,10 +103,10 @@ const ShopItem = ({ imageSrc }) => {
             ))}
           </div>
 
-          {/* Add a spacer to push comments to bottom */}
+          {/* This flexible spacer pushes the comment section to bottom */}
           <div className={styles['content-spacer']}></div>
 
-          {/* Comment section at the very bottom */}
+          {/* Comment section at the very bottom where the photo ends */}
           <CommentSection />
         </div>
       </div>
