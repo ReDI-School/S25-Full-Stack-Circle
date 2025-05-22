@@ -11,7 +11,7 @@ const suggestions = [
   "Create board"
 ];
 
-const ShopItem = () => {
+const ShopItem = ({ image }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [search, setSearch] = useState("");
   const popupRef = useRef(null);
@@ -36,7 +36,7 @@ const ShopItem = () => {
   return (
     <div className={styles["shop-item"]}>
       <div className={styles["shop-item-image"]}>
-        <img src="https://picsum.photos/300/300" alt="Product" />
+        <img src={image.src ||"https://picsum.photos/300/300"} alt="Product" />
       </div>
 
       <div className={styles["shop-item-details"]}>
