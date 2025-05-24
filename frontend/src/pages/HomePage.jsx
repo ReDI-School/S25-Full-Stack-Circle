@@ -1,44 +1,71 @@
-import React, { useState, useEffect } from "react";
-import Login from "../components/HomePageLogin/Login";
-import PreviewSections from "../components/HomepageSections/PreviewSections";
-
-import { Link } from "react-router-dom";
-import SimpleSlider from "../components/Carousel/Carousel";
-import styles from "./Home.module.css";
+import React, { useState, useEffect, useRef } from 'react';
+import Login from '../components/HomePageLogin/Login';
+import PreviewSections from '../components/HomepageSections/PreviewSections';
+import { Link } from 'react-router-dom';
+import SimpleSlider from '../components/Carousel/Carousel';
+import styles from './Home.module.css';
 
 function HomePage() {
-  const [isScrolling, setIsScrolling] = useState(false);
+  /* section based scroll:
+  -track the section we are on
+  -store references to all sections
+  -prevent multiple scrolls at once
+  */
+  const [currentSection, setCurrentSection] = useState(0);
+  const sectionsRef = useRef([]);
+  const isScrolling = useRef(false);
 
   useEffect(() => {
-    const handleScrollStart = () => {
-      if (!isScrolling) {
-        setIsScrolling(true);
-        window.scrollBy({
-          top: window.scrollY + 700,
-          left: 0,
-          behavior: "smooth"
-        });
-      }
+    const handleWheel = e => {
+      e.preventDefault();
+      if (isScrolling.current) return;
+
+      isScrolling.current = true;
+      setTimeout(() => {
+        isScrolling.current = false;
+      }, 1000); // Debounce scroll events
+
+      //determine direction of scroll
+      const direction = e.deltaY > 0 ? 1 : -1;
+
+      //update the current section based on the direction of the scroll
+      setCurrentSection(prev => {
+        const next = prev + direction;
+        // scroll if the next section exists
+        if (next >= 0 && next < sectionsRef.current.length) {
+          sectionsRef.current[next].scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+          return next;
+        }
+        return prev;
+      });
     };
 
-    window.addEventListener("scroll", handleScrollStart);
-
-    return () => {
-      window.removeEventListener("scroll", handleScrollStart);
-    };
-  }, [isScrolling]);
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, []);
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Homepage</h1>
-      <SimpleSlider />
-      <nav className={styles.nav}>
-        <Link to="/explore" className={styles.link}>
-          Go to Explore
-        </Link>
-      </nav>
-      <PreviewSections />
-      <Login />
+      <div ref={el => (sectionsRef.current[0] = el)} className={styles.section}>
+        <h1 className={styles.title}>Homepage</h1>
+        <SimpleSlider />
+        <nav className={styles.nav}>
+          <Link to="/explore" className={styles.link}>
+            Go to Explore
+          </Link>
+        </nav>
+      </div>
+
+      <div ref={el => (sectionsRef.current[1] = el)} className={styles.section}>
+        <PreviewSections />
+      </div>
+
+      <div ref={el => (sectionsRef.current[2] = el)} className={styles.section}>
+        <Login />
+      </div>
     </div>
   );
 }
