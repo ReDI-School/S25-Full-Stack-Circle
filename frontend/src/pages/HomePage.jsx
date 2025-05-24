@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Login from '../components/HomePageLogin/Login';
-import PreviewSections from '../components/HomepageSections/PreviewSections';
-import { Link } from 'react-router-dom';
-import SimpleSlider from '../components/Carousel/Carousel';
-import styles from './Home.module.css';
+import React, { useState, useEffect, useRef } from "react";
+import Login from "../components/HomePageLogin/Login";
+import PreviewSections from "../components/HomepageSections/PreviewSections";
+import { Link } from "react-router-dom";
+import SimpleSlider from "../components/Carousel/Carousel";
+import styles from "./Home.module.css";
 
 function HomePage() {
   /* section based scroll:
@@ -25,17 +25,17 @@ function HomePage() {
         isScrolling.current = false;
       }, 1000); // Debounce scroll events
 
-      //determine direction of scroll
+      // determine direction of scroll
       const direction = e.deltaY > 0 ? 1 : -1;
 
-      //update the current section based on the direction of the scroll
+      // update the current section based on the direction of the scroll
       setCurrentSection(prev => {
         const next = prev + direction;
         // scroll if the next section exists
         if (next >= 0 && next < sectionsRef.current.length) {
           sectionsRef.current[next].scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
+            behavior: "smooth",
+            block: "start"
           });
           return next;
         }
@@ -43,8 +43,8 @@ function HomePage() {
       });
     };
 
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheel);
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
   }, []);
 
   return (
