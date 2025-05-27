@@ -16,16 +16,16 @@
     font-size: 64px;
     font-weight: bold;
     line-height: 1.2;
-    display: inline-block; /* ← ここ追加でOK */
+    display: inline-block; /* ← Add this line */
 
-  }
+}
 
-  .textWrapper {
-    position: absolute;        /* ← ここを relative から absolute に変更 */
-    top: 28%;                  /* ← 高さをPinterestと同じくらいに */
+.textWrapper {
+    position: absolute;        /* ← Changed from relative to absolute */
+    top: 28%;                  /* ← Set height roughly same as Pinterest */
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;         /* 背景カードより上に表示するため */
+     z-index: 2;         /* Display above background cards */
     text-align: center;
     width: 100%;
     max-width: 1000px;
@@ -111,6 +111,18 @@
     flex-direction: column;
 
   }
+
+.whiteGradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 160px; /* Adjust as needed */
+  background: linear-gradient(to top, white 0%, transparent 100%);
+  z-index: 1; /* Positioned above background images, but below text */
+  pointer-events: none; /* Do not interfere with user interactions */
+}
+
   
 /* Delay each item by 0.3s from left to right */
 .delay-0 { animation-delay: 0s !important; }

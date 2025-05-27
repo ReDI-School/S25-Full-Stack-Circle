@@ -111,6 +111,7 @@ for (let col = 0; col < columnCount; col++) {
     </div>
   ))}
 </div>
+  <div className={styles.whiteGradient}></div>
        </section>
     </div>
   );
