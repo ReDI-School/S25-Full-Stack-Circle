@@ -1,9 +1,10 @@
 import React from "react";
+import Login from "../components/HomePageLogin/Login";
+import PreviewSections from "../components/HomepageSections/PreviewSections";
+
 import { Link } from "react-router-dom";
-
 import SimpleSlider from "../components/Carousel/Carousel";
-
-import styles from "./home.module.css";
+import styles from "./Home.module.css";
 
 function HomePage() {
   return (
@@ -14,7 +15,10 @@ function HomePage() {
         <Link to="/explore" className={styles.link}>
           Go to Explore
         </Link>
+        <Login></Login>
       </nav>
+      <PreviewSections />
+      <Login />
     </div>
   );
 }

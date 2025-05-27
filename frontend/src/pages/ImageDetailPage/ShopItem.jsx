@@ -1,11 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
-
 import PinDetailComponent from "../../components/PinDetailComponent";
-
 import CommentSection from "./CommentSection";
 import styles from "./ShopItem.module.css";
 
-const suggestions = ["Art journal", "Collage art", "Art inspo", "Creative", "Create board"];
+const suggestions = [
+  "Art journal",
+  "Collage art",
+  "Art inspo",
+  "Creative",
+  "Create board"
+];
 
 const ShopItem = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,7 +29,7 @@ const ShopItem = () => {
     };
   }, [popupRef]);
 
-  const filteredSuggestions = suggestions.filter((item) =>
+  const filteredSuggestions = suggestions.filter(item =>
     item.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -38,7 +42,10 @@ const ShopItem = () => {
       <div className={styles["shop-item-details"]}>
         {/* Buttons now inside shop-item-details */}
         <div className={styles["profile-wrapper"]} ref={popupRef}>
-          <button className={styles["profile-button"]} onClick={() => setMenuOpen(!menuOpen)}>
+          <button
+            className={styles["profile-button"]}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             Profile
           </button>
           {menuOpen && (
@@ -48,7 +55,7 @@ const ShopItem = () => {
                 className={styles["search-input"]}
                 placeholder="Search"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={e => setSearch(e.target.value)}
               />
               <ul className={styles.suggestions}>
                 {filteredSuggestions.map((item, index) => (

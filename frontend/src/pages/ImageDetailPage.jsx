@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import styles from "./Detail.module.css";
 import Breadcrumb from "./ImageDetailPage/Breadcrumb";
 import ShopItem from "./ImageDetailPage/ShopItem";

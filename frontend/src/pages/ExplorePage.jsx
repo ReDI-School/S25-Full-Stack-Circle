@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import BrowseByCategory from "../components/ExplorePage/BrowseByCategory";
 import BestOfPinterestSection from "../components/ExplorePageSection1/BestOfPinterestSection";
 import PopularSearchList from "../components/PopularSearchSection/PopularSearchList";
@@ -15,7 +14,11 @@ function ExplorePage() {
         <Link to="/" className={styles.navLink} aria-label="Back to Homepage">
           Back to Homepage
         </Link>
-        <Link to="/detail" className={styles.navLink} aria-label="Go to Image Detail">
+        <Link
+          to="/detail"
+          className={styles.navLink}
+          aria-label="Go to Image Detail"
+        >
           Go to Image Detail
         </Link>
       </nav>

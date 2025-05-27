@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-
 import Breadcrumb from "./Breadcrumb";
 import styles from "./CardDetailPage.module.css";
 import { cards } from "./cardDetails";
@@ -73,12 +72,24 @@ const CardDetailPage = () => {
           {galleryImages.map((image, index) => (
             <div key={index} className={styles.imageContainer}>
               <div className={styles.imageWrapper}>
-                <img src={image.src} alt={`Gallery ${index + 1}`} className={styles.image} />
+                <img
+                  src={image.src}
+                  alt={`Gallery ${index + 1}`}
+                  className={styles.image}
+                />
                 <div className={styles.overlay}>
                   <span className={styles.overlayText}>Open</span>
                   <div className={styles.overlayButtons}>
-                    <img src="/images/share-icon.svg" alt="Share" className={styles.shareIcon} />
-                    <img src="/images/more-icon.svg" alt="More" className={styles.moreIcon} />
+                    <img
+                      src="/images/share-icon.svg"
+                      alt="Share"
+                      className={styles.shareIcon}
+                    />
+                    <img
+                      src="/images/more-icon.svg"
+                      alt="More"
+                      className={styles.moreIcon}
+                    />
                   </div>
                 </div>
               </div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FaSmile, FaImage, FaGift, FaArrowRight } from "react-icons/fa";
-
 import styles from "./CommentSection.module.css";
 
 function CommentSection() {
@@ -8,7 +7,7 @@ function CommentSection() {
   const [newComment, setNewComment] = useState("");
   const [isCommentsVisible, setIsCommentsVisible] = useState(true);
 
-  const handleAddComment = (e) => {
+  const handleAddComment = e => {
     e.preventDefault();
     if (newComment.trim()) {
       setComments([newComment, ...comments]); // Add new comments at the beginning
@@ -20,7 +19,7 @@ function CommentSection() {
     setIsCommentsVisible(!isCommentsVisible);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = e => {
     if (e.key === "Enter") {
       e.preventDefault();
       e.target.style.height = `${e.target.scrollHeight}px`;
@@ -32,11 +31,17 @@ function CommentSection() {
       <div className={styles.commentsContainer}>
         {comments.length > 0 && (
           <>
-            <div className={styles.commentHeader} onClick={toggleCommentsVisibility}>
+            <div
+              className={styles.commentHeader}
+              onClick={toggleCommentsVisibility}
+            >
               <span className={styles.commentCount}>
-                {comments.length} {comments.length === 1 ? "comment" : "comments"}
+                {comments.length}{" "}
+                {comments.length === 1 ? "comment" : "comments"}
               </span>
-              <span className={styles.commentCount}>{isCommentsVisible ? "▲" : "▼"}</span>
+              <span className={styles.commentCount}>
+                {isCommentsVisible ? "▲" : "▼"}
+              </span>
             </div>
 
             {isCommentsVisible && (
@@ -60,25 +65,41 @@ function CommentSection() {
           <div className={styles.inputContainer}>
             <textarea
               value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
+              onChange={e => setNewComment(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Add a comment to start the..."
               className={styles.commentInput}
               rows="1"
             />
             <div className={styles.iconGroup}>
-              <button type="button" className={styles.iconButton} title="Add Emoticon">
+              <button
+                type="button"
+                className={styles.iconButton}
+                title="Add Emoticon"
+              >
                 <FaSmile size={20} />
               </button>
-              <button type="button" className={styles.iconButton} title="Add GIF">
+              <button
+                type="button"
+                className={styles.iconButton}
+                title="Add GIF"
+              >
                 <FaGift size={20} />
               </button>
-              <button type="button" className={styles.iconButton} title="Upload Photo">
+              <button
+                type="button"
+                className={styles.iconButton}
+                title="Upload Photo"
+              >
                 <FaImage size={20} />
               </button>
             </div>
             {newComment.trim() && (
-              <button type="submit" className={styles.sendButton} title="Send Comment">
+              <button
+                type="submit"
+                className={styles.sendButton}
+                title="Send Comment"
+              >
                 <FaArrowRight size={20} />
               </button>
             )}

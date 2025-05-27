@@ -1,6 +1,5 @@
 import React from "react";
 import { CiMail, CiLock } from "react-icons/ci";
-
 import styles from "./SignUp.module.css";
 
 const SignUp = () => (
@@ -21,7 +20,11 @@ const SignUp = () => (
           <CiLock size={20} />
         </div>
         <label className={styles.inputLabel}>Password</label>
-        <input className={styles.input} type="password" placeholder="Password" />
+        <input
+          className={styles.input}
+          type="password"
+          placeholder="Password"
+        />
       </div>
 
       <div className={styles.inputGroup}>
@@ -30,19 +33,26 @@ const SignUp = () => (
         <input className={styles.input} type="date" placeholder="dd/mm/yyyy" />
       </div>
     </form>
-    <button className={`${styles.loginButton} ${styles.button}`}>Continue</button>
+    <button className={`${styles.loginButton} ${styles.button}`}>
+      Continue
+    </button>
     <div className={styles.orDivider}>OR</div>
 
     <button className={`${styles.socialButton} ${styles.button}`}>
       <div className={styles.socialIcon}>
-        <img src="/images/google-new.svg" alt="Google Logo" width={20} height={20} />
+        <img
+          src="/images/google-new.svg"
+          alt="Google Logo"
+          width={20}
+          height={20}
+        />
       </div>
       Continue with Google
     </button>
 
     <a className={styles.termsText}>
-      By continuing, you agree to Pinterest's Terms of Service and acknowledge you've read our
-      Privacy Policy
+      By continuing, you agree to Pinterest's Terms of Service and acknowledge
+      you've read our Privacy Policy
     </a>
 
     <button className={styles.languageSelector}>

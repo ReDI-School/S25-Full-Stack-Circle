@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-
 import styles from "./OptionsList.module.css";
 import OptionsListItem from "./OptionsListItem";
 

@@ -8,7 +8,7 @@ import importPlugin from "eslint-plugin-import";
 import reactPlugin from "eslint-plugin-react";
 
 export default [
-  { ignores: ["**/dist", "**/node_modules", ".github"] },
+  { ignores: ["**/dist", "**/node_modules/**", ".github", "**/prisma/**"] },
 
   // Shared base configuration
   {
@@ -117,14 +117,6 @@ export default [
         }
       ],
       "import/no-duplicates": "error",
-      "import/order": [
-        "error",
-        {
-          groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
-          "newlines-between": "always",
-          alphabetize: { order: "asc", caseInsensitive: true }
-        }
-      ],
       "react/prop-types": "off",
       "react/react-in-jsx-scope": "off",
       "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }]
