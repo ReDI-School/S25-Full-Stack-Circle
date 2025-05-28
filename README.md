@@ -7,7 +7,7 @@
 
 ```
 full_stack_circle/
-├── frontend/   # React + Vite + MUI
+├── frontend/   # React + Vite + CSS Modules
 ├── backend/    # Express + Prisma + PostgreSQL
 └── README.md   
 ```
@@ -29,9 +29,6 @@ npm run dev
 
 Frontend will run at: http://localhost:5173
 
-
-
-
 ### ✅ Backend 
 
 ## ⚙ Tech Stack
@@ -41,12 +38,14 @@ Frontend will run at: http://localhost:5173
 - Prisma ORM
 - PostgreSQL
   
-
 ### Setup `.env`:
+
 ```env
 DATABASE_URL="you can use local postgres DB or use the link in .env.text"
 ```
+
 ### 3. Start the backend
+
 ```bash
 cd backend
 npm install
@@ -55,12 +54,15 @@ npm start
 ```
 
 Backend will run at: http://localhost:4000
+
 >[!note]
-> In case u use local db. then u have to run 
+> In case u use local db. then u have to run
+
 > ```
 > npx prisma migrate dev --name init 
 > ```
-> Actually u don't need to run any of npx prisma migrate, except if u made changes to Schema.prisma file
+
+> Actually you don't need to run any of npx prisma migrate, except if u made changes to Schema.prisma file
 
 - (Optional) Seed the DB:
 ```bash
@@ -73,10 +75,9 @@ npm run seed
 - Import collection and environment
 - Set `{{baseUrl}}` to `http://localhost:4000`
 
-
 ## 👨‍💻 Contributors
-```
 
+```
 Iman Bajalan
 Angelo Centeno
 Savitha Muthuramalingam
@@ -94,12 +95,3 @@ Zakaria Sebai
 Muhammad Shehbaz
 
 ```
-
-
-
-
-
-
-
-
-
