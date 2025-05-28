@@ -24,17 +24,24 @@ model Reaction {
 }
 
 model User {
-  id       String     @id @default(uuid()) // primary key with auto generated UUID
-  email    String     @unique
-  password String
-  name     String? 
-  reactions Reaction[]
+  id        String     @id @default(uuid()) // primary key with auto generated UUID
+  email     String     @unique
+  password  String
+  name      String?
+  createdAt DateTime   @default(now())
+  Reaction  Reaction[]
+  pins      Pin[]
   comments  Comment[]
 }
 
 model Pin {
-  id        Int        @id @default(autoincrement())
-  title     String
+  id          Int      @id @default(autoincrement())
+  title       String
+  imageUrl    String
+  description String?
+  createdAt   DateTime @default(now())
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
   reactions Reaction[]
   comments  Comment[]
 }
