@@ -1,19 +1,83 @@
-# React + Vite
+# 📦 S25-Full-Stack-Circle
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- This project is a collaborative effort by ReDI School full-stack students aimed at improving teamwork, version control practices, and end-to-end development skills.
+- The project follows a real-world development workflow, simulating a professional environment where team members work on different features, open pull requests, conduct code reviews, and maintain clean, modular code.
 
-Currently, two official plugins are available:
+## 📁 Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+full_stack_circle/
+├── frontend/   # React + Vite + CSS Modules
+├── backend/    # Express + Prisma + PostgreSQL
+└── README.md   
+```
 
-## Expanding the ESLint configuration
+## 🚀 Quick Start
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. Clone the repository
+```bash
+git clone https://github.com/ReDI-School/S25-Full-Stack-Circle.git
+cd S25-Full-Stack-Circle
+```
 
-# S25-Full-Stack-Circle
+### 2. Start the frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-List of contributors:
+Frontend will run at: http://localhost:5173
+
+### ✅ Backend 
+
+## ⚙ Tech Stack
+
+- Node.js
+- Express
+- Prisma ORM
+- PostgreSQL
+  
+### Setup `.env`:
+
+```env
+DATABASE_URL="you can use local postgres DB or use the link in .env.text"
+```
+
+### 3. Start the backend
+
+```bash
+cd backend
+npm install
+npx prisma migrate deploy    // in case u use online db, which is true in our case Render
+npm start
+```
+
+Backend will run at: http://localhost:4000
+
+>[!note]
+> In case u use local db. then u have to run
+
+> ```
+> npx prisma migrate dev --name init 
+> ```
+
+> Actually you don't need to run any of npx prisma migrate, except if u made changes to Schema.prisma file
+
+- (Optional) Seed the DB:
+```bash
+npm run seed
+```
+
+## 🧪 Testing
+
+- Use the included Postman collection in `postman/`
+- Import collection and environment
+- Set `{{baseUrl}}` to `http://localhost:4000`
+
+## 👨‍💻 Contributors
+
+```
 Iman Bajalan
 Angelo Centeno
 Savitha Muthuramalingam
@@ -29,3 +93,5 @@ Suleman Ahmed Khan
 Julita Lapinska
 Zakaria Sebai
 Muhammad Shehbaz
+
+```

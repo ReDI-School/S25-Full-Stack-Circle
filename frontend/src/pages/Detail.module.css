@@ -1,0 +1,35 @@
+.pageWrapper {
+  padding-top: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-top: 30px;
+  text-align: center;
+  display: none;
+}
+
+.backLink {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 1rem 0 0.5rem 0;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 100px);
+}

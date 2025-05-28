@@ -1,0 +1,176 @@
+/* ==== CONTAINER STYLES ==== */
+.containerstyle {
+  color: rgb(33, 25, 34);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 492px;
+  height: auto;
+  margin: 0px;
+  background-color: #ffffff;
+  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  text-size-adjust: 100%;
+  padding-top: 8px;
+  padding-right: 16px;
+  overflow: visible;
+}
+
+.containerstyle:hover {
+  padding-bottom: 256px;
+}
+
+.subcontainner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 508px;
+  overflow: visible;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* ==== BUTTONS GENERAL ==== */
+.buttonstyle {
+  height: 48px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 24px;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.buttonstyle:hover {
+  background-color: #f0f0f0;
+  overflow: visible;
+}
+
+.numbercomment {
+  margin-right: 3px;
+  margin: 0px;
+  padding-left: 4px;
+  color: #000000;
+}
+
+/* ==== ICON STYLES ==== */
+.iconheartfilled {
+  color: #e60023;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.iconheartstroke {
+  color: #000000;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.iconshare {
+  width: 24px;
+  height: 24px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.iconthreedots {
+  width: 24px;
+  height: 24px;
+  color: #000000;
+  cursor: pointer;
+}
+
+
+/* ==== SAVE/LIKE BUTTON STYLES ==== */
+.savedbtn {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  height: 48px;
+  padding: 12px 16px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.085s ease-out;
+  min-height: 48px;
+  min-width: 60px;
+}
+
+.unsavedbtn {
+  background-color: #e60023;
+  color: #ffffff;
+  border: none;
+  height: 48px;
+  padding: 12px 16px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.085s ease-out;
+  min-height: 48px;
+  min-width: 60px;
+}
+
+
+/* ==== TOOLTIP BASE STYLES ==== */
+.heartButton,
+.shareButton,
+.menuButton {
+  position: relative;
+  overflow: visible;
+}
+
+.heartButton::after,
+.shareButton::after,
+.menuButton::after {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000000;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.heartButton:hover::after,
+.shareButton:hover::after,
+.menuButton:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ==== TOOLTIP TEXTS ==== */
+.heartButton::after {
+  content: "React";
+  bottom: -75%;
+}
+
+.shareButton::after {
+  content: "Share";
+  bottom: -75%;
+}
+
+.menuButton::after {
+  content: "More options";
+  bottom: -75%;
+}
+
+/* ==== ACTIVE STATE ==== */
+.activeMenu {
+  background-color: #000000 !important;
+}
+
+.menuButton.activeMenu .iconthreedots {
+  color: #ffffff;
+}
+

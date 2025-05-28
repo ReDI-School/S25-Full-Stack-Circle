@@ -1,0 +1,78 @@
+.login {
+  background-image: url('../images/img_home.jpg');
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  font-size: xx-large;
+}
+
+img {
+  height: 50px;
+  margin: auto;
+}
+
+.signup {
+  color: white;
+  align-self: center;
+  width: 50%;
+  font-size: 50px;
+  font-weight: 600;
+  margin-left: 60px;
+}
+
+/* login component */
+.container {
+  background: #fff;
+  height: 90vh;
+  padding: 2rem 1.5rem;
+  align-items: center;
+  min-height: 450px;
+  min-width: 650px;
+  text-align: center;
+}
+
+.form {
+  text-align: left;
+  margin: 15px;
+  font-size: large;
+}
+.form input {
+  border: 2px solid gray;
+  border-radius: 0.5rem;
+  margin-bottom: 15px;
+  padding: 5px;
+  width: 310px;
+  height: 65px;
+}
+.continue {
+  background-color: red;
+  color: #fff;
+  border-radius: 0.5rem;
+  width: 275  px;
+  height: 45px;
+  margin: 5 auto;
+}
+
+.wrapper {
+  margin: 0px auto;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+  width: 268px;
+}
+
+.buttons {
+  text-align: center;
+  margin: 5 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+}
+
+p{
+margin: 15px;
+}
