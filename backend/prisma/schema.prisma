@@ -28,8 +28,8 @@ model User {
   email    String     @unique
   password String
   name     String? 
-  Reaction Reaction[]
-  Comment  Comment[]
+  reactions Reaction[]
+  comments  Comment[]
 }
 
 model Pin {
