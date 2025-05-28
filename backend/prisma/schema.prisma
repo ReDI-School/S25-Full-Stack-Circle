@@ -40,22 +40,20 @@ model Pin {
   imageUrl    String
   description String?
   createdAt   DateTime @default(now())
-
   author   User   @relation(fields: [authorId], references: [id])
   authorId String
-
   reactions Reaction[]
   comments  Comment[]
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
-  content   String
+  id        Int       @id @default(autoincrement())
+  user      User @relation(fields: [userId], references: [id])
+  userId    String
   createdAt DateTime @default(now())
+  pin       Pin  @relation(fields: [pinId], references: [id])
+  pinId     Int
+  content   String
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
-
-  pin   Pin @relation(fields: [pinId], references: [id])
-  pinId Int
+  @@unique([userId, pinId]) // prevent duplicate Comments
 }
