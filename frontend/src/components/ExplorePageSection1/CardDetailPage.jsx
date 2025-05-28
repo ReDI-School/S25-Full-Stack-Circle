@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Breadcrumb from "./Breadcrumb";
 import styles from "./CardDetailPage.module.css";
 import { cards } from "./cardDetails";
@@ -77,7 +77,10 @@ const CardDetailPage = () => {
                   alt={`Gallery ${index + 1}`}
                   className={styles.image}
                 />
-                <div className={styles.overlay}>
+                <Link
+                  to={`/detail?img=${image.src}`}
+                  className={styles.overlay}
+                >
                   <span className={styles.overlayText}>Open</span>
                   <div className={styles.overlayButtons}>
                     <img
@@ -91,7 +94,7 @@ const CardDetailPage = () => {
                       className={styles.moreIcon}
                     />
                   </div>
-                </div>
+                </Link>
               </div>
               <div className={styles.tags}>
                 {image.tags.map((tag, tagIndex) => (
