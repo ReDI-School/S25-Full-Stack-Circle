@@ -6,7 +6,7 @@ export default function Footer() {
       style={{
         backgroundColor: "#f8f9fa",
         padding: "20px",
-        textAlign: "center",
+        textAlign: "center"
       }}
     >
       <nav>
