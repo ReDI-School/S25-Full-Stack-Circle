@@ -1,7 +1,7 @@
 {
   "tabWidth": 2,
-  "trailingComma": "es5",
-  "singleQuote": true,
+  "trailingComma": "none",
+  "singleQuote": false,
   "printWidth": 80,
   "semi": true,
   "arrowParens": "avoid",
@@ -10,6 +10,6 @@
   "jsxSingleQuote": false,
   "quoteProps": "as-needed",
   "useTabs": false,
-  "endOfLine": "lf",
+  "endOfLine": "auto",
   "htmlWhitespaceSensitivity": "ignore"
 }

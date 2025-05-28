@@ -1,7 +1,11 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import reactionsRoutes from "./routes/reactionsRoute.js";
 import userRoutes from "./routes/userRoute.js";
+import { errorHandler } from "./middlewares/errorMiddleware.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -19,7 +23,8 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+app.use(errorHandler);
+
 app.listen(PORT, () => {
-  // TODO: Replace with proper logger
-  console.info(`Server is running in port: ${PORT}`);
+  console.info(`Server running at http://localhost:${PORT}`);
 });
