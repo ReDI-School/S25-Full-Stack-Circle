@@ -1,47 +1,12 @@
 {
-  "name": "fullstackcircle",
+  "name": "fullstack-app",
   "private": true,
-  "workspaces": [
-    "frontend",
-    "backend"
-  ],
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --max-warnings=10",
-    "lint:fix": "eslint . --fix",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@mui/icons-material": "^7.0.1",
-    "@mui/material": "^7.0.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-google-button": "^0.8.0",
-    "react-icons": "^5.5.0",
-    "react-router-dom": "^7.5.0",
-    "react-scripts": "^5.0.1",
-    "styled-components": "^6.1.17"
+    "postinstall": "cd backend && npm install && cd ../frontend && npm install",
+    "start": "concurrently \"npm run start --prefix backend\" \"npm run dev --prefix frontend\""
   },
   "devDependencies": {
-    "@eslint/js": "^9.21.0",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-prettier": "^5.2.6",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
-    "globals": "^15.15.0",
-    "lint-staged": "^15.5.1",
-    "prettier": "^3.2.5",
-    "vite": "^6.3.2"
+    "concurrently": "^8.0.0"
   }
 }
