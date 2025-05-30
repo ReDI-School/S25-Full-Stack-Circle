@@ -2,11 +2,24 @@
   "name": "fullstack-app",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
-    "postinstall": "cd backend && npm install && cd ../frontend && npm install",
-    "start": "concurrently \"npm run start --prefix backend\" \"npm run dev --prefix frontend\""
+    "start": "concurrently \"npm run start --prefix backend\" \"npm run dev --prefix frontend\"",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=10",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier . --write"
   },
   "devDependencies": {
-    "concurrently": "^8.0.0"
+    "concurrently": "^8.0.0",
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "prettier": "^3.5.3"
   }
 }
