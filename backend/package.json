@@ -4,8 +4,8 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon --watch src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "prisma generate",
+    "start": "nodemon --watch src/index.js"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
