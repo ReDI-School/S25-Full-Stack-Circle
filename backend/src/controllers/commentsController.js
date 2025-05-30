@@ -23,7 +23,7 @@ export const getComments = async (req, res) => {
   } catch (err) {
     res
       .status(INTERNAL_SERVER_ERROR)
-      .json({ error: "Something went wrong in loading comments." });
+      .json({ msg: "Something went wrong in loading comments.", error: err });
   }
 };
 
@@ -72,6 +72,6 @@ export const deleteComment = async (req, res) => {
   } catch (err) {
     res
       .status(INTERNAL_SERVER_ERROR)
-      .json({ error: "Failed to delete comment." });
+      .json({ msg: "Failed to delete comment.", error: err });
   }
 };

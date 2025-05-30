@@ -1,79 +1,108 @@
+```md
 # 📦 S25-Full-Stack-Circle
 
-- This project is a collaborative effort by ReDI School full-stack students aimed at improving teamwork, version control practices, and end-to-end development skills.
-- The project follows a real-world development workflow, simulating a professional environment where team members work on different features, open pull requests, conduct code reviews, and maintain clean, modular code.
+This project is a collaborative effort by ReDI School full-stack students aimed at improving teamwork, version control practices, and end-to-end development skills.
+
+It simulates a real-world development workflow with collaborative feature development, pull requests, code reviews, and clean, modular code practices.
+
+---
 
 ## 📁 Project Structure
 
-```
-full_stack_circle/
+
+S25-Full-Stack-Circle/
 ├── frontend/   # React + Vite + CSS Modules
 ├── backend/    # Express + Prisma + PostgreSQL
-└── README.md   
-```
+└── README.md
+
+````
+
+---
 
 ## 🚀 Quick Start
 
-### 1. Clone the repository
+### 1. Clone and Install
+
 ```bash
 git clone https://github.com/ReDI-School/S25-Full-Stack-Circle.git
 cd S25-Full-Stack-Circle
-```
-
-### 2. Start the frontend
-```bash
-cd frontend
 npm install
-npm run dev
-```
+````
 
-Frontend will run at: http://localhost:5173
+This will automatically install dependencies for both `frontend` and `backend`.
 
-### ✅ Backend 
+---
 
-## ⚙ Tech Stack
+### 2. Configure Environment Variables
 
-- Node.js
-- Express
-- Prisma ORM
-- PostgreSQL
-  
-### Setup `.env`:
+In `backend/`, create a `.env` file:
 
 ```env
-DATABASE_URL="you can use local postgres DB or use the link in .env.text"
+DATABASE_URL=""
+PORT = 
+JWT_SECRET=""
+JWT_EXPIRES_IN=
+
 ```
 
-### 3. Start the backend
+> You can use the `.env.text` as a reference.
+
+---
+
+### 3. Start the Project
+
+```bash
+npm run start
+```
+
+This command:
+
+* Runs Prisma migration and generates Prisma client in the backend
+* Starts the Express backend server at: [http://localhost:4000](http://localhost:4000)
+* Starts the Vite frontend at: [http://localhost:5173](http://localhost:5173)
+
+---
+
+### 🔄 If You Change `schema.prisma`
+
+If you modify `backend/prisma/schema.prisma`, run:
 
 ```bash
 cd backend
-npm install
-npx prisma migrate deploy    // in case u use online db, which is true in our case Render
-npm start
+npx prisma migrate dev --name your_migration_name
 ```
 
-Backend will run at: http://localhost:4000
+Or, for a quick dev sync without migration files:
 
->[!note]
-> In case u use local db. then u have to run
-
-> ```
-> npx prisma migrate dev --name init 
-> ```
-
-> Actually you don't need to run any of npx prisma migrate, except if u made changes to Schema.prisma file
-
-- (Optional) Seed the DB:
 ```bash
+npx prisma db push && npx prisma generate
+```
+
+---
+
+### 🌱 (Optional) Seed the Database
+
+```bash
+cd backend
 npm run seed
 ```
 
-## 🧪 Testing
+---
 
-- Use the included Postman collection in `postman/`
-- Import collection and environment
-- Set `{{baseUrl}}` to `http://localhost:4000`
+## ⚙ Tech Stack
+
+* **Frontend**: React + Vite + CSS Modules
+* **Backend**: Node.js + Express
+* **Database**: PostgreSQL + Prisma ORM
+
+---
+
+## 🧪 API Testing
+
+* Use the included Postman collection in `postman/`
+* Set `{{baseUrl}}` to: `http://localhost:4000`
+
+---
 
 ## 👨‍💻 Contributors
 
@@ -89,9 +118,7 @@ Oluwabusola Ilechukwu
 Suleman Ahmed Khan
 Bianca Dascalescu
 Asligul Safarova
-Suleman Ahmed Khan
 Julita Lapinska
 Zakaria Sebai
 Muhammad Shehbaz
-
 ```

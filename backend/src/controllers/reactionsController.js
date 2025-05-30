@@ -26,7 +26,9 @@ export const getReactions = async (req, res) => {
 
     res.json({ reactions: count, userReacted });
   } catch (err) {
-    res.status(INTERNAL_SERVER_ERROR).json({ error: "Something went wrong." });
+    return res
+      .status(INTERNAL_SERVER_ERROR)
+      .json({ msg: "Something went wrong.", error: err });
   }
 };
 
@@ -83,6 +85,6 @@ export const deleteReaction = async (req, res) => {
   } catch (err) {
     res
       .status(INTERNAL_SERVER_ERROR)
-      .json({ error: "Failed to remove reaction." });
+      .json({ msg: "Failed to remove reaction.", error: err });
   }
 };

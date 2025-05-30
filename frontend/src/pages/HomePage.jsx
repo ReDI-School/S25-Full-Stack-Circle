@@ -21,9 +21,10 @@ function HomePage() {
       if (isScrolling.current) return;
 
       isScrolling.current = true;
+      const timer = 1000;
       setTimeout(() => {
         isScrolling.current = false;
-      }, 1000); // Debounce scroll events
+      }, timer); // Debounce scroll events
 
       // determine direction of scroll
       const direction = e.deltaY > 0 ? 1 : -1;

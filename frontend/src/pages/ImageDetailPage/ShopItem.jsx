@@ -97,7 +97,7 @@ const ShopItem = ({ imageSrc }) => {
               <span
                 key={index}
                 className={styles.tag}
-                onClick={() => console.log(`Clicked ${tag}`)}
+                onClick={() => console.info(`Clicked ${tag}`)}
               >
                 {tag}
               </span>
