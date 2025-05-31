@@ -7,7 +7,7 @@ import reactionsRoutes from "./routes/reactionsRoute.js";
 import userRoutes from "./routes/userRoute.js";
 import commentsRoutes from "./routes/commentsRoute.js";
 import { errorHandler } from "./middlewares/errorMiddleware.js";
-
+import pinRoutes from "./routes/pinRoute.js";
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -19,6 +19,7 @@ app.use(cors());
 app.use("/api/reactions", reactionsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/comments", commentsRoutes);
+app.use("/api/pins", pinRoutes);
 
 // get
 app.get("/", (req, res) => {
