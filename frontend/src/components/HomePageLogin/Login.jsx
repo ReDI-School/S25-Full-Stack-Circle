@@ -45,7 +45,7 @@ const Login = () => (
           <button type="button" className={styles.continue}>
             Continue
           </button>
-          <h4>OR</h4>
+          <p>OR</p>
           <GoogleButton
             type="light"
             label="Continue with Google"

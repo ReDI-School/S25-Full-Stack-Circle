@@ -9,8 +9,8 @@ import styles from './DetailButtons.module.css';
 // Option list items
 const options = [
   {
-    label: 'Download image',
-    action: () => console.log('Download image'),
+    label: "Download image",
+    action: () => console.log("Download image")
   },
   {
     label: 'Hide Pin',
