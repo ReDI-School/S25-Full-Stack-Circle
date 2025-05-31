@@ -1,9 +1,9 @@
-import React from "react";
+
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation
+  useLocation,
 } from "react-router-dom";
 import CardDetailPage from "./components/ExplorePageSection1/CardDetailPage";
 import Navbar from "./components/Navbar/Navbar";
@@ -13,11 +13,12 @@ import ExplorePage from "./pages/ExplorePage";
 import HomePage from "./pages/HomePage";
 import ImageDetailPage from "./pages/ImageDetailPage";
 
+
 function AppContent() {
   const location = useLocation();
 
   // Determine whether to display the Navbar based on current path
-  const showNavbar = location.pathname !== "/blog";
+  const showNavbar = location.pathname !== '/blog';
 
   return (
     <>
@@ -28,6 +29,7 @@ function AppContent() {
         <Route path="/card/:id" element={<CardDetailPage />} />
         <Route path="/detail" element={<ImageDetailPage />} />
         <Route path="/blog" element={<Blog />} />
+
       </Routes>
       {<Footer />}
     </>

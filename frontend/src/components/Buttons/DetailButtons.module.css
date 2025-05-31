@@ -9,7 +9,12 @@
   height: auto;
   margin: 0px;
   background-color: #ffffff;
-  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family:
+    -apple-system, 'system-ui', 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica,
+    'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo,
+    'ＭＳ Ｐゴシック', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
   text-size-adjust: 100%;
   padding-top: 8px;
   padding-right: 16px;
@@ -86,7 +91,6 @@
   cursor: pointer;
 }
 
-
 /* ==== SAVE/LIKE BUTTON STYLES ==== */
 .savedbtn {
   background-color: #000000;
@@ -115,7 +119,6 @@
   min-height: 48px;
   min-width: 60px;
 }
-
 
 /* ==== TOOLTIP BASE STYLES ==== */
 .heartButton,
@@ -151,17 +154,17 @@
 
 /* ==== TOOLTIP TEXTS ==== */
 .heartButton::after {
-  content: "React";
+  content: 'React';
   bottom: -75%;
 }
 
 .shareButton::after {
-  content: "Share";
+  content: 'Share';
   bottom: -75%;
 }
 
 .menuButton::after {
-  content: "More options";
+  content: 'More options';
   bottom: -75%;
 }
 
@@ -173,4 +176,3 @@
 .menuButton.activeMenu .iconthreedots {
   color: #ffffff;
 }
-

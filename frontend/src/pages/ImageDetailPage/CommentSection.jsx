@@ -1,10 +1,12 @@
+
 import React, { useState } from "react";
 import { FaSmile, FaImage, FaGift } from "react-icons/fa";
 import styles from "./CommentSection.module.css";
 
+
 function CommentSection() {
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState("");
+  const [newComment, setNewComment] = useState('');
   const [isCommentsVisible, setIsCommentsVisible] = useState(true);
 
   const handleAddComment = e => {
@@ -12,12 +14,14 @@ function CommentSection() {
     if (newComment.trim()) {
       setComments([newComment, ...comments]);
       setNewComment("");
+
     }
   };
 
   const toggleCommentsVisibility = () => {
     setIsCommentsVisible(!isCommentsVisible);
   };
+
 
   return (
     <div className={styles.container}>
@@ -41,6 +45,7 @@ function CommentSection() {
                   {comment}
                 </div>
               ))}
+
             </div>
           )}
         </div>
