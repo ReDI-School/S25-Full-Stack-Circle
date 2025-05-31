@@ -13,16 +13,15 @@ router.get("/search", async (req, res) => {
       return res.status(400).json({ error: "Search query is required" });
     }
 
-    const pins = await prisma.pin.findMany({
-      where: {
-        tags: {
-          hasSome: [query]
-        }
-      },
+    const allPins = await prisma.pin.findMany({
       include: {
         reactions: true
       }
     });
+
+    const pins = allPins.filter(pin =>
+      pin.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
+    );
 
     res.json(pins);
   } catch (error) {
