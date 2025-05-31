@@ -4,7 +4,7 @@
   padding: 2rem;
   background-color: white;
   height: 100vh;
-  padding-top: 150px;
+  padding-top: 100px;
   position: relative;
   overflow: auto;
 }
@@ -25,7 +25,6 @@
 .rightPanel {
   flex: 1;
   max-width: 100%;
-  overflow-y: auto;
   max-height: 75vh;
   background-color: white;
 }

@@ -3,7 +3,7 @@ import styles from './CreatePin.module.css';
 import { MdExpandMore } from 'react-icons/md';
 import { FaArrowAltCircleUp } from 'react-icons/fa';
 
-const CreatePin = () => {
+const CreatePinPage = () => {
   const [image, setImage] = useState(null);
   const [showMoreOptions, setShowMoreOptions] = useState(false);
 
@@ -116,4 +116,4 @@ const CreatePin = () => {
   );
 };
 
-export default CreatePin;
+export default CreatePinPage;
