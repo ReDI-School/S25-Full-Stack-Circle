@@ -1,11 +1,11 @@
-import React from 'react';
-import Slider from 'react-slick';
-import styles from './Carousel.module.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import React from "react";
+import Slider from "react-slick";
+import styles from "./Carousel.module.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function SimpleSlider() {
-  const imageSets = ['set1', 'set2', 'set3', 'set4'];
+  const imageSets = ["set1", "set2", "set3", "set4"];
   const allImageSets = imageSets.map(setName =>
     Array.from(
       { length: 18 },
@@ -50,7 +50,7 @@ export default function SimpleSlider() {
       }
 
       setCurrentSetIndex(next % allImageSets.length);
-    },
+    }
   };
 
   const columnCount = 7;
