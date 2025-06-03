@@ -24,20 +24,22 @@ function PinDetailComponent() {
   };
 
   return (
-    <div>
-      {/* link */}
-      <a href={pin.link} target="_blank" rel="noopener noreferrer">
+    <div className={styles.pinDetailContainer}>
+      {/* Instagram link */}
+      <a
+        href={pin.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.link}
+      >
         Instagram
       </a>
 
       {/* Post Name */}
-      <h2>{pin.postName}</h2>
+      <h2 className={styles.title}>{pin.postName}</h2>
 
       {/* Description */}
-      <p>{pin.description}</p>
-
-      {/* Hashtags */}
-      <p>{pin.hashtags.join(" ")}</p>
+      <p className={styles.description}>{pin.description}</p>
 
       {/* User Info (Profile Picture + Username) */}
       <div className={styles.userInfo}>
