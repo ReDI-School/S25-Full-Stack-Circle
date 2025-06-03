@@ -51,13 +51,13 @@ function HomePage() {
   return (
     <div className={styles.container}>
       <div ref={el => (sectionsRef.current[0] = el)} className={styles.section}>
-        <h1 className={styles.title}>Homepage</h1>
+        {/* <h1 className={styles.title}>Homepage</h1> */}
         <SimpleSlider />
-        <nav className={styles.nav}>
+        {/* <nav className={styles.nav}>
           <Link to="/explore" className={styles.link}>
             Go to Explore
           </Link>
-        </nav>
+        </nav> */}
       </div>
 
       <div ref={el => (sectionsRef.current[1] = el)} className={styles.section}>

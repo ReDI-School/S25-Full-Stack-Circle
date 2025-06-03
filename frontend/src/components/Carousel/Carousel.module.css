@@ -21,16 +21,11 @@
 }
 
 .textWrapper {
-    position: absolute;        /* ← Changed from relative to absolute */
-    top: 28%;                  /* ← Set height roughly same as Pinterest */
-    left: 50%;
-    transform: translate(-50%, -50%);
-     z-index: 2;         /* Display above background cards */
-    text-align: center;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    min-height: 80px;
+  position: relative;
+  width: 100%;
+  margin: 2rem auto;
+  z-index: 2;
+  text-align: center;
   }
 
 /* Text Color*/
@@ -59,6 +54,8 @@
     overflow-x: hidden;
     overflow-y: hidden;
     max-width: none !important; /* Manually override the 1244px limit */
+    /* padding-bottom: 600px; */
+
     
   }
 
