@@ -6,7 +6,7 @@
 
 */
 -- DropForeignKey
-ALTER TABLE "Pin" DROP CONSTRAINT "Pin_authorId_fkey";
+--ALTER TABLE "Pin" DROP CONSTRAINT "Pin_authorId_fkey";
 
 -- AlterTable
 ALTER TABLE "Pin" ALTER COLUMN "authorId" SET NOT NULL,
