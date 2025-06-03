@@ -44,6 +44,7 @@ model Pin {
   authorId String
   reactions Reaction[]
   comments  Comment[]
+  tags      String[]
 }
 
 model Comment {
