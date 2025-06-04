@@ -10,10 +10,8 @@ export const createPin = async (req, res) => {
       description,
       link,
       altText,
-      existingBoardName,
-      newBoardName,
-      //relatedProductIds = [], // Array of related pin IDs
-      tagName = [], // Array of tag IDs
+      // relatedProductIds = [], // Array of related pin IDs
+      tagName = [], // Array of existing tag IDs
       newTags = [],
       isAllowedtoComment,
       showSimilarProduct,
@@ -22,7 +20,7 @@ export const createPin = async (req, res) => {
 
     const userId = req.user?.id;
 
-    //uploading the Image
+    // uploading the Image
 
     let image;
     if (req.file) {
@@ -34,7 +32,7 @@ export const createPin = async (req, res) => {
         .status(400)
         .json({ message: "Image is required (upload or URL)" });
     }
-    /*Check for existing board or create the board */
+    /* Check for existing board or create the board */
     let userBoard = await prisma.board.findFirst({
       where: {
         userId: userId
@@ -64,8 +62,12 @@ export const createPin = async (req, res) => {
         author: { connect: { id: userId } },
         board: { connect: { id: userBoard.id } },
         tags: {
-          connect: tagName.map(name => ({ name })),
-          create: newTags.map(name => ({ name }))
+          connect: tagName.map(name => {
+            return { name };
+          }),
+          create: newTags.map(name => {
+            return { name };
+          })
         }
       },
       include: {
@@ -115,8 +117,12 @@ export const updatePin = async (req, res) => {
         showSimilarProduct,
         tags: {
           set: [],
-          connect: tagName.map(name => ({ name })),
-          create: newTags.map(name => ({ name }))
+          connect: tagName.map(name => {
+            return { name };
+          }),
+          create: newTags.map(name => {
+            return { name };
+          })
         }
       },
       include: { tags: true, author: true, board: true }
@@ -167,7 +173,7 @@ export const getAllPins = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
-//Get Pin by Id
+// Get Pin by Id
 export const getPinById = async (req, res) => {
   try {
     const pinId = parseInt(req.params.id);
