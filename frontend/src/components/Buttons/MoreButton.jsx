@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { BsThreeDots } from 'react-icons/bs';
+import React, { useState, useRef, useEffect } from "react";
+import { BsThreeDots } from "react-icons/bs";
 
-import optionsStyles from '../OptionsList/OptionsList.module.css';
-import itemStyles from '../OptionsList/OptionsListItem.module.css';
+import optionsStyles from "../OptionsList/OptionsList.module.css";
+import itemStyles from "../OptionsList/OptionsListItem.module.css";
 
-import styles from './DetailButtons.module.css';
+import styles from "./DetailButtons.module.css";
 
 // Option list items
 const options = [
@@ -13,17 +13,17 @@ const options = [
     action: () => console.log("Download image")
   },
   {
-    label: 'Hide Pin',
-    action: () => console.log('Hide Pin'),
+    label: "Hide Pin",
+    action: () => console.log("Hide Pin")
   },
   {
-    label: 'Report Pin',
-    action: () => console.log('Report Pin'),
+    label: "Report Pin",
+    action: () => console.log("Report Pin")
   },
   {
-    label: 'Get Pin embed code',
-    action: () => console.log('Get Pin embed code'),
-  },
+    label: "Get Pin embed code",
+    action: () => console.log("Get Pin embed code")
+  }
 ];
 
 export default function MoreButton() {
@@ -37,14 +37,14 @@ export default function MoreButton() {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
     <div className={optionsStyles.optionsList} ref={ref}>
       <button
-        className={`${styles.buttonstyle} ${styles.menuButton} ${open ? styles.activeMenu : ''}`}
+        className={`${styles.buttonstyle} ${styles.menuButton} ${open ? styles.activeMenu : ""}`}
         onClick={() => setOpen(!open)}
       >
         <BsThreeDots className={styles.iconthreedots} />

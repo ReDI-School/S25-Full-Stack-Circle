@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import styles from './CreatePin.module.css';
-import { MdExpandMore } from 'react-icons/md';
-import { FaArrowAltCircleUp } from 'react-icons/fa';
+import { useState } from "react";
+import styles from "./CreatePin.module.css";
+import { MdExpandMore } from "react-icons/md";
+import { FaArrowAltCircleUp } from "react-icons/fa";
 
 const CreatePinPage = () => {
   const [image, setImage] = useState(null);
@@ -40,7 +40,7 @@ const CreatePinPage = () => {
               </div>
 
               <div className={styles.uploadrecomendtext}>
-                {' '}
+                {" "}
                 We recommend using high quality .jpg files less than 20 MB or
                 .mp4 files less than 200 MB
               </div>

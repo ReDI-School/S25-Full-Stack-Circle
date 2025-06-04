@@ -1,19 +1,20 @@
 import React, { useState, useRef, useEffect } from "react";
+import { IoMdArrowDropdown } from "react-icons/io";
 import PinDetailComponent from "../../components/PinDetailComponent";
 import CommentSection from "./CommentSection";
 import styles from "./ShopItem.module.css";
 
 const suggestions = [
-  'Art journal',
-  'Collage art',
-  'Art inspo',
-  'Creative',
-  'Create board',
+  "Art journal",
+  "Collage art",
+  "Art inspo",
+  "Creative",
+  "Create board"
 ];
 
 const ShopItem = ({ imageSrc }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const popupRef = useRef(null);
 
   // Close dropdown on outside click
@@ -23,9 +24,9 @@ const ShopItem = ({ imageSrc }) => {
         setMenuOpen(false);
       }
     }
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [popupRef]);
 
@@ -45,45 +46,49 @@ const ShopItem = ({ imageSrc }) => {
 
   return (
     <div className={styles["shop-item"]}>
+      {/* Left side - Image */}
       <div className={styles["shop-item-image"]}>
-        <img src="https://picsum.photos/300/300" alt="Product" />
+        <img src={imageSrc || "https://picsum.photos/300/300"} alt="Product" />
       </div>
 
+      {/* Right side - Content details */}
       <div className={styles["shop-item-details"]}>
-        {/* Buttons now inside shop-item-details */}
+        {/* Profile and Save buttons - updated to match design */}
         <div className={styles["profile-wrapper"]} ref={popupRef}>
           <button
-            className={styles['profile-button']}
+            className={styles["profile-button"]}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             Profile <IoMdArrowDropdown />
           </button>
           {menuOpen && (
-            <div className={styles['profile-popup']}>
+            <div className={styles["profile-popup"]}>
               <input
                 type="text"
-                className={styles['search-input']}
+                className={styles["search-input"]}
                 placeholder="Search"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
               />
               <ul className={styles.suggestions}>
                 {filteredSuggestions.map((item, index) => (
-                  <li key={index} className={styles['suggestion-item']}>
+                  <li key={index} className={styles["suggestion-item"]}>
                     <button>+ {item}</button>
                   </li>
                 ))}
               </ul>
             </div>
           )}
-          <button className={styles['Save-button']}>Save</button>
+          <button className={styles["Save-button"]}>Save</button>
         </div>
 
         {/* Product info */}
         <p className={styles.brand}>Order Of Style</p>
         <p className={styles.title}>Le High Skinny Jean...</p>
         <p className={styles.price}>€ 1,95</p>
+
         <div className={styles["shop-item-description"]}>
+          {/* Pin details */}
           <PinDetailComponent />
 
           {/* Tags */}

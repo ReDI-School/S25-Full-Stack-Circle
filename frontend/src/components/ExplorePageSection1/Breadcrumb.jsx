@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Breadcrumb.module.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./Breadcrumb.module.css";
 
 const Breadcrumb = ({ categories }) => (
   <nav className={styles.breadcrumbNav}>
