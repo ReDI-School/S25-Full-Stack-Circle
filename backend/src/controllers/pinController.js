@@ -1,9 +1,15 @@
 import prisma from "../prisma/client.js";
-import { INTERNAL_SERVER_ERROR, OK, UNAUTHORIZED } from "../constants/http.js";
+import {
+  BAD_REQUEST,
+  CREATED,
+  INTERNAL_SERVER_ERROR,
+  NOT_FOUND,
+  OK,
+  UNAUTHORIZED
+} from "../constants/http.js";
 
 // Creating new pin
 export const createPin = async (req, res) => {
-  console.log(req.body);
   try {
     const {
       title,
@@ -29,7 +35,7 @@ export const createPin = async (req, res) => {
       image = imageUrl;
     } else {
       return res
-        .status(400)
+        .status(BAD_REQUEST)
         .json({ message: "Image is required (upload or URL)" });
     }
     /* Check for existing board or create the board */
@@ -76,7 +82,7 @@ export const createPin = async (req, res) => {
         tags: true
       }
     });
-    res.status(201).json(pin);
+    res.status(CREATED).json(pin);
   } catch (error) {
     console.error("Error in creating new Pin", error.message);
     res
@@ -141,11 +147,11 @@ export const deletePin = async (req, res) => {
 
     const currentPin = await prisma.pin.findUnique({ where: { id: pinId } });
     if (!currentPin) {
-      return res.status(404).json({ message: "Pin not found" });
+      return res.status(NOT_FOUND).json({ message: "Pin not found" });
     }
     if (currentPin.authorId !== userId) {
       return res
-        .status(403)
+        .status(UNAUTHORIZED)
         .json({ message: "Not authorized to delete this pin" });
     }
 
@@ -154,12 +160,13 @@ export const deletePin = async (req, res) => {
     res.json({ message: "Pin deleted successfully" });
   } catch (error) {
     console.error("Error deleting pin:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    res
+      .status(INTERNAL_SERVER_ERROR)
+      .json({ message: "Internal Server Error" });
   }
 };
 export const getAllPins = async (req, res) => {
   try {
-    console.log("Fetching pins...");
     const pins = await prisma.pin.findMany({
       include: {
         author: true,
@@ -170,7 +177,9 @@ export const getAllPins = async (req, res) => {
     res.status(OK).json({ pins });
   } catch (error) {
     console.error("Error deleting pin:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    res
+      .status(INTERNAL_SERVER_ERROR)
+      .json({ message: "Internal Server Error" });
   }
 };
 // Get Pin by Id
@@ -187,12 +196,14 @@ export const getPinById = async (req, res) => {
     });
 
     if (!pin) {
-      return res.status(404).json({ message: "Pin not found" });
+      return res.status(NOT_FOUND).json({ message: "Pin not found" });
     }
 
-    res.status(200).json(pin);
+    res.status(OK).json(pin);
   } catch (error) {
     console.error("Error fetching pin by ID:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    res
+      .status(INTERNAL_SERVER_ERROR)
+      .json({ message: "Internal Server Error" });
   }
 };
