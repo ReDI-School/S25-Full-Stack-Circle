@@ -10,7 +10,7 @@ import styles from "./DetailButtons.module.css";
 const options = [
   {
     label: "Download image",
-    action: () => console.info({ msg: "Download image" })
+    action: () => console.log("Download image")
   },
   {
     label: "Hide Pin",
