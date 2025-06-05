@@ -13,7 +13,7 @@ export default function SimpleSlider() {
     )
   );
 
-  const [currentSetIndex, setCurrentSetIndex] = React.useState(0);
+  const [, setCurrentSetIndex] = React.useState(0);
   const [visibleImages, setVisibleImages] = React.useState(allImageSets[0]);
 
   const COLUMN_UPDATE_DELAY_MS = 300;
