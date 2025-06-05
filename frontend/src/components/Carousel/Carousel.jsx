@@ -14,8 +14,9 @@ export default function SimpleSlider() {
   );
 
   const [currentSetIndex, setCurrentSetIndex] = React.useState(0);
-  const bgImages = allImageSets[currentSetIndex];
   const [visibleImages, setVisibleImages] = React.useState(allImageSets[0]);
+
+  const COLUMN_UPDATE_DELAY_MS = 300;
 
   const settings = {
     dots: true,
@@ -46,7 +47,7 @@ export default function SimpleSlider() {
           setVisibleImages([...newImages]);
         }, delay);
 
-        delay += 300; // Delay by 0.3 seconds each
+        delay += COLUMN_UPDATE_DELAY_MS; // Delay by 0.3 seconds each
       }
 
       setCurrentSetIndex(next % allImageSets.length);
