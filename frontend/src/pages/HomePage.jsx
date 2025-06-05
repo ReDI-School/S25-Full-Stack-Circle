@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Login from "../components/HomePageLogin/Login";
 import PreviewSections from "../components/HomepageSections/PreviewSections";
-import { Link } from "react-router-dom";
 import SimpleSlider from "../components/Carousel/Carousel";
 import styles from "./Home.module.css";
 
@@ -11,7 +10,7 @@ function HomePage() {
   -store references to all sections
   -prevent multiple scrolls at once
   */
-  const [currentSection, setCurrentSection] = useState(0);
+  const [, setCurrentSection] = useState(0);
   const sectionsRef = useRef([]);
   const isScrolling = useRef(false);
 
@@ -51,13 +50,13 @@ function HomePage() {
   return (
     <div className={styles.container}>
       <div ref={el => (sectionsRef.current[0] = el)} className={styles.section}>
-        <h1 className={styles.title}>Homepage</h1>
+        {/* <h1 className={styles.title}>Homepage</h1> */}
         <SimpleSlider />
-        <nav className={styles.nav}>
+        {/* <nav className={styles.nav}>
           <Link to="/explore" className={styles.link}>
             Go to Explore
           </Link>
-        </nav>
+        </nav> */}
       </div>
 
       <div ref={el => (sectionsRef.current[1] = el)} className={styles.section}>
