@@ -16,9 +16,9 @@
   overflow: visible;
 }
 
-.containerstyle:hover {
+/* .containerstyle:hover {
   padding-bottom: 256px;
-}
+} */
 
 .subcontainner {
   display: flex;
@@ -166,6 +166,7 @@
 }
 
 /* ==== ACTIVE STATE ==== */
+/* TO DO Now not used*/
 .activeMenu {
   background-color: #000000 !important;
 }
