@@ -1,20 +1,36 @@
 .optionsList {
   position: relative;
   display: inline-block;
+  min-width: 48px;
 }
 
 .button {
-  background: none;
-  /* font-size: 20px; */
+  height: 48px;
+  width: auto;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  border: none;
+  padding: 10px 12px;
+  position: relative;
+  overflow: visible;
+}
+
+.button:hover {
+  background-color: #f0f0f0;
+  overflow: visible;
 }
 
 .menu {
-  position: absolute;
-  top: 150%;
-  left: 0;
+  padding: 5px;
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   min-width: 200px;
+  width: fit-content;
 }
