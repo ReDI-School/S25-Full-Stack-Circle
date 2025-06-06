@@ -1,189 +1,204 @@
 .createPinContainer {
-  display: flex;
-  justify-content: center;
-  padding: 2rem;
-  background-color: white;
-  height: 100vh;
-  padding-top: 100px;
-  position: relative;
-  overflow: auto;
-}
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    background-color: white;
+    height: 100vh;
+    padding-top: 100px;
+    position: relative;
+    overflow: auto;
+  }
+  
+  .createPinCard {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    gap: 2rem;
+    padding: 2rem;
+    height: 100%;
+  }
+  .leftPanel {
+    margin-top: 3rem;
+  }
+  .leftPanel,
+  .rightPanel {
+    flex: 1;
+    max-width: 100%;
+    max-height: 75vh;
+    background-color: white;
+  }
+  
+  .rightPanel {
+    opacity: 0.5;
+  }
+  
+  .uploadArea {
+    width: 90%;
+    min-height: 450px;
+    border: 2.5px dashed #c4c4c4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: 12px;
+    background-color: rgb(219, 219, 219);
+    text-align: center;
+  }
+  
+  .uploadArea:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .uploadPlaceholder {
+    color: black;
+    font-size: 18px;
+    padding: 1rem;
+    width: 290px;
+  }
+  
+  .uploadedImage {
+    max-width: 100%;
+    max-height: 280px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  
+  .uploadIconContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem;
+  }
+  
+  .uploadIcon {
+    font-size: 45px;
+  }
+  
+  .uploadrecomendtext {
+    font-size: 16px;
+    color: #4d4c4c;
+    width: 350px;
+    padding-top: 4rem;
+  }
+  
+  .saveButton {
+    width: 90%;
+    color: red;
+    padding-top: 20px;
+    border-top: 2px solid rgb(185, 185, 185);
+    margin-top: 40px;
+  }
+  
+  .saveButton button {
+    border: 2px solid grey;
+    padding: 10px;
+    width: 100%;
+    border-radius: 15px;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  
+  .rightPanel {
+    padding: 1rem;
+    background-color: white;
+    z-index: 1;
+  }
+  
+  .pinForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    opacity: 1;
+    pointer-events: auto;
+    background-color: white;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .label {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .formInput,
+  .formTextarea,
+  select {
+    width: 100%;
+    max-width: 600px;
+    padding: 0.75rem;
+    font-size: 15px;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: none;
+    font-family: inherit;
+  }
+  
+  .formTextarea {
+    height: 100px;
+  }
+  
+  .infoText {
+    font-size: 12px;
+    color: #777;
+    margin-top: 0.3rem;
+  }
+  
+  .moreOptionsBtn {
+    background: none;
+    color: #969090;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .iconLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .iconRight {
+    margin-left: 0.6rem;
+    margin-top: 10px;
+    font-size: 25px;
+    vertical-align: middle;
+  }
+  
+  .colorPicker {
+    width: 50px;
+    height: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
 
-.createPinCard {
-  display: flex;
-  width: 100%;
-  max-width: 1000px;
-  position: relative;
-  gap: 2rem;
-  padding: 2rem;
-  height: 100%;
-}
-.leftPanel {
-  margin-top: 3rem;
-}
-.leftPanel,
-.rightPanel {
-  flex: 1;
-  max-width: 100%;
-  max-height: 75vh;
-  background-color: white;
-}
 
-.rightPanel {
-  opacity: 0.5;
-}
 
-.uploadArea {
-  width: 90%;
-  min-height: 450px;
-  border: 2.5px dashed #c4c4c4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  cursor: pointer;
-  border-radius: 12px;
-  background-color: rgb(219, 219, 219);
-  text-align: center;
-}
-
-.uploadArea:hover {
-  background-color: #f0f0f0;
-}
-
-.uploadPlaceholder {
-  color: black;
-  font-size: 18px;
-  padding: 1rem;
-  width: 290px;
-}
-
-.uploadedImage {
-  max-width: 100%;
-  max-height: 280px;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-.uploadIconContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 5rem;
-}
-
-.uploadIcon {
-  font-size: 45px;
-}
-
-.uploadrecomendtext {
-  font-size: 16px;
-  color: #4d4c4c;
-  width: 350px;
-  padding-top: 4rem;
-}
-
-.saveButton {
-  width: 90%;
-  color: red;
-  padding-top: 20px;
-  border-top: 2px solid rgb(185, 185, 185);
-  margin-top: 40px;
-}
-
-.saveButton button {
-  border: 2px solid grey;
-  padding: 10px;
-  width: 100%;
-  border-radius: 15px;
-  font-size: 20px;
-  margin-top: 20px;
-}
-
-.rightPanel {
-  padding: 1rem;
-  background-color: white;
-  z-index: 1;
-}
-
-.pinForm {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  opacity: 1;
-  pointer-events: auto;
-  background-color: white;
-}
-
-.formGroup {
-  display: flex;
-  flex-direction: column;
-}
-
-.label {
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-  font-size: 14px;
-  color: #333;
-}
-
-.formInput,
-.formTextarea,
-select {
-  width: 100%;
-  max-width: 600px;
-  padding: 0.75rem;
-  font-size: 15px;
-  background-color: white;
-  color: black;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  resize: none;
-  font-family: inherit;
-}
-
-.formTextarea {
-  height: 100px;
-}
-
-.infoText {
-  font-size: 12px;
-  color: #777;
-  margin-top: 0.3rem;
-}
-
-.moreOptionsBtn {
-  background: none;
-  color: #969090;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.iconLabel {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.iconRight {
-  margin-left: 0.6rem;
-  margin-top: 10px;
-  font-size: 25px;
-  vertical-align: middle;
-}
-
-.colorPicker {
-  width: 50px;
-  height: 40px;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
+  .btnPrimary {
+    width: 100%;
+    background: #e60023;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }

@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 4000;
 // middleware
 app.use(express.json());
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
 // routes
 app.use("/api/reactions", reactionsRoutes);

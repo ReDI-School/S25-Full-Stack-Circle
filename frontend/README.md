@@ -33,8 +33,6 @@ Peeradon Warithkorasuth
 
 ## Getting Started
 
-=======
-
 ### Frontend Setup
 
 To start the frontend development server:

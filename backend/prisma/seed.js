@@ -16,6 +16,19 @@ async function main() {
     }
   });
 
+  // Helper to create or connect tags
+  async function getTagConnectData(tagNames) {
+    const tagConnectData = [];
+    for (const tagName of tagNames) {
+      const tag = await prisma.tag.upsert({
+        where: { name: tagName },
+        update: {},
+        create: { name: tagName }
+      });
+      tagConnectData.push({ id: tag.id });
+    }
+    return tagConnectData;
+  }
   // Create test pins with different tags
   const pins = [
     {
@@ -42,8 +55,15 @@ async function main() {
   ];
 
   for (const pin of pins) {
+    const tagConnectData = await getTagConnectData(pin.tags);
     await prisma.pin.create({
-      data: pin
+      data: {
+        title: pin.title,
+        imageUrl: pin.imageUrl,
+        description: pin.description,
+        author: { connect: { id: user.id } },
+        tags: { connect: tagConnectData }
+      }
     });
   }
 

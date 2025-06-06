@@ -4,23 +4,89 @@ import { MdExpandMore } from "react-icons/md";
 import { FaArrowAltCircleUp } from "react-icons/fa";
 
 const CreatePinPage = () => {
-  const [image, setImage] = useState(null);
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    imageUrl: "",
+    tags: []
+  });
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
+  // const [isGeneratingTags, setIsGeneratingTags] = useState(false);
+  // const [isCreating, setIsCreating] = useState(false);
   const [showMoreOptions, setShowMoreOptions] = useState(false);
 
-  const handleImageUpload = e => {
+  // Handle file selection
+  const handleFileSelect = e => {
     const file = e.target.files[0];
     if (file) {
-      setImage(URL.createObjectURL(file));
+      setSelectedFile(file);
+      // Create preview URL
+      const url = URL.createObjectURL(file);
+      setPreviewUrl(url);
     }
+  };
+
+  // Upload image and get AI tags
+  const handleImageUpload = async () => {
+    if (!selectedFile) return;
+
+    setIsUploading(true);
+    // setIsGeneratingTags(true);
+
+    try {
+      const formDataObj = new FormData();
+      formDataObj.append("image", selectedFile);
+
+      const response = await fetch(
+        "http://localhost:4000/api/pins/uploadAndTag",
+        {
+          method: "POST",
+          body: formDataObj
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.success) {
+        setFormData(prev => {
+          return {
+            ...prev,
+            imageUrl: result.imageUrl,
+            tags: result.tags
+          };
+        });
+      } else {
+        alert("Failed to upload image: " + result.error);
+      }
+    } catch (error) {
+      console.error("Upload error:", error);
+      alert("Failed to upload image and generate tags");
+    } finally {
+      setIsUploading(false);
+      // setIsGeneratingTags(false);
+    }
+  };
+
+  // Handle form input changes
+  const handleInputChange = e => {
+    const { name, value } = e.target;
+    setFormData(prev => {
+      return {
+        ...prev,
+        [name]: value
+      };
+    });
   };
 
   return (
     <div className={styles.createPinContainer}>
       <div className={styles.createPinCard}>
         <div className={styles.leftPanel}>
-          {image ? (
+          {previewUrl ? (
             <img
-              src={image}
+              src={previewUrl}
               alt="Uploaded Preview"
               className={styles.uploadedImage}
             />
@@ -31,7 +97,7 @@ const CreatePinPage = () => {
                 <input
                   type="file"
                   accept="image/*"
-                  onChange={handleImageUpload}
+                  onChange={handleFileSelect}
                   hidden
                 />
                 <div className={styles.uploadPlaceholder}>
@@ -46,6 +112,19 @@ const CreatePinPage = () => {
               </div>
             </label>
           )}
+
+          {/* here btn to upload to S3 and call ai  */}
+          {selectedFile && !formData.imageUrl && (
+            <button
+              type="button"
+              onClick={handleImageUpload}
+              disabled={isUploading}
+              className={styles.btnPrimary}
+            >
+              {isUploading ? "Uploading..." : "Upload & Generate Tags"}
+            </button>
+          )}
+
           <div className={styles.saveButton}>
             <button>Save from URL</button>
           </div>
@@ -58,6 +137,8 @@ const CreatePinPage = () => {
                 type="text"
                 placeholder="Add a title"
                 className={styles.formInput}
+                value={formData.title}
+                onChange={handleInputChange}
               />
             </div>
 
@@ -66,6 +147,8 @@ const CreatePinPage = () => {
               <textarea
                 placeholder="Tell everyone what your Pin is about"
                 className={styles.formTextarea}
+                value={formData.description}
+                onChange={handleInputChange}
               />
             </div>
 

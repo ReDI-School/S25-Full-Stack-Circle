@@ -10,7 +10,7 @@ function HomePage() {
   -store references to all sections
   -prevent multiple scrolls at once
   */
-  const [, setCurrentSection] = useState(0);
+  const [currentSection, setCurrentSection] = useState(0);
   const sectionsRef = useRef([]);
   const isScrolling = useRef(false);
 
