@@ -18,7 +18,9 @@ const prisma = new PrismaClient();
 // Configure multer for file uploads and set file size limit to 10mb,
 // later we may improve it by using a lib to compress image size before send to AI
 // more size => cost more money per request
-const filesize = 10 * 1024 * 1024;
+
+// 10 mb
+const filesize = 10485760;
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
