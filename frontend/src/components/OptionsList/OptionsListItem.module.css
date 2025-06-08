@@ -1,9 +1,10 @@
 .optionItem {
+  display: block;
+  width: 100%;
   padding: 8px 16px;
   /* font-size: 14px; */
   background: none;
   border: none;
-  width: 100%;
 }
 
 .optionItem:hover {
