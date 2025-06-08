@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { BsThreeDots } from "react-icons/bs";
 
 import OptionsList from "../OptionsList/OptionsList";
@@ -18,14 +18,17 @@ export default function MoreButton() {
   return (
     <OptionsList
       icon={<BsThreeDots className={styles.iconthreedots} />}
-      buttonLabel = ""
-      menuButtonClassName = {styles.menuButton}
+      buttonLabel=""
+      menuButtonClassName={styles.menuButton}
       items={[
         { label: "Download image", action: () => alert("Downloaded image") },
         { label: "Hide Pin", action: () => alert("Hided Pin") },
         { label: "Report Pin", action: () => alert("Reported Pin") },
-        { label: "Get Pin embed code", action: () => alert("Got Pin embed code") }
+        {
+          label: "Get Pin embed code",
+          action: () => alert("Got Pin embed code")
+        }
       ]}
     />
-  )
+  );
 }
