@@ -1,8 +1,22 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
+import {
+  createPin,
+  updatePin,
+  deletePin,
+  getAllPins,
+  getPinById
+} from "../controllers/pinController.js";
+import { protect } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 const prisma = new PrismaClient();
+
+router.post("/createpin", protect, createPin);
+router.put("/:id", protect, updatePin);
+router.delete("/:id", protect, deletePin);
+router.get("/:id", getPinById);
+router.get("/", getAllPins);
 
 // search pins by tags
 router.get("/search", async (req, res) => {

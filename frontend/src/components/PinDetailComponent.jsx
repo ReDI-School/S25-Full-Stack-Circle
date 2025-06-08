@@ -39,7 +39,10 @@ function PinDetailComponent() {
       <h2 className={styles.title}>{pin.postName}</h2>
 
       {/* Description */}
-      <p className={styles.description}>{pin.description}</p>
+      <p>{pin.description}</p>
+
+      {/* Hashtags */}
+      <p>{pin.hashtags.join(" ")}</p>
 
       {/* User Info (Profile Picture + Username) */}
       <div className={styles.userInfo}>

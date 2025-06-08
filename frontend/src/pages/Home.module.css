@@ -4,7 +4,7 @@
 }
 
 .section {
-  height: 100vh; /* full viewport height */
+  height: auto; /* full viewport height */
   width: 100%; /* full viewport width */
   display: flex;
   flex-direction: column;
