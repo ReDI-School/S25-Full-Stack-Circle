@@ -10,6 +10,7 @@ function HomePage() {
   -store references to all sections
   -prevent multiple scrolls at once
   */
+  // eslint-disable-next-line no-unused-vars
   const [currentSection, setCurrentSection] = useState(0);
   const sectionsRef = useRef([]);
   const isScrolling = useRef(false);
