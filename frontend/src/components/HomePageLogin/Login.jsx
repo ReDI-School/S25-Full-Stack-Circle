@@ -3,7 +3,7 @@ import styles from "../HomePageLogin/Login.module.css";
 
 const Login = () => (
   <div className={styles.login}>
-   <div className={styles.signup}>
+    <div className={styles.signup}>
       <h2>Sign up to get your ideas</h2>
     </div>
     <div className={styles.container}>
@@ -43,18 +43,19 @@ const Login = () => (
         </div>
         <div className={styles.buttons}>
           <button type="button" className={styles.continue}>
-            Continue 
+            Continue
           </button>
           <p>OR</p>
-      <div className={styles.google_button}>
-          <GoogleButton
-            type="light"
-            label="Continue with Google" 
-            onClick={() => {
-              // TODO: Implement Google authentication
-              // Example: handleGoogleAuth()
-            }}
-          /></div>
+          <div className={styles.google_button}>
+            <GoogleButton
+              type="light"
+              label="Continue with Google"
+              onClick={() => {
+                // TODO: Implement Google authentication
+                // Example: handleGoogleAuth()
+              }}
+            />
+          </div>
         </div>
       </form>
     </div>

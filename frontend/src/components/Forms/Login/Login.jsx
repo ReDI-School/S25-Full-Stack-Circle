@@ -40,7 +40,7 @@ const Login = () => (
       <div className={styles.socialIcon}>
         <img src="/images/google-new.svg" alt="Google Logo" />
       </div>
-      Continue with Google 
+      Continue with Google
     </button>
 
     <button className={`${styles.socialButton} ${styles.button}`}>
