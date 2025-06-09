@@ -40,11 +40,11 @@ const Login = () => (
       <div className={styles.socialIcon}>
         <img src="/images/google-new.svg" alt="Google Logo" />
       </div>
-      Continue with Google
+      Continue with Google 
     </button>
 
     <button className={`${styles.socialButton} ${styles.button}`}>
-      <div className={styles.socialIcon}>
+      <div className={styles.facebookIcon}>
         <img src="/images/facebook-2020-2-1.svg" alt="Facebook Logo" />
       </div>
       Continue with Facebook

@@ -27,6 +27,7 @@ const BestOfPinterestSection = () => {
               <div className={styles.cardOverlay}>
                 <p>{card.title}</p>
                 <h2>{card.subtitle}</h2>
+         
               </div>
             </div>
           </Link>
