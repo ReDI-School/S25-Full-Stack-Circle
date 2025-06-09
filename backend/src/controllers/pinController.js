@@ -17,7 +17,7 @@ import { uploadToS3 } from "../services/uploadService.js";
 export const uploadAndTag = async (req, res) => {
   try {
     // S3 part
-    if (!req.file) {
+    if (!req.file || !req.file.mimetype.startsWith("image/")) {
       return res.status(BAD_REQUEST).json({
         success: false,
         error: "No image file provided"

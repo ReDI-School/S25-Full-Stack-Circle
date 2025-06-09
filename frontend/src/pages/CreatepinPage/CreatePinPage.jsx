@@ -134,6 +134,7 @@ const CreatePinPage = () => {
             <div className={styles.formGroup}>
               <p className={styles.label}>Title</p>
               <input
+                name="title"
                 type="text"
                 placeholder="Add a title"
                 className={styles.formInput}
@@ -149,6 +150,7 @@ const CreatePinPage = () => {
                 className={styles.formTextarea}
                 value={formData.description}
                 onChange={handleInputChange}
+                name="description"
               />
             </div>
 
