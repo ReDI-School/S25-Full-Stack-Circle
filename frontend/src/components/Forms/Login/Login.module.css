@@ -99,6 +99,16 @@
   width: 20px;
   height: 20px;
   margin-right: 8px;
+  margin-bottom: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.facebookIcon{
+ width: 29px;
+  height: 29px;
+  margin-right: 5px;
+  margin-bottom: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
