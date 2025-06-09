@@ -70,7 +70,7 @@ const Header = () => {
       </SearchWrapper>
 
       <AboutButton>
-        <Link to="/">About</Link>
+        <Link to="/createPin">About</Link>
       </AboutButton>
 
       <BusinessButton>
