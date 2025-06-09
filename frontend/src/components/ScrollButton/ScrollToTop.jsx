@@ -1,13 +1,13 @@
 import { SlArrowUp } from "react-icons/sl";
 import styles from "./ScrollToTop.module.css";
 import { useEffect, useState } from "react";
+import { SCROLL_THRESHOLD } from "../../constants/http";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(true);
 
-  const offset = 300;
   const toggleVisibility = () => {
-    if (window.pageYOffset > offset) {
+    if (window.pageYOffset > SCROLL_THRESHOLD) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
