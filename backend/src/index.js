@@ -8,8 +8,10 @@ import userRoutes from "./routes/userRoute.js";
 import commentsRoutes from "./routes/commentsRoute.js";
 import { errorHandler } from "./middlewares/errorMiddleware.js";
 import pinRoutes from "./routes/pinRoute.js";
+import { DEFAULT_PORT } from "./constants/http.js";
+
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || DEFAULT_PORT;
 
 // middleware
 app.use(express.json());
@@ -29,5 +31,5 @@ app.get("/", (req, res) => {
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.info(`Server running at http://localhost:${PORT}`);
+  console.warn(`Server running at http://localhost:${PORT}`);
 });

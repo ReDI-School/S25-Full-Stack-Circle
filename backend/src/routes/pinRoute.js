@@ -8,6 +8,7 @@ import {
   getPinById
 } from "../controllers/pinController.js";
 import { protect } from "../middlewares/authMiddleware.js";
+import { BAD_REQUEST, INTERNAL_SERVER_ERROR } from "../constants/http.js";
 
 const router = express.Router();
 const prisma = new PrismaClient();
@@ -24,7 +25,9 @@ router.get("/search", async (req, res) => {
     const { query } = req.query;
 
     if (!query) {
-      return res.status(400).json({ error: "Search query is required" });
+      return res
+        .status(BAD_REQUEST)
+        .json({ error: "Search query is required" });
     }
 
     const allPins = await prisma.pin.findMany({
@@ -40,7 +43,7 @@ router.get("/search", async (req, res) => {
     res.json(pins);
   } catch (error) {
     console.error("Error searching pins:", error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(INTERNAL_SERVER_ERROR).json({ error: "Internal server error" });
   }
 });
 
