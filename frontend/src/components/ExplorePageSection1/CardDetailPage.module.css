@@ -129,12 +129,13 @@
 }
 
 .tag {
-  padding: 5px 10px;
-  background-color: #e1e1e1;
-  border-radius: 5px;
+  padding: 5px 25px;
+  background-color: #c2c0c0;
+  border-radius: 20px;
   white-space: nowrap;
   font-size: 14px;
   cursor: pointer;
+  text-align: center;
 }
 
 .tag:hover {

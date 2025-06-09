@@ -46,14 +46,16 @@ const Login = () => (
             Continue
           </button>
           <p>OR</p>
-          <GoogleButton
-            type="light"
-            label="Continue with Google"
-            onClick={() => {
-              // TODO: Implement Google authentication
-              // Example: handleGoogleAuth()
-            }}
-          />
+          <div className={styles.google_button}>
+            <GoogleButton
+              type="light"
+              label="Continue with Google"
+              onClick={() => {
+                // TODO: Implement Google authentication
+                // Example: handleGoogleAuth()
+              }}
+            />
+          </div>
         </div>
       </form>
     </div>
