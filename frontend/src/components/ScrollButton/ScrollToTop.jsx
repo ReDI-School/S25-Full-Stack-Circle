@@ -6,6 +6,7 @@ import { SCROLL_THRESHOLD } from "../../constants/http";
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(true);
 
+  const offset = 300;
   const toggleVisibility = () => {
     if (window.pageYOffset > SCROLL_THRESHOLD) {
       setIsVisible(true);
