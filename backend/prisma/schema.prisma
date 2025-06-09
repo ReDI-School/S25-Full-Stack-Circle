@@ -32,6 +32,7 @@ model User {
   Reaction  Reaction[]
   pins      Pin[]
   comments  Comment[]
+  savedPins SavedPin[]
 }
 
 model Pin {
@@ -45,6 +46,7 @@ model Pin {
   reactions Reaction[]
   comments  Comment[]
   tags      String[]
+  savedBy SavedPin[]
 }
 
 model Comment {
@@ -57,4 +59,14 @@ model Comment {
   content   String
 
   @@unique([userId, pinId]) // prevent duplicate Comments
+}
+model SavedPin {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  pin       Pin      @relation(fields: [pinId], references: [id])
+  pinId     Int
+  savedAt   DateTime @default(now())
+
+  @@unique([userId, pinId])
 }

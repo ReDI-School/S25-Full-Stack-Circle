@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-
+import saveRoutes from "./routes/saveRoute.js";
 import express from "express";
 import cors from "cors";
 import reactionsRoutes from "./routes/reactionsRoute.js";
@@ -20,6 +20,7 @@ app.use("/api/reactions", reactionsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/comments", commentsRoutes);
 app.use("/api/pins", pinRoutes);
+app.use("/api/save", saveRoutes);
 
 // get
 app.get("/", (req, res) => {
