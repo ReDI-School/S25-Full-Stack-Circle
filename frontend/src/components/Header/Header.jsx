@@ -40,7 +40,14 @@ const Header = () => {
   return (
     <Wrapper>
       <LogoWrapper>
-        <IconButton>
+        <IconButton
+          disableRipple
+          sx={{
+            "&:hover": {
+              backgroundColor: "transparent"
+            }
+          }}
+        >
           <img
             src="/images/pinterest-seeklogo.svg"
             alt="Logo"
