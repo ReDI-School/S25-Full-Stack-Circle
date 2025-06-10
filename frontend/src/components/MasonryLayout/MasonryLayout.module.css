@@ -1,0 +1,5 @@
+.masonryLayout {
+  column-count: 5; /* Adjust number of columns as needed */
+  column-gap: 16px;
+  padding: 16px;
+}
