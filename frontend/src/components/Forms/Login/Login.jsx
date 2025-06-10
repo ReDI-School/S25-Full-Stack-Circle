@@ -1,19 +1,68 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { CiMail, CiLock } from "react-icons/ci";
 import { FaChevronDown } from "react-icons/fa";
 import styles from "./Login.module.css";
+import { useNavigate } from "react-router-dom";
+import { isTokenValid } from "../../../utils/auth"
 
-const Login = () => (
+const Login = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token && isTokenValid()) {
+      navigate("/login"); // redirect to home if already logged in
+    } else {
+      localStorage.removeItem("token"); // clean up bad/expired token
+    }
+  }, []);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+  
+    if (!email || !password) {
+      return setError("Both email and password are required");
+    }
+  
+    try {
+      const res = await fetch("http://localhost:4000/api/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+  
+      const data = await res.json();
+  
+      if (!res.ok) {
+        return setError(data.message || "Login failed");
+      }
+  
+      localStorage.setItem("token", data.token);
+    
+    } catch {
+      setError("Server error, please try again");
+    }
+  };
+  
+
+  return(
   <div className={styles.modalContent}>
     <h1 className={styles.title}>Welcome to Pinterest</h1>
 
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.inputGroup}>
         <div className={styles.iconWrapper}>
           <CiMail size={20} />
         </div>
         <label className={styles.inputLabel}>Email</label>
-        <input className={styles.input} type="email" placeholder="Email" />
+        <input className={styles.input} type="email" placeholder="Email" value={email}
+  onChange={(e) => setEmail(e.target.value)}/>
       </div>
 
       <div className={styles.inputGroup}>
@@ -22,15 +71,20 @@ const Login = () => (
         </div>
         <label className={styles.inputLabel}>Password</label>
         <input
-          className={styles.input}
           type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
+          className={styles.input}
         />
       </div>
+      {error && <p className={styles.errorText}>{error}</p>}
       <button className={`${styles.loginButton} ${styles.button}`}>
         Log in
       </button>
     </form>
+    
+
 
     <a className={styles.forgotPassword}>Forgot your password?</a>
 
@@ -63,6 +117,7 @@ const Login = () => (
       English (US) <FaChevronDown size={16} style={{ marginLeft: "4px" }} />
     </button>
   </div>
-);
+  );
+};
 
 export default Login;
