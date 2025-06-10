@@ -22,22 +22,22 @@ const MOCK_SUGGESTIONS = [
 ];
 
 const popularSearches = [
-{
+  {
     name: "Organspende tattoo",
     img: "https://i.pinimg.com/736x/a4/04/29/a404295ee9ceb7366b0068144abaf3f9.jpg"
-},
-{
+  },
+  {
     name: "Pfingst wochenende",
     img: "https://i.pinimg.com/236x/21/fd/0f/21fd0f5ef475dcdd2764425327c0ee68.jpg"
-},
-{
+  },
+  {
     name: "Geburtstagskarte basteln",
     img: "https://i.pinimg.com/236x/6d/c5/dd/6dc5dd834698dd083ebc1ddb319df53f.jpg"
-},
-{
+  },
+  {
     name: "Pfingsten lustige bilder gif",
     img: "https://i.pinimg.com/236x/17/74/ef/1774ef031f3c94300f193980216bd0d0.jpg"
-}
+  }
 ];
 
 // --- CHANGE IS HERE ---
