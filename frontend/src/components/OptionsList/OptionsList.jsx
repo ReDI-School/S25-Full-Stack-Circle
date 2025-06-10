@@ -1,47 +1,27 @@
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import styles from "./OptionsList.module.css";
 import OptionsListItem from "./OptionsListItem";
 
-/* example*/
-const options = [
-  {
-    label: "Download image",
-    action: () => {
-      // Implement actual download functionality
-      // Example: downloadImage(imageUrl)
-    }
-  },
-  {
-    label: "Hide Pin",
-    action: () => {
-      // Implement hide pin functionality
-      // Example: hidePinFromFeed(pinId)
-    }
-  },
-  {
-    label: "Report Pin",
-    action: () => {
-      // Implement report functionality
-      // Example: openReportDialog(pinId)
-    }
-  },
-  {
-    label: "Get Pin embed code",
-    action: () => {
-      // Implement embed code generation
-      // Example: generateEmbedCode(pinId)
-    }
-  }
-];
-
-export default function OptionsList() {
+export default function OptionsList({
+  icon = null,
+  buttonLabel = "Options List",
+  menuButtonClassName = "",
+  items = []
+}) {
   /* Open/Close logic*/
   const [open, setOpen] = useState(false);
-  const ref = useRef(null);
+  const buttonRef = useRef(null);
+  const menuRef = useRef(null);
+  const [position, setPosition] = useState({ top: 0, left: 0 });
 
   useEffect(() => {
     function ClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
+      const clickedOutsideMenu =
+        menuRef.current && !menuRef.current.contains(event.target);
+      const clickedOutsideButton =
+        buttonRef.current && !buttonRef.current.contains(event.target);
+      if (clickedOutsideMenu && clickedOutsideButton) {
         setOpen(false);
       }
     }
@@ -50,26 +30,53 @@ export default function OptionsList() {
     return () => document.removeEventListener("mousedown", ClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (open && buttonRef.current && menuRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      const menuWidth = menuRef.current.offsetWidth;
+      const leftPos = rect.left + window.scrollX + (rect.width - menuWidth) / 2;
+      setPosition({
+        top: rect.bottom + window.scrollY,
+        left: leftPos > 0 ? leftPos : 0
+      });
+    }
+  }, [open]);
+
   return (
-    <div className={styles.optionsList} ref={ref}>
-      <button className={styles.button} onClick={() => setOpen(!open)}>
-        {/* TO DO add icon */}
-        Option List
+    <div className={styles.optionsList}>
+      <button
+        className={`${styles.button} ${menuButtonClassName}`}
+        onClick={() => setOpen(prev => !prev)}
+        ref={buttonRef}
+      >
+        {icon}
+        {buttonLabel}
       </button>
-      {open && (
-        <div className={styles.menu}>
-          {options.map((option, index) => (
-            <OptionsListItem
-              key={index}
-              label={option.label}
-              onClick={() => {
-                option.action();
-                setOpen(false);
-              }}
-            />
-          ))}
-        </div>
-      )}
+      {open &&
+        createPortal(
+          <div
+            className={styles.menu}
+            ref={menuRef}
+            style={{
+              position: "absolute",
+              top: `${position.top}px`,
+              left: `${position.left}px`,
+              zIndex: 1000
+            }}
+          >
+            {items.map((option, index) => (
+              <OptionsListItem
+                key={index}
+                label={option.label}
+                onClick={() => {
+                  option.action();
+                  setOpen(false);
+                }}
+              />
+            ))}
+          </div>,
+          document.body
+        )}
     </div>
   );
 }

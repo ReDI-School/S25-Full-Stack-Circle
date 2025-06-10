@@ -33,9 +33,6 @@ Peeradon Warithkorasuth
 
 ## Getting Started
 
-
-
-=======
 ### Frontend Setup
 
 To start the frontend development server:
@@ -90,6 +87,4 @@ To start the backend server:
 - Material UI components are available through @mui/material
 - The backend runs on Express.js
 - Both servers need to be running simultaneously during development
-- Frontend can be built for production using `npm run build`
-=======
-
+- # Frontend can be built for production using `npm run build`
