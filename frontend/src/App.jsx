@@ -16,7 +16,6 @@ import SearchResultsPage from "./pages/SearchResultsPage";
 
 function AppContent() {
   const location = useLocation();
-
   // Determine whether to display the Navbar based on current path
   const showNavbar = location.pathname !== "/blog";
 

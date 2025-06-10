@@ -18,13 +18,13 @@ router.get("/search", async (req, res) => {
           {
             title: {
               contains: query,
-              mode: 'insensitive', // Case-insensitive search
+              mode: "insensitive", // Case-insensitive search
             },
           },
           {
             description: {
               contains: query,
-              mode: 'insensitive',
+              mode: "insensitive",
             },
           },
           {

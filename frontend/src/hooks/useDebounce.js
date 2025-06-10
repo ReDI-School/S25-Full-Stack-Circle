@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 // A custom hook to debounce any fast-changing value
 function useDebounce(value, delay) {

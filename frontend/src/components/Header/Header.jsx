@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Login from "../Forms/Login/Login";
 import SignUp from "../Forms/SignUp/SignUp";
 import Modal from "../Modal/Modal";
-import SearchDropdown from "../Search/SearchDropdown"; 
+import SearchDropdown from "../Search/SearchDropdown";
 
 import {
   Wrapper,
@@ -23,19 +23,15 @@ import {
 } from "./HeaderStyles";
 
 const Header = () => {
-
   // State for the search input's value
   const [input, setInput] = useState("");
   const navigate = useNavigate();
-
    // State to control if the search dropdown is visible
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchWrapperRef = useRef(null); // Ref to detect outside clicks
-
   // State for modal management
   const [isOpen, setIsOpen] = useState(false);
   const [modalType, setModalType] = useState(null);
-
   // Modal functions
   const openModal = type => {
     setModalType(type);
@@ -55,11 +51,13 @@ const Header = () => {
       setIsSearchFocused(false);
     }
   };
-
   // --- NEW: Hook to handle clicks outside of the search area ---
   useEffect(() => {
     function handleClickOutside(event) {
-      if (searchWrapperRef.current && !searchWrapperRef.current.contains(event.target)) {
+      if (
+        searchWrapperRef.current &&
+        !searchWrapperRef.current.contains(event.target))
+      {
         setIsSearchFocused(false);
       }
     }
@@ -86,7 +84,10 @@ const Header = () => {
         <Link to="/explore">Explore</Link>
       </ExploreButton>
 
-      <SearchWrapper ref={searchWrapperRef} onFocus={() => setIsSearchFocused(true)}>
+      <SearchWrapper
+      ref={searchWrapperRef}
+      onFocus={() => setIsSearchFocused(true)}
+      >
         <SearchBarWrapper>
           <IconButton>
             <SearchIcon />
@@ -96,7 +97,7 @@ const Header = () => {
               type="text"
               placeholder="Search for easy dinners, fashion, etc."
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={e => setInput(e.target.value)}
             />
             <button type="submit"></button>
           </form>

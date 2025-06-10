@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import MasonryLayout from "../components/MasonryLayout/MasonryLayout";
 import Pin from "../components/Pin/Pin";
-
 
 function SearchResultsPage() {
   const [searchParams] = useSearchParams();
@@ -53,13 +52,12 @@ function SearchResultsPage() {
     return <div>Error: {error}</div>;
   }
 
-
   return (
     <div>
       <h1>Search Results for: "{query}"</h1>
       {pins.length > 0 ? (
         <MasonryLayout>
-          {pins.map((pin) => (
+          {pins.map(pin => (
             <Pin key={pin.id} pin={pin} />
           ))}
         </MasonryLayout>
