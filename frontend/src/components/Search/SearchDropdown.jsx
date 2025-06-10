@@ -5,19 +5,20 @@ import useDebounce from "../../hooks/useDebounce";
 import styles from "./SearchDropdown.module.css";
 
 // A mock list of potential search terms
-const MOCK_SUGGESTIONS = ["rock painting ideas",
-"rockstar aesthetic",
-"rock concert outfit",
-"rock painting",
-"rock lee",
-"rockstar outfit",
-"rockstar girlfriend aesthetic",
-"rock garden",
-"rocking chair",
-"logo design",
-"logo inspiration",
-"architecture drawing",
-"architecture portfolio"
+const MOCK_SUGGESTIONS = [
+  "rock painting ideas",
+  "rockstar aesthetic",
+  "rock concert outfit",
+  "rock painting",
+  "rock lee",
+  "rockstar outfit",
+  "rockstar girlfriend aesthetic",
+  "rock garden",
+  "rocking chair",
+  "logo design",
+  "logo inspiration",
+  "architecture drawing",
+  "architecture portfolio"
 ];
 
 const popularSearches = [
