@@ -8,6 +8,7 @@ function ImageDetailPage() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const imgSrc = searchParams.get("img");
+  const pinId = searchParams.get("id"); // Pass pin ID to ShopItem
 
   return (
     <div className={styles.pageWrapper}>
@@ -18,7 +19,9 @@ function ImageDetailPage() {
       </Link>
 
       <div className={styles.centered}>
-        <ShopItem imageSrc={imgSrc} />
+        <div className={styles.pinContainer}>
+          <ShopItem imageSrc={imgSrc} pinId={pinId} />
+        </div>
       </div>
     </div>
   );
