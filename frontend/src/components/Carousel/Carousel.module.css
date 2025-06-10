@@ -1,34 +1,163 @@
+
+  
 .label {
-  white-space: nowrap;
   text-align: center;
-  margin: 2px;
-  font-size: 60px;
-  font-weight: 600;
+  font-size: 64px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+  
+  .sliderWrapper {
+    z-index: 2;
+    position: relative;
+  }
+  .slideText {
+    text-align: center;
+    font-size: 64px;
+    font-weight: bold;
+    line-height: 1.2;
+    display: inline-block; /* ← Add this line */
+
 }
 
-.sliderWrapper {
-  width: 200px;
-}
-.slideText {
-  margin: 2px;
-  font-size: 60px;
-  font-weight: 600;
+.textWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 3000px;
+  margin: 2rem auto;
+  z-index: 2;
   text-align: center;
-}
+  margin-bottom: 300px;
+  }
 
 /* Text Color*/
 .Text1 {
-  color: #c28b00;
+    color: #c28b00;
+  }
+  
+  .Text2 {
+    color: #618c7b;
+  }
+  
+  .Text3 {
+    color: #0076d3;
+  }
+  
+  .Text4 {
+    color: #407a57;
+  }
+  .topSection {
+    position: relative;
+    height: 100vh; 
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    max-width: none !important; /* Manually override the 1244px limit */
+    /* padding-bottom: 600px; */
+
+    
+  }
+
+  .backgroundContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 1800px; 
+    position: absolute;
+    top: 50%;
+    transform: translateY(-10%);
+    height: auto;
+    bottom: auto;
+    z-index: 1;
+    gap: 16px;
+  }
+
+.column {
+  flex: 0 0 256px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+  .cardList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: auto; 
+    overflow: visible;  
+
+  }
+  
+  .bgImage {
+    aspect-ratio: 2 / 3;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    animation: scrollAndFade 6s ease-in-out; /* Animation only for single-slide transitions */
+    background-color: transparent;
+      animation-fill-mode: both;
+
+  }
+
+  .offsetWrapper {
+    will-change: transform;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+.whiteGradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 160px; /* Adjust as needed */
+  /* background: linear-gradient(to top, white 0%, transparent 100%); */
+  background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+  z-index: 10; /* Positioned above background images, but below text */
+  pointer-events: none; /* Do not interfere with user interactions */
 }
 
-.Text2 {
-  color: #618c7b;
+  
+/* Delay each item by 0.3s from left to right */
+.delay-0 { animation-delay: 0s !important; }
+.delay-1 { animation-delay: 0.3s !important; }
+.delay-2 { animation-delay: 0.6s !important; }
+.delay-3 { animation-delay: 0.9s !important; }
+.delay-4 { animation-delay: 1.2s !important; }
+.delay-5 { animation-delay: 1.5s !important; }
+.delay-6 { animation-delay: 1.8s !important; }
+
+@keyframes scrollAndFade {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
-.Text3 {
-  color: #0076d3;
-}
 
-.Text4 {
-  color: #407a57;
-}
+.offset-0 { transform: translateY(0px); }
+.offset-1 { transform: translateY(80px); }
+.offset-2 { transform: translateY(160px); }
+.offset-3 { transform: translateY(240px); }
+.offset-4 { transform: translateY(160px); }
+.offset-5 { transform: translateY(80px); }
+.offset-6 { transform: translateY(0px); }

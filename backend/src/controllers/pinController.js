@@ -8,6 +8,53 @@ import {
   UNAUTHORIZED
 } from "../constants/http.js";
 
+import { uploadToS3 } from "../services/uploadService.js";
+// import * as tagGenerationService from "../services/tagGenerationService.js";
+
+/**
+ * POST /api/pin/upload-and-tag
+ */
+export const uploadAndTag = async (req, res) => {
+  try {
+    // S3 part
+    if (!req.file || !req.file.mimetype.startsWith("image/")) {
+      return res.status(BAD_REQUEST).json({
+        success: false,
+        error: "No image file provided"
+      });
+    }
+
+    console.info("Processing image upload:", req.file.originalname);
+
+    const imageUrl = await uploadToS3(req.file);
+    console.info("Image uploaded to S3:", imageUrl);
+
+    // AI tags generation Part
+    // TODO : replace the empty array [] with a call to generateTags from tagGenService which should take image url and return an array of tags
+    // TODO : Create tagGenService in the services folder
+    const aiTags = [];
+    console.info("AI generated tags:", aiTags);
+
+    res.json({
+      success: true,
+      imageUrl,
+      tags: aiTags,
+      message: "Image uploaded and tags generated successfully"
+    });
+  } catch (error) {
+    console.error("Upload and tag error:", error);
+
+    res.status(INTERNAL_SERVER_ERROR).json({
+      success: false,
+      error: "Failed to upload image and generate tags",
+      details:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Internal server error"
+    });
+  }
+};
+
 // Creating new pin
 export const createPin = async (req, res) => {
   try {
