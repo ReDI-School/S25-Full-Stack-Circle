@@ -54,7 +54,7 @@ router.get("/search", async (req, res) => {
         .status(BAD_REQUEST)
         .json({ error: "Search query is required" });
     }
-  const pins = await prisma.pin.findMany({
+    const pins = await prisma.pin.findMany({
       where: {
         OR: [
           {

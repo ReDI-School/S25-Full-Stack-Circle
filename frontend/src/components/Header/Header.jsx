@@ -46,10 +46,11 @@ const Header = () => {
   // This function will be called when the form is submitted (user presses Enter)
   const onSearchSubmit = e => {
     e.preventDefault(); // Prevents the page from reloading
-      if (input) { // Only navigate if there is a search term
-        navigate(`/search?q=${input}`);
-        setIsSearchFocused(false);
-      }
+      if (input) {
+             // Only navigate if there is a search term
+    navigate(`/search?q=${input}`);
+    setIsSearchFocused(false);
+  }
   };
   // --- NEW: Hook to handle clicks outside of the search area ---
   useEffect(() => {

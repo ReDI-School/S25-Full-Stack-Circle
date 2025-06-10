@@ -22,22 +22,22 @@ const MOCK_SUGGESTIONS = [
 ];
 
 const popularSearches = [
-    {
+{
     name: "Organspende tattoo",
     img: "https://i.pinimg.com/736x/a4/04/29/a404295ee9ceb7366b0068144abaf3f9.jpg"
-    },
-    {
+},
+{
     name: "Pfingst wochenende",
     img: "https://i.pinimg.com/236x/21/fd/0f/21fd0f5ef475dcdd2764425327c0ee68.jpg"
-    },
-    {
+},
+{
     name: "Geburtstagskarte basteln",
     img: "https://i.pinimg.com/236x/6d/c5/dd/6dc5dd834698dd083ebc1ddb319df53f.jpg"
-    },
-    {
+},
+{
     name: "Pfingsten lustige bilder gif",
     img: "https://i.pinimg.com/236x/17/74/ef/1774ef031f3c94300f193980216bd0d0.jpg"
-    }
+}
 ];
 
 // --- CHANGE IS HERE ---
@@ -50,7 +50,7 @@ const SearchDropdown = ({ currentInput = "" }) => {
 
   useEffect(() => {
     if (debouncedSearchTerm) {
-      const filtered = MOCK_SUGGESTIONS.filter((item) =>
+      const filtered = MOCK_SUGGESTIONS.filter(item =>
         item.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
       );
       setSuggestions(filtered);
@@ -59,7 +59,7 @@ const SearchDropdown = ({ currentInput = "" }) => {
     }
   }, [debouncedSearchTerm]);
 
-  const handleSuggestionClick = (suggestion) => {
+  const handleSuggestionClick = suggestion => {
     navigate(`/search?q=${suggestion}`);
   };
 
@@ -69,7 +69,7 @@ const SearchDropdown = ({ currentInput = "" }) => {
     <div className={styles.dropdownContainer}>
       {showSuggestions ? (
         <ul className={styles.suggestionsList}>
-          {suggestions.map((item) => (
+          {suggestions.map(item => (
             <li
               key={item}
               className={styles.suggestionItem}
@@ -84,7 +84,7 @@ const SearchDropdown = ({ currentInput = "" }) => {
         <>
           <h4 className={styles.title}>Popular on Pinterest</h4>
           <div className={styles.itemContainer}>
-            {popularSearches.map((item) => (
+            {popularSearches.map(item => (
               <div key={item.name} className={styles.gridItem}>
                 <img
                   src={item.img}
