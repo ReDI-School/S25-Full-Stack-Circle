@@ -25,7 +25,7 @@ const generateTagsWithHuggingFace = async imageUrl => {
   try {
     console.log("Generating tags with Hugging Face...");
 
-    // Download image from URL
+    // Download image from URL should change this later
     const imageResponse = await axios.get(imageUrl, {
       responseType: "arraybuffer"
     });
