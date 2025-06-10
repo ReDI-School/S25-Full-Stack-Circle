@@ -47,8 +47,8 @@ const Header = () => {
   const onSearchSubmit = e => {
     e.preventDefault(); // Prevents the page from reloading
       if (input) { // Only navigate if there is a search term
-      navigate(`/search?q=${input}`);
-      setIsSearchFocused(false);
+        navigate(`/search?q=${input}`);
+        setIsSearchFocused(false);
       }
   };
   // --- NEW: Hook to handle clicks outside of the search area ---

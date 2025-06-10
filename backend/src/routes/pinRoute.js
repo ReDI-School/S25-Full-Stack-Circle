@@ -54,33 +54,33 @@ router.get("/search", async (req, res) => {
         .status(BAD_REQUEST)
         .json({ error: "Search query is required" });
     }
-      const pins = await prisma.pin.findMany({
+  const pins = await prisma.pin.findMany({
       where: {
         OR: [
           {
             title: {
               contains: query,
-              mode: "insensitive", // Case-insensitive search
-            },
+              mode: "insensitive" // Case-insensitive search
+            }
           },
           {
             description: {
               contains: query,
-              mode: "insensitive",
-            },
+              mode: "insensitive"
+            }
           },
           {
             tags: {
-              has: query, // Checks if the exact query string is in the tags array
-            },
-          },
-        ],
+              has: query // Checks if the exact query string is in the tags array
+            }
+          }
+        ]
       },
       include: {
-        reactions: true, // You can keep this if you need reaction counts on the search results page
-      },
+        reactions: true // You can keep this if you need reaction counts on the search results page
+      }
     });
-/*
+    /*
     const allPins = await prisma.pin.findMany({
       include: {
         reactions: true
