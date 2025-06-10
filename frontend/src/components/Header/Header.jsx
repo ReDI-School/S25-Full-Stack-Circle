@@ -26,7 +26,7 @@ const Header = () => {
   // State for the search input's value
   const [input, setInput] = useState("");
   const navigate = useNavigate();
-   // State to control if the search dropdown is visible
+  // State to control if the search dropdown is visible
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchWrapperRef = useRef(null); // Ref to detect outside clicks
   // State for modal management
@@ -44,20 +44,20 @@ const Header = () => {
   };
 
   // This function will be called when the form is submitted (user presses Enter)
-  const onSearchSubmit = (e) => {
+  const onSearchSubmit = e => {
     e.preventDefault(); // Prevents the page from reloading
-    if (input) { // Only navigate if there is a search term
+      if (input) { // Only navigate if there is a search term
       navigate(`/search?q=${input}`);
       setIsSearchFocused(false);
-    }
+      }
   };
   // --- NEW: Hook to handle clicks outside of the search area ---
   useEffect(() => {
     function handleClickOutside(event) {
       if (
         searchWrapperRef.current &&
-        !searchWrapperRef.current.contains(event.target))
-      {
+        !searchWrapperRef.current.contains(event.target)
+      ) {
         setIsSearchFocused(false);
       }
     }
@@ -92,8 +92,8 @@ const Header = () => {
       </ExploreButton>
 
       <SearchWrapper
-      ref={searchWrapperRef}
-      onFocus={() => setIsSearchFocused(true)}
+        ref={searchWrapperRef}
+        onFocus={() => setIsSearchFocused(true)}
       >
         <SearchBarWrapper>
           <IconButton>

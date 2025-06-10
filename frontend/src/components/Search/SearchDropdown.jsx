@@ -6,9 +6,17 @@ import styles from "./SearchDropdown.module.css";
 
 // A mock list of potential search terms
 const MOCK_SUGGESTIONS = [
-    "rock painting ideas", "rockstar aesthetic", "rock concert outfit",
-    "rock painting", "rock lee", "rockstar outfit", "rockstar girlfriend aesthetic",
-    "rock garden", "rocking chair", "logo design", "logo inspiration",
+    "rock painting ideas",
+    "rockstar aesthetic",
+    "rock concert outfit",
+    "rock painting",
+    "rock lee",
+    "rockstar outfit",
+    "rockstar girlfriend aesthetic",
+    "rock garden",
+    "rocking chair",
+    "logo design",
+    "logo inspiration",
     "architecture drawing", "architecture portfolio"
 ];
 
@@ -58,40 +66,40 @@ function SearchDropdown({ currentInput = "" }) {
   // We check if currentInput exists before checking its length.
   const showSuggestions = currentInput && currentInput.length > 0;
 
-  return (
-    <div className={styles.dropdownContainer}>
-      {showSuggestions ? (
-        <ul className={styles.suggestionsList}>
-          {suggestions.map(item => (
-            <li
-              key={item}
-              className={styles.suggestionItem}
-              onClick={() => handleSuggestionClick(item)}
-            >
-              <FiSearch className={styles.suggestionIcon} />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <>
-          <h4 className={styles.title}>Popular on Pinterest</h4>
-          <div className={styles.itemContainer}>
-            {popularSearches.map(item => (
-              <div key={item.name}className={styles.gridItem}>
-                <img
-                src={item.img}
-                alt={item.name}
-                className={styles.gridImage}
-                />
-                <span className={styles.gridItemText}>{item.name}</span>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
+    return (
+        <div className={styles.dropdownContainer}>
+            {showSuggestions ? (
+                <ul className={styles.suggestionsList}>
+                {suggestions.map(item => (
+                    <li
+                    key={item}
+                    className={styles.suggestionItem}
+                    onClick={() => handleSuggestionClick(item)}
+                    >
+                    <FiSearch className={styles.suggestionIcon} />
+                    <span>{item}</span>
+                    </li>
+                ))}
+                </ul>
+            ) : (
+                <>
+                    <h4 className={styles.title}>Popular on Pinterest</h4>
+                    <div className={styles.itemContainer}>
+                        {popularSearches.map(item => (
+                        <div key={item.name}className={styles.gridItem}>
+                            <img
+                                src={item.img}
+                                alt={item.name}
+                                className={styles.gridImage}
+                            />
+                            <span className={styles.gridItemText}>{item.name}</span>
+                        </div>
+                        ))}
+                    </div>
+                </>
+            )}
+        </div>
+    );
 }
 
 export default SearchDropdown;

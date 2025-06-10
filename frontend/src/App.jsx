@@ -15,7 +15,6 @@ import ImageDetailPage from "./pages/ImageDetailPage";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import CreatepinPage from "./pages/CreatepinPage/CreatePinPage";
 
-
 function AppContent() {
   const location = useLocation();
   // Determine whether to display the Navbar based on current path
