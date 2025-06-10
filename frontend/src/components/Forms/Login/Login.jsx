@@ -44,7 +44,7 @@ const Login = () => (
     </button>
 
     <button className={`${styles.socialButton} ${styles.button}`}>
-      <div className={styles.socialIcon}>
+      <div className={styles.facebookIcon}>
         <img src="/images/facebook-2020-2-1.svg" alt="Facebook Logo" />
       </div>
       Continue with Facebook

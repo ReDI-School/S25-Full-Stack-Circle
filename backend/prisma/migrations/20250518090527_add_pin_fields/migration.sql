@@ -5,7 +5,7 @@ ADD COLUMN     "description" TEXT,
 ADD COLUMN     "imageUrl" TEXT;
 
 -- CreateTable
-CREATE TABLE "Comment" (
+/*CREATE TABLE "Comment" (
     "id" SERIAL NOT NULL,
     "content" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -23,3 +23,4 @@ ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId"
 
 -- AddForeignKey
 ALTER TABLE "Comment" ADD CONSTRAINT "Comment_pinId_fkey" FOREIGN KEY ("pinId") REFERENCES "Pin"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+*/
