@@ -13,9 +13,48 @@ const suggestions = [
 ];
 
 const ShopItem = ({ imageSrc }) => {
+  // let imgId = 0;
   const [menuOpen, setMenuOpen] = useState(false);
   const [search, setSearch] = useState("");
   const popupRef = useRef(null);
+  const [pins, setPins] = useState([]);
+  const [id, setId] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    console.log("fetch pins");
+    const fetchPins = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch("http://localhost:4000/api/pins");
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data.pins);
+        const pins = data.pins;
+        const foundPin = pins.find(pin => pin.link === imageSrc);
+
+        if (foundPin) {
+          const imgId = foundPin.id;
+          setId(imgId);
+        } else {
+          console.log("No pin found with that link.");
+        }
+      } catch (e) {
+        console.error("Failed to fetch pins:", e);
+        setError("Failed to load pins. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPins();
+  }, []);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -108,7 +147,7 @@ const ShopItem = ({ imageSrc }) => {
           <div className={styles["content-spacer"]}></div>
 
           {/* Comment section at the very bottom where the photo ends */}
-          <CommentSection imgId={imageSrc} />
+          <CommentSection imgId={id} />
         </div>
       </div>
     </div>

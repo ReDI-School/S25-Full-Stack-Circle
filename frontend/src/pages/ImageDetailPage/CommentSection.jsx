@@ -22,12 +22,13 @@ function CommentSection({ imgId }) {
   const loadComments = async e => {
     try {
       // const imgId =
-      const response = await fetch("/api/comments/id=${imgId}");
+      console.log("id ", imgId);
+      const response = await fetch(
+        `http://localhost:4000/api/comments/id=${imgId}`
+      );
 
       if (!response.ok) {
-        throw new Error(
-          `Failed to fetch product ${imgId}: ${response.status} ${response.statusText}`
-        );
+        console.log("No comments found");
       }
 
       const data = await response.json();
