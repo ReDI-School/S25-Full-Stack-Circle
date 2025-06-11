@@ -42,6 +42,9 @@ const Login = () => {
       if (!res.ok) {
         return setError(data.message || "Login failed");
       }
+      else{
+        return setError(data.message || "Login Successful");
+      }
   
       localStorage.setItem("token", data.token);
     
