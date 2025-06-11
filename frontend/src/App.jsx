@@ -13,6 +13,7 @@ import ExplorePage from "./pages/ExplorePage";
 import HomePage from "./pages/HomePage";
 import ImageDetailPage from "./pages/ImageDetailPage";
 import CreatepinPage from "./pages/CreatepinPage/CreatePinPage";
+import PinDetailPage from "./components/ExplorePageSection1/CardDetailPage";
 
 function AppContent() {
   const location = useLocation();
@@ -30,6 +31,7 @@ function AppContent() {
         <Route path="/detail" element={<ImageDetailPage />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/createPin" element={<CreatepinPage />} />
+        <Route path="/pin/:id" element={<PinDetailPage />} />
       </Routes>
       {<Footer />}
     </>

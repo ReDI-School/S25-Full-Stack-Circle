@@ -29,6 +29,8 @@
   object-fit: cover;
   border-radius: 8px;
   filter: brightness(80%);
+
+  transition: opacity 0.5s ease;
 }
 
 .card:hover img {
@@ -43,6 +45,9 @@
   color: white;
   padding: 20px;
   text-align: center;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .cardOverlay p {
@@ -60,6 +65,11 @@
   justify-content: center;
   margin-top: 30px;
   width: 100%;
+}
+
+.card:hover .cardOverlay,
+.card img[src]:not([src=""]) + .cardOverlay {
+  opacity: 1;
 }
 
 .seeMoreButton {
@@ -82,4 +92,42 @@
 .seeMoreButton:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Pin Skeleton */
+.skeletonImage {
+  width: 100%;
+  height: 200px;
+  background-color: #e1e1e1;
+  border-radius: 16px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeletonTitle,
+.skeletonSubtitle {
+  height: 16px;
+  background-color: #e1e1e1;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeletonTitle {
+  width: 80%;
+}
+
+.skeletonSubtitle {
+  width: 60%;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }
