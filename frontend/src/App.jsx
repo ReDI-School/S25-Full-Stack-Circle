@@ -12,7 +12,8 @@ import Blog from "./pages/BlogPage/Blog";
 import ExplorePage from "./pages/ExplorePage";
 import HomePage from "./pages/HomePage";
 import ImageDetailPage from "./pages/ImageDetailPage";
-import CreatePinPage from "./pages/CreatepinPage/CreatePinPage";
+import CreatepinPage from "./pages/CreatepinPage/CreatePinPage";
+import NavbarLoggedIn from "./components/NavbarLoggedIn/NavbarLoggedIn";
 
 function AppContent() {
   const location = useLocation();
@@ -23,13 +24,14 @@ function AppContent() {
   return (
     <>
       {showNavbar && <Navbar />}
+      <NavbarLoggedIn />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/card/:id" element={<CardDetailPage />} />
         <Route path="/detail" element={<ImageDetailPage />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/createPin" element={<CreatePinPage />} />
+        <Route path="/createPin" element={<CreatepinPage />} />
       </Routes>
       {<Footer />}
     </>
