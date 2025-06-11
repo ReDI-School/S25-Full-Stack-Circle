@@ -13,16 +13,26 @@ import ExplorePage from "./pages/ExplorePage";
 import HomePage from "./pages/HomePage";
 import ImageDetailPage from "./pages/ImageDetailPage";
 import CreatepinPage from "./pages/CreatepinPage/CreatePinPage";
+import NavbarLoggedIn from "./components/NavbarLoggedIn/NavbarLoggedIn";
+import Dashboard from "./pages/DashboardPage/Dashboard"
+import {UserProvider, UserContext} from "./contexts/UserContext"
+import { useContext } from "react";
 
 function AppContent() {
   const location = useLocation();
+  const { user } = useContext(UserContext);
 
   // Determine whether to display the Navbar based on current path
-  const showNavbar = location.pathname !== "/blog";
+  const path = location.pathname;
+
+  const showNothing = path === "/blog";
+  const showDashboardNavbar = path === "/dashboard" && user;
+  const showRegularNavbar = !showDashboardNavbar && !showNothing;
 
   return (
     <>
-      {showNavbar && <Navbar />}
+     {showDashboardNavbar && <NavbarLoggedIn />}
+     {showRegularNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/explore" element={<ExplorePage />} />
@@ -30,6 +40,8 @@ function AppContent() {
         <Route path="/detail" element={<ImageDetailPage />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/createPin" element={<CreatepinPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
       </Routes>
       {<Footer />}
     </>
@@ -39,7 +51,9 @@ function AppContent() {
 function App() {
   return (
     <Router>
-      <AppContent />
+      <UserProvider>
+        <AppContent />
+      </UserProvider>
     </Router>
   );
 }

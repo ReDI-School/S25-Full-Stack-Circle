@@ -4,18 +4,19 @@ import { FaChevronDown } from "react-icons/fa";
 import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import { isTokenValid } from "../../../utils/auth"
+import { useContext } from "react";
+import { UserContext } from "../../../contexts/UserContext"
 
 const Login = () => {
 
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token && isTokenValid()) {
-      navigate("/login"); // redirect to home if already logged in
-    } else {
-      localStorage.removeItem("token"); // clean up bad/expired token
-    }
+    const token = localStorage.getItem("authToken");
+    if (token && isTokenValid(token)) {
+      navigate("/dashboard"); 
+    } 
   }, []);
 
   const [email, setEmail] = useState("");
@@ -36,21 +37,32 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
       });
-  
+    
       const data = await res.json();
-  
+    
       if (!res.ok) {
         return setError(data.message || "Login failed");
       }
-      else{
-        return setError(data.message || "Login Successful");
-      }
-  
-      localStorage.setItem("token", data.token);
     
+      // Save token
+      localStorage.setItem("authToken", data.token);
+    
+      // Fetch user info
+      const meRes = await fetch("http://localhost:4000/api/user/me", {
+        headers: {
+          Authorization: `Bearer ${data.token}`
+        }
+      });
+    
+      const meData = await meRes.json();
+      setUser(meData.user);
+    
+      sessionStorage.setItem("fromLogin", "true");
+      navigate("/dashboard");
     } catch {
       setError("Server error, please try again");
     }
+    
   };
   
 

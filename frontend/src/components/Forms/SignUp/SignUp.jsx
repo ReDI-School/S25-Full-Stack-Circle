@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { CiMail, CiLock } from "react-icons/ci";
 import styles from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
-import Login from "../Login/Login";
+import { isTokenValid } from "../../../utils/auth"
+import { UserContext } from "../../../contexts/UserContext"
 
 const SignUp = () => {
 
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
+
+   useEffect(() => {
+      const token = localStorage.getItem("authToken");
+      if (token && isTokenValid(token)) {
+        navigate("/dashboard"); 
+      } 
+    }, []);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -24,7 +33,6 @@ const SignUp = () => {
 
   const handleSubmit = async (e) =>{
     e.preventDefault()
-    // console.log("Submitting form..."); // Debug log
     setError("")
     setSuccessMessage("")
 
@@ -35,17 +43,23 @@ const SignUp = () => {
         body: JSON.stringify(formData)
       })
 
-      // console.log("Response received:", response); // Debug log
-
       const result = await response.json()
 
-      // console.log("Parsed response:", result); // Debug log
+      localStorage.setItem("authToken", result.token);
+      const meRes = await fetch("http://localhost:4000/api/user/me", {
+        headers: {
+          Authorization: `Bearer ${result.token}`
+        }
+      });
+      
+      const meData = await meRes.json();
+      setUser(meData.user); 
 
       if (!response.ok) {
         setError(result.message);
       } else {
-        setSuccessMessage("Signup successful! Redirecting...");
-        //setTimeout(() => navigate("/login"), 2000);
+        setSuccessMessage("Signup successful! Redirecting to login...");
+        navigate("/dashboard");
       }
       
     } catch (error) {

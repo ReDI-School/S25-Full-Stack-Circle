@@ -3,6 +3,10 @@ import Login from "../components/HomePageLogin/Login";
 import PreviewSections from "../components/HomepageSections/PreviewSections";
 import SimpleSlider from "../components/Carousel/Carousel";
 import styles from "./Home.module.css";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext"
+
 
 function HomePage() {
   /* section based scroll:
@@ -14,6 +18,9 @@ function HomePage() {
   const [currentSection, setCurrentSection] = useState(0);
   const sectionsRef = useRef([]);
   const isScrolling = useRef(false);
+
+  const { user, loading } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleWheel = e => {
@@ -47,6 +54,13 @@ function HomePage() {
     window.addEventListener("wheel", handleWheel, { passive: false });
     return () => window.removeEventListener("wheel", handleWheel);
   }, []);
+
+  // Login check + redirect
+  useEffect(() => {
+    if (!loading && user) {
+      navigate("/dashboard");
+    }
+  }, [user, loading]);
 
   return (
     <div className={styles.container}>
