@@ -28,8 +28,8 @@ export const getComments = async (req, res) => {
 };
 
 export const addComment = async (req, res) => {
-  const { pinId, userId, content } = req.body;
-
+  const { pinId, content } = req.body;
+  const userId = req.user?.id;
   // Validate required fields
   if (!pinId || !userId) {
     return res
@@ -62,10 +62,12 @@ export const addComment = async (req, res) => {
 
 export const deleteComment = async (req, res) => {
   const { id } = req.body;
+  const userId = req.user?.id;
   try {
     await prisma.comment.delete({
       where: {
-        id: Number(id)
+        id: Number(id),
+        userId: String(userId)
       }
     });
     res.status(OK).json({ message: "Comment removed." });

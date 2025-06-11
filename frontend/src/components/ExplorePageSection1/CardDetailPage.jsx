@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Breadcrumb from "./Breadcrumb";
 import styles from "./CardDetailPage.module.css";
 import { cards } from "./cardDetails";
 
 const CardDetailPage = () => {
+  const [pinData, setPinData] = useState([]);
+  const [error, setError] = useState([]);
+
+  useEffect(() => {
+    const fetchPinData = async () => {
+      const promise1 = fetch("/api/pins/");
+      try {
+        const response = await promise1;
+        if (!response.ok) {
+          throw new Error(`HTTP error from API: ${response.status}`);
+        }
+        const pins = await response.json();
+        setPinData(pins);
+      } catch (err) {
+        console.error("Error in fetching pins:", err);
+        setError(err); // Store the error
+      } finally {
+        console.log("pinData");
+      }
+    };
+
+    fetchPinData();
+  }, []);
   const { id } = useParams();
 
   const card = cards[parseInt(id)];

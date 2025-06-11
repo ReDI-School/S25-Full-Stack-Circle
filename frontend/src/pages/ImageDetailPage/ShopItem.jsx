@@ -97,7 +97,7 @@ const ShopItem = ({ imageSrc }) => {
               <span
                 key={index}
                 className={styles.tag}
-                onClick={() => console.error(`Tag clicked: ${tag}`)}
+                onClick={() => console.info(`Clicked ${tag}`)}
               >
                 {tag}
               </span>
@@ -108,7 +108,7 @@ const ShopItem = ({ imageSrc }) => {
           <div className={styles["content-spacer"]}></div>
 
           {/* Comment section at the very bottom where the photo ends */}
-          <CommentSection />
+          <CommentSection imgId={imageSrc} />
         </div>
       </div>
     </div>
