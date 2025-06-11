@@ -8,8 +8,6 @@ import { UserContext } from "../../contexts/UserContext"
 const NavbarLoggedIn = () => {
 
   const { user, loading } = useContext(UserContext);
-
-  // If not authenticated, redirect to home
  
   return ( 
   <div>
