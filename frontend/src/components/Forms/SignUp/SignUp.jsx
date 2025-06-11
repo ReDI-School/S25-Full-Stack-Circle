@@ -31,10 +31,47 @@ const SignUp = () => {
     setFormData({...formData, [e.target.name]: e.target.value })
   }
 
+  const validateForm = () => {
+    const { email, password, dateOfBirth } = formData;
+  
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address.");
+      return false;
+    }
+  
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return false;
+    }
+  
+    if (!dateOfBirth) {
+      setError("Please provide your date of birth.");
+      return false;
+    }
+  
+    const dob = new Date(dateOfBirth);
+    const today = new Date();
+    const age = today.getFullYear() - dob.getFullYear();
+    const hasBirthdayPassed = today.getMonth() > dob.getMonth() ||
+      (today.getMonth() === dob.getMonth() && today.getDate() >= dob.getDate());
+    const userAge = hasBirthdayPassed ? age : age - 1;
+  
+    if (userAge < 12) {
+      setError("You must be at least 12 years old to register.");
+      return false;
+    }
+  
+    return true;
+  };
+  
+
   const handleSubmit = async (e) =>{
     e.preventDefault()
     setError("")
     setSuccessMessage("")
+
+    if (!validateForm()) return;
 
     try {
       const response = await fetch("http://localhost:4000/api/user/signup",{
