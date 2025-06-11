@@ -8,5 +8,5 @@ export const isTokenValid = () => {
     } catch {
       return false;
     }
-  };
+};
   
