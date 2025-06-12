@@ -24,7 +24,7 @@ function ImageDetailPage() {
 
     // If we have a pinId, attempt to fetch the pin data for verification
     if (pinId) {
-      fetch(`/api/pins/${pinId}`)
+      fetch(`/api/pin/${pinId}`)
         .then(response => {
           if (!response.ok) {
             throw new Error(`Pin fetch failed: ${response.status}`);
