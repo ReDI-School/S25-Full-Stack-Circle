@@ -1,24 +1,26 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
+import { protect } from "../middleware/authMiddleware.js"; // token auth
 
 const router = express.Router();
 const prisma = new PrismaClient();
 
-// Status codes (to avoid "magic numbers")
 const STATUS = {
   BAD_REQUEST: 400,
   CREATED: 201,
   CONFLICT: 409,
-  SERVER_ERROR: 500
+  SERVER_ERROR: 500,
 };
 
-router.post("/", async (req, res) => {
-  const { userId, pinId } = req.body;
+// Secure pin save route
+router.post("/", protect, async (req, res) => {
+  const { id: userId } = req.user; // extracted from JWT token
+  const { pinId } = req.body;
 
-  if (!userId || !pinId) {
+  if (!pinId) {
     return res
       .status(STATUS.BAD_REQUEST)
-      .json({ error: "userId and pinId are required" });
+      .json({ error: "pinId is required" });
   }
 
   try {
@@ -34,6 +36,7 @@ router.post("/", async (req, res) => {
     if (error.code === "P2002") {
       return res.status(STATUS.CONFLICT).json({ error: "Pin already saved!" });
     }
+
     console.error("Save error:", error);
     res.status(STATUS.SERVER_ERROR).json({ error: "Internal server error" });
   }
