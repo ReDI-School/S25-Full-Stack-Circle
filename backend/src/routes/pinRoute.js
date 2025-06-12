@@ -36,7 +36,7 @@ const upload = multer({
   }
 });
 
-router.post("/uploadAndTag", upload.single("image"), uploadAndTag);
+router.post("/uploadAndTag", protect, upload.single("image"), uploadAndTag);
 
 router.post("/createpin", protect, createPin);
 router.put("/:id", protect, updatePin);

@@ -65,7 +65,8 @@ export const createPin = async (req, res) => {
       altText,
       // relatedProductIds = [], // Array of related pin IDs
       tagName = [], // Array of existing tag IDs
-      newTags = [],
+      //newTags = [],
+
       isAllowedtoComment,
       showSimilarProduct,
       imageUrl
@@ -113,15 +114,15 @@ export const createPin = async (req, res) => {
         isAllowedtoComment: isAllowedtoComment ?? true,
         showSimilarProduct: showSimilarProduct ?? false,
         author: { connect: { id: userId } },
-        board: { connect: { id: userBoard.id } },
-        tags: {
+        board: { connect: { id: userBoard.id } }
+        /*tags: {
           connect: tagName.map(name => {
             return { name };
           }),
           create: newTags.map(name => {
             return { name };
           })
-        }
+        }*/
       },
       include: {
         author: true,

@@ -16,7 +16,9 @@ const CreatePinPage = () => {
   // const [isGeneratingTags, setIsGeneratingTags] = useState(false);
   // const [isCreating, setIsCreating] = useState(false);
   const [showMoreOptions, setShowMoreOptions] = useState(false);
-
+  //-------------------------------------1
+  const [imageUrlInput, setImageUrlInput] = useState("");
+  //-------------------------------1
   // Handle file selection
   const handleFileSelect = e => {
     const file = e.target.files[0];
@@ -25,6 +27,9 @@ const CreatePinPage = () => {
       // Create preview URL
       const url = URL.createObjectURL(file);
       setPreviewUrl(url);
+      //------------------------------------2
+      setImageUrlInput("");
+      //------------------------------2
     }
   };
 
@@ -38,11 +43,16 @@ const CreatePinPage = () => {
     try {
       const formDataObj = new FormData();
       formDataObj.append("image", selectedFile);
-
+      //-----------------------------------------------------------6
+      const token = localStorage.getItem("token");
+      // -------------------------------------6
       const response = await fetch(
         "http://localhost:4000/api/pins/uploadAndTag",
         {
           method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}` //-----------------7 added header field
+          },
           body: formDataObj
         }
       );
@@ -68,7 +78,45 @@ const CreatePinPage = () => {
       // setIsGeneratingTags(false);
     }
   };
-
+  //--------------------------------------------------3
+  const handleImageUrlSubmit = async () => {
+    //-----------------------------------------------------------8
+    const token = localStorage.getItem("token");
+    // -------------------------------------8
+    if (!imageUrlInput) return;
+    setIsUploading(true);
+    try {
+      const response = await fetch(
+        "http://localhost:4000/api/pins/tagsFromUrl",
+        {
+          method: "POSt",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}` //-----------------9 added
+          },
+          body: JSON.stringify({ imageUrl: imageUrlInput })
+        }
+      );
+      const result = await response.json();
+      if (result.success) {
+        setFormData(prev => ({
+          ...prev,
+          imageUrl: result.imageUrl,
+          tags: result.tags
+        }));
+        setPreviewUrl(result.imageUrl);
+        setSelectedFile(null);
+      } else {
+        alert("Failed to get tags:" + "result.error");
+      }
+    } catch (err) {
+      console.error("Error tagging from URL", err);
+      alert("Error processing image URL");
+    } finally {
+      setIsUploading(false);
+    }
+  };
+  //-------------------------------------3
   // Handle form input changes
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -78,6 +126,32 @@ const CreatePinPage = () => {
         [name]: value
       };
     });
+  };
+  const handleSubmit = async () => {
+    try {
+      const token = localStorage.getItem("token"); // get JWT token
+
+      const response = await fetch("http://localhost:4000/api/pins/createpin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}` // attach token
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert("Pin created successfully!");
+        // Optionally reset form or redirect
+      } else {
+        alert("Failed to create pin: " + result.error);
+      }
+    } catch (err) {
+      console.error("Error creating pin", err);
+      alert("Error creating pin");
+    }
   };
 
   return (
@@ -124,10 +198,17 @@ const CreatePinPage = () => {
               {isUploading ? "Uploading..." : "Upload & Generate Tags"}
             </button>
           )}
-
+          {/*-----------------------------------------4 */}
           <div className={styles.saveButton}>
-            <button>Save from URL</button>
+            <button
+              type="button"
+              className="styles.btnPrimary"
+              onClick={() => (window.location.href = "/image_upload_from_url")}
+            >
+              Save from URL
+            </button>
           </div>
+          {/*-----------------------------------------4 */}
         </div>
         <div className={styles.rightPanel}>
           <form className={styles.pinForm}>
@@ -194,6 +275,13 @@ const CreatePinPage = () => {
                 More Options <MdExpandMore className={styles.iconRight} />
               </button>
             </div>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className={styles.btnPrimary}
+            >
+              Submit Pin
+            </button>
           </form>
         </div>
       </div>
