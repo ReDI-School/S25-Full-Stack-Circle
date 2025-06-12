@@ -32,47 +32,21 @@ model User {
   Reaction  Reaction[]
   pins      Pin[]      @relation("CreatedPins")
   comments  Comment[]
-  board     Board?     @relation("UserBoard")
+  savedPins SavedPin[]
 }
 
 model Pin {
-  id                 Int     @id @default(autoincrement())
-  title              String?
-  description        String?
-  link               String?
-  altText            String?
-  imageUrl           String
-  isAllowedtoComment Boolean @default(true)
-  showSimilarProduct Boolean @default(true)
-
-  author    User     @relation("CreatedPins", fields: [authorId], references: [id])
-  authorId  String
-  createdAt DateTime @default(now())
-
-  boardId Int?
-  board   Board? @relation(fields: [boardId], references: [id])
-
-  relatedProducts Pin[]      @relation("RelatedPins")
-  relatedToPins   Pin[]      @relation("RelatedPins")
-  tags            Tag[]      @relation("PinTags")
-  //savedBy             SavedPin[] 
-  reactions       Reaction[]
-  comments        Comment[]
-}
-
-model Tag {
-  id   Int    @id @default(autoincrement())
-  name String @unique
-  pins Pin[]  @relation("PinTags")
-}
-
-model Board {
-  id     Int    @id @default(autoincrement())
-  name   String
-  userId String @unique
-  user   User   @relation(name: "UserBoard", fields: [userId], references: [id])
-
-  pins Pin[] // A board can have many pins
+  id          Int      @id @default(autoincrement())
+  title       String
+  imageUrl    String
+  description String?
+  createdAt   DateTime @default(now())
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
+  reactions Reaction[]
+  comments  Comment[]
+  tags      String[]
+  savedBy SavedPin[]
 }
 
 model Comment {
@@ -85,4 +59,14 @@ model Comment {
   content   String
 
   @@unique([userId, pinId]) // prevent duplicate Comments
+}
+model SavedPin {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  pin       Pin      @relation(fields: [pinId], references: [id])
+  pinId     Int
+  savedAt   DateTime @default(now())
+
+  @@unique([userId, pinId])
 }
