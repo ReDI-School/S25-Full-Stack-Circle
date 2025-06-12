@@ -1,3 +1,8 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 generator client {
   provider = "prisma-client-js"
 }
@@ -26,42 +31,24 @@ model User {
   board     Board?     @relation("UserBoard")
   comments  Comment[]
   pins      Pin[]      @relation("CreatedPins")
-  Reaction  Reaction[]
+  comments  Comment[]
+  savedPins SavedPin[]
 }
 
 model Pin {
-  id                 Int        @id @default(autoincrement())
-  title              String?
-  authorId           String
-  createdAt          DateTime   @default(now())
-  description        String?
-  imageUrl           String
-  altText            String?
-  boardId            Int?
-  isAllowedtoComment Boolean    @default(true)
-  link               String?
-  showSimilarProduct Boolean    @default(true)
-  comments           Comment[]
-  author             User       @relation("CreatedPins", fields: [authorId], references: [id])
-  board              Board?     @relation(fields: [boardId], references: [id])
-  reactions          Reaction[]
-  tags               Tag[]      @relation("PinTags")
-  Pin_A              Pin[]      @relation("RelatedPins")
-  Pin_B              Pin[]      @relation("RelatedPins")
-}
+  id          Int      @id @default(autoincrement())
+  title       String
+  imageUrl    String
+  description String?
+  createdAt   DateTime @default(now())
 
-model Tag {
-  id   Int    @id @default(autoincrement())
-  name String @unique
-  pins Pin[]  @relation("PinTags")
-}
+  author   User   @relation("CreatedPins", fields: [authorId], references: [id])
+  authorId String
 
-model Board {
-  id     Int    @id @default(autoincrement())
-  name   String
-  userId String @unique
-  user   User   @relation("UserBoard", fields: [userId], references: [id])
-  pins   Pin[]
+  reactions Reaction[]
+  comments  Comment[]
+  tags      String[]
+  savedBy   SavedPin[]
 }
 
 model Comment {
@@ -72,6 +59,17 @@ model Comment {
   content   String
   pin       Pin      @relation(fields: [pinId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, pinId])
+}
+
+model SavedPin {
+  id      Int      @id @default(autoincrement())
+  user    User     @relation(fields: [userId], references: [id])
+  userId  String
+  pin     Pin      @relation(fields: [pinId], references: [id])
+  pinId   Int
+  savedAt DateTime @default(now())
 
   @@unique([userId, pinId])
 }
