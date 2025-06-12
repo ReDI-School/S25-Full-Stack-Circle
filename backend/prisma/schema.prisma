@@ -3,7 +3,6 @@
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -20,76 +19,56 @@ model Reaction {
   pin    Pin    @relation(fields: [pinId], references: [id])
   pinId  Int
 
-  @@unique([userId, pinId]) // prevent duplicate reactions
+  @@unique([userId, pinId])
 }
 
 model User {
-  id        String     @id @default(uuid()) // primary key with auto generated UUID
+  id        String     @id @default(uuid())
   email     String     @unique
   password  String
   name      String?
   createdAt DateTime   @default(now())
   Reaction  Reaction[]
-  pins      Pin[] @relation("CreatedPins")
+  pins      Pin[]      @relation("CreatedPins")
   comments  Comment[]
-  board     Board?    @relation("UserBoard")
+  savedPins SavedPin[]
 }
 
 model Pin {
-  /*id          Int      @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   title       String
   imageUrl    String
   description String?
   createdAt   DateTime @default(now())
-  author   User   @relation(fields: [authorId], references: [id])
+
+  author   User   @relation("CreatedPins", fields: [authorId], references: [id])
   authorId String
+
   reactions Reaction[]
   comments  Comment[]
-  tags      String[]*/
-  id          Int        @id @default(autoincrement())
-  title       String?
-  description String?
-  link        String?
-  altText     String?
-  imageUrl    String
-  isAllowedtoComment  Boolean @default(true)
-  showSimilarProduct  Boolean @default(true)
+  tags      String[]
+  savedBy   SavedPin[]
+}
 
-  author      User  @relation("CreatedPins", fields: [authorId], references: [id])
-  authorId    String
-  createdAt   DateTime @default(now())
-  
-  boardId     Int
-  board       Board    @relation(fields: [boardId], references: [id])
-
-  relatedProducts     Pin[] @relation("RelatedPins")
-  relatedToPins       Pin[] @relation("RelatedPins")
-  tags                Tag[] @relation("PinTags")
-  //savedBy             SavedPin[] 
-  reactions           Reaction[]
-  comments            Comment[]
-}
-model Tag{
-  id      Int @id @default(autoincrement())
-  name    String @unique
-  pins    Pin[] @relation("PinTags")
-}
-model Board {
-  id      Int     @id @default(autoincrement())
-  name    String
-  userId  String  @unique
-  user    User    @relation (name:"UserBoard",fields: [userId], references: [id])
-  
-  pins    Pin[]   // A board can have many pins
-}
 model Comment {
-  id        Int       @id @default(autoincrement())
-  user      User @relation(fields: [userId], references: [id])
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
   userId    String
   createdAt DateTime @default(now())
-  pin       Pin  @relation(fields: [pinId], references: [id])
+  pin       Pin      @relation(fields: [pinId], references: [id])
   pinId     Int
   content   String
 
-  @@unique([userId, pinId]) // prevent duplicate Comments
+  @@unique([userId, pinId])
+}
+
+model SavedPin {
+  id      Int      @id @default(autoincrement())
+  user    User     @relation(fields: [userId], references: [id])
+  userId  String
+  pin     Pin      @relation(fields: [pinId], references: [id])
+  pinId   Int
+  savedAt DateTime @default(now())
+
+  @@unique([userId, pinId])
 }

@@ -101,7 +101,7 @@ const ShopItem = ({ imageSrc, pinId }) => {
               <span
                 key={index}
                 className={styles.tag}
-                onClick={() => console.info(`Clicked ${tag}`)}
+                onClick={() => console.error(`Tag clicked: ${tag}`)}
               >
                 {tag}
               </span>
