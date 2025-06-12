@@ -3,7 +3,6 @@
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -20,11 +19,11 @@ model Reaction {
   pin    Pin    @relation(fields: [pinId], references: [id])
   pinId  Int
 
-  @@unique([userId, pinId]) // prevent duplicate reactions
+  @@unique([userId, pinId])
 }
 
 model User {
-  id        String     @id @default(uuid()) // primary key with auto generated UUID
+  id        String     @id @default(uuid())
   email     String     @unique
   password  String
   name      String?
@@ -41,12 +40,14 @@ model Pin {
   imageUrl    String
   description String?
   createdAt   DateTime @default(now())
-  author   User   @relation(fields: [authorId], references: [id])
+
+  author   User   @relation("CreatedPins", fields: [authorId], references: [id])
   authorId String
+
   reactions Reaction[]
   comments  Comment[]
   tags      String[]
-  savedBy SavedPin[]
+  savedBy   SavedPin[]
 }
 
 model Comment {
@@ -58,15 +59,16 @@ model Comment {
   pinId     Int
   content   String
 
-  @@unique([userId, pinId]) // prevent duplicate Comments
+  @@unique([userId, pinId])
 }
+
 model SavedPin {
-  id        Int      @id @default(autoincrement())
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
-  pin       Pin      @relation(fields: [pinId], references: [id])
-  pinId     Int
-  savedAt   DateTime @default(now())
+  id      Int      @id @default(autoincrement())
+  user    User     @relation(fields: [userId], references: [id])
+  userId  String
+  pin     Pin      @relation(fields: [pinId], references: [id])
+  pinId   Int
+  savedAt DateTime @default(now())
 
   @@unique([userId, pinId])
 }
