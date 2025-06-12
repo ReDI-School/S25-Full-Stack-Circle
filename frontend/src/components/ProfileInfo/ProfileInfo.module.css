@@ -1,0 +1,36 @@
+.ProfileInfo-wrapper{
+    padding:10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+.ProfileInfo-image{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap:10px;
+}
+.ProfileInfo-text{
+   display: flex;
+   flex-direction: column;
+   line-height: 1.5;
+ 
+   flex: 1;
+}
+.ProfileInfo-image{
+    height: 45px;
+    width:45px;
+    border-radius:50%;
+    background-color: rgb(97, 247, 207);
+}
+.ProfileInfo-username{
+    font-size: 18px;
+    font-weight: 600;
+}
+.ProfileInfo-email{
+    font-size: 13px;
+}
+.ProfileInfo-followers{
+    font-size: 12px;
+}
