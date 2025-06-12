@@ -55,8 +55,7 @@ const ShopItem = ({ imageSrc, pinId }) => {
       {/* Right side - Content details */}
       <div className={styles["shop-item-details"]}>
         {/* Profile, Delete, and Save buttons row */}
-        <div className={styles["profile-wrapper"]}>
-          {/* Delete button (3 dots) */}
+        <div className={styles["profile-wrapper"]} ref={popupRef}>
           <Delete pinId={pinId} />
 
           <button
