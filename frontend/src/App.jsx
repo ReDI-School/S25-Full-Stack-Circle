@@ -13,7 +13,6 @@ import ExplorePage from "./pages/ExplorePage";
 import HomePage from "./pages/HomePage";
 import ImageDetailPage from "./pages/ImageDetailPage";
 import CreatepinPage from "./pages/CreatepinPage/CreatePinPage";
-import PinDetailPage from "./components/ExplorePageSection1/CardDetailPage";
 
 function AppContent() {
   const location = useLocation();
@@ -27,11 +26,10 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/explore" element={<ExplorePage />} />
-        <Route path="/card/:id" element={<CardDetailPage />} />
+        <Route path="/pin/:id" element={<CardDetailPage />} />
         <Route path="/detail" element={<ImageDetailPage />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/createPin" element={<CreatepinPage />} />
-        <Route path="/pin/:id" element={<PinDetailPage />} />
       </Routes>
       {<Footer />}
     </>

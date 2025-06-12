@@ -8,20 +8,21 @@ export const fetchPins = async (page = 1, limit = 10) => {
       params: { page, limit }
     });
 
-    console.log("Fetched pins:", response.data);
+    // Filter out example domains and invalid URLs
+    const validPins = (response.data.pins || []).filter(pin => {
+      if (!pin.imageUrl) return false;
 
-    if (!response.data.pins || !Array.isArray(response.data.pins)) {
-      throw new Error("Invalid pins data format");
-    }
+      const invalidDomains = [
+        "example.com",
+        "example-domain",
+        "placeholder.com",
+        "dummyimage.com"
+      ];
 
-    // Verify image URLs
-    response.data.pins.forEach(pin => {
-      if (!pin.imageUrl) {
-        console.warn("Pin missing imageUrl:", pin.id);
-      }
+      return !invalidDomains.some(domain => pin.imageUrl.includes(domain));
     });
 
-    return response.data.pins || [];
+    return validPins;
   } catch (error) {
     console.error("Error fetching pins:", error);
     throw error;
@@ -30,7 +31,7 @@ export const fetchPins = async (page = 1, limit = 10) => {
 
 export const fetchPinById = async id => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/pin/${id}`);
+    const response = await axios.get(`${API_BASE_URL}/pins/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching pin:", error);

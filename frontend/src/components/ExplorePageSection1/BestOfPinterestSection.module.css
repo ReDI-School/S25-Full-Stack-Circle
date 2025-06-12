@@ -1,26 +1,30 @@
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
 .exploreSection {
-  margin: 20px 20px;
+  margin: 20px 0;
   font-size: 36px;
+  text-align: left;
 }
 
 .cardContainer {
-  /*display: flex;
-    justify-content: space-around;
-    */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 20px;
-  padding: 0 20px;
 }
 
 .card {
   position: relative;
-  width: 450px;
+  width: 100%;
   height: 400px;
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
+  background-color: #f5f5f5;
 }
 
 .card img {
@@ -29,8 +33,11 @@
   object-fit: cover;
   border-radius: 8px;
   filter: brightness(80%);
-
-  transition: opacity 0.5s ease;
+  transition: filter 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
 }
 
 .card:hover img {
@@ -45,9 +52,10 @@
   color: white;
   padding: 20px;
   text-align: center;
-
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 3;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
 }
 
 .cardOverlay p {
@@ -60,16 +68,16 @@
   font-size: 24px;
 }
 
+.card:hover .cardOverlay {
+  opacity: 1;
+}
+
+/* === See More Button === */
 .seeMoreButtonContainer {
   display: flex;
   justify-content: center;
   margin-top: 30px;
   width: 100%;
-}
-
-.card:hover .cardOverlay,
-.card img[src]:not([src=""]) + .cardOverlay {
-  opacity: 1;
 }
 
 .seeMoreButton {
@@ -94,7 +102,21 @@
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Pin Skeleton */
+/* === Skeleton Loader === */
+.skeletonWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
 .skeletonImage {
   width: 100%;
   height: 200px;
@@ -110,6 +132,7 @@
   border-radius: 4px;
   margin-bottom: 8px;
   animation: pulse 1.5s infinite;
+  z-index: 1;
 }
 
 .skeletonTitle {
@@ -120,6 +143,7 @@
   width: 60%;
 }
 
+/* === Pulse Animation === */
 @keyframes pulse {
   0% {
     opacity: 0.6;
@@ -129,5 +153,26 @@
   }
   100% {
     opacity: 0.6;
+  }
+}
+
+/* === Responsive Grid === */
+@media (max-width: 1024px) {
+  .cardContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cardContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .exploreSection {
+    font-size: 28px;
+  }
+
+  .card {
+    height: 300px;
   }
 }

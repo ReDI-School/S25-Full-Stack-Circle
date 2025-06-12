@@ -218,7 +218,7 @@ export const getAllPins = async (req, res) => {
     const pins = await prisma.pin.findMany({
       include: {
         author: true,
-        board: true,
+        Board: true,
         tags: true
       }
     });
@@ -245,7 +245,7 @@ export const getPinById = async (req, res) => {
       where: { id: pinId },
       include: {
         author: true,
-        board: true,
+        Board: true,
         tags: true
       }
     });

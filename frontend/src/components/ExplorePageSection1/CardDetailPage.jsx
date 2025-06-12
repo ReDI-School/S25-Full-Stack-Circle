@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Breadcrumb from "./Breadcrumb";
 import styles from "./CardDetailPage.module.css";
-import { cards } from "./cardDetails";
 import { fetchPinById } from "../../services/pinService";
 
 const CardDetailPage = () => {
@@ -19,8 +18,17 @@ const CardDetailPage = () => {
         setPin(fetchedPin);
 
         // Load related pins (optional)
+
+        const res = await fetch(`/api/pins/${id}/related`);
+        if (res.ok) {
+          const related = await res.json();
+          setRelatedPins(related);
+        } else {
+          console.error("Could not load related pins");
+          setRelatedPins([]);
+        }
       } catch (error) {
-        console.error("Error loading pin:", error);
+        console.error("Error loading pin or related pins:", error);
       } finally {
         setLoading(false);
       }
