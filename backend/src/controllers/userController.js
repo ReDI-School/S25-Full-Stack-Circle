@@ -46,7 +46,7 @@ export const signup = async (req, res) => {
           console.error("JWT_SECRET is missing!");
     }
 
-    console.log("Generated token:", token);
+    //console.log("Generated token:", token);
 
   } catch (error) {
     console.error("Error in signup controller", error.message);
