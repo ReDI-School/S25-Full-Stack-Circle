@@ -13,31 +13,31 @@ export const UserProvider = ({ children }) => {
     const token = localStorage.getItem("authToken");
 
     if (!token) {
-        setUser(null);
-        setLoading(false);
-        navigate("/"); 
-        return;
-      }
+      setUser(null);
+      setLoading(false);
+      navigate("/");
+      return;
+    }
 
     if (token) {
-        fetch("http://localhost:4000/api/user/me", {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
+      fetch("http://localhost:4000/api/user/me", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          setUser(data.user);
         })
-          .then(res => res.json())
-          .then(data => {
-            setUser(data.user);
-          })
-          .catch(() => {
-            setUser(null);
-            localStorage.removeItem("authToken");
-          })
-          .finally(() => setLoading(false));
-      } else {
-        setLoading(false);
-      }
-    }, []);
+        .catch(() => {
+          setUser(null);
+          localStorage.removeItem("authToken");
+        })
+        .finally(() => setLoading(false));
+    } else {
+      setLoading(false);
+    }
+  }, [navigate]);
 
   // Logout function
   const logout = () => {

@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Login from "../components/HomePageLogin/Login";
 import PreviewSections from "../components/HomepageSections/PreviewSections";
 import SimpleSlider from "../components/Carousel/Carousel";
 import styles from "./Home.module.css";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext"
 
+import { UserContext } from "../contexts/UserContext";
 
 function HomePage() {
   /* section based scroll:
@@ -60,7 +59,7 @@ function HomePage() {
     if (!loading && user) {
       navigate("/dashboard");
     }
-  }, [user, loading]);
+  }, [user, loading, navigate]);
 
   return (
     <div className={styles.container}>

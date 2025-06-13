@@ -3,32 +3,32 @@ import styles from "./NavbarLoggedIn.module.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { Input } from "@mui/material";
 import { DropdownProfile, DropdownFilter } from "../Dropdown/Dropdown";
-import { UserContext } from "../../contexts/UserContext"
+import { UserContext } from "../../contexts/UserContext";
 
 const NavbarLoggedIn = () => {
+  const { user } = useContext(UserContext);
 
-  const { user, loading } = useContext(UserContext);
- 
-  return ( 
-  <div>
-    <div className={styles["searchbar-profile"]}>
-      <div className={styles["searchbar-wrapper"]}>
-        <SearchIcon />
-        <Input
-          className={styles["searchbar-input"]}
-          type="text"
-          placeholder="Search Your Pins"
-          disableUnderline
-        />
-        <DropdownFilter />
+  return (
+    <div>
+      <div className={styles["searchbar-profile"]}>
+        <div className={styles["searchbar-wrapper"]}>
+          <SearchIcon />
+          <Input
+            className={styles["searchbar-input"]}
+            type="text"
+            placeholder="Search Your Pins"
+            disableUnderline
+          />
+          <DropdownFilter />
+        </div>
+        <div className={styles["profile-logo"]}>
+          {" "}
+          {user?.email?.[0]?.toUpperCase() ?? "?"}
+        </div>
+        <DropdownProfile />
       </div>
-      <div className={styles["profile-logo"]}> {user?.email?.[0]?.toUpperCase() ?? "?"}</div>
-      <DropdownProfile />
     </div>
-  </div>
-  )
-}
- 
-;
+  );
+};
 
 export default NavbarLoggedIn;

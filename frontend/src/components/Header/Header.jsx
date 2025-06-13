@@ -6,10 +6,9 @@ import { Link } from "react-router-dom";
 import Login from "../Forms/Login/Login";
 import SignUp from "../Forms/SignUp/SignUp";
 import Modal from "../Modal/Modal";
-import {UserContext} from "../../contexts/UserContext"
-import { DropdownProfile, DropdownFilter } from "../Dropdown/Dropdown";
+import { UserContext } from "../../contexts/UserContext";
+import { DropdownProfile } from "../Dropdown/Dropdown";
 import styles from "../NavbarLoggedIn/NavbarLoggedIn.module.css";
-
 
 import {
   Wrapper,
@@ -26,9 +25,8 @@ import {
 } from "./HeaderStyles";
 
 const Header = () => {
-
   const { user, loading } = useContext(UserContext);
-   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // State for modal management
   const [isOpen, setIsOpen] = useState(false);
@@ -108,8 +106,8 @@ const Header = () => {
         <Link to="/blog">Blog</Link>
       </PressButton>
 
-      {!loading && (
-        user ? (
+      {!loading &&
+        (isLoggedIn && user ? (
           <>
             <div className={styles["profile-logo"]}>
               {user.email?.[0]?.toUpperCase() ?? "?"}
@@ -130,8 +128,7 @@ const Header = () => {
               </IconButton>
             </IconWrapper>
           </>
-        )
-      )}
+        ))}
 
       <Modal isOpen={isOpen} onClose={closeModal}>
         {modalType === "login" && <Login closeModal={closeModal} />}

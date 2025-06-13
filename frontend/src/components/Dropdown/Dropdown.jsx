@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Dropdown.module.css";
 import { PiCaretDownLight } from "react-icons/pi";
 import ProfileInfo from "../ProfileInfo/ProfileInfo";
-import { UserContext } from "../../contexts/UserContext"
+import { UserContext } from "../../contexts/UserContext";
 
 const DropdownProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
