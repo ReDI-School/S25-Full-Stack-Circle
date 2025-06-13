@@ -1,14 +1,17 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Dropdown.module.css";
 import { PiCaretDownLight } from "react-icons/pi";
 import ProfileInfo from "../ProfileInfo/ProfileInfo";
+import { UserContext } from "../../contexts/UserContext";
 
 const DropdownProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
   const toggleOpen = () => setIsOpen(prev => !prev);
+
+  const { logout } = useContext(UserContext);
 
   useEffect(() => {
     const handleClickOutside = event => {
@@ -37,7 +40,7 @@ const DropdownProfile = () => {
             <ProfileInfo />
           </li>
           <li onClick={() => navigate("/createPin")}>Create Pins</li>
-          <li>Logout</li>
+          <li onClick={logout}>Logout</li>
         </ul>
       )}
     </div>

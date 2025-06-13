@@ -30,9 +30,22 @@ export const signup = async (req, res) => {
       data: { email, password: hashedPassword, name }
     });
 
-    res
-      .status(CREATED)
-      .json({ message: "User Signed up successfully", user: newUser });
+    // Generate token here
+    const token = jwt.sign({ userId: newUser.id }, process.env.JWT_SECRET, {
+      expiresIn: "7d"
+    });
+
+    res.status(CREATED).json({
+      message: "User Signed up successfully......",
+      user: newUser,
+      token
+    });
+
+    if (!process.env.JWT_SECRET) {
+      console.error("JWT_SECRET is missing!");
+    }
+
+    // console.log("Generated token:", token);
   } catch (error) {
     console.error("Error in signup controller", error.message);
     res
@@ -82,4 +95,10 @@ export const getAllUsersHandler = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+};
+
+// GET the current user
+export const getCurrentUser = (req, res) => {
+  const { id, name, email } = req.user; // available from middleware
+  res.status(OK).json({ user: { id, name, email } });
 };
