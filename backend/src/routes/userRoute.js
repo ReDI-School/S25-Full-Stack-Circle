@@ -3,7 +3,7 @@ import {
   signup,
   login,
   getAllUsersHandler,
-  getCurrentUser,
+  getCurrentUser
 } from "../controllers/userController.js";
 import { protect } from "../middlewares/authMiddleware.js";
 
