@@ -1,3 +1,8 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 generator client {
   provider = "prisma-client-js"
 }
@@ -25,8 +30,8 @@ model User {
   createdAt DateTime   @default(now())
   comments  Comment[]
   pins      Pin[]      @relation("CreatedPins")
-  Reaction  Reaction[]
-  SavedPin  SavedPin[]
+  reactions Reaction[]
+  savedPins SavedPin[]
   board     Board?     @relation("UserBoard")
 }
 
@@ -41,8 +46,8 @@ model Pin {
   comments    Comment[]
   author      User       @relation("CreatedPins", fields: [authorId], references: [id])
   reactions   Reaction[]
-  SavedPin    SavedPin[]
-  Board       Board?     @relation(fields: [boardId], references: [id])
+  savedPin    SavedPin[]
+  board       Board?     @relation(fields: [boardId], references: [id])
   boardId     Int?
 }
 
@@ -78,8 +83,8 @@ model SavedPin {
   userId  String
   pinId   Int
   savedAt DateTime @default(now())
-  Pin     Pin      @relation(fields: [pinId], references: [id])
-  User    User     @relation(fields: [userId], references: [id])
+  pin     Pin      @relation(fields: [pinId], references: [id])
+  user    User     @relation(fields: [userId], references: [id])
 
   @@unique([userId, pinId])
 }
