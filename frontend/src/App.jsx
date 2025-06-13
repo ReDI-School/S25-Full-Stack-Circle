@@ -15,6 +15,7 @@ import ImageDetailPage from "./pages/ImageDetailPage";
 import CreatepinPage from "./pages/CreatePinPage/CreatePinPage";
 import NavbarLoggedIn from "./components/NavbarLoggedIn/NavbarLoggedIn";
 import UploadFromUrl from "./pages/ImageUploadURLPage/UploadFromUrl";
+import UserPins from "./pages/UserPins/UserPins";
 
 function AppContent() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function AppContent() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/createPin" element={<CreatepinPage />} />
         <Route path="/image_upload_from_url" element={<UploadFromUrl />} />
+        <Route path="/userpins" element={<UserPins />} />
       </Routes>
       {<Footer />}
     </>
