@@ -7,7 +7,7 @@ import { isTokenValid } from "../../../utils/auth"
 import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext"
 
-const Login = () => {
+const Login = ({ closeModal }) => {
 
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
@@ -56,9 +56,8 @@ const Login = () => {
     
       const meData = await meRes.json();
       setUser(meData.user);
-    
-      sessionStorage.setItem("fromLogin", "true");
-      navigate("/dashboard");
+      closeModal(); // ✅ Close login modal
+      navigate("/dashboard"); 
     } catch {
       setError("Server error, please try again");
     }

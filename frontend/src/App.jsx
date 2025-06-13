@@ -26,12 +26,12 @@ function AppContent() {
   const path = location.pathname;
 
   const showNothing = path === "/blog";
-  const showDashboardNavbar = path === "/dashboard" && user;
-  const showRegularNavbar = !showDashboardNavbar && !showNothing;
+  
+  const showRegularNavbar =!showNothing;
 
   return (
     <>
-     {showDashboardNavbar && <NavbarLoggedIn />}
+     
      {showRegularNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<HomePage />} />

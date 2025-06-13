@@ -8,8 +8,8 @@ const Dashboard = () => {
 
   return (
     <div style={{ padding: "2rem" }}>
+      <h1>Welcome back</h1>
       <h1>Welcome back, {user?.email} 👋</h1>
-      
     </div>
   );
 };
