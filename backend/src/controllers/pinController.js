@@ -212,6 +212,7 @@ export const deletePin = async (req, res) => {
       .json({ message: "Internal Server Error" });
   }
 };
+
 export const getAllPins = async (req, res) => {
   try {
     const pins = await prisma.pin.findMany({
@@ -221,14 +222,21 @@ export const getAllPins = async (req, res) => {
         tags: true
       }
     });
+
+    // first pin url for debugging
+    if (pins.length) {
+      console.log("Sample image URL:", pins[0].imageUrl);
+    }
+
     res.status(OK).json({ pins });
   } catch (error) {
-    console.error("Error deleting pin:", error);
+    console.error("Error fetching pin:", error);
     res
       .status(INTERNAL_SERVER_ERROR)
       .json({ message: "Internal Server Error" });
   }
 };
+
 // Get Pin by Id
 export const getPinById = async (req, res) => {
   try {

@@ -41,8 +41,6 @@ router.post("/uploadAndTag", upload.single("image"), uploadAndTag);
 router.post("/createpin", protect, createPin);
 router.put("/:id", protect, updatePin);
 router.delete("/:id", protect, deletePin);
-router.get("/:id", getPinById);
-router.get("/", getAllPins);
 
 // search pins by tags
 router.get("/search", async (req, res) => {
@@ -71,5 +69,8 @@ router.get("/search", async (req, res) => {
     res.status(INTERNAL_SERVER_ERROR).json({ error: "Internal server error" });
   }
 });
+
+router.get("/:id", getPinById);
+router.get("/", getAllPins);
 
 export default router;
