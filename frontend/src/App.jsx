@@ -16,6 +16,7 @@ import CreatepinPage from "./pages/CreatepinPage/CreatePinPage";
 import Dashboard from "./pages/DashboardPage/Dashboard";
 import { UserProvider } from "./contexts/UserProvider";
 import UploadFromUrl from "./pages/ImageUploadURLPage/UploadFromUrl";
+import UserPins from "./pages/UserPins/UserPins";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 
 function AppContent() {
@@ -40,6 +41,7 @@ function AppContent() {
         <Route path="/createPin" element={<CreatepinPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/image_upload_from_url" element={<UploadFromUrl />} />
+        <Route path="/userpins" element={<UserPins />} />
         <Route path="/category/:id" element={<CategoryPage />} />
       </Routes>
       {<Footer />}
