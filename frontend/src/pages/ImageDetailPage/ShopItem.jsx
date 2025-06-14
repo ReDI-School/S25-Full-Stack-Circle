@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import PinDetailComponent from "../../components/PinDetailComponent";
 import CommentSection from "./CommentSection";
+import Delete from "./Delete";
 import styles from "./ShopItem.module.css";
 
 const suggestions = [
@@ -12,7 +13,7 @@ const suggestions = [
   "Create board"
 ];
 
-const ShopItem = ({ imageSrc }) => {
+const ShopItem = ({ imageSrc, pinId }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [search, setSearch] = useState("");
   const popupRef = useRef(null);
@@ -53,8 +54,10 @@ const ShopItem = ({ imageSrc }) => {
 
       {/* Right side - Content details */}
       <div className={styles["shop-item-details"]}>
-        {/* Profile and Save buttons - updated to match design */}
+        {/* Profile, Delete, and Save buttons row */}
         <div className={styles["profile-wrapper"]} ref={popupRef}>
+          <Delete pinId={pinId} />
+
           <button
             className={styles["profile-button"]}
             onClick={() => setMenuOpen(!menuOpen)}
