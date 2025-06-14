@@ -12,20 +12,23 @@ import Blog from "./pages/BlogPage/Blog";
 import ExplorePage from "./pages/ExplorePage";
 import HomePage from "./pages/HomePage";
 import ImageDetailPage from "./pages/ImageDetailPage";
-import CreatepinPage from "./pages/CreatePinPage/CreatePinPage";
-import NavbarLoggedIn from "./components/NavbarLoggedIn/NavbarLoggedIn";
-import UploadFromUrl from "./pages/ImageUploadURLPage/UploadFromUrl";
+import CreatepinPage from "./pages/CreatepinPage/CreatePinPage";
+import Dashboard from "./pages/DashboardPage/Dashboard";
+import { UserProvider } from "./contexts/UserContext";
 
 function AppContent() {
   const location = useLocation();
 
   // Determine whether to display the Navbar based on current path
-  const showNavbar = location.pathname !== "/blog";
+  const path = location.pathname;
+
+  const showNothing = path === "/blog";
+
+  const showRegularNavbar = !showNothing;
 
   return (
     <>
-      {showNavbar && <Navbar />}
-      <NavbarLoggedIn />
+      {showRegularNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/explore" element={<ExplorePage />} />
@@ -33,6 +36,7 @@ function AppContent() {
         <Route path="/detail" element={<ImageDetailPage />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/createPin" element={<CreatepinPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/image_upload_from_url" element={<UploadFromUrl />} />
       </Routes>
       {<Footer />}
@@ -43,7 +47,9 @@ function AppContent() {
 function App() {
   return (
     <Router>
-      <AppContent />
+      <UserProvider>
+        <AppContent />
+      </UserProvider>
     </Router>
   );
 }
