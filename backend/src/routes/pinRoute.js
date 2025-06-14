@@ -7,7 +7,8 @@ import {
   deletePin,
   getAllPins,
   getPinById,
-  uploadAndTag
+  uploadAndTag,
+  uploadFromUrl
 } from "../controllers/pinController.js";
 import { protect } from "../middlewares/authMiddleware.js";
 import { BAD_REQUEST, INTERNAL_SERVER_ERROR } from "../constants/http.js";
@@ -37,7 +38,7 @@ const upload = multer({
 });
 
 router.post("/uploadAndTag", protect, upload.single("image"), uploadAndTag);
-
+router.post("/uploadImageFromUrl", protect, uploadFromUrl);
 router.post("/createpin", protect, createPin);
 router.put("/:id", protect, updatePin);
 router.delete("/:id", protect, deletePin);
