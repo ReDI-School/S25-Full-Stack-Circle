@@ -1,0 +1,83 @@
+/* In frontend/src/components/Search/SearchDropdown.module.css */
+
+.dropdownContainer {
+  position: absolute;
+  top: calc(100% + 8px); /* Position it 8px below the search bar */
+  left: 0;              /* Align to the left edge of the search bar */
+  width: 100%;          /* Make it exactly as wide as the search bar */
+  background-color: white;
+  border-radius: 16px; /* Let's use slightly larger radius to match the image */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  z-index: 1001;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+/* Use flexbox to allow items to wrap like tags */
+.itemContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px; /* This creates space between our items */
+}
+
+/* This is the style for each "pill" */
+.gridItem {
+  display: flex;
+  align-items: center; /* Vertically centers the image and text */
+  gap: 8px; /* Space between the image and the text inside the pill */
+  cursor: pointer;
+  padding: 8px; /* Inner spacing */
+  border-radius: 24px; /* Makes it pill-shaped */
+  background-color: #efefef; /* Light grey background */
+  transition: background-color 0.2s;
+}
+
+.gridItem:hover {
+  background-color: #e0e0e0; /* A slightly darker grey on hover */
+}
+
+/* Style for the small image inside the pill */
+.gridImage {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 8px; /* Slightly rounded corners for the image */
+}
+
+/* Style for the text inside the pill */
+.gridItemText {
+  font-weight: 600;
+  font-size: 15px;
+  color: #111;
+  white-space: nowrap; /* Prevents text from wrapping to a new line */
+}
+
+
+.suggestionsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.suggestionItem:hover {
+  background-color: #f0f0f0;
+}
+
+.suggestionIcon {
+  color: #767676;
+}

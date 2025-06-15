@@ -108,6 +108,7 @@ export const SearchBarWrapper = styled.div`
   border-radius: 50px;
   border: none;
   padding-left: 10px;
+  position: relative;
 
   form {
     display: flex;
