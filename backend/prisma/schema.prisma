@@ -14,24 +14,25 @@ datasource db {
 
 model Reaction {
   id     Int    @id @default(autoincrement())
-  user   User   @relation(fields: [userId], references: [id])
   userId String
-  pin    Pin    @relation(fields: [pinId], references: [id])
   pinId  Int
+  pin    Pin    @relation(fields: [pinId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
 
   @@unique([userId, pinId])
 }
 
 model User {
   id        String     @id @default(uuid())
+  name      String?
   email     String     @unique
   password  String
-  name      String?
   createdAt DateTime   @default(now())
-  Reaction  Reaction[]
-  pins      Pin[]      @relation("CreatedPins")
+  // board     Board?     @relation("UserBoard")
   comments  Comment[]
+  pins      Pin[]      @relation("CreatedPins")
   savedPins SavedPin[]
+  reactions Reaction[]
 }
 
 model Pin {
@@ -52,12 +53,12 @@ model Pin {
 
 model Comment {
   id        Int      @id @default(autoincrement())
-  user      User     @relation(fields: [userId], references: [id])
   userId    String
   createdAt DateTime @default(now())
-  pin       Pin      @relation(fields: [pinId], references: [id])
   pinId     Int
   content   String
+  pin       Pin      @relation(fields: [pinId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 
   @@unique([userId, pinId])
 }

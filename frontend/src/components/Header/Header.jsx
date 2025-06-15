@@ -1,12 +1,14 @@
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
 import { IconButton } from "@mui/material";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Login from "../Forms/Login/Login";
 import SignUp from "../Forms/SignUp/SignUp";
 import Modal from "../Modal/Modal";
 import SearchDropdown from "../Search/SearchDropdown";
+import { DropdownProfile } from "../Dropdown/Dropdown";
+import styles from "../NavbarLoggedIn/NavbarLoggedIn.module.css";
 
 import {
   Wrapper,
@@ -23,6 +25,7 @@ import {
 } from "./HeaderStyles";
 
 const Header = () => {
+
   // State for the search input's value
   const [input, setInput] = useState("");
   const navigate = useNavigate();
@@ -30,8 +33,24 @@ const Header = () => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchWrapperRef = useRef(null); // Ref to detect outside clicks
   // State for modal management
+ 
+
+  const { user, loading } = useContext(UserContext);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // State for modal management
   const [isOpen, setIsOpen] = useState(false);
   const [modalType, setModalType] = useState(null);
+
+  useEffect(() => {
+    if (!loading && user) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [user, loading]);
+
+
   // Modal functions
   const openModal = type => {
     setModalType(type);
@@ -130,23 +149,33 @@ const Header = () => {
         <Link to="/blog">Blog</Link>
       </PressButton>
 
-      <LoginButton onClick={() => openModal("login")}>
-        <Link to="#">Log in</Link>
-      </LoginButton>
-
-      <SignupButton onClick={() => openModal("signup")}>
-        <Link to="#">Sign up</Link>
-      </SignupButton>
-
-      <IconWrapper>
-        <IconButton>
-          <KeyboardArrowDownIcon />
-        </IconButton>
-      </IconWrapper>
+      {!loading &&
+        (isLoggedIn && user ? (
+          <>
+            <div className={styles["profile-logo"]}>
+              {user.email?.[0]?.toUpperCase() ?? "?"}
+            </div>
+            <DropdownProfile />
+          </>
+        ) : (
+          <>
+            <LoginButton onClick={() => openModal("login")}>
+              <Link to="#">Log in</Link>
+            </LoginButton>
+            <SignupButton onClick={() => openModal("signup")}>
+              <Link to="#">Sign up</Link>
+            </SignupButton>
+            <IconWrapper>
+              <IconButton>
+                <KeyboardArrowDownIcon />
+              </IconButton>
+            </IconWrapper>
+          </>
+        ))}
 
       <Modal isOpen={isOpen} onClose={closeModal}>
-        {modalType === "login" && <Login />}
-        {modalType === "signup" && <SignUp />}
+        {modalType === "login" && <Login closeModal={closeModal} />}
+        {modalType === "signup" && <SignUp closeModal={closeModal} />}
       </Modal>
     </Wrapper>
   );
