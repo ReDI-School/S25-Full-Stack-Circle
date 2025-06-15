@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./uploadFromUrl.module.css";
+import styles from "./UploadFromUrl.module.css";
 
 const UploadFromUrl = () => {
   const navigate = useNavigate();
@@ -23,19 +23,23 @@ const UploadFromUrl = () => {
     }
     setIsUrlsubmitted(true);
     setSubmittedUrl(urlInput);
-    setFormData(prev => ({
-      ...prev,
-      imageUrl: urlInput
-    }));
+    setFormData(prev => {
+      return {
+        ...prev,
+        imageUrl: urlInput
+      };
+    });
   };
 
   // Handle form field changes
   const handleInputChange = e => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => {
+      return {
+        ...prev,
+        [name]: value
+      };
+    });
   };
 
   // Handle create pin & generate tags button click
@@ -78,7 +82,7 @@ const UploadFromUrl = () => {
           body: JSON.stringify({
             ...formData,
             imageUrl: result.imageUrl
-            //tags: result.tags
+            // tags: result.tags
           })
         }
       );

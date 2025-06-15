@@ -79,11 +79,13 @@ const CreatePinPage = () => {
         return;
       }
 
-      setFormData(prev => ({
-        ...prev,
-        imageUrl: result.imageUrl,
-        tags: result.tags
-      }));
+      setFormData(prev => {
+        return {
+          ...prev,
+          imageUrl: result.imageUrl,
+          tags: result.tags
+        };
+      });
       /* ******************************* Create pin */
       const createPin = await fetch(
         "http://localhost:4000/api/pins/createpin",
