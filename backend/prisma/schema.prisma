@@ -41,13 +41,17 @@ model Pin {
   imageUrl    String
   description String?
   createdAt   DateTime @default(now())
+  altText     String? 
+  link        String?
+  isAllowedtoComment Boolean @default(true) 
+  showSimilarProduct Boolean @default(true)
 
   author   User   @relation("CreatedPins", fields: [authorId], references: [id])
   authorId String
-
+  
   reactions Reaction[]
   comments  Comment[]
-  tags      String[]
+  tags      String[] @default([])
   savedBy   SavedPin[]
 }
 

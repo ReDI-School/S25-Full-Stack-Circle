@@ -1,0 +1,106 @@
+
+  .uploadFromUrlWrapper{
+    padding:10vh;
+    display: flex;
+    justify-content: center;
+    background-color: #cccccc;
+    height:100vh
+  }
+  .urlInputWrapper{
+    padding:5vh;
+    width:80%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .urlInput{
+    padding: 10px;
+    width: 80%;
+    height: 2rem;
+    margin-right: "10px";
+    border-radius:8px;
+    border: "1px solid #ccc";
+ }
+
+ /* *************** form******************** */
+
+ .formAndPreviewWrapper{
+  display: flex;
+  gap: 2rem;
+  padding:4vh;
+  width: 80%;
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 3vh;;
+}
+/* *****************   right *************** */
+.urlFormInputWrapper{
+  flex:1;
+ }
+ .urlFormInputDiv{
+   margin-bottom: 1rem;
+ }
+ .urlFormInputLabel{
+font-weight: 600;
+ }
+ .urlFormInputText{
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #cccccc
+ }
+ .urlFormInputTextArea{
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+ }
+.btnPrimary{
+  padding: 12px 20px;
+  background-color: #e60023;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  font-size: "16px";
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: all 0.2s ease;
+ }
+/* ******************  left ********************** */  
+  
+  .imageFromUrlWrapper{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-color: #dcd5d5;
+    border:2px;
+    border-radius: 10px;
+  }
+  .uploadedImage {
+    max-width: 100%;
+    max-height: 280px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+ .imagePreviewWrapper{
+  flex:1
+ }
+ .imagePreview{
+  width:90%;
+  height:90%;
+  border-radius:8px;
+ }
+
+ .boardDropdown_option{
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+ 
+ }
+ 
