@@ -99,8 +99,8 @@ export const createPin = async (req, res) => {
       link,
       altText,
       // relatedProductIds = [], // Array of related pin IDs
-      //tagName = [], // Array of existing tag IDs
-      //newTags = [],
+      // tagName = [], // Array of existing tag IDs
+      // newTags = [],
 
       isAllowedtoComment,
       showSimilarProduct,
@@ -128,7 +128,7 @@ export const createPin = async (req, res) => {
     }
     /* Check for existing board or create the board */
     {
-      /*let userBoard = await prisma.board.findFirst({
+      /* let userBoard = await prisma.board.findFirst({
       where: {
         userId: userId
       }
@@ -168,7 +168,7 @@ export const createPin = async (req, res) => {
       },
       include: {
         author: true
-        //board: true
+        // board: true
       }
     });
     res.status(CREATED).json(pin);
@@ -191,7 +191,7 @@ export const updatePin = async (req, res) => {
       isAllowedtoComment,
       showSimilarProduct,
       imageUrl
-      //tagName = [],
+      // tagName = [],
       // newTags = []
     } = req.body;
     const currentPin = await prisma.pin.findUnique({ where: { id: pinId } });
@@ -210,7 +210,7 @@ export const updatePin = async (req, res) => {
         imageUrl,
         isAllowedtoComment,
         showSimilarProduct
-        /*} tags: {
+        /* } tags: {
           set: [],
           connect: tagName.map(name => {
             return { name };
@@ -220,7 +220,7 @@ export const updatePin = async (req, res) => {
           })
         }*/
       },
-      include: { tags: true, author: true } //removed board
+      include: { tags: true, author: true } // removed board
     });
 
     res.json(updatedPin);

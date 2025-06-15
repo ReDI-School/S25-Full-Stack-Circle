@@ -15,6 +15,7 @@ import ImageDetailPage from "./pages/ImageDetailPage";
 import CreatepinPage from "./pages/CreatepinPage/CreatePinPage";
 import Dashboard from "./pages/DashboardPage/Dashboard";
 import { UserProvider } from "./contexts/UserContext";
+import UploadFromUrl from "./pages/ImageUploadURLPage/UploadFromUrl";
 
 function AppContent() {
   const location = useLocation();

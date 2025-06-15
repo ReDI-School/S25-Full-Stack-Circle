@@ -1,68 +1,78 @@
 
-  .createPinCard {
+  .uploadFromUrlWrapper{
+    padding:10vh;
     display: flex;
-    width: 100%;
-    max-width: 1000px;
-    position: relative;
-    gap: 2rem;
-    padding: 2rem;
-    
+    justify-content: center;
+    background-color: #cccccc;
+    height:100vh
   }
-  .leftPanel {
-    margin-top: 3rem;
-    height: 100%;
-    border:2px #6f2222;
-    flex: 1;
-    max-width: 100%;
-    max-height: 75vh;
-    background-color: white;
-  }
-  .formGroup {
-    display: flex;
+  .urlInputWrapper{
+    padding:5vh;
+    width:80%;
+    display:flex;
     flex-direction: column;
     align-items: center;
-    
   }
+  .urlInput{
+    padding: 10px;
+    width: 80%;
+    height: 2rem;
+    margin-right: "10px";
+    border-radius:8px;
+    border: "1px solid #ccc";
+ }
+
+ /* *************** form******************** */
+
+ .formAndPreviewWrapper{
+  display: flex;
+  gap: 2rem;
+  padding:4vh;
+  width: 80%;
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 3vh;;
+}
+/* *****************   right *************** */
+.urlFormInputWrapper{
+  flex:1;
+ }
+ .urlFormInputDiv{
+   margin-bottom: 1rem;
+ }
+ .urlFormInputLabel{
+font-weight: 600;
+ }
+ .urlFormInputText{
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #cccccc
+ }
+ .urlFormInputTextArea{
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+ }
+.btnPrimary{
+  padding: 12px 20px;
+  background-color: #e60023;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  font-size: "16px";
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: all 0.2s ease;
+ }
+/* ******************  left ********************** */  
   
-  .label {
-    font-weight: 600;
-    font-size: 1.5em;
-    margin-bottom: 0.4rem;
-    color: #333;
-  }
-  .formInput {
-    width: 100%;
-    max-width: 600px;
-    padding: 0.75rem;
-    font-size: 15px;
-    background-color: white;
-    color: black;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    resize: none;
-    font-family: inherit;
-  }
-  
-  .iconLabel {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  
-  .btnPrimary {
-    width: 50%;
-    background: #e60023;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 24px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
   .imageFromUrlWrapper{
     display: flex;
     justify-content: center;
@@ -77,4 +87,20 @@
     border-radius: 12px;
     object-fit: cover;
   }
-  
+ .imagePreviewWrapper{
+  flex:1
+ }
+ .imagePreview{
+  width:90%;
+  height:90%;
+  border-radius:8px;
+ }
+
+ .boardDropdown_option{
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+ 
+ }
+ 
