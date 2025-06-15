@@ -5,8 +5,10 @@ import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 const UserPins = () => {
   //{ user, createdPins, savedPins }
   const [activeTab, setActiveTab] = useState("MyPins");
+  const [createdPins, setCreatedPins] = useState([]);
+  const [savedPin, setSavedPin] = useState([]);
 
-  const createdPins = [
+  /*const createdPins = [
     {
       id: 1,
       title: "Beautiful Beach",
@@ -31,7 +33,7 @@ const UserPins = () => {
       imageUrl:
         "https://images.unsplash.com/photo-1501786223405-6d024d7c3b8d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnRhaW58ZW58MHwxfDB8fHwy"
     }
-  ];
+  ];*/
 
   const savedPins = [
     {
@@ -65,6 +67,21 @@ const UserPins = () => {
     return [...createdPins, ...savedPins];
   };
   const displayPins = getDisplayPins();
+
+  const getCreatedPins = async () => {
+    const response = await fetch("http://localhost:4000/api/pins/created", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    const pins = await response.json();
+    setCreatedPins(pins);
+  };
+  useEffect(() => {
+    if (activeTab === "created") {
+      getCreatedPins();
+    }
+  }, [activeTab]);
   return (
     <div className={styles.user_pins_wrapper}>
       <div className={styles.user_profileInfo_wrapper}>
