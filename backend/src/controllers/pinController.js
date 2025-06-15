@@ -287,7 +287,7 @@ export const getPinById = async (req, res) => {
       where: { id: pinId },
       include: {
         author: true,
-        board: true,
+        // board: true,
         tags: true
       }
     });

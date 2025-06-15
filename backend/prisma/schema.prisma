@@ -18,11 +18,11 @@ model Reaction {
 }
 
 model User {
-  id        String     @id @default(uuid())
+  id        String   @id @default(uuid())
   name      String?
-  email     String     @unique
+  email     String   @unique
   password  String
-  createdAt DateTime   @default(now())
+  createdAt DateTime @default(now())
 
   board     Board?     @relation("UserBoard")
   comments  Comment[]
@@ -45,7 +45,7 @@ model Pin {
   showSimilarProduct Boolean    @default(false)
   comments           Comment[]
   author             User       @relation("CreatedPins", fields: [authorId], references: [id])
-  board              Board?     @relation(fields: [boardId], references: [id])
+  // board              Board?     @relation(fields: [boardId], references: [id])
   reactions          Reaction[]
   savedPin           SavedPin[]
   tags               Tag[]      @relation("PinTags")
@@ -62,7 +62,7 @@ model Board {
   name   String
   userId String @unique
   user   User   @relation("UserBoard", fields: [userId], references: [id])
-  pins   Pin[]
+  // pins   Pin[]
 }
 
 model Comment {
