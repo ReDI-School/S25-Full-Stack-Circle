@@ -51,7 +51,6 @@ const CreatePinPage = () => {
 
     try {
       const token = localStorage.getItem("authToken");
-      console.log(token);
       if (!token) {
         alert("You must be logged in");
         setIsUploading(false);
@@ -104,20 +103,7 @@ const CreatePinPage = () => {
       );
 
       const createdPin = await createPin.json();
-      console.log("Created Pin Response:", createdPin);
-      console.log(
-        "createPin.status:",
-        createPin.status,
-        typeof createPin.status
-      );
-      console.log(
-        "createdPin.success:",
-        createdPin.success,
-        typeof createdPin.success
-      );
-
       if (createPin.status === 201) {
-        console.log("in the success block");
         alert("Pin created successfully!");
         window.location.reload();
         return;

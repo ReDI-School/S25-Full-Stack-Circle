@@ -70,7 +70,6 @@ const UploadFromUrl = () => {
         }
       );
       const result = await response.json();
-      console.log(result.success);
       const createPin = await fetch(
         "http://localhost:4000/api/pins/createpin",
         {
@@ -87,17 +86,6 @@ const UploadFromUrl = () => {
         }
       );
       const createdPin = await createPin.json();
-      console.log("Created Pin Response:", createdPin);
-      console.log(
-        "createPin.status:",
-        createPin.status,
-        typeof createPin.status
-      );
-      console.log(
-        "createdPin.success:",
-        createdPin.success,
-        typeof createdPin.success
-      );
 
       if (createPin.status === 201) {
         alert("Pin created successfully!");
