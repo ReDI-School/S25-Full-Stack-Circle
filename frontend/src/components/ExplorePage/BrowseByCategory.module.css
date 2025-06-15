@@ -2,6 +2,9 @@
 .titleContainer {
   margin-bottom: 16px;
   margin-left: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 12px;
 }
 
 .title {
@@ -17,6 +20,10 @@
   gap: 16px;
   margin-bottom: 20px;
   padding: 0 20px;
+
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 12px;
 }
 
 /* Category card styling */
