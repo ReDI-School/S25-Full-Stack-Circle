@@ -23,6 +23,7 @@ model User {
   email     String     @unique
   password  String
   createdAt DateTime   @default(now())
+
   board     Board?     @relation("UserBoard")
   comments  Comment[]
   pins      Pin[]      @relation("CreatedPins")
