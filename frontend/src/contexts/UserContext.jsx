@@ -1,12 +1,15 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const publicPaths = ["/explore", "/blog", "/"];
+
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const location = window.location;
 
   // Validate JWT and fetch user
   useEffect(() => {
@@ -15,29 +18,31 @@ export const UserProvider = ({ children }) => {
     if (!token) {
       setUser(null);
       setLoading(false);
-      // navigate("/");
+
+      const currentPath = location.pathname;
+
+      if (!publicPaths.includes(currentPath)) {
+        navigate("/"); // Redirect only if not on a public route
+      }
+
       return;
     }
 
-    if (token) {
-      fetch("http://localhost:4000/api/user/me", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+    fetch("http://localhost:4000/api/user/me", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        setUser(data.user);
       })
-        .then(res => res.json())
-        .then(data => {
-          setUser(data.user);
-        })
-        .catch(() => {
-          setUser(null);
-          localStorage.removeItem("authToken");
-        })
-        .finally(() => setLoading(false));
-    } else {
-      setLoading(false);
-    }
-  }, [navigate]);
+      .catch(() => {
+        setUser(null);
+        localStorage.removeItem("authToken");
+      })
+      .finally(() => setLoading(false));
+  }, [navigate, location.pathname]);
 
   // Logout function
   const logout = () => {
