@@ -85,7 +85,8 @@ const UploadFromUrl = () => {
           })
         }
       );
-      const createdPin = await createPin.json();
+
+      // const createdPin = await createPin.json();
 
       if (createPin.status === 201) {
         alert("Pin created successfully!");

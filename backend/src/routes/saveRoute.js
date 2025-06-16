@@ -43,7 +43,7 @@ router.post("/", protect, async (req, res) => {
 
 export default router;
 
-//Get All the pins saved by a user
+// Get All the pins saved by a user
 router.get("/", protect, async (req, res) => {
   try {
     const userId = req.user.id;
@@ -55,7 +55,7 @@ router.get("/", protect, async (req, res) => {
             author: true,
             reactions: true,
             comments: true,
-            tags: true //----2
+            tags: true
           }
         }
       }
@@ -64,7 +64,7 @@ router.get("/", protect, async (req, res) => {
     const pins = savedPins.map(saved => saved.pin);
     res.json(pins);
   } catch (error) {
-    console.error("Error fetching in saved pins");
+    console.error("Error fetching in saved pins", error);
     res.status(INTERNAL_SERVER_ERROR).json({ error: "Internal server error" });
   }
 });

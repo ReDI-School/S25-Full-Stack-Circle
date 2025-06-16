@@ -13,7 +13,7 @@ import ExplorePage from "./pages/ExplorePage";
 import HomePage from "./pages/HomePage";
 import ImageDetailPage from "./pages/ImageDetailPage";
 import CreatepinPage from "./pages/CreatepinPage/CreatePinPage";
-//import Dashboard from "./pages/DashboardPage/Dashboard";
+// import Dashboard from "./pages/DashboardPage/Dashboard";
 import { UserProvider } from "./contexts/UserContext";
 import UploadFromUrl from "./pages/ImageUploadURLPage/UploadFromUrl";
 import UserPins from "./pages/UserPins/UserPins";
@@ -38,7 +38,7 @@ function AppContent() {
         <Route path="/detail" element={<ImageDetailPage />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/createPin" element={<CreatepinPage />} />
-        {/*<Route path="/dashboard" element={<Dashboard />} />*/}
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/image_upload_from_url" element={<UploadFromUrl />} />
         <Route path="/userpins" element={<UserPins />} />
       </Routes>

@@ -159,7 +159,7 @@ export const createPin = async (req, res) => {
         // board: { connect: { id: userBoard.id } }
 
         // to add the Tags
-        /*tags: {
+        /* tags: {
           connectOrCreate: (tagNames || []).map(tagNames => ({
             where: { name: tagNames },
             create: { name: tagNames }
@@ -313,8 +313,6 @@ export const getCreatedPins = async (req, res, next) => {
     const CreatedPins = await prisma.pin.findMany({
       where: { authorId: userId }
     });
-    console.log("userI and name", userId);
-    console.log("pins found", CreatedPins.length);
 
     res.status(OK).json(CreatedPins);
   } catch (error) {

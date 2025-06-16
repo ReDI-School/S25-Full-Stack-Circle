@@ -97,7 +97,7 @@ const CreatePinPage = () => {
           body: JSON.stringify({
             ...formData,
             imageUrl: result.imageUrl,
-            tagNames: result.tags //---4
+            tagNames: result.tags
           })
         }
       );

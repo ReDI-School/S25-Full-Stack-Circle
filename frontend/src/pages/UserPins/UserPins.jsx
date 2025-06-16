@@ -3,7 +3,7 @@ import styles from "./UserPins.module.css";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 
 const UserPins = () => {
-  //{ user, createdPins, savedPins }
+  // { user, createdPins, savedPins }
   const [activeTab, setActiveTab] = useState("mypins");
   const [createdPins, setCreatedPins] = useState([]);
   const [savedPins, setSavedPins] = useState([]);
@@ -49,27 +49,6 @@ const UserPins = () => {
       setSavedPins(pins);
     } catch (error) {
       console.error("Error in fetching the Saved Pins");
-    }
-  };
-  const getMyPins = async () => {
-    try {
-      const response = await fetch("http://localhost:4000/api/pins/saved", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      console.log("Saved pins response status:", response.status);
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`HTTP ${response.status}: ${errorText}`);
-      }
-
-      const pins = await response.json();
-      setCreatedPins(pins);
-      return;
-    } catch (error) {
-      console.error("Error in fetching the My Pins");
     }
   };
   useEffect(() => {
