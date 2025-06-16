@@ -2,16 +2,12 @@ import React, { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import styles from "./ProfileInfo.module.css";
 import { FiCheck } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
 
 const ProfileInfo = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <div
-      className={styles["ProfileInfo-wrapper"]}
-      onClick={navigate("/userpins")}
-    >
+    <div className={styles["ProfileInfo-wrapper"]}>
       <div className={styles["ProfileInfo-image"]}></div>
       <div className={styles["ProfileInfo-text"]}>
         <div className={styles["ProfileInfo-username"]}>

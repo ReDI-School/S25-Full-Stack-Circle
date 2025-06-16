@@ -5,6 +5,8 @@ import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 const UserPins = () => {
   // { user, createdPins, savedPins }
   const [activeTab, setActiveTab] = useState("mypins");
+  //{ user, createdPins, savedPins }
+  const [activeTab, setActiveTab] = useState("mypins");
   const [createdPins, setCreatedPins] = useState([]);
   const [savedPins, setSavedPins] = useState([]);
   const token = localStorage.getItem("authToken");
@@ -48,15 +50,40 @@ const UserPins = () => {
       const pins = await response.json();
       setSavedPins(pins);
     } catch (error) {
-      console.error("Error in fetching the Saved Pins", error);
+      console.error("Error in fetching the Saved Pins");
     }
   };
+  const getMyPins = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/api/pins/saved", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      console.log("Saved pins response status:", response.status);
 
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      }
+
+      const pins = await response.json();
+      setCreatedPins(pins);
+      return;
+    } catch (error) {
+      console.error("Error in fetching the My Pins");
+    }
+  };
   useEffect(() => {
+    if (activeTab === "created" && createdPins.length === 0) {
     if (activeTab === "created" && createdPins.length === 0) {
       getCreatedPins();
     } else if (activeTab === "saved" && savedPins.length === 0) {
+    } else if (activeTab === "saved" && savedPins.length === 0) {
       getSavedPins();
+    } else if (activeTab === "mypins") {
+      if (createdPins.length === 0) getCreatedPins();
+      if (savedPins.length === 0) getSavedPins();
     } else if (activeTab === "mypins") {
       if (createdPins.length === 0) getCreatedPins();
       if (savedPins.length === 0) getSavedPins();
