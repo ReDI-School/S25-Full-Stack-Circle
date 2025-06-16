@@ -280,7 +280,7 @@ export const getAllPins = async (req, res) => {
 
     // first pin url for debugging
     {
-      /*if (pins.length) {
+      /* if (pins.length) {
      console.log("Sample image URL:", pins[0].imageUrl);
     }*/
     }
