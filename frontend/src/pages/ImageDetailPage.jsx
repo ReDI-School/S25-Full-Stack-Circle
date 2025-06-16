@@ -8,10 +8,11 @@ function ImageDetailPage() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const imgSrc = searchParams.get("img");
+  const categoryName = searchParams.get("category") || "Category";
 
   return (
     <div className={styles.pageWrapper}>
-      <Breadcrumb />
+      <Breadcrumb categoryName={categoryName} />
 
       <Link to="/explore" className={styles.backLink}>
         ← Back to Explore
