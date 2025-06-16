@@ -31,6 +31,16 @@ model User {
   savedPins SavedPin[]
 }
 
+model Category {
+  id          Int      @id @default(autoincrement())
+  title       String   @unique
+  imageUrl    String?
+  description String?
+  createdAt   DateTime @default(now())
+  
+  pins     Pin[]
+}
+
 model Pin {
   id                 Int        @id @default(autoincrement())
   title              String
@@ -43,6 +53,8 @@ model Pin {
   isAllowedtoComment Boolean    @default(true)
   link               String?
   showSimilarProduct Boolean    @default(false)
+  categoryId         Int?
+  category           Category?  @relation(fields: [categoryId], references: [id])
   comments           Comment[]
   author             User       @relation("CreatedPins", fields: [authorId], references: [id])
   // board              Board?     @relation(fields: [boardId], references: [id])

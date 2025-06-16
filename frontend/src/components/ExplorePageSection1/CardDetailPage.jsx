@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Breadcrumb from "./Breadcrumb";
 import styles from "./CardDetailPage.module.css";
@@ -10,6 +10,7 @@ const CardDetailPage = () => {
   const [pin, setPin] = useState(null);
   const [loading, setLoading] = useState(true);
   const [relatedPins, setRelatedPins] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const loadPin = async () => {
@@ -18,18 +19,25 @@ const CardDetailPage = () => {
         const fetchedPin = await fetchPinById(id);
         setPin(fetchedPin);
 
-        // Load related pins (optional)
-
-        const res = await fetch(`/api/pins/${id}/related`);
-        if (res.ok) {
-          const related = await res.json();
-          setRelatedPins(related);
-        } else {
-          console.error("Could not load related pins");
+        // Load related pins
+        try {
+          const res = await fetch(
+            `http://localhost:4000/api/pins/${id}/related`
+          );
+          if (res.ok) {
+            const related = await res.json();
+            setRelatedPins(related);
+          } else {
+            console.error("Could not load related pins");
+            setRelatedPins([]);
+          }
+        } catch (error) {
+          console.error("Error loading related pins:", error);
           setRelatedPins([]);
         }
       } catch (error) {
-        console.error("Error loading pin or related pins:", error);
+        console.error("Error loading pin:", error);
+        setError("Failed to load pin details");
       } finally {
         setLoading(false);
       }
@@ -37,25 +45,30 @@ const CardDetailPage = () => {
     loadPin();
   }, [id]);
 
-  const categories = [
-    { name: "Explore", link: "/explore" },
-    { name: "Electronics", link: "/electronics" },
-    { name: "Cell Phones And Accessories", link: "/phones-accessories" },
-    { name: "Phone Accessories", link: "/phone-accessories" }
-  ];
-
   if (loading) {
     return <div className={styles.cardDetailPage}>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.cardDetailPage}>{error}</div>;
   }
 
   if (!pin) {
     return <div className={styles.cardDetailPage}>Pin not found!</div>;
   }
 
+  const breadcrumbItems = [
+    { name: "Explore", link: "/explore" },
+    {
+      name: pin.category?.title || "Category",
+      link: `/category/${pin.category?.id}`
+    }
+  ];
+
   return (
     <>
       <div className={styles.cardDetailPage}>
-        <Breadcrumb categories={categories} />
+        <Breadcrumb categories={breadcrumbItems} />
         {/* Show the ShopItem component here */}
 
         <ShopItem imageSrc={pin.imageUrl} />

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./CreatePin.module.css";
 import { MdExpandMore } from "react-icons/md";
 import { FaArrowAltCircleUp } from "react-icons/fa";
+import { fetchAllCategories } from "../../services/categoryService";
 
 const CreatePinPage = () => {
   const [formData, setFormData] = useState({
@@ -10,12 +11,32 @@ const CreatePinPage = () => {
     imageUrl: "",
     tags: [],
     link: "",
-    board: ""
+    board: "",
+    categoryId: ""
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [showMoreOptions, setShowMoreOptions] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [loadingCategories, setLoadingCategories] = useState(true);
+
+  // Fetch categories when component mounts
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        setLoadingCategories(true);
+        const categoriesData = await fetchAllCategories();
+        setCategories(categoriesData);
+      } catch (error) {
+        console.error("Failed to load categories:", error);
+      } finally {
+        setLoadingCategories(false);
+      }
+    };
+
+    loadCategories();
+  }, []);
 
   // Handle file selection
   const handleFileSelect = e => {
@@ -97,7 +118,8 @@ const CreatePinPage = () => {
           body: JSON.stringify({
             ...formData,
             imageUrl: result.imageUrl,
-            tags: result.tags
+            tags: result.tags,
+            categoryId: formData.categoryId || undefined
           })
         }
       );
@@ -213,6 +235,27 @@ const CreatePinPage = () => {
                 <option>Inspiration</option>
                 <option>Work</option>
                 <option>Ideas</option>
+              </select>
+            </div>
+
+            <div className={styles.formGroup}>
+              <p className={styles.label}>Category</p>
+              <select
+                className={styles.formInput}
+                name="categoryId"
+                value={formData.categoryId}
+                onChange={handleInputChange}
+              >
+                <option value="">Select a category</option>
+                {loadingCategories ? (
+                  <option disabled>Loading categories...</option>
+                ) : (
+                  categories.map(category => (
+                    <option key={category.id} value={category.id}>
+                      {category.title}
+                    </option>
+                  ))
+                )}
               </select>
             </div>
 

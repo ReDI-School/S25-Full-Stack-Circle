@@ -101,7 +101,7 @@ export const createPin = async (req, res) => {
       // relatedProductIds = [], // Array of related pin IDs
       // tagName = [], // Array of existing tag IDs
       // newTags = [],
-
+      categoryId,
       isAllowedtoComment,
       showSimilarProduct,
       imageUrl
@@ -155,7 +155,10 @@ export const createPin = async (req, res) => {
         altText,
         isAllowedtoComment: isAllowedtoComment ?? true,
         showSimilarProduct: showSimilarProduct ?? false,
-        author: { connect: { id: userId } }
+        author: { connect: { id: userId } },
+        ...(categoryId
+          ? { category: { connect: { id: parseInt(categoryId) } } }
+          : {})
         // board: { connect: { id: userBoard.id } }
         /* tags: {
           connect: tagName.map(name => {
@@ -167,7 +170,8 @@ export const createPin = async (req, res) => {
         } */
       },
       include: {
-        author: true
+        author: true,
+        category: true
         // board: true
       }
     });
@@ -188,6 +192,7 @@ export const updatePin = async (req, res) => {
       description,
       link,
       altText,
+      categoryId,
       isAllowedtoComment,
       showSimilarProduct,
       imageUrl
@@ -209,7 +214,12 @@ export const updatePin = async (req, res) => {
         altText,
         imageUrl,
         isAllowedtoComment,
-        showSimilarProduct
+        showSimilarProduct,
+        ...(categoryId !== undefined
+          ? categoryId
+            ? { category: { connect: { id: parseInt(categoryId) } } }
+            : { categoryId: null }
+          : {})
         /* } tags: {
           set: [],
           connect: tagName.map(name => {
@@ -220,7 +230,7 @@ export const updatePin = async (req, res) => {
           })
         }*/
       },
-      include: { tags: true, author: true } // removed board
+      include: { tags: true, author: true, category: true } // removed board
     });
 
     res.json(updatedPin);
@@ -260,8 +270,10 @@ export const getAllPins = async (req, res) => {
     const pins = await prisma.pin.findMany({
       include: {
         author: true,
-        // board: true,
-        tags: true
+        category: true,
+        reactions: true,
+        comments: true,
+        savedPin: true
       }
     });
 
@@ -288,6 +300,7 @@ export const getPinById = async (req, res) => {
       include: {
         author: true,
         // board: true,
+        category: true,
         tags: true
       }
     });
@@ -302,5 +315,55 @@ export const getPinById = async (req, res) => {
     res
       .status(INTERNAL_SERVER_ERROR)
       .json({ message: "Internal Server Error" });
+  }
+};
+
+/**
+ * GET /api/pins/:id/related
+ * Get related pins based on category
+ */
+export const getRelatedPins = async (req, res) => {
+  try {
+    const pinId = parseInt(req.params.id);
+
+    // Get the current pin to find its category
+    const currentPin = await prisma.pin.findUnique({
+      where: { id: pinId },
+      include: { category: true }
+    });
+
+    if (!currentPin) {
+      return res.status(NOT_FOUND).json({ message: "Pin not found" });
+    }
+
+    // If the pin has a category, find other pins in the same category
+    if (currentPin.categoryId) {
+      const relatedPins = await prisma.pin.findMany({
+        where: {
+          categoryId: currentPin.categoryId,
+          id: { not: pinId } // Exclude the current pin
+        },
+        include: {
+          author: true,
+          category: true,
+          tags: true
+        },
+        take: 6 // Limit to 6 related pins
+      });
+
+      return res.status(OK).json(relatedPins);
+    }
+
+    // If no category, return empty array
+    res.status(OK).json([]);
+  } catch (error) {
+    console.error("Error fetching related pins:", error);
+    res.status(INTERNAL_SERVER_ERROR).json({
+      message: "Failed to fetch related pins",
+      error:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Internal server error"
+    });
   }
 };

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./UploadFromUrl.module.css";
+import { fetchAllCategories } from "../../services/categoryService";
 
 const UploadFromUrl = () => {
   const navigate = useNavigate();
@@ -13,8 +14,27 @@ const UploadFromUrl = () => {
     description: "",
     imageUrl: "",
     tags: [],
-    link: ""
+    link: "",
+    categoryId: ""
   });
+  const [categories, setCategories] = useState([]);
+  const [loadingCategories, setLoadingCategories] = useState(true);
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        setLoadingCategories(true);
+        const categoriesData = await fetchAllCategories();
+        setCategories(categoriesData);
+      } catch (error) {
+        console.error("Failed to load categories:", error);
+      } finally {
+        setLoadingCategories(false);
+      }
+    };
+
+    loadCategories();
+  }, []);
   const handleUrlSubmit = e => {
     e.preventDefault();
     if (!urlInput) {
@@ -80,7 +100,8 @@ const UploadFromUrl = () => {
           },
           body: JSON.stringify({
             ...formData,
-            imageUrl: result.imageUrl
+            imageUrl: result.imageUrl,
+            categoryId: formData.categoryId || undefined
             // tags: result.tags
           })
         }
@@ -171,6 +192,27 @@ const UploadFromUrl = () => {
                 <option value="Inspiration">Inspiration</option>
                 <option value="Work">Work</option>
                 <option value="Ideas">Ideas</option>
+              </select>
+            </div>
+
+            <div className={styles.boardDropdown}>
+              <label className={styles.urlFormInputLabel}>Category</label>
+              <select
+                name="categoryId"
+                value={formData.categoryId}
+                onChange={handleInputChange}
+                className={styles.boardDropdown_options}
+              >
+                <option value="">Select a category</option>
+                {loadingCategories ? (
+                  <option disabled>Loading categories...</option>
+                ) : (
+                  categories.map(category => (
+                    <option key={category.id} value={category.id}>
+                      {category.title}
+                    </option>
+                  ))
+                )}
               </select>
             </div>
 
