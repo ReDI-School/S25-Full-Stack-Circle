@@ -329,8 +329,6 @@ export const getCreatedPins = async (req, res, next) => {
     const CreatedPins = await prisma.pin.findMany({
       where: { authorId: userId }
     });
-    console.log("userI and name", userId);
-    console.log("pins found", CreatedPins.length);
 
     res.status(OK).json(CreatedPins);
   } catch (error) {
