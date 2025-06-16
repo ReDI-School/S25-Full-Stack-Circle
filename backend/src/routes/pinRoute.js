@@ -8,7 +8,8 @@ import {
   getAllPins,
   getPinById,
   uploadAndTag,
-  uploadFromUrl
+  uploadFromUrl,
+  getCreatedPins
 } from "../controllers/pinController.js";
 import { protect } from "../middlewares/authMiddleware.js";
 import { BAD_REQUEST, INTERNAL_SERVER_ERROR } from "../constants/http.js";
@@ -44,6 +45,7 @@ router.put("/:id", protect, updatePin);
 router.delete("/:id", protect, deletePin);
 router.get("/:id", getPinById);
 router.get("/", getAllPins);
+router.get("/created/:userId", protect, getCreatedPins);
 
 // search pins by tags
 router.get("/search", async (req, res) => {

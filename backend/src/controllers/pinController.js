@@ -296,3 +296,19 @@ export const getPinById = async (req, res) => {
       .json({ message: "Internal Server Error" });
   }
 };
+// Get the Pins created by each user
+export const getCreatedPins = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const CreatedPins = await prisma.pin.findMany({
+      where: { authorId: userId }
+    });
+    console.log("userI and name", userId);
+    console.log("pins found", CreatedPins.length);
+
+    res.status(OK).json(CreatedPins);
+  } catch (error) {
+    next(error);
+  }
+};
