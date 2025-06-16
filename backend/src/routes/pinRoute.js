@@ -7,7 +7,8 @@ import {
   deletePin,
   getAllPins,
   getPinById,
-  uploadAndTag
+  uploadAndTag,
+  uploadFromUrl
 } from "../controllers/pinController.js";
 import { protect } from "../middlewares/authMiddleware.js";
 import { BAD_REQUEST, INTERNAL_SERVER_ERROR } from "../constants/http.js";
@@ -36,13 +37,11 @@ const upload = multer({
   }
 });
 
-router.post("/uploadAndTag", upload.single("image"), uploadAndTag);
-
+router.post("/uploadAndTag", protect, upload.single("image"), uploadAndTag);
+router.post("/uploadImageFromUrl", protect, uploadFromUrl);
 router.post("/createpin", protect, createPin);
 router.put("/:id", protect, updatePin);
 router.delete("/:id", protect, deletePin);
-router.get("/:id", getPinById);
-router.get("/", getAllPins);
 
 // search pins by tags
 router.get("/search", async (req, res) => {
@@ -71,5 +70,8 @@ router.get("/search", async (req, res) => {
     res.status(INTERNAL_SERVER_ERROR).json({ error: "Internal server error" });
   }
 });
+
+router.get("/:id", getPinById);
+router.get("/", getAllPins);
 
 export default router;

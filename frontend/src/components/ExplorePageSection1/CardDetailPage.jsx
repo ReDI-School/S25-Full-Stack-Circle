@@ -1,13 +1,40 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Breadcrumb from "./Breadcrumb";
 import styles from "./CardDetailPage.module.css";
-import { cards } from "./cardDetails";
+import { fetchPinById } from "../../services/pinService";
 
 const CardDetailPage = () => {
   const { id } = useParams();
+  const [pin, setPin] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [relatedPins, setRelatedPins] = useState([]);
 
-  const card = cards[parseInt(id)];
+  useEffect(() => {
+    const loadPin = async () => {
+      try {
+        setLoading(true);
+        const fetchedPin = await fetchPinById(id);
+        setPin(fetchedPin);
+
+        // Load related pins (optional)
+
+        const res = await fetch(`/api/pins/${id}/related`);
+        if (res.ok) {
+          const related = await res.json();
+          setRelatedPins(related);
+        } else {
+          console.error("Could not load related pins");
+          setRelatedPins([]);
+        }
+      } catch (error) {
+        console.error("Error loading pin or related pins:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadPin();
+  }, [id]);
 
   const categories = [
     { name: "Explore", link: "/explore" },
@@ -16,95 +43,65 @@ const CardDetailPage = () => {
     { name: "Phone Accessories", link: "/phone-accessories" }
   ];
 
-  if (!card) {
-    return <div className="card-detail-page">Card not found!</div>;
+  if (loading) {
+    return <div className={styles.cardDetailPage}>Loading...</div>;
   }
 
-  const galleryImages = [
-    {
-      src: "https://i.pinimg.com/236x/bc/3c/cc/bc3ccc733a0ac6ac294888b06665a470.jpg",
-      tags: ["Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5"]
-    },
-    {
-      src: "https://i.pinimg.com/236x/6d/c5/dd/6dc5dd834698dd083ebc1ddb319df53f.jpg",
-      tags: ["Example A", "Example B", "Example C", "Example D", "Example E"]
-    },
-    {
-      src: "https://i.pinimg.com/236x/17/74/ef/1774ef031f3c94300f193980216bd0d0.jpg",
-      tags: []
-    },
-    {
-      src: "https://i.pinimg.com/236x/5a/d6/5e/5ad65eaace8223210c035152cf52fca7.jpg",
-      tags: ["Nature", "Adventure", "Travel", "Explore", "Landscapes"]
-    },
-    {
-      src: "https://i.pinimg.com/236x/0d/36/80/0d368099a12f5e66951a9b938bd66740.jpg",
-      tags: ["Nature", "Adventure", "Travel", "Explore", "Landscapes"]
-    },
-    {
-      src: "https://i.pinimg.com/236x/a2/c9/00/a2c90037b015bef8de2a6b6e8cb0053a.jpg",
-      tags: ["Paper Birthday Decorations"]
-    },
-    {
-      src: "https://i.pinimg.com/236x/e8/87/20/e88720cabf9ec57aabc943d0c9a5e8a1.jpg",
-      tags: ["Nature", "Adventure", "Travel"]
-    },
-    {
-      src: "https://i.pinimg.com/236x/ad/ba/81/adba8160b0862e6ddbf3333eba7b5ae3.jpg",
-      tags: []
-    }
-  ];
+  if (!pin) {
+    return <div className={styles.cardDetailPage}>Pin not found!</div>;
+  }
 
   return (
     <div className={styles.cardDetailPage}>
       <Breadcrumb categories={categories} />
       <div className={styles.cardImageContainer}>
-        <img src={card.image} alt={card.title} />
+        <img src={pin.imageUrl} alt={pin.altText || pin.title} />
         <div className={styles.cardOverlay}>
-          <h1>{card.title}</h1>
-          <p>{card.description}</p>
+          <h1>{pin.title}</h1>
+          <p>{pin.description}</p>
         </div>
       </div>
-      <h3>{card.subtitle}</h3>
+      <h3>{pin.tags?.map(tag => tag.name).join(", ")}</h3>
 
       <div className={styles.galleryContainer}>
         <div className={styles.gallery}>
-          {galleryImages.map((image, index) => (
-            <div key={index} className={styles.imageContainer}>
-              <div className={styles.imageWrapper}>
-                <img
-                  src={image.src}
-                  alt={`Gallery ${index + 1}`}
-                  className={styles.image}
-                />
-                <Link
-                  to={`/detail?img=${image.src}`}
-                  className={styles.overlay}
-                >
-                  <span className={styles.overlayText}>Open</span>
-                  <div className={styles.overlayButtons}>
-                    <img
-                      src="/images/share-icon.svg"
-                      alt="Share"
-                      className={styles.shareIcon}
-                    />
-                    <img
-                      src="/images/more-icon.svg"
-                      alt="More"
-                      className={styles.moreIcon}
-                    />
-                  </div>
-                </Link>
+          {relatedPins.length > 0 ? (
+            relatedPins.map(pin => (
+              <div key={pin.id} className={styles.imageContainer}>
+                <div className={styles.imageWrapper}>
+                  <img
+                    src={pin.imageUrl}
+                    alt={pin.altText || pin.title}
+                    className={styles.image}
+                  />
+                  <Link to={`/pin/${pin.id}`} className={styles.overlay}>
+                    <span className={styles.overlayText}>Open</span>
+                    <div className={styles.overlayButtons}>
+                      <img
+                        src="/images/share-icon.svg"
+                        alt="Share"
+                        className={styles.shareIcon}
+                      />
+                      <img
+                        src="/image/more-icon.svg"
+                        alt="More"
+                        className={styles.moreIcon}
+                      />
+                    </div>
+                  </Link>
+                </div>
+                <div className={styles.tags}>
+                  {pin.tags?.map((tag, tagIndex) => (
+                    <div key={tagIndex} className={styles.tag}>
+                      {tag.name}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className={styles.tags}>
-                {image.tags.map((tag, tagIndex) => (
-                  <div key={tagIndex} className={styles.tag}>
-                    {tag}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p>No related pins found</p>
+          )}
         </div>
       </div>
     </div>
