@@ -13,6 +13,8 @@ const CategoryPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [relatedPins, setRelatedPins] = useState([]);
+
   useEffect(() => {
     const loadCategoryAndPins = async () => {
       try {
