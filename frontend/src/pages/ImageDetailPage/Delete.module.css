@@ -1,55 +1,13 @@
-.pageWrapper {
-  padding-top: 1rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  height: 100vh;
-}
-
-.title {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  margin-top: 30px;
-  text-align: center;
-  display: none;
-}
-
-.backLink {
-  color: #333;
-  text-decoration: none;
-  font-weight: 500;
-  margin: 1rem 0 0.5rem 0;
-  display: inline-block;
-  font-size: 14px;
-}
-
-.backLink:hover {
-  text-decoration: underline;
-}
-
-.centered {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: calc(100vh - 100px);
-}
-
-.pinContainer {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
 .menuContainer {
   position: relative;
+  display: inline-block;
 }
 
 .menuButton {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #f0f0f0;
+  background-color: white;
   border: none;
   color: #333;
   display: flex;
@@ -57,14 +15,15 @@
   justify-content: center;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .menuButton:hover {
-  background-color: #e0e0e0;
+  background-color: #f0f0f0;
 }
 
 .dots {
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1;
   font-weight: bold;
 }
@@ -74,11 +33,17 @@
   top: 48px;
   right: 0;
   background-color: white;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
   padding: 8px 0;
   min-width: 180px;
   z-index: 100;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .menuItem {
@@ -90,6 +55,8 @@
   background: none;
   font-size: 16px;
   cursor: pointer;
+  color: #333;
+  transition: background-color 0.15s ease;
 }
 
 .menuItem:hover {
@@ -103,11 +70,17 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  animation: fadeInOverlay 0.2s ease-in-out;
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .confirmDialog {
@@ -116,19 +89,37 @@
   padding: 24px;
   width: 90%;
   max-width: 400px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.2s ease-in-out;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 .dialogTitle {
   font-size: 20px;
   margin: 0 0 16px 0;
   font-weight: 600;
+  color: #111;
 }
 
 .dialogMessage {
   margin: 0 0 24px 0;
   color: #333;
   line-height: 1.5;
+  font-size: 16px;
+}
+
+.errorMessage {
+  color: #e60023;
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 12px;
+  background-color: rgba(230, 0, 35, 0.1);
+  border-radius: 8px;
 }
 
 .dialogButtons {
@@ -145,6 +136,11 @@
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.cancelButton:hover:not(:disabled) {
+  background-color: #e0e0e0;
 }
 
 .deleteButton {
@@ -156,6 +152,11 @@
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.deleteButton:hover:not(:disabled) {
+  background-color: #d50c22;
 }
 
 .deleteButton:disabled,
