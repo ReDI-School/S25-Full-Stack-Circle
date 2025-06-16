@@ -21,6 +21,9 @@ const CreatePinPage = () => {
   const [categories, setCategories] = useState([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
 
+  // Define HTTP status code constant
+  const HTTP_CREATED = 201;
+
   // Fetch categories when component mounts
   useEffect(() => {
     const loadCategories = async () => {
@@ -125,7 +128,7 @@ const CreatePinPage = () => {
       );
 
       const createdPin = await createPin.json();
-      if (createPin.status === 201) {
+      if (createPin.status === HTTP_CREATED) {
         alert("Pin created successfully!");
         window.location.reload();
         return;

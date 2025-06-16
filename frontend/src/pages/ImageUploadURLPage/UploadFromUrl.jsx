@@ -20,6 +20,8 @@ const UploadFromUrl = () => {
   const [categories, setCategories] = useState([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
 
+  const HTTP_CREATED = 201;
+
   useEffect(() => {
     const loadCategories = async () => {
       try {
@@ -106,9 +108,10 @@ const UploadFromUrl = () => {
           })
         }
       );
-      const createdPin = await createPin.json();
 
-      if (createPin.status === 201) {
+      await createPin.json();
+
+      if (createPin.status === HTTP_CREATED) {
         alert("Pin created successfully!");
         navigate("/createpin");
       } else {

@@ -14,7 +14,7 @@ import HomePage from "./pages/HomePage";
 import ImageDetailPage from "./pages/ImageDetailPage";
 import CreatepinPage from "./pages/CreatepinPage/CreatePinPage";
 import Dashboard from "./pages/DashboardPage/Dashboard";
-import { UserProvider } from "./contexts/UserContext";
+import { UserProvider } from "./contexts/UserProvider";
 import UploadFromUrl from "./pages/ImageUploadURLPage/UploadFromUrl";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 

@@ -9,6 +9,9 @@ const SignUp = ({ closeModal }) => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
 
+  const MIN_PASSWORD_LENGTH = 6;
+  const MIN_USER_AGE = 12;
+
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (token && isTokenValid(token)) {
@@ -39,8 +42,10 @@ const SignUp = ({ closeModal }) => {
       return false;
     }
 
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long.");
+    if (password.length < MIN_PASSWORD_LENGTH) {
+      setError(
+        `Password must be at least ${MIN_PASSWORD_LENGTH} characters long.`
+      );
       return false;
     }
 
@@ -57,8 +62,8 @@ const SignUp = ({ closeModal }) => {
       (today.getMonth() === dob.getMonth() && today.getDate() >= dob.getDate());
     const userAge = hasBirthdayPassed ? age : age - 1;
 
-    if (userAge < 12) {
-      setError("You must be at least 12 years old to register.");
+    if (userAge < MIN_USER_AGE) {
+      setError(`You must be at least ${MIN_USER_AGE} years old to register.`);
       return false;
     }
 

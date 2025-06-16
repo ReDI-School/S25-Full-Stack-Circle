@@ -8,6 +8,7 @@ import PinSkeleton from "./PinSkeleton";
 const BestOfPinterestSection = () => {
   const INITIAL_VISIBLE = 3;
   const ITEM_INCREMENT = 3;
+  const PREFETCH_BUFFER = 3;
 
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
   const [pins, setPins] = useState([]);
@@ -18,7 +19,10 @@ const BestOfPinterestSection = () => {
     const loadPins = async () => {
       try {
         setLoading(true);
-        const fetchedPins = await fetchPins(1, INITIAL_VISIBLE + 3);
+        const fetchedPins = await fetchPins(
+          1,
+          INITIAL_VISIBLE + PREFETCH_BUFFER
+        );
         setPins(fetchedPins);
         setHasMore(fetchedPins.length > INITIAL_VISIBLE);
       } catch (error) {
