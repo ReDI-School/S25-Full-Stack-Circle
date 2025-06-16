@@ -109,7 +109,7 @@ const UploadFromUrl = () => {
         }
       );
 
-      await createPin.json();
+      // await createPin.json();
 
       if (createPin.status === HTTP_CREATED) {
         alert("Pin created successfully!");

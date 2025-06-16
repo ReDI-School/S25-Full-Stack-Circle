@@ -57,7 +57,7 @@ function HomePage() {
   // Login check + redirect
   useEffect(() => {
     if (!loading && user) {
-      navigate("/dashboard");
+      navigate("/userpins");
     }
   }, [user, loading, navigate]);
 

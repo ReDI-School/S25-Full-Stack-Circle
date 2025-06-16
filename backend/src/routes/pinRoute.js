@@ -9,6 +9,7 @@ import {
   getPinById,
   uploadAndTag,
   uploadFromUrl,
+  getCreatedPins,
   getRelatedPins
 } from "../controllers/pinController.js";
 import { protect } from "../middlewares/authMiddleware.js";
@@ -38,11 +39,14 @@ const upload = multer({
   }
 });
 
+router.get("/created", protect, getCreatedPins);
 router.post("/uploadAndTag", protect, upload.single("image"), uploadAndTag);
 router.post("/uploadImageFromUrl", protect, uploadFromUrl);
 router.post("/createpin", protect, createPin);
 router.put("/:id", protect, updatePin);
 router.delete("/:id", protect, deletePin);
+router.get("/:id", getPinById);
+router.get("/", getAllPins);
 
 // search pins by tags
 router.get("/search", async (req, res) => {

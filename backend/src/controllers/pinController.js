@@ -160,17 +160,18 @@ export const createPin = async (req, res) => {
           ? { category: { connect: { id: parseInt(categoryId) } } }
           : {})
         // board: { connect: { id: userBoard.id } }
+
+        // to add the Tags
         /* tags: {
-          connect: tagName.map(name => {
-            return { name };
-          }),
-          create: newTags.map(name => {
-            return { name };
-          })
-        } */
+          connectOrCreate: (tagNames || []).map(tagNames => ({
+            where: { name: tagNames },
+            create: { name: tagNames }
+          }))
+        */
       },
       include: {
         author: true,
+        tags: true,
         category: true
         // board: true
       }
@@ -278,8 +279,10 @@ export const getAllPins = async (req, res) => {
     });
 
     // first pin url for debugging
-    if (pins.length) {
-      console.log("Sample image URL:", pins[0].imageUrl);
+    {
+      /* if (pins.length) {
+     console.log("Sample image URL:", pins[0].imageUrl);
+    }*/
     }
 
     res.status(OK).json({ pins });
@@ -315,6 +318,35 @@ export const getPinById = async (req, res) => {
     res
       .status(INTERNAL_SERVER_ERROR)
       .json({ message: "Internal Server Error" });
+  }
+};
+
+// Get the Pins created by each user
+export const getCreatedPins = async (req, res) => {
+  try {
+    if (!req.user || !req.user.id) {
+      return res.status(UNAUTHORIZED).json({
+        message: "Authentication required to view created pins"
+      });
+    }
+
+    const userId = req.user.id;
+
+    const createdPins = await prisma.pin.findMany({
+      where: { authorId: userId },
+      include: {
+        author: true,
+        category: true,
+        tags: true
+      }
+    });
+
+    res.status(OK).json(createdPins);
+  } catch (error) {
+    console.error("Error fetching created pins:", error);
+    res.status(INTERNAL_SERVER_ERROR).json({
+      message: "Internal Server Error"
+    });
   }
 };
 

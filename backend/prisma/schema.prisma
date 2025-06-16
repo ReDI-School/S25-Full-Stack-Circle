@@ -24,7 +24,7 @@ model User {
   password  String
   createdAt DateTime @default(now())
 
-  board     Board?     @relation("UserBoard")
+  //board     Board?     @relation("UserBoard")
   comments  Comment[]
   pins      Pin[]      @relation("CreatedPins")
   reactions Reaction[]
@@ -48,7 +48,7 @@ model Pin {
   createdAt          DateTime   @default(now())
   description        String?
   imageUrl           String
-  boardId            Int?
+  //boardId            Int?
   altText            String?
   isAllowedtoComment Boolean    @default(true)
   link               String?
@@ -60,15 +60,16 @@ model Pin {
   // board              Board?     @relation(fields: [boardId], references: [id])
   reactions          Reaction[]
   savedPin           SavedPin[]
-  tags               Tag[]      @relation("PinTags")
+  tags               Tag[]      @relation("PinTags")//----1b
+  //tag                String[] //---1a
 }
 
-model Tag {
+model Tag {               //----1c
   id   Int    @id @default(autoincrement())
   name String @unique
   pins Pin[]  @relation("PinTags")
 }
-
+/*
 model Board {
   id     Int    @id @default(autoincrement())
   name   String
@@ -76,7 +77,7 @@ model Board {
   user   User   @relation("UserBoard", fields: [userId], references: [id])
   // pins   Pin[]
 }
-
+*/
 model Comment {
   id        Int      @id @default(autoincrement())
   userId    String
