@@ -75,4 +75,7 @@ router.get("/search", async (req, res) => {
   }
 });
 
+router.get("/:id", getPinById);
+router.get("/", getAllPins);
+
 export default router;
