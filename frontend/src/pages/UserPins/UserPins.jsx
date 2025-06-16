@@ -1,39 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./UserPins.module.css";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 
 const UserPins = () => {
   //{ user, createdPins, savedPins }
-  const [activeTab, setActiveTab] = useState("MyPins");
+  const [activeTab, setActiveTab] = useState("created");
+  const [createdPins, setCreatedPins] = useState([]);
+  const [savedPins, setSavedPins] = useState([]);
+  const token = localStorage.getItem("authToken");
 
-  const createdPins = [
-    {
-      id: 1,
-      title: "Beautiful Beach",
-      imageUrl:
-        "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YmVhY2h8ZW58MHwxfDB8fHwy"
-    },
-    {
-      id: 2,
-      title: "Mountain View",
-      imageUrl:
-        "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW91bnRhaW58ZW58MHwxfDB8fHwy"
-    },
-    {
-      id: 3,
-      title: "Beautiful Beach",
-      imageUrl:
-        "https://images.unsplash.com/photo-1503756234508-e32369269deb?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmVhY2h8ZW58MHwxfDB8fHwy"
-    },
-    {
-      id: 4,
-      title: "Mountain View",
-      imageUrl:
-        "https://images.unsplash.com/photo-1501786223405-6d024d7c3b8d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnRhaW58ZW58MHwxfDB8fHwy"
-    }
-  ];
-
-  const savedPins = [
+  /*const savedPins = [
     {
       id: 5,
       title: "Sunset City",
@@ -58,13 +34,81 @@ const UserPins = () => {
       imageUrl:
         "https://images.unsplash.com/photo-1444724334165-e7050f2229a1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZvcmVzdHxlbnwwfDF8MHx8fDI%3D"
     }
-  ];
+  ];*/
   const getDisplayPins = () => {
-    if (activeTab === "Created") return createdPins;
-    if (activeTab === "Saved") return savedPins;
+    if (activeTab === "created") return createdPins;
+    if (activeTab === "saved") return savedPins;
     return [...createdPins, ...savedPins];
   };
   const displayPins = getDisplayPins();
+
+  const getCreatedPins = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/api/pins/created", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      }
+      const pins = await response.json();
+      setCreatedPins(pins);
+    } catch (error) {
+      console.error("Error in fetching the Created Pins");
+    }
+  };
+
+  const getSavedPins = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/api/save", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      }
+      const pins = await response.json();
+      setSavedPins(pins);
+    } catch (error) {
+      console.error("Error in fetching the Saved Pins");
+    }
+  };
+  const getMyPins = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/api/pins/saved", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      console.log("Saved pins response status:", response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      }
+
+      const pins = await response.json();
+      setCreatedPins(pins);
+      return;
+    } catch (error) {
+      console.error("Error in fetching the My Pins");
+    }
+  };
+
+  useEffect(() => {
+    if (activeTab === "created") {
+      getCreatedPins();
+    } else if (activeTab === "saved") {
+      getSavedPins();
+    } else {
+      getMyPins();
+    }
+  }, [activeTab]);
+
   return (
     <div className={styles.user_pins_wrapper}>
       <div className={styles.user_profileInfo_wrapper}>
@@ -72,20 +116,20 @@ const UserPins = () => {
       </div>
       <div className={styles.tab_button_wrapper}>
         <button
-          className={`${styles.tab_button} ${activeTab === "MyPins" ? styles.active : ""}`}
-          onClick={() => setActiveTab("MyPins")}
+          className={`${styles.tab_button} ${activeTab === "mypins" ? styles.active : ""}`}
+          onClick={() => setActiveTab("mypins")}
         >
           My pins
         </button>
         <button
-          className={`${styles.tab_button} ${activeTab === "Created" ? styles.active : ""}`}
-          onClick={() => setActiveTab("Created")}
+          className={`${styles.tab_button} ${activeTab === "created" ? styles.active : ""}`}
+          onClick={() => setActiveTab("created")}
         >
           Created
         </button>
         <button
-          className={`${styles.tab_button} ${activeTab === "Saved" ? styles.active : ""}`}
-          onClick={() => setActiveTab("Saved")}
+          className={`${styles.tab_button} ${activeTab === "saved" ? styles.active : ""}`}
+          onClick={() => setActiveTab("saved")}
         >
           Saved
         </button>
