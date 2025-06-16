@@ -50,7 +50,7 @@ const UserPins = () => {
       const pins = await response.json();
       setSavedPins(pins);
     } catch (error) {
-      console.error("Error in fetching the Saved Pins");
+      console.error("Error in fetching the Saved Pins", error);
     }
   };
   useEffect(() => {
