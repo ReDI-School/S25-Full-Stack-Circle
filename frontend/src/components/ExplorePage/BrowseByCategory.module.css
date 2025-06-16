@@ -9,6 +9,7 @@
 
 .title {
   margin-top: 50px;
+  margin-bottom: 30px;
   font-size: 18px;
   font-weight: 700;
 }
@@ -61,17 +62,37 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.categoryCard:hover .categoryTitle {
+  opacity: 1;
 }
 
 .categoryTitle h3 {
   color: white;
   font-weight: 500;
   font-size: 14px;
-  margin: 0;
+  margin: 0 0 8px 0;
   text-align: center;
+}
+
+.categoryDescription {
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* See more button */

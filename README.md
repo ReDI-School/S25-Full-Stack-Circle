@@ -13,6 +13,7 @@ It simulates a real-world development workflow with collaborative feature develo
 S25-Full-Stack-Circle/
 ├── frontend/   # React + Vite + CSS Modules
 ├── backend/    # Express + Prisma + PostgreSQL
+├── scripts/    # Utility scripts for setup and maintenance
 └── README.md
 
 ````
@@ -85,6 +86,24 @@ npx prisma db push && npx prisma generate
 ```bash
 cd backend
 npm run seed
+```
+
+---
+
+### 🏷️ Category System
+
+The app uses a category-based organization system for pins:
+
+- Each pin can belong to one category
+- Categories are displayed on the Explore page
+
+#### Seeding Categories
+
+To populate the database with initial categories:
+
+```bash
+cd backend
+node scripts/seed-categories.js
 ```
 
 ---

@@ -9,7 +9,8 @@ import {
   getPinById,
   uploadAndTag,
   uploadFromUrl,
-  getCreatedPins
+  getCreatedPins,
+  getRelatedPins
 } from "../controllers/pinController.js";
 import { protect } from "../middlewares/authMiddleware.js";
 import { BAD_REQUEST, INTERNAL_SERVER_ERROR } from "../constants/http.js";
@@ -75,6 +76,7 @@ router.get("/search", async (req, res) => {
   }
 });
 
+router.get("/:id/related", getRelatedPins);
 router.get("/:id", getPinById);
 router.get("/", getAllPins);
 
