@@ -3,7 +3,8 @@ import { PrismaClient } from "@prisma/client";
 
 const router = express.Router();
 const prisma = new PrismaClient();
-
+import { protect } from "../middlewares/authMiddleware.js";
+import { INTERNAL_SERVER_ERROR } from "../constants/http.js";
 // Status codes (to avoid "magic numbers")
 const STATUS = {
   BAD_REQUEST: 400,
@@ -12,8 +13,9 @@ const STATUS = {
   SERVER_ERROR: 500
 };
 
-router.post("/", async (req, res) => {
-  const { userId, pinId } = req.body;
+router.post("/", protect, async (req, res) => {
+  const userId = req.user.id;
+  const { pinId } = req.body;
 
   if (!userId || !pinId) {
     return res
@@ -40,3 +42,29 @@ router.post("/", async (req, res) => {
 });
 
 export default router;
+
+//Get All the pins saved by a user
+router.get("/", protect, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const savedPins = await prisma.savedPin.findMany({
+      where: { userId },
+      include: {
+        pin: {
+          include: {
+            author: true,
+            reactions: true,
+            comments: true,
+            tags: true //----2
+          }
+        }
+      }
+    });
+
+    const pins = savedPins.map(saved => saved.pin);
+    res.json(pins);
+  } catch (error) {
+    console.error("Error fetching in saved pins");
+    res.status(INTERNAL_SERVER_ERROR).json({ error: "Internal server error" });
+  }
+});

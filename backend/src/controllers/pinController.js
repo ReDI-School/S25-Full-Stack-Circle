@@ -157,17 +157,18 @@ export const createPin = async (req, res) => {
         showSimilarProduct: showSimilarProduct ?? false,
         author: { connect: { id: userId } }
         // board: { connect: { id: userBoard.id } }
-        /* tags: {
-          connect: tagName.map(name => {
-            return { name };
-          }),
-          create: newTags.map(name => {
-            return { name };
-          })
-        } */
+
+        // to add the Tags
+        /*tags: {
+          connectOrCreate: (tagNames || []).map(tagNames => ({
+            where: { name: tagNames },
+            create: { name: tagNames }
+          }))
+        */
       },
       include: {
-        author: true
+        author: true,
+        tags: true
         // board: true
       }
     });
@@ -305,7 +306,7 @@ export const getPinById = async (req, res) => {
   }
 };
 // Get the Pins created by each user
-export const getCreatedPins = async (req, res) => {
+export const getCreatedPins = async (req, res, next) => {
   try {
     const userId = req.user.id;
 

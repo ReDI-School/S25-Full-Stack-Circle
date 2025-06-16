@@ -1,5 +1,6 @@
 .user_profileInfo_wrapper{
-    margin-top:10vh;
+    /*margin-top:10vh;*/
+    padding-top: 10vh;
     display:flex;
     align-items: center;
     justify-content: center;
