@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Breadcrumb from "./Breadcrumb";
 import styles from "./CardDetailPage.module.css";
 import { fetchPinById } from "../../services/pinService";
+import ShopItem from "./ShopItem";
 
 const CardDetailPage = () => {
   const { id } = useParams();
@@ -52,8 +53,14 @@ const CardDetailPage = () => {
   }
 
   return (
-    <div className={styles.cardDetailPage}>
-      <Breadcrumb categories={categories} />
+    <>
+      <div className={styles.cardDetailPage}>
+        <Breadcrumb categories={categories} />
+        {/* Show the ShopItem component here */}
+
+        <ShopItem imageSrc={pin.imageUrl} />
+
+        {/*
       <div className={styles.cardImageContainer}>
         <img src={pin.imageUrl} alt={pin.altText || pin.title} />
         <div className={styles.cardOverlay}>
@@ -61,50 +68,53 @@ const CardDetailPage = () => {
           <p>{pin.description}</p>
         </div>
       </div>
-      <h3>{pin.tags?.map(tag => tag.name).join(", ")}</h3>
+      */}
 
-      <div className={styles.galleryContainer}>
-        <div className={styles.gallery}>
-          {relatedPins.length > 0 ? (
-            relatedPins.map(pin => (
-              <div key={pin.id} className={styles.imageContainer}>
-                <div className={styles.imageWrapper}>
-                  <img
-                    src={pin.imageUrl}
-                    alt={pin.altText || pin.title}
-                    className={styles.image}
-                  />
-                  <Link to={`/pin/${pin.id}`} className={styles.overlay}>
-                    <span className={styles.overlayText}>Open</span>
-                    <div className={styles.overlayButtons}>
-                      <img
-                        src="/images/share-icon.svg"
-                        alt="Share"
-                        className={styles.shareIcon}
-                      />
-                      <img
-                        src="/image/more-icon.svg"
-                        alt="More"
-                        className={styles.moreIcon}
-                      />
-                    </div>
-                  </Link>
+        <h3>{pin.tags?.map(tag => tag.name).join(", ")}</h3>
+
+        <div className={styles.galleryContainer}>
+          <div className={styles.gallery}>
+            {relatedPins.length > 0 ? (
+              relatedPins.map(pin => (
+                <div key={pin.id} className={styles.imageContainer}>
+                  <div className={styles.imageWrapper}>
+                    <img
+                      src={pin.imageUrl}
+                      alt={pin.altText || pin.title}
+                      className={styles.image}
+                    />
+                    <Link to={`/pin/${pin.id}`} className={styles.overlay}>
+                      <span className={styles.overlayText}>Open</span>
+                      <div className={styles.overlayButtons}>
+                        <img
+                          src="/images/share-icon.svg"
+                          alt="Share"
+                          className={styles.shareIcon}
+                        />
+                        <img
+                          src="/image/more-icon.svg"
+                          alt="More"
+                          className={styles.moreIcon}
+                        />
+                      </div>
+                    </Link>
+                  </div>
+                  <div className={styles.tags}>
+                    {pin.tags?.map((tag, tagIndex) => (
+                      <div key={tagIndex} className={styles.tag}>
+                        {tag.name}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className={styles.tags}>
-                  {pin.tags?.map((tag, tagIndex) => (
-                    <div key={tagIndex} className={styles.tag}>
-                      {tag.name}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))
-          ) : (
-            <p>No related pins found</p>
-          )}
+              ))
+            ) : (
+              <p>No related pins found</p>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

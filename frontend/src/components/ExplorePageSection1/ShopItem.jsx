@@ -23,7 +23,6 @@ const ShopItem = ({ imageSrc }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log("fetch pins");
     const fetchPins = async () => {
       try {
         setLoading(true);
@@ -36,15 +35,15 @@ const ShopItem = ({ imageSrc }) => {
         }
 
         const data = await response.json();
-        console.log(data.pins);
         const pins = data.pins;
-        const foundPin = pins.find(pin => pin.link === imageSrc);
+        const foundPin = pins.find(pin => pin.imageUrl === imageSrc);
 
         if (foundPin) {
           const imgId = foundPin.id;
           setId(imgId);
+          setPins(foundPin);
         } else {
-          console.log("No pin found with that link.");
+          console.error("No pin found with that link.");
         }
       } catch (e) {
         console.error("Failed to fetch pins:", e);
@@ -120,12 +119,9 @@ const ShopItem = ({ imageSrc }) => {
           )}
           <button className={styles["Save-button"]}>Save</button>
         </div>
-
         {/* Product info */}
-        <p className={styles.brand}>Order Of Style</p>
-        <p className={styles.title}>Le High Skinny Jean...</p>
-        <p className={styles.price}>€ 1,95</p>
-
+        <p className={styles.brand}>{pins.title}</p>
+        <p className={styles.title}>{pins.description}</p>
         <div className={styles["shop-item-description"]}>
           {/* Pin details */}
           <PinDetailComponent />

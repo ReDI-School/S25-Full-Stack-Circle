@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaSmile, FaImage, FaGift } from "react-icons/fa";
 import styles from "./CommentSection.module.css";
 
-function CommentSection() {
+function CommentSection({ imgId }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [isCommentsVisible, setIsCommentsVisible] = useState(true);
@@ -17,6 +17,27 @@ function CommentSection() {
 
   const toggleCommentsVisibility = () => {
     setIsCommentsVisible(!isCommentsVisible);
+  };
+
+  const loadComments = async e => {
+    try {
+      // const imgId =
+      console.log("id ", imgId);
+      const response = await fetch(
+        `http://localhost:4000/api/comments/id=${imgId}`
+      );
+
+      if (!response.ok) {
+        console.log("No comments found");
+      }
+
+      const data = await response.json();
+      setComments(data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      console.log("loadComments");
+    }
   };
 
   return (
@@ -48,6 +69,7 @@ function CommentSection() {
 
       {/* Comment input area */}
       <div className={styles.inputArea}>
+        <button onClick={loadComments}>Comments</button>
         <div className={styles.questionText}>What do you think?</div>
         <form onSubmit={handleAddComment} className={styles.commentForm}>
           <div className={styles.inputContainer}>
