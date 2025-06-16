@@ -48,7 +48,6 @@ router.put("/:id", protect, updatePin);
 router.delete("/:id", protect, deletePin);
 router.get("/:id", getPinById);
 router.get("/", getAllPins);
-router.get("/created/:userId", protect, getCreatedPins);
 
 // search pins by tags
 router.get("/search", async (req, res) => {

@@ -322,7 +322,7 @@ export const getPinById = async (req, res) => {
   }
 };
 // Get the Pins created by each user
-export const getCreatedPins = async (req, res) => {
+export const getCreatedPins = async (req, res, next) => {
   try {
     const userId = req.user.id;
 

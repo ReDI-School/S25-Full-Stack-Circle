@@ -51,6 +51,7 @@ const UserPins = () => {
       console.error("Error in fetching the Saved Pins", error);
     }
   };
+
   useEffect(() => {
     if (activeTab === "created" && createdPins.length === 0) {
       getCreatedPins();
