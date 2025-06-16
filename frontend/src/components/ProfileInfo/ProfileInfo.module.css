@@ -10,7 +10,12 @@
     flex-wrap: wrap;
     align-items: center;
     gap:10px;
+    height: 45px;
+    width:45px;
+    border-radius:50%;
+    background-color: rgb(97, 247, 207);
 }
+
 .ProfileInfo-text{
    display: flex;
    flex-direction: column;
@@ -18,12 +23,7 @@
  
    flex: 1;
 }
-.ProfileInfo-image{
-    height: 45px;
-    width:45px;
-    border-radius:50%;
-    background-color: rgb(97, 247, 207);
-}
+   
 .ProfileInfo-username{
     font-size: 18px;
     font-weight: 600;

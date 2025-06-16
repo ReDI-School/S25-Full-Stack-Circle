@@ -12,7 +12,7 @@ const SignUp = ({ closeModal }) => {
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (token && isTokenValid(token)) {
-      navigate("/dashboard");
+      navigate("/userPins");
     }
   }, [navigate]);
 
@@ -96,7 +96,7 @@ const SignUp = ({ closeModal }) => {
       } else {
         setSuccessMessage("Signup successful! Redirecting to login...");
         closeModal(); // ✅ Close login modal
-        navigate("/dashboard");
+        navigate("/userpins");
       }
     } catch (error) {
       setError("Error connecting to server. Please try again.", error);

@@ -157,17 +157,18 @@ export const createPin = async (req, res) => {
         showSimilarProduct: showSimilarProduct ?? false,
         author: { connect: { id: userId } }
         // board: { connect: { id: userBoard.id } }
+
+        // to add the Tags
         /* tags: {
-          connect: tagName.map(name => {
-            return { name };
-          }),
-          create: newTags.map(name => {
-            return { name };
-          })
-        } */
+          connectOrCreate: (tagNames || []).map(tagNames => ({
+            where: { name: tagNames },
+            create: { name: tagNames }
+          }))
+        */
       },
       include: {
-        author: true
+        author: true,
+        tags: true
         // board: true
       }
     });
@@ -266,8 +267,10 @@ export const getAllPins = async (req, res) => {
     });
 
     // first pin url for debugging
-    if (pins.length) {
-      console.log("Sample image URL:", pins[0].imageUrl);
+    {
+      /* if (pins.length) {
+     console.log("Sample image URL:", pins[0].imageUrl);
+    }*/
     }
 
     res.status(OK).json({ pins });
@@ -302,5 +305,19 @@ export const getPinById = async (req, res) => {
     res
       .status(INTERNAL_SERVER_ERROR)
       .json({ message: "Internal Server Error" });
+  }
+};
+// Get the Pins created by each user
+export const getCreatedPins = async (req, res, next) => {
+  try {
+    const userId = req.user.id;
+
+    const CreatedPins = await prisma.pin.findMany({
+      where: { authorId: userId }
+    });
+
+    res.status(OK).json(CreatedPins);
+  } catch (error) {
+    next(error);
   }
 };

@@ -1,0 +1,69 @@
+.user_profileInfo_wrapper{
+    /*margin-top:10vh;*/
+    padding-top: 10vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+/* ------------------------------------ button----------------------*/
+.tab_button_wrapper{
+    display:flex;
+    justify-content: center;
+    gap:20px;
+    margin:20px;
+    
+}
+.tab_button{
+    background-color: transparent;
+    padding: 4px 15px;
+    border-radius: 10px;
+}
+.tab_button:hover{
+    background-color: rgb(235, 235, 235);
+}
+.tab_button.active{
+   border-bottom: solid 2px;
+   border-radius: 0%;
+}
+
+/*---------------------         Display section -------------------------------------------*/
+.pin_image {
+    width: 100%;
+    height: auto;          
+    object-fit: cover;  
+    display :block;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+.display_pins_wrapper{
+    column-count:4;
+    column-gap:16px;
+    margin:40px;
+}
+.pin_image_div {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+.pin_image_div::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.15); 
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+.pin_image_div:hover .pin_image {
+ transform: scale(1.05);
+}
+.pin_image_div:hover::after {
+    opacity: 1;
+  }
+  

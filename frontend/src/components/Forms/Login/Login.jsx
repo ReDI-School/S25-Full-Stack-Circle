@@ -13,7 +13,7 @@ const Login = ({ closeModal }) => {
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (token && isTokenValid(token)) {
-      navigate("/dashboard");
+      navigate("/userPins");
     }
   }, [navigate]);
 
@@ -55,7 +55,7 @@ const Login = ({ closeModal }) => {
       const meData = await meRes.json();
       setUser(meData.user);
       closeModal(); // ✅ Close login modal
-      navigate("/dashboard");
+      navigate("/userpins");
     } catch {
       setError("Server error, please try again");
     }
