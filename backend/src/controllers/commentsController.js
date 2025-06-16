@@ -16,6 +16,16 @@ export const getComments = async (req, res) => {
     const comments = await prisma.comment.findMany({
       where: {
         pinId: Number(pinId)
+      },
+      include: {
+        user: {
+          // Include the related User model
+          select: {
+            email: true,
+            id: true,
+            name: true
+          }
+        }
       }
     });
 
@@ -63,11 +73,11 @@ export const addComment = async (req, res) => {
 export const deleteComment = async (req, res) => {
   const { id } = req.body;
   const userId = req.user?.id;
+  console.log("in controller ", id, userId);
   try {
     await prisma.comment.delete({
       where: {
-        id: Number(id),
-        userId: String(userId)
+        id: Number(id)
       }
     });
     res.status(OK).json({ message: "Comment removed." });

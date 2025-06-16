@@ -9,11 +9,46 @@ function CommentSection({ imgId }) {
   const [isCommentsVisible, setIsCommentsVisible] = useState(true);
   const { user } = useContext(UserContext);
 
-  const handleAddComment = e => {
+  const handleAddComment = async e => {
     e.preventDefault();
     if (newComment.trim()) {
-      setComments([newComment, ...comments]);
+      // setComments([newComment, ...comments]);
+      console.log("add comment content ", newComment);
+      console.log("user ", user.email);
+      if (!user.token) {
+        console.log("You must be logged in to add a comment.");
+      } else console.log("token", user.token);
+      try {
+        const API_URL = "http://localhost:4000/api/comments";
+        const dataToSend = {
+          pinId: imgId,
+          content: newComment
+        };
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`
+          },
+          body: JSON.stringify(dataToSend)
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Failed to add comment.");
+        }
+
+        const addedComment = await response.json();
+
+        // Success!
+        console.log("Comment added successfully:", addedComment);
+      } catch (error) {
+        console.error("Error adding comment:", error);
+      } finally {
+        console.log("end of add comment");
+      }
       setNewComment("");
+      loadComments();
     }
   };
 
@@ -23,7 +58,6 @@ function CommentSection({ imgId }) {
 
   const loadComments = async e => {
     try {
-      // const imgId =
       console.log("id ", imgId);
       const response = await fetch(
         `http://localhost:4000/api/comments/?pinId=${imgId}`
@@ -37,15 +71,46 @@ function CommentSection({ imgId }) {
       console.log("comments", data.comments);
       setComments(data.comments);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       console.log("loadComments");
     }
   };
+  const handleDeleteComment = async commentId => {
+    console.log("delete", commentId);
+    console.log("user ", user.id);
 
+    if (!window.confirm("Are you sure you want to delete this comment?")) {
+      return;
+    }
+
+    try {
+      const dataToSend = {
+        id: Number(commentId)
+      };
+      const response = await fetch("http://localhost:4000/api/comments/", {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dataToSend)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to delete comment.");
+      }
+
+      console.log(`Comment with ID ${commentId} deleted successfully.`);
+    } catch (err) {
+      console.error("Error deleting comment:", err);
+    }
+    loadComments();
+  };
   return (
     <div className={styles.container}>
-      <button onClick={loadComments}>Comments</button>
+      <button onClick={loadComments}>Click to see comments</button>
       {/* Comments header and list */}
       {comments.length > 0 && (
         <div className={styles.commentsSection}>
@@ -63,7 +128,16 @@ function CommentSection({ imgId }) {
             <div className={styles.commentsContainer}>
               {comments.map((comment, index) => (
                 <div key={index} className={styles.commentItem}>
-                  {comment.userId}: {comment.content}
+                  <strong>{comment.user.email.split("@")[0]}:</strong>{" "}
+                  {comment.content}
+                  {user && user.id === comment.userId && (
+                    <button
+                      className={styles.deleteButton}
+                      onClick={() => handleDeleteComment(comment.id)}
+                    >
+                      Delete
+                    </button>
+                  )}
                 </div>
               ))}
             </div>

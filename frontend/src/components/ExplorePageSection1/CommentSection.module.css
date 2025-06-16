@@ -117,3 +117,14 @@
 .sendButton:hover {
 	color: rgb(29 78 216);
 }
+
+.deleteButton {
+    background-color: red;
+    position: inherit; 
+    border: white 0.2rem solid;
+    color: white;
+    margin: 0 0.5rem;
+    border-radius: 15%; 
+    float: right;
+    padding: 0.1rem 0.2rem;
+}
