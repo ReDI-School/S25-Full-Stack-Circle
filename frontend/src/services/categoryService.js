@@ -7,7 +7,6 @@ const API_BASE_URL = "http://localhost:4000/api";
  */
 export const fetchAllCategories = async () => {
   try {
-    console.log("Attempting to fetch from:", `${API_BASE_URL}/categories`);
     const response = await fetch(`${API_BASE_URL}/categories`, {
       method: "GET",
       headers: {
