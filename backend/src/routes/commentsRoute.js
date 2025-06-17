@@ -5,9 +5,10 @@ import {
   addComment,
   deleteComment
 } from "../controllers/commentsController.js";
+import { protect } from "../middlewares/authMiddleware.js";
 
 router.get("/", getComments);
-router.post("/", addComment);
-router.delete("/", deleteComment);
+router.post("/", protect, addComment);
+router.delete("/", protect, deleteComment);
 
 export default router;

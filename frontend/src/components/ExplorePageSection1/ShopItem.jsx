@@ -13,9 +13,47 @@ const suggestions = [
 ];
 
 const ShopItem = ({ imageSrc }) => {
+  // let imgId = 0;
   const [menuOpen, setMenuOpen] = useState(false);
   const [search, setSearch] = useState("");
   const popupRef = useRef(null);
+  const [pins, setPins] = useState([]);
+  const [id, setId] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPins = async () => {
+      try {
+        // setLoading(true);
+        // setError(null);
+
+        const response = await fetch("http://localhost:4000/api/pins");
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const pins = data.pins;
+        const foundPin = pins.find(pin => pin.imageUrl === imageSrc);
+
+        if (foundPin) {
+          const imgId = foundPin.id;
+          setId(imgId);
+          setPins(foundPin);
+        } else {
+          console.error("No pin found with that link.");
+        }
+      } catch (e) {
+        console.error("Failed to fetch pins:", e);
+        // setError("Failed to load pins. Please try again later.");
+      } finally {
+        // setLoading(false);
+      }
+    };
+    fetchPins();
+  }, []);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -81,12 +119,9 @@ const ShopItem = ({ imageSrc }) => {
           )}
           <button className={styles["Save-button"]}>Save</button>
         </div>
-
         {/* Product info */}
-        <p className={styles.brand}>Order Of Style</p>
-        <p className={styles.title}>Le High Skinny Jean...</p>
-        <p className={styles.price}>€ 1,95</p>
-
+        <p className={styles.brand}>{pins.title}</p>
+        <p className={styles.title}>{pins.description}</p>
         <div className={styles["shop-item-description"]}>
           {/* Pin details */}
           <PinDetailComponent />
@@ -97,7 +132,7 @@ const ShopItem = ({ imageSrc }) => {
               <span
                 key={index}
                 className={styles.tag}
-                onClick={() => console.error(`Tag clicked: ${tag}`)}
+                onClick={() => console.info(`Clicked ${tag}`)}
               >
                 {tag}
               </span>
@@ -108,7 +143,7 @@ const ShopItem = ({ imageSrc }) => {
           <div className={styles["content-spacer"]}></div>
 
           {/* Comment section at the very bottom where the photo ends */}
-          <CommentSection />
+          <CommentSection imgId={id} />
         </div>
       </div>
     </div>

@@ -26,7 +26,10 @@ export const UserProvider = ({ children }) => {
       })
         .then(res => res.json())
         .then(data => {
-          setUser(data.user);
+          setUser({
+            ...data.user,
+            token: token
+          });
         })
         .catch(() => {
           setUser(null);

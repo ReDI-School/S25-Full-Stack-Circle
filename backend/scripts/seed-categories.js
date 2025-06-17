@@ -68,7 +68,7 @@ const categories = [
 ];
 
 async function main() {
-  console.log("Starting to seed categories...");
+  // console.log("Starting to seed categories...");
 
   for (const category of categories) {
     // Check if category already exists to avoid duplicates
@@ -85,13 +85,13 @@ async function main() {
       const created = await prisma.category.create({
         data: category
       });
-      console.log(`Created category: ${created.title}`);
+      console.info(`Created category: ${created.title}`);
     } else {
-      console.log(`Category "${category.title}" already exists, skipping`);
+      console.info(`Category "${category.title}" already exists, skipping`);
     }
   }
 
-  console.log("Category seeding completed!");
+  // console.log("Category seeding completed!");
 }
 
 main()
