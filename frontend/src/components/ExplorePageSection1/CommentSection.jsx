@@ -14,13 +14,13 @@ function CommentSection({ imgId }) {
   // Debug auth status
   useEffect(() => {
     if (user) {
-      console.info("Auth status:", {
+      console.warn("Auth status:", {
         userId: user.id,
         hasToken: !!user.token,
         email: user.email
       });
     } else {
-      console.info("User not logged in");
+      console.error("User not logged in");
     }
   }, [user]);
 
@@ -88,7 +88,7 @@ function CommentSection({ imgId }) {
         }
 
         const addedComment = await response.json();
-        console.info("Comment added successfully:", addedComment);
+        console.warn("Comment added successfully:", addedComment);
 
         // Clear input and reload comments
         setNewComment("");
@@ -124,7 +124,7 @@ function CommentSection({ imgId }) {
         return;
       }
 
-      console.info("Loading comments for pinId:", pinIdValue);
+      console.warn("Loading comments for pinId:", pinIdValue);
 
       const response = await fetch(
         `http://localhost:4000/api/comments?pinId=${pinIdValue}`
@@ -173,7 +173,7 @@ function CommentSection({ imgId }) {
 
       // Update the state directly for better UX instead of reloading all comments
       setComments(comments.filter(comment => comment.id !== commentId));
-      console.info(`Comment with ID ${commentId} deleted successfully.`);
+      console.warn(`Comment with ID ${commentId} deleted successfully.`);
     } catch (err) {
       console.error("Error deleting comment:", err);
       setError("Failed to delete comment. Please try again.");
