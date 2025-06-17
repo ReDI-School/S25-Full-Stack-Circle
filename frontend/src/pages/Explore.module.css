@@ -4,6 +4,44 @@
   padding: 8rem 1rem;
 }
 
+.explorePage {
+  padding-top: 20px;
+}
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.navLink {
+  color: #0076d3;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}
+
+.filterSection {
+  margin: 40px 20px 0;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  margin-left: 20px;
+}
+
 .title {
   font-size: 1.25rem;
   font-weight: bold;

@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 generator client {
   provider = "prisma-client-js"
 }
@@ -23,34 +18,66 @@ model Reaction {
 }
 
 model User {
-  id        String     @id @default(uuid())
+  id        String   @id @default(uuid())
   name      String?
-  email     String     @unique
+  email     String   @unique
   password  String
-  createdAt DateTime   @default(now())
-  // board     Board?     @relation("UserBoard")
+  createdAt DateTime @default(now())
+
+  //board     Board?     @relation("UserBoard")
   comments  Comment[]
   pins      Pin[]      @relation("CreatedPins")
-  savedPins SavedPin[]
   reactions Reaction[]
+  savedPins SavedPin[]
+}
+
+model Category {
+  id          Int      @id @default(autoincrement())
+  title       String   @unique
+  imageUrl    String?
+  description String?
+  createdAt   DateTime @default(now())
+  
+  pins     Pin[]
 }
 
 model Pin {
-  id          Int      @id @default(autoincrement())
-  title       String
-  imageUrl    String
-  description String?
-  createdAt   DateTime @default(now())
-
-  author   User   @relation("CreatedPins", fields: [authorId], references: [id])
-  authorId String
-
-  reactions Reaction[]
-  comments  Comment[]
-  tags      String[]
-  savedBy   SavedPin[]
+  id                 Int        @id @default(autoincrement())
+  title              String
+  authorId           String
+  createdAt          DateTime   @default(now())
+  description        String?
+  imageUrl           String
+  //boardId            Int?
+  altText            String?
+  isAllowedtoComment Boolean    @default(true)
+  link               String?
+  showSimilarProduct Boolean    @default(false)
+  categoryId         Int?
+  category           Category?  @relation(fields: [categoryId], references: [id])
+  comments           Comment[]
+  author             User       @relation("CreatedPins", fields: [authorId], references: [id])
+  // board              Board?     @relation(fields: [boardId], references: [id])
+  reactions          Reaction[]
+  savedPin           SavedPin[]
+  tags               Tag[]      @relation("PinTags")//----1b
+  //tag                String[] //---1a
 }
 
+model Tag {               //----1c
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  pins Pin[]  @relation("PinTags")
+}
+/*
+model Board {
+  id     Int    @id @default(autoincrement())
+  name   String
+  userId String @unique
+  user   User   @relation("UserBoard", fields: [userId], references: [id])
+  // pins   Pin[]
+}
+*/
 model Comment {
   id        Int      @id @default(autoincrement())
   userId    String
@@ -65,11 +92,11 @@ model Comment {
 
 model SavedPin {
   id      Int      @id @default(autoincrement())
-  user    User     @relation(fields: [userId], references: [id])
   userId  String
-  pin     Pin      @relation(fields: [pinId], references: [id])
   pinId   Int
   savedAt DateTime @default(now())
+  pin     Pin      @relation(fields: [pinId], references: [id])
+  user    User     @relation(fields: [userId], references: [id])
 
   @@unique([userId, pinId])
 }

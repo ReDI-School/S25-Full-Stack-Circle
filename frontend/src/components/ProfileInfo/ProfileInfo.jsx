@@ -5,6 +5,7 @@ import { FiCheck } from "react-icons/fi";
 
 const ProfileInfo = () => {
   const { user } = useContext(UserContext);
+
   return (
     <div className={styles["ProfileInfo-wrapper"]}>
       <div className={styles["ProfileInfo-image"]}></div>
