@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import PinDetailComponent from "../../components/PinDetailComponent";
-import CommentSection from "./CommentSection";
+import CommentSection from "../../components/ExplorePageSection1/CommentSection";
 import styles from "./ShopItem.module.css";
 
 const suggestions = [
@@ -13,9 +13,69 @@ const suggestions = [
 ];
 
 const ShopItem = ({ imageSrc }) => {
+  // let imgId = 0;
   const [menuOpen, setMenuOpen] = useState(false);
   const [search, setSearch] = useState("");
   const popupRef = useRef(null);
+  const [pins, setPins] = useState([]);
+  const [id, setId] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPins = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch("http://localhost:4000/api/pins");
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const pins = data.pins;
+
+        // Try to find the pin by exact match first
+        let foundPin = pins.find(pin => pin.imageUrl === imageSrc);
+
+        // If not found, try a more flexible match (e.g., the image path might be partial)
+        if (!foundPin && imageSrc) {
+          // Try to find by filename or partial path match
+          const imgName = imageSrc.split("/").pop(); // Get the filename from the path
+          foundPin = pins.find(pin => {
+            if (!pin.imageUrl) return false;
+            return (
+              pin.imageUrl.includes(imgName) || imageSrc.includes(pin.imageUrl)
+            );
+          });
+        }
+
+        // If still not found, just use the first pin for demo purposes
+        if (!foundPin && pins.length > 0) {
+          foundPin = pins[0];
+          console.log("Using first available pin as fallback");
+        }
+
+        if (foundPin) {
+          const imgId = foundPin.id;
+          setId(imgId);
+          setPins(foundPin);
+        } else {
+          console.error("No pin found with that link.");
+          // Set a default ID to avoid breaking the comment section
+          setId(1); // Use a default ID or handle the absence differently
+        }
+      } catch (e) {
+        console.error("Failed to fetch pins:", e);
+        setError("Failed to load pins. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPins();
+  }, []);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -81,12 +141,9 @@ const ShopItem = ({ imageSrc }) => {
           )}
           <button className={styles["Save-button"]}>Save</button>
         </div>
-
         {/* Product info */}
-        <p className={styles.brand}>Order Of Style</p>
-        <p className={styles.title}>Le High Skinny Jean...</p>
-        <p className={styles.price}>€ 1,95</p>
-
+        <p className={styles.brand}>{pins.title}</p>
+        <p className={styles.title}>{pins.description}</p>
         <div className={styles["shop-item-description"]}>
           {/* Pin details */}
           <PinDetailComponent />
@@ -97,7 +154,7 @@ const ShopItem = ({ imageSrc }) => {
               <span
                 key={index}
                 className={styles.tag}
-                onClick={() => console.error(`Tag clicked: ${tag}`)}
+                onClick={() => console.info(`Clicked ${tag}`)}
               >
                 {tag}
               </span>
@@ -108,7 +165,7 @@ const ShopItem = ({ imageSrc }) => {
           <div className={styles["content-spacer"]}></div>
 
           {/* Comment section at the very bottom where the photo ends */}
-          <CommentSection />
+          <CommentSection imgId={id} />
         </div>
       </div>
     </div>

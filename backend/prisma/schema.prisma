@@ -86,9 +86,7 @@ model Comment {
   content   String
   pin       Pin      @relation(fields: [pinId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
-
-  @@unique([userId, pinId])
-}
+  }
 
 model SavedPin {
   id      Int      @id @default(autoincrement())
