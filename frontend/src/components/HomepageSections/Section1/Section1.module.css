@@ -1,7 +1,6 @@
 .preview-section1-wrapper {
   background-color: rgb(255, 253, 146);
-  padding:0;
-  margin:0;
+  width:100vw;
 }
 .preview-section1-wrapper h4 {
   text-align: center;
@@ -51,10 +50,11 @@
 }
 
 .image-layers-container {
-  height: 85vh;
-  width: 35vw;
+  height: 600px;
+  width: 500px;
   margin-left: 8vw;
-  margin-top: 1vh;
+  /*margin-top: 1vh;*/
+  margin-bottom: 5vh;
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1 fr);
@@ -62,9 +62,9 @@
 }
 .preview-section1-layer1-img {
   position: absolute;
-  width: 200px;
+  width: 180px;
   border-radius: 30px;
-  height: 200px;
+  height: 220px;
   top: 0;
   right: 0;
 }
@@ -91,7 +91,7 @@
   left: 55%;
   top: 51%;
   transform: translate(-50%, -50%);
-  width: 300px;
+  width: 280px;
   height: 75%;
   border-radius: 30px;
 }

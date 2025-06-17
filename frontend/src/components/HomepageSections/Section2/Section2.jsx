@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Section2.module.css";
 import CardLarge from "./PreviewSection2Cards/CardLarge";
+import ExploreButton from "../../Buttons/exploreButton";
 
 const Section2 = () => (
   <div className={styles["preview-section-2"]}>
@@ -9,6 +10,7 @@ const Section2 = () => (
       <div className={styles["section-text-p"]}>
         <p>Collect your favorites so you can get back to them later.</p>
       </div>
+      <ExploreButton />
     </div>
     <div className={styles["section2-images"]}>
       <div className={styles["section2-grid-wrapper"]}>

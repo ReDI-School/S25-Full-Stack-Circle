@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Section3.module.css";
 import Section3Card from "./PreviewSection3Card/Section3Card";
+import ExploreButton from "../../Buttons/exploreButton";
 
 const Section3 = () => (
   <div className={styles["preview-section-3"]}>
@@ -20,6 +21,7 @@ const Section3 = () => (
           <br />
           ideas from people around the world.
         </p>
+        <ExploreButton />
       </div>
     </div>
   </div>
