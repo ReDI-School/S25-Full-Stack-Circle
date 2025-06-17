@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log("Cleaning up categories...");
+  // console.log("Cleaning up categories...");
 
   // First, remove category references from pins
   await prisma.pin.updateMany({
@@ -15,7 +15,7 @@ async function main() {
   // Then delete all categories
   await prisma.category.deleteMany({});
 
-  console.log("Categories cleaned up successfully!");
+  // console.log("Categories cleaned up successfully!");
 }
 
 main()

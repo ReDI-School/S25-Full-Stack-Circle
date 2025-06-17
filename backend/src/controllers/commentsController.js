@@ -42,7 +42,7 @@ export const addComment = async (req, res) => {
   const userId = req.user?.id;
 
   // Debug information
-  console.log("Received comment request:", { pinId, content, userId });
+  // console.log("Received comment request:", { pinId, content, userId });
 
   // Validate required fields
   if (!pinId) {
@@ -81,8 +81,7 @@ export const addComment = async (req, res) => {
 
 export const deleteComment = async (req, res) => {
   const { id } = req.body;
-  const userId = req.user?.id;
-  console.log("in controller ", id, userId);
+  // const userId = req.user?.id;
   try {
     await prisma.comment.delete({
       where: {

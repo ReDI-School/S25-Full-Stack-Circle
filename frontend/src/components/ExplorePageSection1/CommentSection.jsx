@@ -14,13 +14,13 @@ function CommentSection({ imgId }) {
   // Debug auth status
   useEffect(() => {
     if (user) {
-      console.log("Auth status:", {
+      console.info("Auth status:", {
         userId: user.id,
         hasToken: !!user.token,
         email: user.email
       });
     } else {
-      console.log("User not logged in");
+      console.info("User not logged in");
     }
   }, [user]);
 
@@ -65,8 +65,8 @@ function CommentSection({ imgId }) {
           content: newComment
         };
 
-        console.log("Sending comment data:", dataToSend);
-        console.log("User auth:", { userId: user.id, hasToken: !!user.token });
+        // console.log("Sending comment data:", dataToSend);
+        // console.log("User auth:", { userId: user.id, hasToken: !!user.token });
 
         const response = await fetch(API_URL, {
           method: "POST",
@@ -79,7 +79,7 @@ function CommentSection({ imgId }) {
 
         if (!response.ok) {
           const errorData = await response.json();
-          console.log("Error response:", errorData);
+          console.error("Error response:", errorData);
           throw new Error(
             errorData.error ||
               errorData.message ||
@@ -88,7 +88,7 @@ function CommentSection({ imgId }) {
         }
 
         const addedComment = await response.json();
-        console.log("Comment added successfully:", addedComment);
+        console.info("Comment added successfully:", addedComment);
 
         // Clear input and reload comments
         setNewComment("");
@@ -124,7 +124,7 @@ function CommentSection({ imgId }) {
         return;
       }
 
-      console.log("Loading comments for pinId:", pinIdValue);
+      console.info("Loading comments for pinId:", pinIdValue);
 
       const response = await fetch(
         `http://localhost:4000/api/comments?pinId=${pinIdValue}`
@@ -135,7 +135,7 @@ function CommentSection({ imgId }) {
       }
 
       const data = await response.json();
-      console.log("comments", data.comments);
+      // console.log("comments", data.comments);
       setComments(data.comments || []);
     } catch (err) {
       console.error(err);
@@ -145,8 +145,8 @@ function CommentSection({ imgId }) {
     }
   };
   const handleDeleteComment = async commentId => {
-    console.log("delete", commentId);
-    console.log("user ", user.id);
+    // console.log("delete", commentId);
+    // console.log("user ", user.id);
 
     if (!window.confirm("Are you sure you want to delete this comment?")) {
       return;
@@ -173,7 +173,7 @@ function CommentSection({ imgId }) {
 
       // Update the state directly for better UX instead of reloading all comments
       setComments(comments.filter(comment => comment.id !== commentId));
-      console.log(`Comment with ID ${commentId} deleted successfully.`);
+      console.info(`Comment with ID ${commentId} deleted successfully.`);
     } catch (err) {
       console.error("Error deleting comment:", err);
       setError("Failed to delete comment. Please try again.");

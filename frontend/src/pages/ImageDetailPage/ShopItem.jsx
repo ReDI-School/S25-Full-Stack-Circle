@@ -55,7 +55,7 @@ const ShopItem = ({ imageSrc }) => {
         // If still not found, just use the first pin for demo purposes
         if (!foundPin && pins.length > 0) {
           foundPin = pins[0];
-          console.log("Using first available pin as fallback");
+          console.info("Using first available pin as fallback");
         }
 
         if (foundPin) {
