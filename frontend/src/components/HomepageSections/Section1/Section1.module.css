@@ -1,5 +1,7 @@
 .preview-section1-wrapper {
   background-color: rgb(255, 253, 146);
+  padding:0;
+  margin:0;
 }
 .preview-section1-wrapper h4 {
   text-align: center;
@@ -49,9 +51,9 @@
 }
 
 .image-layers-container {
-  height: 62vh;
-  width: 28vw;
-  margin-left: 11vw;
+  height: 85vh;
+  width: 35vw;
+  margin-left: 8vw;
   margin-top: 1vh;
   position: relative;
   display: grid;
@@ -60,7 +62,7 @@
 }
 .preview-section1-layer1-img {
   position: absolute;
-  width: 170px;
+  width: 200px;
   border-radius: 30px;
   height: 200px;
   top: 0;
@@ -80,7 +82,7 @@
   position: absolute;
   left: 0;
   top: 25%;
-  width: 45%;
+  width: 200px;
   height: 40%;
   border-radius: 30px;
 }
@@ -89,7 +91,7 @@
   left: 55%;
   top: 51%;
   transform: translate(-50%, -50%);
-  width: 55%;
+  width: 300px;
   height: 75%;
   border-radius: 30px;
 }
@@ -97,7 +99,7 @@
   color: rgb(110, 15, 61);
   background-color: white;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 22px;
   padding: 1.8rem 1.5rem;
   border-radius: 40px;
   display: flex;
