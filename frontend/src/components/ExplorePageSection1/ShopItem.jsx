@@ -19,14 +19,14 @@ const ShopItem = ({ imageSrc }) => {
   const popupRef = useRef(null);
   const [pins, setPins] = useState([]);
   const [id, setId] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchPins = async () => {
       try {
-        setLoading(true);
-        setError(null);
+        // setLoading(true);
+        // setError(null);
 
         const response = await fetch("http://localhost:4000/api/pins");
 
@@ -47,9 +47,9 @@ const ShopItem = ({ imageSrc }) => {
         }
       } catch (e) {
         console.error("Failed to fetch pins:", e);
-        setError("Failed to load pins. Please try again later.");
+        // setError("Failed to load pins. Please try again later.");
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
     fetchPins();
