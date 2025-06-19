@@ -10,7 +10,7 @@ import {
 } from "../constants/http.js";
 
 import { uploadToS3 } from "../services/uploadService.js";
-// import * as tagGenerationService from "../services/tagGenerationService.js";
+import { generateData } from "../services/dataGenerationService.js";
 
 /**
  * POST /api/pin/upload-and-tag
@@ -33,7 +33,7 @@ export const uploadAndTag = async (req, res) => {
     // AI tags generation Part
     // TODO : replace the empty array [] with a call to generateTags from tagGenService which should take image url and return an array of tags
     // TODO : Create tagGenService in the services folder
-    const aiTags = [];
+    const aiTags = await generateData(imageUrl);
     console.info("AI generated tags:", aiTags);
 
     res.json({
