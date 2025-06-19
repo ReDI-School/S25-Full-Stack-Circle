@@ -1,0 +1,113 @@
+.categoryPage {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.categoryHeader {
+  margin-bottom: 30px;
+}
+
+.backLink {
+  display: inline-block;
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  border-radius: 24px;
+  transition: background-color 0.2s ease;
+}
+
+.backLink:hover {
+  background-color: #f0f0f0;
+}
+
+.categoryTitle {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.categoryDescription {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  max-width: 800px;
+}
+
+.pinsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.pinCard {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  background-color: white;
+}
+
+.pinCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.imageContainer {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.pinImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pinInfo {
+  padding: 16px;
+}
+
+.pinTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: #333;
+}
+
+.pinAuthor {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+.loadingContainer,
+.errorContainer,
+.notFoundContainer,
+.emptyPinsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+  padding: 30px;
+}
+
+.errorContainer,
+.notFoundContainer {
+  color: #e60023;
+}
+
+.emptyPinsContainer {
+  color: #777;
+}

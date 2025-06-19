@@ -1,21 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./CreatePin.module.css";
 import { MdExpandMore } from "react-icons/md";
 import { FaArrowAltCircleUp } from "react-icons/fa";
+import { fetchAllCategories } from "../../services/categoryService";
 
 const CreatePinPage = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     imageUrl: "",
-    tags: []
+    tags: [],
+    link: "",
+    board: "",
+    categoryId: ""
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState("");
   const [isUploading, setIsUploading] = useState(false);
-  // const [isGeneratingTags, setIsGeneratingTags] = useState(false);
-  // const [isCreating, setIsCreating] = useState(false);
   const [showMoreOptions, setShowMoreOptions] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [loadingCategories, setLoadingCategories] = useState(true);
+
+  // Define HTTP status code constant
+  const HTTP_CREATED = 201;
+
+  // Fetch categories when component mounts
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        setLoadingCategories(true);
+        const categoriesData = await fetchAllCategories();
+        setCategories(categoriesData);
+      } catch (error) {
+        console.error("Failed to load categories:", error);
+      } finally {
+        setLoadingCategories(false);
+      }
+    };
+
+    loadCategories();
+  }, []);
 
   // Handle file selection
   const handleFileSelect = e => {
@@ -27,48 +51,6 @@ const CreatePinPage = () => {
       setPreviewUrl(url);
     }
   };
-
-  // Upload image and get AI tags
-  const handleImageUpload = async () => {
-    if (!selectedFile) return;
-
-    setIsUploading(true);
-    // setIsGeneratingTags(true);
-
-    try {
-      const formDataObj = new FormData();
-      formDataObj.append("image", selectedFile);
-
-      const response = await fetch(
-        "http://localhost:4000/api/pins/uploadAndTag",
-        {
-          method: "POST",
-          body: formDataObj
-        }
-      );
-
-      const result = await response.json();
-
-      if (result.success) {
-        setFormData(prev => {
-          return {
-            ...prev,
-            imageUrl: result.imageUrl,
-            tags: result.tags
-          };
-        });
-      } else {
-        alert("Failed to upload image: " + result.error);
-      }
-    } catch (error) {
-      console.error("Upload error:", error);
-      alert("Failed to upload image and generate tags");
-    } finally {
-      setIsUploading(false);
-      // setIsGeneratingTags(false);
-    }
-  };
-
   // Handle form input changes
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -78,6 +60,87 @@ const CreatePinPage = () => {
         [name]: value
       };
     });
+  };
+  // Upload image , get AI tags and Create Pin
+  const handleImageUpload = async () => {
+    if (!selectedFile) return;
+
+    if (!formData.title || !formData.description) {
+      alert("Please fill in Title and Description");
+      return;
+    }
+
+    setIsUploading(true);
+    // setIsGeneratingTags(true);
+
+    try {
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        alert("You must be logged in");
+        setIsUploading(false);
+        return;
+      }
+
+      const formDataObj = new FormData();
+      formDataObj.append("image", selectedFile);
+
+      const response = await fetch(
+        "http://localhost:4000/api/pins/uploadAndTag",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          body: formDataObj
+        }
+      );
+
+      const result = await response.json();
+      if (!result.success) {
+        alert("Failed to upload image: " + result.error);
+        setIsUploading(false);
+        return;
+      }
+
+      setFormData(prev => {
+        return {
+          ...prev,
+          imageUrl: result.imageUrl,
+          tags: result.tags
+        };
+      });
+      /* ******************************* Create pin */
+      const createPin = await fetch(
+        "http://localhost:4000/api/pins/createpin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            ...formData,
+            imageUrl: result.imageUrl,
+            tagNames: result.tags,
+            categoryId: formData.categoryId || undefined
+          })
+        }
+      );
+
+      const createdPin = await createPin.json();
+      if (createPin.status === HTTP_CREATED) {
+        alert("Pin created successfully!");
+        window.location.reload();
+        return;
+      } else {
+        alert("Failed to create pin:" + createdPin.error || "unknown error");
+      }
+    } catch (error) {
+      console.error("Upload and create pin error:", error);
+      alert("Failed to upload image and create pin*something went wrong");
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   return (
@@ -124,9 +187,14 @@ const CreatePinPage = () => {
               {isUploading ? "Uploading..." : "Upload & Generate Tags"}
             </button>
           )}
-
           <div className={styles.saveButton}>
-            <button>Save from URL</button>
+            <button
+              type="button"
+              className={styles.btnPrimary}
+              onClick={() => (window.location.href = "/image_upload_from_url")}
+            >
+              Upload from URL
+            </button>
           </div>
         </div>
         <div className={styles.rightPanel}>
@@ -170,6 +238,27 @@ const CreatePinPage = () => {
                 <option>Inspiration</option>
                 <option>Work</option>
                 <option>Ideas</option>
+              </select>
+            </div>
+
+            <div className={styles.formGroup}>
+              <p className={styles.label}>Category</p>
+              <select
+                className={styles.formInput}
+                name="categoryId"
+                value={formData.categoryId}
+                onChange={handleInputChange}
+              >
+                <option value="">Select a category</option>
+                {loadingCategories ? (
+                  <option disabled>Loading categories...</option>
+                ) : (
+                  categories.map(category => (
+                    <option key={category.id} value={category.id}>
+                      {category.title}
+                    </option>
+                  ))
+                )}
               </select>
             </div>
 
