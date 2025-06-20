@@ -12,6 +12,7 @@ import Blog from "./pages/BlogPage/Blog";
 import ExplorePage from "./pages/ExplorePage";
 import HomePage from "./pages/HomePage";
 import ImageDetailPage from "./pages/ImageDetailPage";
+import SearchResultsPage from "./pages/SearchResultsPage";
 import CreatepinPage from "./pages/CreatepinPage/CreatePinPage";
 // import Dashboard from "./pages/DashboardPage/Dashboard";
 import { UserProvider } from "./contexts/UserProvider";
@@ -21,7 +22,6 @@ import CategoryPage from "./pages/CategoryPage/CategoryPage";
 
 function AppContent() {
   const location = useLocation();
-
   // Determine whether to display the Navbar based on current path
   const path = location.pathname;
 
@@ -38,6 +38,7 @@ function AppContent() {
         <Route path="/pin/:id" element={<CardDetailPage />} />
         <Route path="/detail" element={<ImageDetailPage />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/search" element={<SearchResultsPage />} />
         <Route path="/createPin" element={<CreatepinPage />} />
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/image_upload_from_url" element={<UploadFromUrl />} />
