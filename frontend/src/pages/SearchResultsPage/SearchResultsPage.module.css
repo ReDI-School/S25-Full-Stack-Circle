@@ -1,0 +1,63 @@
+/* SearchResultsPage.module.css */
+
+.resultsContainer {
+  padding: 20px;
+  max-width: 960px;
+  margin: 20px auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding-top: 150px;
+}
+
+.resultsHeader {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.loadingMessage {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}
+
+.noResultsMessage {
+  text-align: center;
+  color: #999;
+}
+
+.resultsList {
+  list-style: none;
+  padding: 0;
+}
+
+.resultItem {
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+}
+
+.resultItem h3 {
+  margin: 0;
+  color: #007bff;
+  font-size: 1.2em;
+}
+
+.resultItem p {
+  margin: 5px 0 0;
+  color: #555;
+  font-size: 0.9em;
+}
+
+.resultItem img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover; 
+  border-radius: 4px; 
+}

@@ -136,3 +136,26 @@ export const SearchBarWrapper = styled.div`
 `;
 
 export const IconWrapper = styled.div``;
+
+export const SuggestionsContainer = styled.div`
+  position: absolute; /* Position relative to SearchWrapper */
+  top: 100%; /* Place it right below the search bar */
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it's above other content */
+  max-height: 200px; /* Limit height and add scroll if many suggestions */
+  overflow-y: auto;
+`;
+
+export const SuggestionItem = styled.div`
+  padding: 10px 15px;
+  cursor: pointer;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
