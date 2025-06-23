@@ -1,8 +1,8 @@
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
 import { IconButton } from "@mui/material";
-import React, { useState, useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext, useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Login from "../Forms/Login/Login";
 import SignUp from "../Forms/SignUp/SignUp";
 import Modal from "../Modal/Modal";
@@ -21,12 +21,20 @@ import {
   PressButton,
   LoginButton,
   SignupButton,
-  IconWrapper
+  IconWrapper,
+  SuggestionsContainer,
+  SuggestionItem
 } from "./HeaderStyles";
 
 const Header = () => {
   const { user, loading } = useContext(UserContext);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchTimeoutRef = useRef(null);
+
+  const navigate = useNavigate();
 
   // State for modal management
   const [isOpen, setIsOpen] = useState(false);
@@ -50,6 +58,83 @@ const Header = () => {
     setIsOpen(false);
     setModalType(null);
   };
+
+  const fetchSuggestions = async query => {
+    if (query.length < 2) {
+      setSuggestions([]);
+      return;
+    }
+
+    return new Promise(resolve => {
+      setTimeout(() => {
+        const dummySuggestions = [
+          `${query} ideas`,
+          `${query} recipes`,
+          `${query} fashion trends`,
+          `how to ${query}`,
+          `best ${query} 2025`
+        ].filter(s => s.toLowerCase().includes(query.toLowerCase()));
+        resolve(dummySuggestions);
+      }, 300);
+    });
+  };
+
+  const handleSearchInputChange = async event => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    setShowSuggestions(true);
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
+
+    // Set a new timeout to debounce the suggestion fetch
+    searchTimeoutRef.current = setTimeout(async () => {
+      if (value.trim().length > 1) {
+        const fetched = await fetchSuggestions(value.trim());
+        setSuggestions(fetched);
+      } else {
+        setSuggestions([]);
+      }
+    }, 400);
+  };
+
+  const handleSearch = (query = searchTerm) => {
+    if (query.trim()) {
+      console.log("Performing search for:", query.trim());
+      navigate(`/search?q=${encodeURIComponent(query.trim())}`);
+      setSearchTerm(query.trim());
+      setSuggestions([]);
+      setShowSuggestions(false);
+    }
+  };
+
+  const handleFormSubmit = event => {
+    event.preventDefault();
+    handleSearch();
+  };
+
+  const handleSuggestionClick = suggestion => {
+    setSearchTerm(suggestion);
+    handleSearch(suggestion);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = event => {
+      // Check if the click is outside the SearchWrapper (or a more specific parent)
+      if (
+        event.target.closest(`.${SearchWrapper.styledComponentId}`) === null &&
+        event.target.closest(`.${SuggestionsContainer.styledComponentId}`) ===
+          null
+      ) {
+        setShowSuggestions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <Wrapper>
@@ -80,14 +165,30 @@ const Header = () => {
           <IconButton>
             <SearchIcon />
           </IconButton>
-          <form action="">
+          <form onSubmit={handleFormSubmit}>
             <input
               type="text"
               placeholder="Search for easy dinners, fashion, etc."
+              value={searchTerm}
+              onChange={handleSearchInputChange}
+              onFocus={() => setShowSuggestions(true)} // Show suggestions when input is focused
             />
             <button type="submit"></button>
           </form>
         </SearchBarWrapper>
+
+        {showSuggestions && suggestions.length > 0 && (
+          <SuggestionsContainer>
+            {suggestions.map((s, index) => (
+              <SuggestionItem
+                key={index}
+                onClick={() => handleSuggestionClick(s)}
+              >
+                {s}
+              </SuggestionItem>
+            ))}
+          </SuggestionsContainer>
+        )}
       </SearchWrapper>
 
       <AboutButton>

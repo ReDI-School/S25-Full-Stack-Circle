@@ -18,6 +18,7 @@ import { UserProvider } from "./contexts/UserProvider";
 import UploadFromUrl from "./pages/ImageUploadURLPage/UploadFromUrl";
 import UserPins from "./pages/UserPins/UserPins";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
+import SearchResultsPage from "./pages/SearchResultsPage/SearchResultsPage";
 
 function AppContent() {
   const location = useLocation();
@@ -43,6 +44,7 @@ function AppContent() {
         <Route path="/image_upload_from_url" element={<UploadFromUrl />} />
         <Route path="/userpins" element={<UserPins />} />
         <Route path="/category/:id" element={<CategoryPage />} />
+        <Route path="/search" element={<SearchResultsPage />} />
       </Routes>
       {<Footer />}
     </>
